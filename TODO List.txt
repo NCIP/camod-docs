@@ -2,8 +2,8 @@ General TODOs
 ----------
 1) Tiles
 2) CSM Autherization - Once working
-	> register section
-	> submitModels.jsp - Display full name in Welcome message
+	> register section - Team Discussion On Tues
+	> submitModels.jsp - Display full name in Welcome message (Depends on CSM integration)
 	> admin section
 3)	Expand the model_section table in the camoddev database after Derek has transferred the data from DATOP. 
     This table needs to list all pages that users can comment on. (Note for Ulli)
@@ -12,26 +12,26 @@ Specific Tasks to Achieve on each page
 
 login.jsp
 ----------
-1) If user already logged in, do not display login form on main page
+1) (Sima is working on this) If user already logged in, do not display login form on main page
 2) 
 
 submitModels.jsp
 ----------
 1) Sort list of models by modelDescriptor
 2) Delete function - now working
-		> get model name in the confirmation popup message  
+		> (Sima is working on this) get model name in the confirmation popup message  
 		> (DONE) get javascript confirmation popup message working
 		> (DONE) get page to refresh after successful delete
 		> (DONE) confirmation ActionMessage to display
 3) Duplicate function - get working!
 		> (DONE) confirmation message
-		> get model name in the confirmation popup message
+		> (Sima is working on this)get model name in the confirmation popup message
 4) After loading a previously entered model, send ActionMessages to display last_edited date, entered on date, release date, etc
 5)	
 
 submitNewModel.jsp
 -----------
-1) Get Validator working on required fields
+1) (Sima is working on this) Get Validator working on required fields
 2) Populate dropdown selection fields
 3) Javascript - when a species is selected, un-grey strain dropdown and prepopulate it with appropriate strains for that species
 3) if Other Strain
