@@ -5,6 +5,8 @@ General TODOs
 	> register section
 	> submitModels.jsp - Display full name in Welcome message
 	> admin section
+3)	Expand the model_section table in the camoddev database after Derek has transferred the data from DATOP. 
+    This table needs to list all pages that users can comment on. (Note for Ulli)
 
 Specific Tasks to Achieve on each page
 
