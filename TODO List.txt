@@ -12,7 +12,7 @@ Specific Tasks to Achieve on each page
 
 login.jsp
 ----------
-1) (Sima is working on this) If user already logged in, do not display login form on main page
+1) (Sima is working on this using strut tags, already impl using jsp) If user already logged in, do not display login form on main page
 2) 
 
 submitModels.jsp
@@ -32,13 +32,14 @@ submitModels.jsp
 submitNewModel.jsp
 -----------
 1) (Sima is working on this) Get Validator working on required fields
-2) Populate dropdown selection fields
-3) Javascript - when a species is selected, un-grey strain dropdown and prepopulate it with appropriate strains for that species
+2) (Nick) Populate dropdown selection fields
+3) (Nick) Javascript - when a species is selected, un-grey strain dropdown and prepopulate it with appropriate strains for that species
 3) if Other Strain
 		> send an email to an admin to check the validity of a new Strain name inputted into 'OTHER STRAIN'
-		> grey OTHER STRAIN text unless dropdown menu is set to 'Other'
-4) Calendar popup selection
+		> (Nick)grey OTHER STRAIN text unless dropdown menu is set to 'Other'
+4) (Nick)Calendar popup selection
 		> fill-in field with selection, grey out (uneditible)
+5) (Sima is working on this) Change if else into <logic:empty> and <logic:notEmpty> struts tags
 
 submitOverview.jsp
 ------------
