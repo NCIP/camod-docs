@@ -7,6 +7,9 @@ General TODOs
 	> admin section
 3)	Expand the model_section table in the camoddev database after Derek has transferred the data from DATOP. 
     This table needs to list all pages that users can comment on. (Note for Ulli)
+4) DynaForms
+5) Tooltips 
+	> Get definitions from documentation crew and setup in config file
 
 Specific Tasks to Achieve on each page
 
@@ -34,9 +37,11 @@ submitNewModel.jsp
 1) (Sima is working on this) Get Validator working on required fields
 2) (Nick) Populate dropdown selection fields
 3) (Nick) Javascript - when a species is selected, un-grey strain dropdown and prepopulate it with appropriate strains for that species
-3) if Other Strain
+3) ** if Other Strain
 		> send an email to an admin to check the validity of a new Strain name inputted into 'OTHER STRAIN'
 		> (Nick)grey OTHER STRAIN text unless dropdown menu is set to 'Other'
+		> Add to db
+		> Initial list of Strains should depend on which Species is currently selected...
 4) (Nick)Calendar popup selection
 		> fill-in field with selection, grey out (uneditible)
 5) (Sima is working on this) Change if else into <logic:empty> and <logic:notEmpty> struts tags
@@ -53,7 +58,8 @@ submitModelCharacteristics.jsp
 2) Same as submitNewModel.jsp ( Validator, dropdowns )
 3) use hidden field for sending id to form
 4) prepopulate all fields on load, todo: PI Email, species, strain (other), release date
-5)
+5) Strange behavior on retrieving the Strains field...
+
 
 subSubmitMenu.jsp
 ------------- 
