@@ -10,10 +10,10 @@ General TODOs
 4) DynaForms
 5) Tooltips 
 	> Get definitions from documentation crew and setup in config file
-6) Move configuration files for GUI (defaults for dropdowns) to config/jsp - David requested this when we get time
+6) Move configuration files for GUI (defaults for dropdowns) to config/dropdowns - David requested this when we get time
 7) Implement public class Constants{
 					public interface Admin { - David suggested this in an e-mail
-8) Security in the camod application - See email from David
+8) Figure out how to rollback and enforce transactions in camod
 
 Specific Tasks to Achieve on each page
 
