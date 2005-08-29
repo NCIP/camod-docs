@@ -13,6 +13,7 @@ General TODOs
 6) Move configuration files for GUI (defaults for dropdowns) to config/jsp - David requested this when we get time
 7) Implement public class Constants{
 					public interface Admin { - David suggested this in an e-mail
+8) Security in the camod application - See email from David
 
 Specific Tasks to Achieve on each page
 
