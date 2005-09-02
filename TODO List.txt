@@ -14,6 +14,8 @@ General TODOs
 7) Implement public class Constants{
 					public interface Admin { - David suggested this in an e-mail
 8) Figure out how to rollback and enforce transactions in camod
+9) Rework dropdown code to fit with Davids new class and add new general getEnvironmentalFactorsList method sending in String inString
+
 
 Specific Tasks to Achieve on each page
 
@@ -63,6 +65,7 @@ submitModelCharacteristics.jsp
 3) use hidden field for sending id to form
 4) prepopulate all fields on load, todo: PI Email, species, strain (other), release date
 5) Strange behavior on retrieving the Strains field...
+6) validate e-mail by e-mail rule in addition to empty
 
 
 subSubmitMenu.jsp
