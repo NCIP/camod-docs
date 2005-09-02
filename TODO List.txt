@@ -36,7 +36,7 @@ submitModels.jsp
 		> (DONE) confirmation message
 		> (Sima is working on this)get model name in the confirmation popup message
 4) After loading a previously entered model, send ActionMessages to display last_edited date, entered on date, release date, etc
-5)	
+5) PI email address - Validate that this is really an email address	
 
 submitNewModel.jsp
 -----------
@@ -70,5 +70,11 @@ submitModelCharacteristics.jsp
 
 subSubmitMenu.jsp
 ------------- 
-1) Preload all many-to-one objects and display
+1) AnimalModelTreeAction.java - Preloads all many-to-one objects and display
+2) Highlight current option - whatever is being Entered or Edited should be highlighted on the sidemenu
 
+SurgeryOther.jsp
+-------------
+1) JS for 'Other' selection not working...
+2) Validation not working
+3) Appending to age is a problem when editing
