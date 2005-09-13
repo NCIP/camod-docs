@@ -1,0 +1,80 @@
+General TODOs
+----------
+1) Tiles
+2) CSM Autherization - Once working
+	> register section - Team Discussion On Tues
+	> submitModels.jsp - Display full name in Welcome message (Depends on CSM integration)
+	> admin section
+3)	Expand the model_section table in the camoddev database after Derek has transferred the data from DATOP. 
+    This table needs to list all pages that users can comment on. (Note for Ulli)
+4) DynaForms
+5) Tooltips 
+	> Get definitions from documentation crew and setup in config file
+6) Move configuration files for GUI (defaults for dropdowns) to config/dropdowns - David requested this when we get time
+7) Implement public class Constants{
+					public interface Admin { - David suggested this in an e-mail
+8) Figure out how to rollback and enforce transactions in camod
+9) Rework dropdown code to fit with Davids new class and add new general getEnvironmentalFactorsList method sending in String inString
+
+
+Specific Tasks to Achieve on each page
+
+login.jsp
+----------
+1) (Left as is) If user already logged in, do not display login form on main page
+2) 
+
+submitModels.jsp
+----------
+1) Sort list of models by modelDescriptor
+2) Delete function - now working
+		> (Sima is working on this) get model name in the confirmation popup message  
+		> (DONE) get javascript confirmation popup message working
+		> (DONE) get page to refresh after successful delete
+		> (DONE) confirmation ActionMessage to display
+3) Duplicate function - get working!
+		> (DONE) confirmation message
+		> (Sima is working on this)get model name in the confirmation popup message
+4) After loading a previously entered model, send ActionMessages to display last_edited date, entered on date, release date, etc
+5) PI email address - Validate that this is really an email address	
+
+submitNewModel.jsp
+-----------
+1) (Done) Get Validator working on required fields
+2) (Nick) Populate dropdown selection fields
+3) (Nick) Javascript - when a species is selected, un-grey strain dropdown and prepopulate it with appropriate strains for that species
+3) ** if Other Strain
+		> send an email to an admin to check the validity of a new Strain name inputted into 'OTHER STRAIN'
+		> (Nick)grey OTHER STRAIN text unless dropdown menu is set to 'Other'
+		> Add to db
+		> Initial list of Strains should depend on which Species is currently selected...
+4) (Nick)Calendar popup selection
+		> fill-in field with selection, grey out (uneditible)
+
+
+submitOverview.jsp
+------------
+1) Add more messages to ActionMessage that is sent from createNewModel
+	> list summary of the model just created
+
+
+submitModelCharacteristics.jsp
+-------------
+1) Website for add. info - make data into hyperlink that works
+2) Same as submitNewModel.jsp ( Validator, dropdowns )
+3) use hidden field for sending id to form
+4) prepopulate all fields on load, todo: PI Email, species, strain (other), release date
+5) Strange behavior on retrieving the Strains field...
+6) validate e-mail by e-mail rule in addition to empty
+
+
+subSubmitMenu.jsp
+------------- 
+1) AnimalModelTreeAction.java - Preloads all many-to-one objects and display
+2) Highlight current option - whatever is being Entered or Edited should be highlighted on the sidemenu
+
+SurgeryOther.jsp
+-------------
+1) JS for 'Other' selection not working...
+2) Validation not working
+3) Appending to age is a problem when editing
