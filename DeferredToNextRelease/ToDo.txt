@@ -1,8 +1,0 @@
-1) Duplicates in the taxon table. 
-We decided to keep them for now, because it would be a difficult task to do the 
-mapping when we delete the duplicates. This might be a task that could be 
-done before the next release.
-
-2) Look at enhancing the design for organ/disease table relations.
-
-
