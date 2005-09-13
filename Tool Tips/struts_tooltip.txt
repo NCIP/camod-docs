@@ -1,3 +1,8 @@
+
+
+
+
+
 Needs to go on all search pages (comments feature)
 
 <camod:cshelp key="COMMENTS.REMARK" image="images/iconHelp.gif" text="Tool Tip Test 1" />
