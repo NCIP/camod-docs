@@ -1,0 +1,40 @@
+Downloading development DB
+
+1. Bring up Oracle Enterprise Management Console
+
+2. Log in as sys with sysdba privledges
+
+3. Delete the camod user
+
+4. Create a new tablespace (Storage/Tablespaces, rightclick and select create)
+
+5. Set the size to 1000 MB
+
+6. Click on the "Storage" tab and click the "Uniform Allocation" button.  Select 10 M Bytes.
+
+7. Click the create button
+
+8. Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+
+9. Go to the C:/oracle/ora92/network/ADMIN directory.
+
+   Edit the tnsnames file and add the following if it doesn't exist:
+
+
+CADEV.NCI.NIH.GOV =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = cbiodb2-d.nci.nih.gov)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SID = cadev)
+    )
+  )
+
+10. Bring up a dos propmt
+
+   10.1 From the dos prompt type in exp cammoddev/dev!2345@cadev
+   10.2 type in imp camod/camod@<instancename>
+
+        Take default for all but the one asking if you want to import tables.
