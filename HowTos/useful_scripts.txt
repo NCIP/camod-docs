@@ -1,0 +1,216 @@
+alter table engineered_gene add (mod_type_unctrl_vocab varchar2(255));
+alter table env_factor add (name_unctrl_vocab varchar2(255));
+alter table env_factor add (type_unctrl_vocab varchar2(255));
+alter table image add (STAINING_UNCTRL_VOCAB varchar2(255));
+alter table treatment add (admin_route_unctrl_vocab varchar2(255));
+
+
+update therapy set therapeutic_experiment = 0  where therapeutic_experiment is null;
+update env_factor set is_cmap_agent=0 where is_cmap_agent is null;
+update publication set first_time_reported = 0 where first_time_reported is null;
+
+select abs_cancer_model_type, count(*) from abs_cancer_model
+ group by abs_cancer_model_type;
+ 
+select distinct acm.abs_cancer_model_id, acm.abs_cancer_model_type
+ from abs_cancer_model acm, (
+select abs_cancer_model_id, abs_cancer_model_type, par_abs_can_model_id
+ from abs_cancer_model
+ where par_abs_can_model_id is not null
+ connect by prior par_abs_can_model_id = abs_cancer_model_id
+) t
+ where acm.abs_cancer_model_id = t.par_abs_can_model_id
+
+select acm.abs_cancer_model_type,
+       acm.taxon_id,
+       sr.stage stage,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and a.nsc_number in (337250, 122758)
+
+select distinct a.nsc_number
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   --and a.nsc_number = 704805
+
+
+
+
+select acm.abs_cancer_model_id, 
+       acm.abs_cancer_model_type,
+       ef.env_factor_id,
+       ef.nsc_number
+  from abs_cancer_model acm,
+       animal_model_therapy amt,
+       therapy t,
+       env_factor ef
+ where acm.abs_cancer_model_id = amt.abs_cancer_model_id
+   and amt.therapy_id = t.therapy_id
+   and t.env_factor_id = ef.env_factor_id
+   and ef.nsc_number in (
+select distinct a.nsc_number
+  from screening_Result sr,
+       env_factor a
+ where sr.agent_id = a.env_factor_id )
+ 
+ 
+select tx.ethnicity_strain,
+       sr.stage stage,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+   
+   
+select tx.ethnicity_strain,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+   
+   
+select tx.ethnicity_strain,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758
+   and sr.stage = '0'
+ order by 1, 2
+ 
+ 
+select acm.abs_cancer_model_id, 
+       acm.abs_cancer_model_type,
+       ef.env_factor_id,
+       ef.nsc_number
+  from abs_cancer_model acm,
+       animal_model_therapy amt,
+       therapy t,
+       env_factor ef
+ where acm.abs_cancer_model_id = amt.abs_cancer_model_id
+   and amt.therapy_id = t.therapy_id
+   and t.env_factor_id = ef.env_factor_id
+   and ef.nsc_number in (
+select distinct a.nsc_number
+  from invivo_Result sr,
+       env_factor a
+ where sr.agent_id = a.env_factor_id )
+ 
+ 
+select acm.abs_cancer_model_id,
+       acm.model_descriptor,
+       tx.ethnicity_strain,
+       count(*)
+  from invivo_Result sr,
+       env_factor a,
+       XENOGRAFT_INVIVO_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.invivo_result_id = ymsr.invivo_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+ group by acm.abs_cancer_model_id, acm.model_descriptor, tx.ethnicity_strain
+ order by 3, 2
+
+ 
+ 
+ 
+select xenograftc0_.par_abs_can_model_id as par28___, 
+	xenograftc0_.abs_cancer_model_id as abs1___, 
+	xenograftc0_.abs_cancer_model_id as abs1_0_, 
+	xenograftc0_.experiment_design as experiment3_2_0_, 
+	xenograftc0_.model_descriptor as model4_2_0_, 
+	xenograftc0_.state as state2_0_, 
+	xenograftc0_.availability_id as availabi6_2_0_, 
+	xenograftc0_.taxon_id as taxon7_2_0_, 
+	xenograftc0_.submitter_id as submitter8_2_0_, 
+	xenograftc0_.principal_investigator_id as principal9_2_0_, 
+	xenograftc0_.administrative_site as adminis10_2_0_, 
+	xenograftc0_.genetic_manipulation as genetic11_2_0_, 
+	xenograftc0_.modification_description as modific12_2_0_, 
+	xenograftc0_.parental_cell_line_name as parental13_2_0_, 
+	xenograftc0_.name as name2_0_, xenograftc0_.atcc_number as atcc15_2_0_, 
+	xenograftc0_.cell_amount as cell16_2_0_, xenograftc0_.harvest_date as harvest17_2_0_, 
+	xenograftc0_.graft_type as graft18_2_0_, xenograftc0_.graft_type_unctrl_vocab as graft19_2_0_, 
+	xenograftc0_.tumor_code_id as tumor20_2_0_, xenograftc0_.origin_species_id as origin21_2_0_, 
+	xenograftc0_.host_species_id as host22_2_0_, xenograftc0_.organ_id as organ23_2_0_ 
+ from abs_cancer_model xenograftc0_ where xenograftc0_.par_abs_can_model_id=1036 --?
+ 
+
+
+/* engineered gene, tms etc. */
+ select engineered_gene_type, count(*) from engineered_gene
+  group by engineered_gene_type
+  
+ENGINEERED   COUNT(*)
+---------- ----------
+GS                  3
+IM                 62
+T                 440
+TM                339
+
+
+select abs_cancer_model_id, eg.engineered_gene_type
+  from ani_mod_engineered_gene ameg, 
+       engineered_gene eg
+ where ameg.engineered_gene_id = eg.engineered_Gene_id
+   and eg.engineered_gene_type in ('GS', 'IM')
+   
+select modeluid from abs_cancer_model_tmp where abs_cancer_model_id in (
+select abs_cancer_model_id
+  from ani_mod_engineered_gene ameg, 
+       engineered_gene eg
+ where ameg.engineered_gene_id = eg.engineered_Gene_id
+   and eg.engineered_gene_type in ('GS', 'IM')
+)
