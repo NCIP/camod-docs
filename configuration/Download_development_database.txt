@@ -4,7 +4,10 @@ Downloading development DB
 
 2. Log in as sys with sysdba privledges
 
-3. Delete the camod user
+3. Delete the camod user.  Go to Network/Databases/<instance name>/Security/Users, 
+   right click on the user and "remove".
+
+***** NOTE: Steps 4-7 only need to be done once per instance
 
 4. Create a new tablespace (Storage/Tablespaces, rightclick and select create)
 
@@ -14,9 +17,11 @@ Downloading development DB
 
 7. Click the create button
 
-8. Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+8. Create the CAMOD user again.
 
-9. Go to the C:/oracle/ora92/network/ADMIN directory.
+9. Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+
+10. Go to the C:/oracle/ora92/network/ADMIN directory.
 
    Edit the tnsnames file and add the following if it doesn't exist:
 
@@ -32,9 +37,10 @@ CADEV.NCI.NIH.GOV =
     )
   )
 
-10. Bring up a dos propmt
+11. Bring up a dos propmt
 
-   10.1 From the dos prompt type in exp cammoddev/dev!2345@cadev
-   10.2 type in imp camod/camod@<instancename>
+   11.1 From the dos prompt type in exp camoddev/dev!234@cadev, select all the defaults.
+      
+   11.2 type in imp camod/camod@<instancename>
 
-        Take default for all but the one asking if you want to import tables.
+        Take default for all but the one asking if you want to import entire export table.
