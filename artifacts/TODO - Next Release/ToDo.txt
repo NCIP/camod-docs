@@ -5,4 +5,6 @@ done before the next release.
 
 2) Look at enhancing the design for organ/disease table relations.
 
+3) Add "Super User" functionality so that once person can modify all models.
+
 
