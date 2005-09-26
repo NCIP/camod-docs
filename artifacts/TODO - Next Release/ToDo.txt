@@ -10,3 +10,6 @@ done before the next release.
 4) Start infrastructure for check-in/unit testing
 
 5) Remove unecessary cross-reference tables
+
+6) clean up field names? Example: The UID in the env_factor table is env_factor_id, 
+   but the invivo_result and the screening_result tables still refer to it as agent_id. 
