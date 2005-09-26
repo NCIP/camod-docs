@@ -214,3 +214,17 @@ select abs_cancer_model_id
  where ameg.engineered_gene_id = eg.engineered_Gene_id
    and eg.engineered_gene_type in ('GS', 'IM')
 )
+
+
+select distinct abs_cancer_model_id 
+  from ANIMAL_MODEL_THERAPY amt,
+       therapy t
+ where t.therapeutic_experiment = 0
+   and t.therapy_id = amt.therapy_id
+
+select type, count(*)
+  from env_factor e,
+       therapy t
+ where e.env_factor_id = t.env_factor_id
+   and t.therapeutic_experiment = 0
+ group by rollup(type)   
