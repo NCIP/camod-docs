@@ -13,3 +13,5 @@ done before the next release.
 
 6) clean up field names? Example: The UID in the env_factor table is env_factor_id, 
    but the invivo_result and the screening_result tables still refer to it as agent_id. 
+   
+7) Refactor the Agent/EnvironmentalFactor tables.  A CarcionigenicIntervention is really not a Therapy.
