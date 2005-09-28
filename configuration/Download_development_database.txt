@@ -9,17 +9,19 @@ Downloading development DB
 
 ***** NOTE: Steps 4-7 only need to be done once per instance
 
-4. Create a new tablespace (Storage/Tablespaces, rightclick and select create)
+4. Create a new tablespace named CAMODDEV (Storage/Tablespaces, rightclick and select create)
 
 5. Set the size to 1000 MB
 
-6. Click on the "Storage" tab and click the "Uniform Allocation" button.  Select 10 M Bytes.
+6. Click on the "Storage" tab and click the "Uniform Allocation" button.  Select 100 M Bytes.
 
 7. Click the create button
 
 8. Create the CAMOD user again.
 
-9. Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+9a. Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+
+9b. Go to the Role tab and add RESOURCE to the Granted list.
 
 10. Go to the C:/oracle/ora92/network/ADMIN directory.
 
@@ -39,8 +41,8 @@ CADEV.NCI.NIH.GOV =
 
 11. Bring up a dos propmt
 
-   11.1 From the dos prompt type in exp camoddev/dev!234@cadev, select all the defaults.
+   11.1 From the dos prompt type in exp camoddev/dev!234@cadev.nci.nih.gov, select all the defaults.
       
-   11.2 type in imp camod/camod@<instancename>
+   11.2 type in imp camod/camod@<local_db_instancename>
 
         Take default for all but the one asking if you want to import entire export table.
