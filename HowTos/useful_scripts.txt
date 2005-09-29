@@ -228,3 +228,69 @@ select type, count(*)
  where e.env_factor_id = t.env_factor_id
    and t.therapeutic_experiment = 0
  group by rollup(type)   
+
+ 
+select agent0_.env_factor_id as env1_0_, agent0_.env_factor_type, agent0_.type as type50_0_
+  from env_factor agent0_ 
+ where agent0_.env_factor_id in (
+ select distinct t.env_Factor_id
+  from ANIMAL_MODEL_THERAPY amt,
+       therapy t
+ where t.therapeutic_experiment = 0
+   and t.therapy_id = amt.therapy_id )
+--   and agent0_.env_factor_type='AG'
+
+
+select t.therapy_id, e.env_factor_id, e.env_factor_type, e.type
+  from env_factor e,
+       therapy t,
+       animal_model_therapy amt
+ where amt.therapy_id = t.therapy_id
+   and t.env_Factor_id = e.env_factor_id
+   and t.therapeutic_experiment = 0
+   and amt.abs_cancer_model_id = 190
+
+
+
+select ca.AGENTCATEGORY,
+       ca.AGENTNAME,
+       c.CARCINOGENUID,
+       c.MODELKEY,
+       c.CARCINOGENAGENTKEY,
+       c.SEX,
+       c.AGE,
+       c.CARCINOGENAGENTADMINKEY,
+       c.DOSE,
+       c.TREATMENTLENGTH
+  from CARCINOGEN c,CARCINOGENAGENT ca
+ where c.MODELKEY = 1782
+   and c.CARCINOGENAGENTKEY = ca.CARCINOGENAGENTUID
+ order by c.CARCINOGENUID
+
+
+select therapy_id, therapyuid, carcinogenuid, carcinogenagentkey
+  from therapy_tmp
+ where carcinogenuid in (1552, 1553, 1554, 1555, 1556)
+
+select name, env_factor_type, type
+   from env_factor_tmp
+  where carcinogenagentuid in (  59, 59, 23, 148, 163)
+
+
+select acm.abs_cancer_model_id,
+       t.therapy_id
+  from abs_cancer_model_tmp acm,
+       therapy_tmp t,
+       therapy@camodop_datop tc
+ where acm.modeluid = tc.modelkey
+   and t.therapyuid = tc.therapyuid
+order by 1
+
+select acm.abs_cancer_model_id,
+       t.therapy_id
+  from abs_cancer_model_tmp acm,
+       therapy_tmp t,
+       carcin@camodop_datop tc
+ where acm.modeluid = tc.modelkey
+   and t.therapyuid = tc.therapyuid
+
