@@ -15,3 +15,7 @@ done before the next release.
    but the invivo_result and the screening_result tables still refer to it as agent_id. 
    
 7) Refactor the Agent/EnvironmentalFactor tables.  A CarcionigenicIntervention is really not a Therapy.
+
+8) Handle the Agent/Organ tables as lookup tables.  I.e. we can reuse the Agent/Organ, but create a 
+   new one if it's not there.  It's too hard currently to map the data from the current DB, but
+   it should be more straightforward to do that in the new schema.
