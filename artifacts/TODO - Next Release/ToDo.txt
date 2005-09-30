@@ -29,8 +29,11 @@ Srini and David agreed with emails on 09/29 and 09/30
    new one if it's not there.  It's too hard currently to map the data from the current DB, but
    it should be more straightforward to do that in the new schema.>>>>>>> 1.7
    
-   9) Change the name of the attribute “tumorProgression” in the therapy object to “tumorResponse”? Tumor progression is defined as “The molecular steps that continually advance a cancer or cancer cell into a more malignant and aggressive phenotype. …….”
+9) Change the name of the attribute “tumorProgression” in the therapy object to “tumorResponse”? Tumor progression is defined as “The molecular steps that continually advance a cancer or cancer cell into a more malignant and aggressive phenotype. …….”
 What we want to capture on the therapy page is the opposite, we want to see how the tumor responds to the treatment (hopefully it goes back to a less severe state or disappears completely). 
 Srini and David agreed with emails on 09/29 and 09/30
 
 10) The inhibition rate field in the screening_results table for the yeast data is not used. Delete it. 
+
+11) Delete "inherited" attributes isCMAP_agent and source from the agent object (and all other attributes that we inherited from caBIO and don't use)
+
