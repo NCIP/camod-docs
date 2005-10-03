@@ -1,0 +1,42 @@
+Sunset of caMOD 2-tier
+
+1. The MMHCC repository website http://mouse.ncifcrf.gov contains links to specific models in caMOD 2-tier. The links are built using the modeluid of specific models. 
+Example: The strain detail page for the Ink4a/arf knockout mouse http://mouse.ncifcrf.gov/available_details.asp?ID=01XB1 contains a link to caMOD: http://cancermodels.nci.nih.gov/mmhcc/searchResultsDetail.jsp?modelId=1636
+
+We need to inform Dieter Naf (dnaf@ncifcrf.gov), Debbie Fitzgerald (dfitz@ncifcrf.gov), Kris Elspas (kxe@css.ncifcrf.gov) about the changes.
+
+
+
+
+2. CMAP (Cancer Molecular Anatomy Project) http://cmap.nci.nih.gov
+CMAP provides on its gene info pages links to caMOD data
+Example: http://cmap.nci.nih.gov/Genes/GeneInfo?ORG=Mm&CID=222
+
+If I remember correctly the data are provided by the cabioop database. Data from DATOP had been copied to cabioop a long time ago. Johnita worked on the pages. She would know best how the pages are populated. We need to discuss with the cabio / CMAP teams how to replace the data or how to build links in the caMOD n-tier data repository.
+
+
+
+
+
+
+3. Emice website
+The emice website contains links to specific queries in the mouse models part on the left menu bar. These links need to be replaced.
+Example: http://emice.nci.nih.gov/mouse_models/organ_models/gastro_models  contains link to http://cancermodels.nci.nih.gov/mmhcc/Search?modelName=&PInames=&organTissueName=Gastrointestinal+Tract+(MMHCC)&organTissueCode=C18875396,C18875408,C18875413,C18875415,C18875418,C18875417,C18875416,C18875420,C18875414,C18875419,C18875409,C18875410,C18875412,C18875411,C18875397,C18875399,C18875400&SpeciesKey=&search=+++Search+++
+
+
+Several pages in the emice mouse models part contain links to specific gene information. The URL contains http://cancermodels.nci.nih.gov  We need to check if we are going to break anything when we introduce the new application. 
+Exampe: Emice page http://emice.nci.nih.gov/emice/mouse_models/organ_models/gastro_models/murine_intestinal_neoplasia/models_colorectal_cancer
+contains this link http://cancermodels.nci.nih.gov/mmhcc/caBIO/GeneInfoContainer.jsp?LLID=16653
+
+
+Under "Submissions" is a link to the caMOD submission page http://emice.nci.nih.gov/emice/submissions. Verify that the link will work after we switched to n-tier.
+
+
+
+4. We should place a notification in the MMHCC newsletter. What newsletter would be best November? December?
+
+
+5. Most website that link to caMOD 2-tier use this link http://cancermodels.nci.nih.gov/mmhcc/index.jsp   We need to make sure that we redirect from this link to the new app.
+
+
+
