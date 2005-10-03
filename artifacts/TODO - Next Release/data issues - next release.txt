@@ -1,0 +1,11 @@
+1. resubmit models that have entries in current genetic background, this will boost the number of models and enable us to use correct nomenclature names
+
+2. DTP yeast models and DTP xenograft models need to be displayed as models.
+Xenograft models will have entries in the general information=model characteristics page and the xenograft 
+page. We can add text in the experimental design field for all models. Text has to be identical for all models.
+
+Yeast models will have entries in the general info=model characteristics page and the genetic description part.
+This can be a bit tricky because we labeled the modifications as "IM"=induced mutations, but linked the yeast 
+models to targeted modifications (table name is Yst_mod_Trgtd_Mod). 
+Maybe we can fix this in the display. 
+
