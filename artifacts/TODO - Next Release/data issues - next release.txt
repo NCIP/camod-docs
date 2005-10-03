@@ -1,8 +1,14 @@
 1. resubmit models that have entries in current genetic background, this will boost the number of models and enable us to use correct nomenclature names
 
-2. DTP yeast models and DTP xenograft models need to be displayed as models.
+2. DTP yeast models and DTP xenograft models need to be displayed as models. This will boost the number of models
+in the database by 402 models (386 xenograft + 16 yeast models).
 Xenograft models will have entries in the general information=model characteristics page and the xenograft 
-page. We can add text in the experimental design field for all models. Text has to be identical for all models.
+page. The problem is that the records for DTP xenograft models do not contain an entry in the par_abs_can_model
+column which ties xenograft to animal model for models submitted to datop. Would it be necessary to add an entry
+in the par_abs_can_mod column in order to display these models.
+
+
+We can add text in the experimental design field for all models. Text has to be identical for all models.
 
 Yeast models will have entries in the general info=model characteristics page and the genetic description part.
 This can be a bit tricky because we labeled the modifications as "IM"=induced mutations, but linked the yeast 
