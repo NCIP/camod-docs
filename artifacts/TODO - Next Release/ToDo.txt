@@ -39,3 +39,6 @@ Srini and David agreed with emails on 09/29 and 09/30
 
 
 12) InducedMutation has a cross reference table to EnvironmentalFactor.  There should only be one EF for an IM, so this cross reference table can be removed.
+
+13) add an "other" option to the drop-down list of clinical marker and let user enter terms. Change clinical marker object by adding "clinical_marker_unctrl_vocab" attribute 
+to store the newly entered terms. 
