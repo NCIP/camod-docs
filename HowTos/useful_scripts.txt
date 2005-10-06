@@ -293,4 +293,12 @@ select acm.abs_cancer_model_id,
        carcin@camodop_datop tc
  where acm.modeluid = tc.modelkey
    and t.therapyuid = tc.therapyuid
+   
+ALTER SEQUENCE hibernate_sequence
+INCREMENT BY 1000000;
+
+SELECT hibernate_sequence.NEXTVAL FROM dual;
+
+ALTER SEQUENCE hibernate_sequence
+INCREMENT BY 1;
 
