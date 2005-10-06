@@ -38,5 +38,12 @@ Under "Submissions" is a link to the caMOD submission page http://emice.nci.nih.
 
 5. Most website that link to caMOD 2-tier use this link http://cancermodels.nci.nih.gov/mmhcc/index.jsp   We need to make sure that we redirect from this link to the new app.
 
+6. Fei needs to stop entering models at some point so that the "submitters" will have time to review his entries and declare their models to be complete. As long as he enters models he creates user accounts for the new "submitters" and the ystems group will need to create user accounts for them in CSM.
+Another advantage of him stopping to enter models is that we can more easily compare numbers of model entries in DATOP and camoddev. This will help to verify the accuracy of the data mapping.
 
+7. We should discuss blocking the submission a few weeks prior to the moving n-tier app in order to prevent the problems described in item
+6 for Fei for all other users who submit models themselves. I am not sure if it would be acceptable to do this or if we rather run the data mapping
+script a few more times after we put caMOD 2 in production. 
+
+8. The screeners and editors need to be informed about the switch to the caMOD 2 and they need to receive training on how to use caMOD2.
 
