@@ -37,3 +37,5 @@ Srini and David agreed with emails on 09/29 and 09/30
 
 11) Delete "inherited" attributes isCMAP_agent and source from the agent object (and all other attributes that we inherited from caBIO and don't use)
 
+
+12) InducedMutation has a cross reference table to EnvironmentalFactor.  There should only be one EF for an IM, so this cross reference table can be removed.
