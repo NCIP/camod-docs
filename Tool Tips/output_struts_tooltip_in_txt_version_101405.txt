@@ -120,13 +120,13 @@ Needs to go on General Info
 
 
 
-Needs to go on General Info
+Needs to go on General Info - ***Not in n-tier at this time***
 
 <camod:cshelp key="GENOTYPE_SUMMARY.SUMMARY" image="images/iconHelp.gif" text="Tool Tip Test 1" />
 
 
 
-Needs to go on General Info
+Needs to go on General Info - ***Not in n-tier at this time***
 
 <camod:cshelp key="NOMENCLATURE.NAME" image="images/iconHelp.gif" text="Tool Tip Test 1" />
 
@@ -333,7 +333,10 @@ Needs to go on Transgene
 targeted modification
 Genomic Segment
 Induced Mutation
+**TODO  add GENE_ID tool tip
 
+
+Needs to go on Engineered Transgene
 <camod:cshelp key="GENE_FUNCTION.FUNCTION" image="images/iconHelp.gif" text="Tool Tip Test 1" />
 
 
