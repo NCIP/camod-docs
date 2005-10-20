@@ -44,3 +44,6 @@ Srini and David agreed with emails on 09/29 and 09/30
 to store the newly entered terms. 
 
 14) Add the ability to submit microarray data from the normal submission page and to handle the "Other URL" capability.
+
+15) Change the relationship between animal_availibility and animal_distributor objects from many to many to one animal distributor can be associtaed with many animal_availibitlity records
+The goal is to have an animal_availibility table which contains a column for animal_distributor. 
