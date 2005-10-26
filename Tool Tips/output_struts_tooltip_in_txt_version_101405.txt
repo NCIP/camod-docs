@@ -10,9 +10,11 @@ Needs to go on Animal Availibility
 
 
 
-Needs to go on Animal Availibility
-
+Needs to go on Animal Availibility (Jackson, MMHCC, IMSR)
 <camod:cshelp key="ANIMAL_AVAILABILITY.STOCK_NUMBER" image="images/iconHelp.gif" text="Tool Tip Test 1" />
+
+Needs to go on Animal Availibility (Investigator)
+<camod:cshelp key="ANIMAL_AVAILABILITY.PRINCIPAL_INVESTIGATOR" image="images/iconHelp.gif" text="Tool Tip Test 1" />
 
 
 
@@ -329,11 +331,9 @@ Genomic Segment
 
 
 
-Needs to go on Transgene
-targeted modification
-Genomic Segment
+Needs to go on targeted modification
 Induced Mutation
-**TODO  add GENE_ID tool tip
+<camod:cshelp key="ENGINEERED_GENE.GENE_ID" image="images/iconHelp.gif" text="Tool Tip Test 1" />
 
 
 Needs to go on Engineered Transgene
