@@ -15,3 +15,5 @@ This can be a bit tricky because we labeled the modifications as "IM"=induced mu
 models to targeted modifications (table name is Yst_mod_Trgtd_Mod). 
 Maybe we can fix this in the display. 
 
+3. Map the staining methods to the EVS concept IDs. 
+
