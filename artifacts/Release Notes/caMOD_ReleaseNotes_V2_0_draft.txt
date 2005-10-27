@@ -19,10 +19,7 @@
     4.0 Bugs Fixed Since Last Release
     5.0 Known Issues/Defects
     6.0 Bug Reports and Support
-    7.0 Documentation and Files
-    8.0 NCICB Web Pages
-    9.0 Utilities
-
+    7.0 NCICB Web Pages
 
 
 ================================================================
@@ -203,81 +200,16 @@ General
     You can subscribe at these addresses:
 
     caMOD users
-        To join the list: http://list.nih.gov/archives/caarray_users-l.html     
-       --  CAARRAY_USERS-L@list.nih.gov 
+        To join the list: http://list.nih.gov/archives/camod_users-l.html     
+       --  CAMOD_USERS-L@list.nih.gov 
 
     caMOD developers
-        To join the list: http://list.nih.gov/archives/caarray_developers-l.html
-    --  CAARRAY_DEVELOPERS-L@list.nih.gov
-
-
-
-================================================================
-    7.0 Documentation and Files
-================================================================
-
-   All documentation and files can be downloaded from the 
-   NCICB Download site: http://ncicb.nci.nih.gov/download
-
-    
-   The documents and support files include:
-
-
-	caMOD Quick Start Guide: 
-		caMOD_Training_Overview.doc
-
-	
-   	caMOD Java Docs: 
-		caMOD_JavaDocs.zip
-
-
-	caMOD MAGE-OM API Java docs:  
-		caMOD_MAGE-OM-API_JavaDocs.zip
-
-
-   	caMOD Portal Install Documentation: 
-		caMOD_Portal_Install.zip
-
-
-   	caMOD MAGE-OM API Install Documentation: 
-		caMOD_MAGE-OM_API_Install.zip
-
-
-	caMOD MAGE-OM API Jar File:  
-		caMOD_mageom.jar
-
-
-        caMOD MAGE-OM API Source Code:
-                CaArray_Mageom_SourceCode.zip
-
-
-   	caMOD database DDL:  
-		caMOD_DDL.sql
-
-
-   	caMOD License: 
-		caMOD_SoftwareLicense.doc
-
-
-   	caMOD Defect Reporting Form: 
-		caMOD_DefectEntryRequest.xls
-
-
-   	caMOD source code: 
-		caMOD_SourceCode.zip
-
-
-	caMOD MAGE-STK fix notes:
-		caMOD_MAGE-STK_1.1_Fixes.txt
-
-
-	caMOD test cases:
-		caMOD_TestCases.zip
-
+        To join the list: http://list.nih.gov/archives/camod_developers-l.html
+    --  CAMOD_DEVELOPERS-L@list.nih.gov
 
 
 ================================================================
-    8.0 NCICB Web Pages
+    7.0 NCICB Web Pages
 ================================================================
     
     The NCI Center for Bioinformatics
@@ -293,20 +225,7 @@ General
 
 
     caMOD
-    --  http://caarray.nci.nih.gov/
+    --  http://cancermodels.nci.nih.gov/
     
-
-
-================================================================
-    9.0 Utilities
-================================================================
-
-     9.1 Spot Conversion utility.
-	Description: Convert Spot clone list file and Spot CGH 
-                     results file to GenePix .gal file and .gpr file
-
-	Usage: See instructions inside spot2genepix.pl
-	Download via download center: spot2genepix.pl
-
 
 
