@@ -68,22 +68,71 @@
 ================================================================
     3.0 New Features and Updates
 ================================================================
-
-    - Gene Delivery Category
-    - Xenograft page exended by ATCC number, Cell amount, harvest date, graft type
-    - Yeast Data
-    - Therapy page provides info about yeast and in-vivo data
-    - Animal Availibility from more sources, multiple per model can be submitted, name of strain can be entered
-    - Spontaneous Mutation category
-    - linking to caArray instead of GEDP
-    - CSM
-    - clinical marker
-    - utilization of NCI Thesaurus
+General
+	- Utilization of NCI Thesaurus
+	- Utilization of the Common Security Module (CSM) for user authentication
+    
+    
+    
+    Submission
+    
+    	Part Genetic Description - Page Engineered Transgene
+    		mutation identifier = link to MGI at Jackson Laboratory
+    	
+    	
+    	
+    	Part Genetic Description - Page Spontaneous Mutation
+    	
+    	
+    	Part Carcinogenic Intervention - Page Gene Delivery
+    	
+    	
+    	
+    	
+	Part Histopathology
+    	Clinical Markers added    	
+    	
+    	
+    	Part Microarray
+    	linking to caArray instead of GEDP
+    	
+    	
+    	
+    	
+    	Part Xenograft
+    	Xenograft page exended by ATCC number, Cell amount, harvest date, graft type
+    	
+    	Part Availibility
+    	Animal Availibility from more sources, multiple per model can be submitted, name of strain can be entered
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    Search
+    	Part Drug Screening 
+    		Yeast Data
+    		
+    
+    	Part Animal Model Search - Page Therapeutic Approaches
+    		Page provides info about yeast and in-vivo data
+    		
+    
+   
+   Admin
+   
+  
     - mutation identifier = link to MGI at Jackson Laboratory
     - collecting CAS and NSC number for therapeutic agents and chemical/drug in carcinogenic intervention
     - Genetic Alteration on histopathology and induced mutation newly added method of modification
     - therapy page extended with toxicity grade, biomarker, tumor response/progression, 
     - carcinogenic intervention pages extended with admin route, age at treatment, gender, 
+    - link to Entrez gene
+    - link to Jax tumor biology db via publication ID
+    - Tool mouse
+    
     
   
 
@@ -91,11 +140,7 @@
     4.0 Defects Fixed Since Last Release
 ================================================================
     
-    +------------------------------------------------+
-    | See Defects Fixed file:                        |
-    |    caMOD_Fixed_Defects12-21-2005.htm  or       |
-    |    caMOD_Fixed_Defects12-21-2005.xls           | 	 
-    +------------------------------------------------+
+    
 
 
 
@@ -103,11 +148,9 @@
     5.0 Known Issues/Defects
 ================================================================
     
-    +------------------------------------------------+
-    | See Known Issues/Defects file:                 |
-    |      caMOD_Known_Issues12-21-2005.htm  or      |
-    |      caMOD_Known_Issues12-21-2005.xls          | 
-    +------------------------------------------------+
+    1. Organ-specific preselection of diagnoses in the vocabulary trees is not available
+    2. Users need to have a caArray user account in order to submit data to caArray, users need 
+    to inform caMOD team if they would like to have experiments in caArray linked to their caMOD entries
    
     General Comments:
 
