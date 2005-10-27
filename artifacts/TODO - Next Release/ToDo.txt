@@ -47,3 +47,5 @@ to store the newly entered terms.
 
 15) Change the relationship between animal_availibility and animal_distributor objects from many to many to one animal distributor can be associtaed with many animal_availibitlity records
 The goal is to have an animal_availibility table which contains a column for animal_distributor. 
+
+16) use EVS tree for staining method to image submission page
