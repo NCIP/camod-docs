@@ -49,3 +49,5 @@ to store the newly entered terms.
 The goal is to have an animal_availibility table which contains a column for animal_distributor. 
 
 16) use EVS tree for staining method to image submission page
+
+17)  Histopathology object weightOfTumor and volumeOfTumor attributes are stored as Long in the database which will not allow us to append units or implement a dropdown on the GUI.
