@@ -53,3 +53,5 @@ The goal is to have an animal_availibility table which contains a column for ani
 17)  Histopathology object weightOfTumor and volumeOfTumor attributes are stored as Long in the database which will not allow us to append units or implement a dropdown on the GUI.
 
 18) Change Harvest_date from a date field to a varchar so that we can store date ranges e.g. 5 days or 3 weeks
+
+19)  when adding a histopathology with an organ we have to add a histopathology to the organ (see code).  This looks backwards and should be fixed.
