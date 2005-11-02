@@ -55,3 +55,5 @@ The goal is to have an animal_availibility table which contains a column for ani
 18) Change Harvest_date from a date field to a varchar so that we can store date ranges e.g. 5 days or 3 weeks
 
 19)  when adding a histopathology with an organ we have to add a histopathology to the organ (see code).  This looks backwards and should be fixed.
+
+20) MGI number has to be a varchar field, because a MGI number contains letters, e.g. MGI:2176176
