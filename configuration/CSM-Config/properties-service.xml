@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE server>
-<!-- $Id: properties-service.xml,v 1.1 2005-09-13 13:01:38 georgeda Exp $ -->
+<!-- $Id: properties-service.xml,v 1.2 2005-11-08 19:38:00 georgeda Exp $ -->
 
 <server>
 
@@ -54,7 +54,7 @@
 
     <attribute name="Properties">
 
-      gov.nih.nci.security.configFile=C:/Devtools/jboss-4.0.2/server/default/CSM/ApplicationSecurityConfig.xml
+      gov.nih.nci.security.configFile=C:/Devtools/jboss-4.0.2/server/default/CSM_camod/ApplicationSecurityConfig.xml
 
     </attribute>
      
