@@ -17,7 +17,7 @@
 				<authorization-provider-class>
 				</authorization-provider-class>
 				<hibernate-config-file>		
-					 C:\Devtools\jboss-4.0.2\server\default\CSM\csm_hibernate.cfg.xml
+					 C:\Devtools\jboss-4.0.2\server\default\CSM_camod\csm_hibernate.cfg.xml
 				</hibernate-config-file>
 			</authorization>
 		</application>
