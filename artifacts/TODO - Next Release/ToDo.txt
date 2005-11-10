@@ -58,7 +58,12 @@ The goal is to have an animal_availibility table which contains a column for ani
 
 20) MGI number has to be a varchar field, because a MGI number contains letters, e.g. MGI:2176176
 
-21) Move the e-mail code to its own utility, add code to e-mail only when submission is successful (not when submit fails)
+21) Move the e-mail code to its own utility, add code to e-mail only when submission is successful (not when submit fails), and
+    clean up the use of e-mail addresses in the config file(s) to use username everywhere.
 
 22) If we want to be consistent, add an uncontrolledVocab for administative route to Ab Cancer Model for Xenograft.  Or leave
     it as it is, adding directly to the table from the GUI.
+
+23) Therapy page allows user to add chemical name (agent) which caused a duplicate agent in a model.  Change this to eliminate 
+    any duplicates in entry.  Possibly look up NSC# first and populate the name, CAS# automatically OR at least check
+    for the NSC# in the DB before entering it.  All options should be evaluated.
