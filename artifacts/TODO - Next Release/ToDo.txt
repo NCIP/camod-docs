@@ -58,8 +58,9 @@ The goal is to have an animal_availibility table which contains a column for ani
 
 20) MGI number has to be a varchar field, because a MGI number contains letters, e.g. MGI:2176176
 
-21) Move the e-mail code to its own utility, add code to e-mail only when submission is successful (not when submit fails), and
-    clean up the use of e-mail addresses in the config file(s) to use username everywhere.
+21) Move the e-mail code to its own utility, 2) add code to e-mail only when submission is successful (not when submit fails), 
+    3) clean up the use of e-mail addresses in the config file(s) to use username everywhere, 4) make the system e-mail only when 
+    field is changed (example in Engineered Transgene).  ET Gene e-mails all fields with other even if other was pre-existing.
 
 22) If we want to be consistent, add an uncontrolledVocab for administative route to Ab Cancer Model for Xenograft.  Or leave
     it as it is, adding directly to the table from the GUI.
