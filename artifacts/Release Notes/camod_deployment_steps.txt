@@ -1,0 +1,53 @@
+CSM Configuration:
+
+
+1) Verify if CSM is already configured on the server where this app is deployed. Default location on NCICB servers - /local/content/csm/csm_config. 
+
+2) Add the following lines to the ApplicationSecurityConfig.xml file into the CSM config folder (/local/content/csm/csm_config) between  the block <application-list> ..... </application-list>.
+
+		<application>
+			<context-name>
+				camod
+			</context-name>
+			<authentication>
+				<authentication-provider-class>
+				</authentication-provider-class>
+			</authentication>
+			<authorization>
+				<authorization-provider-class>
+				</authorization-provider-class>
+				<hibernate-config-file>
+				</hibernate-config-file>
+			</authorization>
+		</application>
+
+3) Verify if the "gov.nih.nci.security.configFile" path is configured in properties-service.xml available under the Jboss402 "deploy" directory.  
+
+    <attribute name="Properties">
+
+      gov.nih.nci.security.configFile=/local/content/csm/csm_config/ApplicationSecurityConfig.xml
+
+    </attribute>
+
+
+4) Add the following lines to the conf/login-config.xml file
+
+
+    <!-- camod application -->
+    <application-policy name = "camod">
+       <authentication>
+           <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
+               <module-option name="ldapHost">ldaps://ncids2b.nci.nih.gov:636</module-option>
+               <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
+               <module-option name="ldapUserIdLabel">cn</module-option>
+           </login-module>
+       </authentication>
+    </application-policy>
+
+
+DEPLOYMENT INSTRUCTIONS:
+
+1. Copy the camod.war built on the build server to the Jboss402-app deploy folder.
+2. Copy the EVSTree.war built on the build server to the Jboss402-app deploy folder.
+3. Restart Jboss402 server, if necessary.
+4. Verify if the apache configuration has been updated for camod and EVSTree aliases to point to the JBoss402 installation.
