@@ -47,3 +47,5 @@ script a few more times after we put caMOD 2 in production.
 
 8. The screeners and editors need to be informed about the switch to the caMOD 2 and they need to receive training on how to use caMOD2.
 
+9. the cabig website contains links to the caMOD 2-tier search and submission page. Inform Clint about the new links or ask him to take them out.
+https://cabig.nci.nih.gov/inventory/Datasets/
