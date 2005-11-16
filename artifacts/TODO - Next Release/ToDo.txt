@@ -68,3 +68,5 @@ The goal is to have an animal_availibility table which contains a column for ani
 23) Therapy page allows user to add chemical name (agent) which caused a duplicate agent in a model.  Change this to eliminate 
     any duplicates in entry.  Possibly look up NSC# first and populate the name, CAS# automatically OR at least check
     for the NSC# in the DB before entering it.  All options should be evaluated.
+
+24) Either cascade deletes to Log and Comment objects or remove the foreign key constraints. 
