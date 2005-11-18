@@ -75,3 +75,7 @@ The goal is to have an animal_availibility table which contains a column for ani
 
 26) fix the disease tree so that it again allows the submission of diagnoses that are not in the vocabulary. The 2-tier app entered 000000 in the EVS_code field and saved the newly entered term in the tumorclassification field. The app also send an email to the EVS team.
 
+27) find a way for users to enter or generate the genotype of the model and the official nomenclature name
+
+28) What anatomy vocabularies should be used on the xenograft page? We have currently only a mouse anatomy vocabulary. What if the graft came from another species? 
+
