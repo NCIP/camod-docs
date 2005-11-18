@@ -72,3 +72,6 @@ The goal is to have an animal_availibility table which contains a column for ani
 24) Either cascade deletes to Log and Comment objects or remove the foreign key constraints.
 
 25) Clean-up images; I.e. we need to either code the full path everywhere or not at all. 
+
+26) fix the disease tree so that it again allows the submission of diagnoses that are not in the vocabulary. The 2-tier app entered 000000 in the EVS_code field and saved the newly entered term in the tumorclassification field. The app also send an email to the EVS team.
+
