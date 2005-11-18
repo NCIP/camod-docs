@@ -1,9 +1,28 @@
 Sunset of caMOD 2-tier
+A) URL redirect to disclaimer page
+B) inform group about the new application and the new 
+C) take down submission one week before cut-over and add a notice about new features etc.
+D) get confirmation from Betty and Cheryl that we can shut down the website for a week
+
+
+
+
+Notifications - alert them in advance, after UAT2 is over e.g. 12/10/2005
+go live
+then work with them to 
+
+
+
+
+
+
 
 1. The MMHCC repository website http://mouse.ncifcrf.gov contains links to specific models in caMOD 2-tier. The links are built using the modeluid of specific models. 
 Example: The strain detail page for the Ink4a/arf knockout mouse http://mouse.ncifcrf.gov/available_details.asp?ID=01XB1 contains a link to caMOD: http://cancermodels.nci.nih.gov/mmhcc/searchResultsDetail.jsp?modelId=1636
 
 We need to inform Dieter Naf (dnaf@ncifcrf.gov), Debbie Fitzgerald (dfitz@ncifcrf.gov), Kris Elspas (kxe@css.ncifcrf.gov) about the changes.
+
+==> 
 
 
 
@@ -33,7 +52,7 @@ Under "Submissions" is a link to the caMOD submission page http://emice.nci.nih.
 
 
 
-4. We should place a notification in the MMHCC newsletter. What newsletter would be best November? December?
+4. We should place a notification in the MMHCC newsletter. January - end of January. 
 
 
 5. Most website that link to caMOD 2-tier use this link http://cancermodels.nci.nih.gov/mmhcc/index.jsp   We need to make sure that we redirect from this link to the new app.
