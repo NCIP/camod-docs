@@ -73,7 +73,8 @@ select tx.ethnicity_strain,
        sr.stage stage,
        t.dosage,
        sr.aveinh aveinh,
-       sr.diffinh diffinh
+       sr.diffinh diffinh,
+       a.env_factor_id
   from screening_Result sr,
        env_factor a,
        YST_MDL_SCRNING_RESULT ymsr,
@@ -109,7 +110,9 @@ select tx.ethnicity_strain,
 select tx.ethnicity_strain,
        t.dosage,
        sr.aveinh aveinh,
-       sr.diffinh diffinh
+       sr.diffinh diffinh,
+       a.env_factor_id,
+       ymsr.abs_cancer_model_id
   from screening_Result sr,
        env_factor a,
        YST_MDL_SCRNING_RESULT ymsr,
@@ -165,7 +168,25 @@ select acm.abs_cancer_model_id,
 
  
  
- 
+select invivoresu0_.abs_cancer_model_id as abs1___, 
+       invivoresu0_.invivo_result_id as invivo2___, invivoresu1_.invivo_result_id as invivo1_0_, 
+       invivoresu1_.evaluationDay as evaluati2_25_0_, 
+       invivoresu1_.toxicitySurvivors as toxicity3_25_0_, 
+       invivoresu1_.toxicityEvalDay as toxicity4_25_0_, 
+       invivoresu1_.percent_treated_control as percent5_25_0_, 
+       invivoresu1_.endpoint_code_id as endpoint6_25_0_, invivoresu1_.treatment_id as treatment7_25_0_,
+       invivoresu1_.agent_id as agent8_25_0_ 
+  from xenograft_invivo_result invivoresu0_ 
+     inner join invivo_result invivoresu1_ on 
+     invivoresu0_.invivo_result_id=invivoresu1_.invivo_result_id 
+  where invivoresu0_.abs_cancer_model_id=718
+
+select count(*)
+  from xenograft_invivo_result invivoresu0_ 
+     inner join invivo_result invivoresu1_ on 
+     invivoresu0_.invivo_result_id=invivoresu1_.invivo_result_id 
+  where invivoresu0_.abs_cancer_model_id=718
+  
 select xenograftc0_.par_abs_can_model_id as par28___, 
 	xenograftc0_.abs_cancer_model_id as abs1___, 
 	xenograftc0_.abs_cancer_model_id as abs1_0_, 
@@ -293,7 +314,37 @@ select acm.abs_cancer_model_id,
        carcin@camodop_datop tc
  where acm.modeluid = tc.modelkey
    and t.therapyuid = tc.therapyuid
-   
+
+select publication_id, year, authors
+  from publication
+ where publication_id in (
+	select min(publication_id) publication_id
+	  from publication
+	 where pmid in (
+		select distinct pmid
+		  from animal_model_therapy amt,
+		       therapy_publication tp,
+		       publication p
+		 where amt.abs_cancer_model_id = 3
+		   and amt.therapy_id = tp.therapy_id
+		   and tp.publication_id = p.publication_id
+		union
+		select distinct pmid
+		  from ani_mod_cell_line acl,
+		       cell_line_publication cp,
+		       publication p
+		 where acl.abs_cancer_model_id = 3
+		   and acl.cell_line_id = cp.cell_line_id
+		   and cp.publication_id = p.publication_id
+		union
+		select distinct pmid
+		  from abs_can_mod_publication acmp,
+		       publication p
+		 where acmp.abs_cancer_model_id = 3
+		   and acmp.publication_id = p.publication_id )
+	 group by pmid )
+ order by year desc, authors
+
 ALTER SEQUENCE hibernate_sequence
 INCREMENT BY 1000000;
 
@@ -302,3 +353,49 @@ SELECT hibernate_sequence.NEXTVAL FROM dual;
 ALTER SEQUENCE hibernate_sequence
 INCREMENT BY 1;
 
+
+
+http://caimage.nci.nih.gov/lizardtech//iserv/getthumb?cat=Model&img=277.sid
+http://caimage.nci.nih.gov/lizardtech//iserv/catalogviewtumors.jsp?cat=Model&img=277.sid
+
+alter table sex_distribution add constraint sex_distribution_type_unq unique(type);
+alter table ANIMAL_DISTRIBUTOR add constraint ANIMAL_DISTRIBUTOR_name_unq unique(name);
+alter table CHEMICAL_CLASS add constraint CHEMICAL_CLASS_name_unq unique(CHEMICAL_CLASS_NAME);
+alter table BIOLOGICAL_PROCESS add constraint BIOLOGICAL_PROCESS_name_unq unique(PROCESS_NAME);
+alter table AGENT_TARGET add constraint TARGET_name_unq unique(TARGET_NAME);
+alter table EXP_LEVEL_DESC add constraint EXP_LEVEL_unq unique(EXPRESSION_LEVEL);
+alter table publication_status add constraint publication_status_name_unq unique(name);
+alter table REG_ELEMENT_TYPE add constraint REG_ELEMENT_TYPE_name_unq unique(name);
+alter table modification_type add constraint modification_type_name_unq unique(name);
+alter table party add constraint party_username_unq unique(username);
+alter table model_section add constraint model_section_name_unq unique(name);
+
+
+
+select id, name, NUMBEROFFEATURES,
+     ( select count(*)
+ 	     from ARRAYDESIGNFEATUREGRP adfg,
+		 	  FEATURE f
+	    where adfg.array_design_id = ad.id
+		  and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID ) n_feature,
+     ( select count(*)
+ 	     from ARRAYDESIGNCOMPOSITEGRP adcg,
+		 	  COMPOSITESEQUENCE cs
+	    where adcg.array_design_id = ad.id
+		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID ) n_comp_sequence,
+     ( select count(*)
+ 	     from ARRAYDESIGNREPORTERGRP adrg,
+		 	  REPORTER r
+	    where adrg.array_design_id = ad.id
+		  and adrg.reporter_group_id = r.reporter_group_id ) n_reporter
+  from arraydesign ad
+ where ad.deleted != 1
+   and exists (
+     select null
+       from AS_protection_element pe,
+            AS_PROTECTION_GROUP_ELEMENT pge
+      where pe.PROTECTION_ELEMENT_ID = pge.PROTECTION_ELEMENT_ID
+        and pge.PROTECTION_GROUP_ID = 0
+        and instr(object_id, 'arraydesign') > 0
+		and replace(object_id, 'caarray;arraydesign;', '') = ad.id
+     )
