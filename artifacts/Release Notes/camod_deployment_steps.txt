@@ -1,49 +1,74 @@
-CSM Configuration:
 
+Logging configuration:
 
-1) Verify if CSM is already configured on the server where this app is deployed. Default location on NCICB servers - /local/content/csm/csm_config. 
+Add the following lines to the <appserverinstall>/conf/log4j.xml file
 
-2) Add the following lines to the ApplicationSecurityConfig.xml file into the CSM config folder (/local/content/csm/csm_config) between  the block <application-list> ..... </application-list>.
+   <appender name="SPORES_FILE" class="org.jboss.logging.appender.DailyRollingFileAppender">
+      <errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
+      <param name="File" value="${jboss.server.home.dir}/log/nci-spores.log"/>
+      <param name="Append" value="true"/>
 
-		<application>
-			<context-name>
-				camod
-			</context-name>
-			<authentication>
-				<authentication-provider-class>
-				</authentication-provider-class>
-			</authentication>
-			<authorization>
-				<authorization-provider-class>
-				</authorization-provider-class>
-				<hibernate-config-file>
-				</hibernate-config-file>
-			</authorization>
-		</application>
+      <!-- Rollover at midnight each day -->
+      <param name="DatePattern" value="'.'yyyy-MM-dd"/>
 
-3) Verify if the "gov.nih.nci.security.configFile" path is configured in properties-service.xml available under the Jboss402 "deploy" directory.  
+      <!-- Rollover at the top of each hour
+      <param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+      -->
 
-    <attribute name="Properties">
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
 
-      gov.nih.nci.security.configFile=/local/content/csm/csm_config/ApplicationSecurityConfig.xml
+         <!-- The full pattern: Date MS Priority [Category] (Thread:NDC) Message\n
+         <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+          -->
+      </layout>
+   </appender>
+   
+   <!-- ======================= -->
+   <!-- Setup the  camod category -->
+   <!-- ======================= -->
 
-    </attribute>
+   <category name="gov.nih.nci.camod.webapp.util">
+     <priority value="DEBUG" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
 
+   <category name="gov.nih.nci.camod.webapp.form">
+     <priority value="DEBUG" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
 
-4) Add the following lines to the conf/login-config.xml file
+   <category name="gov.nih.nci.camod.webapp.action">
+     <priority value="DEBUG" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
 
+   <category name="gov.nih.nci.camod.util">
+     <priority value="DEBUG" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
 
-    <!-- camod application -->
-    <application-policy name = "camod">
-       <authentication>
-           <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
-               <module-option name="ldapHost">ldaps://ncids2b.nci.nih.gov:636</module-option>
-               <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
-               <module-option name="ldapUserIdLabel">cn</module-option>
-           </login-module>
-       </authentication>
-    </application-policy>
+   <category name="gov.nih.nci.camod.domain">
+     <priority value="DEBUG" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
 
+   <category name="gov.nih.nci.camod">
+     <priority value="ERROR" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
+
+   <category name="org.hibernate" additivity="false">
+     <priority value="INFO" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
+
+   <category name="log4j.logger.org.hibernate.LazyInitializationException" additivity="false">
+     <priority value="FATAL" />
+     <appender-ref ref="CAMOD_FILE"/>
+   </category>
+   
 
 DEPLOYMENT INSTRUCTIONS:
 
