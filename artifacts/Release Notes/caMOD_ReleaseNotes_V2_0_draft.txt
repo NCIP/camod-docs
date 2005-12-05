@@ -171,6 +171,12 @@ Search
     1. Organ-specific preselection of diagnoses in the vocabulary trees is not available
     2. Users need to have a caArray user account in order to submit data to caArray, users need 
     to inform caMOD team if they would like to have experiments in caArray linked to their caMOD entries
+    3. Genetic Description view screen does not include data for the following sections: Libraries and Tissues (from EST data) 
+    or Protein Similarities (from UniGene).  caBio discontinued support for the Protein Similarities and the 
+    performance for the Libraries and Tissues query did not meet minimum standards.  After meeting with
+    the caBio team, it was concluded that the development team will need to eliminate lazy fetching for
+    library and tissue attributes if we want to improve performance.
+    
    
     Please report any defects found to application support.
 
