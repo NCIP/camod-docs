@@ -372,30 +372,30 @@ alter table model_section add constraint model_section_name_unq unique(name);
 
 
 
-select id, name, NUMBEROFFEATURES,
-     ( select count(*)
+select id, name, NUMBEROFFEATURES,              -- features in arraydesign tbl, likely from header
+     ( select count(*)                          -- count of persisted/parsed rows
  	     from ARRAYDESIGNFEATUREGRP adfg,
 		 	  FEATURE f
 	    where adfg.array_design_id = ad.id
 		  and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID ) n_feature,
-     ( select count(*)
+     ( select count(*)                          -- count of persisted/parsed comp. sequences
  	     from ARRAYDESIGNCOMPOSITEGRP adcg,
 		 	  COMPOSITESEQUENCE cs
 	    where adcg.array_design_id = ad.id
 		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID ) n_comp_sequence,
-     ( select count(*)
+     ( select count(*)                          -- count of persisted/parsed reporters
  	     from ARRAYDESIGNREPORTERGRP adrg,
 		 	  REPORTER r
 	    where adrg.array_design_id = ad.id
 		  and adrg.reporter_group_id = r.reporter_group_id ) n_reporter
   from arraydesign ad
- where ad.deleted != 1
+ where ad.deleted != 1                          -- not marked for deletion
    and exists (
      select null
        from AS_protection_element pe,
             AS_PROTECTION_GROUP_ELEMENT pge
       where pe.PROTECTION_ELEMENT_ID = pge.PROTECTION_ELEMENT_ID
-        and pge.PROTECTION_GROUP_ID = 0
+        and pge.PROTECTION_GROUP_ID = 0         -- belongs to the "public" group
         and instr(object_id, 'arraydesign') > 0
 		and replace(object_id, 'caarray;arraydesign;', '') = ad.id
      )
