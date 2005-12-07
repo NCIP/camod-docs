@@ -192,12 +192,12 @@ Search
     In addition, mailing lists are used by the caMOD developer
     and user community to exchange ideas and make announcements.
 
-    You can subscribe at these addresses:
+    You can subscribe at this address: http://list.nih.gov
 
     caMOD users
-        ??????
+        CAMOD_USERS-L
     caMOD developers
-       ?????
+       CAMOD_DEVELOPERS-L 
 
 ================================================================
     7.0 NCICB Web Pages
