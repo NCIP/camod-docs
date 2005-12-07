@@ -65,6 +65,13 @@
     3.0 New Features and Updates
 ================================================================
 
+caMOD 2.0 is a caBIG Silver level compliant application. For caBIG compatibility information see http://https://cabig.nci.nih.gov/guidelines_documentation
+
+The caMOD Common Data Elements (CDEs) are available via caDSR (cancer Data Standard Repository)
+http://ncicb.nci.nih.gov/core/caDSR
+
+
+
 General
 - Utilization of NCI Thesaurus
 - Utilization of the Common Security Module (CSM) for user authentication
