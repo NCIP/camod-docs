@@ -1,9 +1,55 @@
+PRE-DEPLOYMENT STEPS:
 
-Logging configuration:
+1) CSM Configuration:
 
-Add the following lines to the <appserverinstall>/conf/log4j.xml file
+   1.1) Verify if CSM is already configured on the server where this app is deployed. Default location on NCICB servers - /local/content/csm/csm_config. 
 
-   <appender name="SPORES_FILE" class="org.jboss.logging.appender.DailyRollingFileAppender">
+   1.2) Add the following lines to the ApplicationSecurityConfig.xml file into the CSM config folder (/local/content/csm/csm_config) between  the block <application-list> ..... </application-list>.
+
+		<application>
+			<context-name>
+				camod
+			</context-name>
+			<authentication>
+				<authentication-provider-class>
+				</authentication-provider-class>
+			</authentication>
+			<authorization>
+				<authorization-provider-class>
+				</authorization-provider-class>
+				<hibernate-config-file>
+				</hibernate-config-file>
+			</authorization>
+		</application>
+
+   1.3) Verify if the "gov.nih.nci.security.configFile" path is configured in properties-service.xml available under the Jboss402 "deploy" directory.  
+
+    <attribute name="Properties">
+
+      gov.nih.nci.security.configFile=/local/content/csm/csm_config/ApplicationSecurityConfig.xml
+
+    </attribute>
+
+
+   1.4) Add the following lines to the conf/login-config.xml file
+
+
+    <!-- camod application -->
+    <application-policy name = "camod">
+       <authentication>
+           <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
+               <module-option name="ldapHost">ldaps://ncids2b.nci.nih.gov:636</module-option>
+               <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
+               <module-option name="ldapUserIdLabel">cn</module-option>
+           </login-module>
+       </authentication>
+    </application-policy>
+
+2) Logging configuration:
+
+   2.1) Add the following lines to the <appserverinstall>/conf/log4j.xml file
+
+   <appender name="CAMOD_FILE" class="org.jboss.logging.appender.DailyRollingFileAppender">
       <errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
       <param name="File" value="${jboss.server.home.dir}/log/nci-spores.log"/>
       <param name="Append" value="true"/>
@@ -70,6 +116,20 @@ Add the following lines to the <appserverinstall>/conf/log4j.xml file
    </category>
    
 
+3) SSL: 
+
+   3.1) Make sure that SSL is enabled for the caMOD application
+   
+
+4) Apache URL rewriting:
+
+   4.1) Add a rewrite rule in the Apache configuration to rewrite URIs like http://localhost/mmhcc to http://localhost/camod/mmhcc 
+        before the request is sent to jboss.
+
+5) Downtime page.
+
+   5.1) Redirect all requests to the application to the supplied maintance.html page.
+   
 DEPLOYMENT INSTRUCTIONS:
 
 1. Copy the camod.war built on the build server to the Jboss402-app deploy folder.
