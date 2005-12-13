@@ -126,9 +126,15 @@ PRE-DEPLOYMENT STEPS:
    4.1) Add a rewrite rule in the Apache configuration to rewrite URIs like http://localhost/mmhcc to http://localhost/camod/mmhcc 
         before the request is sent to jboss.
 
-5) Downtime page.
+5) Downtime page; access to the 2-tier application will be turned off on the morning of 12-15 (Thursday)
 
-   5.1) Redirect all requests to the application to the supplied maintance.html page.
+   5.1) After this time, redirect all requests to the application to the supplied maintance.html page.
+   
+
+6) Database setup/configuration.
+
+   6.1) Hopefully the database from production to the staging server can start tursday morning with the production database being 
+        ready by COB Friday.  Derek Kong has developed scripts for the transfer of the database.
    
 DEPLOYMENT INSTRUCTIONS:
 
