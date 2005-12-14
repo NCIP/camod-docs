@@ -51,7 +51,7 @@ PRE-DEPLOYMENT STEPS:
 
    <appender name="CAMOD_FILE" class="org.jboss.logging.appender.DailyRollingFileAppender">
       <errorHandler class="org.jboss.logging.util.OnlyOnceErrorHandler"/>
-      <param name="File" value="${jboss.server.home.dir}/log/nci-spores.log"/>
+      <param name="File" value="${jboss.server.home.dir}/log/nci-camod.log"/>
       <param name="Append" value="true"/>
 
       <!-- Rollover at midnight each day -->
@@ -133,8 +133,14 @@ PRE-DEPLOYMENT STEPS:
 
 6) Database setup/configuration.
 
-   6.1) Hopefully the database from production to the staging server can start tursday morning with the production database being 
-        ready by COB Friday.  Derek Kong has developed scripts for the transfer of the database.
+    6.1) On Thursday morning 8:00am the production datop database will be shut down.
+
+    6.2) The DBA group transfers the production datop database to cadev/datop to solve the character problem by export and import.
+
+    6.3) Derek Kong runs scripts to load the data into camoddev using the cadev/datop data and other data sources
+
+    6.4) After we confirm the correctness of the data in the camoddev, the DBA group can transfer the camoddev into camod stage and production databases by export and import.
+
    
 DEPLOYMENT INSTRUCTIONS:
 
