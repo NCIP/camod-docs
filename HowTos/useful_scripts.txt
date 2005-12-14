@@ -399,3 +399,458 @@ select id, name, NUMBEROFFEATURES,              -- features in arraydesign tbl, 
         and instr(object_id, 'arraydesign') > 0
 		and replace(object_id, 'caarray;arraydesign;', '') = ad.id
      )
+
+create index feature_group_id_idx on feature(feature_group_id);
+
+
+create global temporary table temp_constraints
+  as
+  select a.table_name,
+         a.constraint_name pkey_constraint,
+         b.constraint_name fkey_constraint,
+         b.r_constraint_name
+    from user_constraints a, user_constraints b
+   where 1=0
+alter table temp_constraints modify fkey_constraint NULL;
+
+truncate table temp_constraints;
+insert into temp_constraints
+ select table_name, constraint_name, null, null from user_constraints where 
+ constraint_type = 'P';
+insert into temp_constraints
+  select a.table_name,
+         a.constraint_name pkey_constraint,
+             b.constraint_name fkey_constraint,
+             b.r_constraint_name
+    from user_constraints a, user_constraints b
+   where a.table_name = b.table_name
+     and a.constraint_type = 'P'
+     and b.constraint_type = 'R';
+     
+insert into temp_constraints
+    select a.table_name,
+           a.constraint_name pkey_constraint,
+           b.constraint_name fkey_constraint,
+           b.r_constraint_name
+      from user_constraints a, user_constraints b
+     where a.table_name = b.table_name
+       and a.constraint_type = 'P'
+       and b.constraint_type = 'R'
+       and a.constraint_name != b.r_constraint_name;
+
+column table_name format a40
+select rpad( '*', (level-1)*2, '*' ) || table_name table_name
+from temp_constraints
+start with fkey_constraint is null
+connect by prior pkey_constraint = r_constraint_name
+
+
+create global temporary table allpcr_h(
+   entity varchar2(4000) unique,
+   allpcr_h_id integer primary key)
+on commit delete rows;
+
+
+
+create sequence allpcr_h_seq;
+
+CREATE TRIGGER allpcr_h_ID
+BEFORE INSERT ON allpcr_h
+FOR EACH ROW 
+begin
+  select allpcr_h_seq.nextval
+    into   :new.allpcr_h_ID
+    from dual;  
+end;
+/
+
+create global temporary table allpcr(
+   pid integer,
+   cid integer,
+   path varchar2(4000))
+on commit delete rows;
+
+
+create type numbertable is table of number;
+/
+
+create type longstringtable is table of varchar2(32767);
+/
+
+
+create or replace package hierarchical is
+     function in_list_number(vinstring in varchar2) return numbertable;
+
+     type CPType is record(
+        parent varchar2(512),
+        child varchar2(512));
+
+     type CPRType is REF Cursor return CPType;
+  
+     function AllPaths(vcp in CPRType,
+                       vonlylongest in integer default 1, -- if set to 0, all paths are returned
+                       vseparator in varchar2 default ' -> ') 
+       return longstringtable pipelined;
+end hierarchical;
+/
+
+create or replace package body hierarchical is
+
+function in_list_number(vinstring in varchar2) return numbertable is
+l_string        long default vinstring || ',';
+l_data          numbertable := numbertable();
+n               number;
+begin
+   loop
+      exit when l_string is null;
+      n := instr( l_string, ',' );
+      l_data.extend;
+      l_data(l_data.count) := 
+         ltrim( rtrim( substr( l_string, 1, n-1 ) ) );
+      l_string := substr( l_string, n+1 );
+   end loop;
+   return l_data;
+end in_list_number;
+
+
+function AllPaths(vcp in CPRType,
+                  vonlylongest in integer,
+                  vseparator in varchar2) return longstringtable pipelined is
+pragma autonomous_transaction;
+cp CPType;
+hnt numbertable;
+i integer;
+ret varchar2(32767);
+begin
+   loop
+      fetch vcp into cp;
+      exit when vcp%notfound;
+
+      insert into allpcr_h(entity)
+      (select cp.parent from dual
+      union all select cp.child from dual)
+      minus select entity from allpcr_h;
+      
+      insert into allpcr(pid, cid, path) 
+      select hp.allpcr_h_id, hc.allpcr_h_id, hp.allpcr_h_id || ',' || hc.allpcr_h_id 
+      from allpcr_h hp, allpcr_h hc
+      where hp.entity = cp.parent
+      and hc.entity = cp.child
+      minus select pid, cid, path from allpcr;
+   end loop;
+         
+   close vcp;
+
+   loop
+      insert into allpcr(pid, cid, path)
+      select ap.pid, ac.cid, ap.pid || ',' || ac.path
+      from allpcr ap, allpcr ac
+      where ap.cid = ac.pid
+      and (ap.pid, ac.cid) in
+           (select ap.pid, ac.cid            
+            from allpcr ap, allpcr ac
+            where ap.cid = ac.pid
+            minus
+            select pid, cid
+            from allpcr);
+      exit when sql%rowcount = 0;
+   end loop;   
+
+      
+   if vonlylongest != 0 then
+      delete allpcr ad
+      where exists
+        (select 1
+         from allpcr aa
+         where aa.rowid != ad.rowid
+         and (aa.path like '%,' || ad.path
+           or aa.path like ad.path || ',%'));
+   end if;
+
+
+   for allpcr_rec in (select * from allpcr) loop
+      hnt := in_list_number(allpcr_rec.path);
+      ret := null;
+      for i in 1 .. hnt.count loop
+         if ret is null then
+            select entity
+            into ret
+            from allpcr_h
+            where allpcr_h_id = hnt(i);
+         else
+            select entity || vseparator || ret
+            into ret
+            from allpcr_h
+            where allpcr_h_id = hnt(i);         
+         end if;         
+      end loop;
+      pipe row(ret);
+   end loop;
+   
+   rollback;
+   
+   return;
+end AllPaths;
+  
+end hierarchical;
+/
+
+
+
+select * from table(hierarchical.allpaths(cursor(select a.table_name as parent,  
+b.table_name as child from user_constraints a, user_constraints b where 
+a.constraint_name = b.r_constraint_name and a.constraint_type = 'P' and 
+b.constraint_type = 'R')))
+
+
+
+delete from temp_constraints where table_name in ('BIOASSAYCREATION');
+delete from temp_constraints where table_name in ('ARRAYMANUFACTUREDEVIATION');
+delete from temp_constraints where table_name in ('FIDUCIAL');
+delete from temp_constraints where table_name in ('ARRAYMANUFACTURE');
+delete from temp_constraints where table_name in ('QUANTITATIONTYPE');
+delete from temp_constraints where table_name in ('BIOASSAYCHANNEL');
+delete from temp_constraints where table_name in ('CA_HYBRIDIZATIONFILEUPLOAD');
+delete from temp_constraints where table_name in ('BIOASSAYMAPBIOASSAY');
+delete from temp_constraints where table_name in ('IMAGE');
+delete from temp_constraints where table_name in ('BIOASSAYTUPLE');
+delete from temp_constraints where table_name in ('FEATUREEXTRACTION');
+delete from temp_constraints where table_name in ('BIOSOURCECONTACT');
+delete from temp_constraints where table_name in ('LABELEDEXTRACTCOMPOUND');
+delete from temp_constraints where table_name in ('NAMEVALUETYPE');
+delete from temp_constraints where table_name in ('TREATMENT');
+delete from temp_constraints where table_name in ('BIOMATERIAL');
+delete from temp_constraints where table_name in ('DATABASEENTRY');
+delete from temp_constraints where table_name in ('SEQFEATURELOCATION');
+delete from temp_constraints where table_name in ('IMMOBILIZEDCHARACTERISTICS');
+
+delete from temp_constraints where table_name in ('DESIGNELEMENTGROUPTYPES');
+delete from temp_constraints where table_name in ('CA_CHANNELTWOFACTORVALUES');
+delete from temp_constraints where table_name in ('MISMATCHINFORMATION');
+delete from temp_constraints where table_name in ('REPORTERDIMENSIONREPORTER');
+delete from temp_constraints where table_name in ('EXPERIMENTALFACTOR');
+delete from temp_constraints where table_name in ('HARDWAREAPPLICATION');
+delete from temp_constraints where table_name in ('SOFTWARE');
+delete from temp_constraints where table_name in ('FEATURECONTROLLEDFEATURE');
+delete from temp_constraints where table_name in ('HARDWARE');
+delete from temp_constraints where table_name in ('EXPERIMENTDESIGNTYPE');
+delete from temp_constraints where table_name in ('FACTORVALUE');
+delete from temp_constraints where table_name in ('FEATURECONTROLFEATURE');
+delete from temp_constraints where table_name in ('NODEVALUE');
+delete from temp_constraints where table_name in ('SEQUENCEPOSITION');
+delete from temp_constraints where table_name in ('FEATUREINFORMATION');
+delete from temp_constraints where table_name in ('FEATUREDEFECT');
+
+select rpad( '*', (level-1)*2, '*' ) || table_name table_name
+from temp_constraints
+start with fkey_constraint is null
+connect by prior pkey_constraint = r_constraint_name;
+
+
+create index dem_report_id_idx on designelementmap (reporter_id);
+create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
+
+delete from mismatchinformation mi
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   sequenceposition sp
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and mi.REPORTER_POSITION_ID = sp.ID
+	   and sp.REPORTER_ID = r.ID )
+delete from MISMATCHINFORMATION mmi -- 154775
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   designelementmap dem,
+		   featureinformation fi
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and dem.reporter_id = r.ID
+	   and fi.FEATURE_REPORTER_MAP_ID = dem.ID
+	   and mmi.FEATURE_INFORMATION_ID = fi.ID)
+delete from sequenceposition sp -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and sp.REPORTER_ID = r.ID )
+delete from featureinformation fi -- 309553 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   designelementmap dem
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and dem.reporter_id = r.ID
+	   and fi.FEATURE_REPORTER_MAP_ID = dem.ID)
+delete from DESIGNELEMENTMAP dem -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+ 	   and dem.reporter_id = r.ID )
+
+delete from reporter r -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID)
+
+delete from sequenceposition sp
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and sp.composite_id = cs.ID )
+delete from sequenceposition sp --94727 deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs,
+	       DESIGNELEMENTMAP dem
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and dem.composite_sequence_id = cs.ID
+ 	   and sp.REPORTER_COMPOSITE_MAP_ID = dem.id )
+
+delete from DESIGNELEMENTMAP dem -- 22645
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and dem.composite_sequence_id = cs.ID )
+
+delete from COMPSEQDIMENSIONCOMPSEQ csdcs --22645 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adcg,
+           compositesequence cs
+     where adcg.array_design_id = 1015897521113355
+       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+       and csdcs.COMP_SEQ_ID = cs.id);
+
+delete from compositesequence cs --22645 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adcg
+     where adcg.array_design_id = 1015897521113355
+       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID );
+delete from FEATUREDIMENSIONFEATURE fdf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and fdf.feature_id = f.id )
+delete from FEATURECONTROLLEDFEATURE fcf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and (fcf.feature_id = f.id or fcf.CONTROLLED_FEATURE_ID = f.id))
+delete from FEATURECONTROLFEATURE fcf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and (fcf.feature_id = f.id or fcf.CONTROL_FEATURE_ID = f.id))
+delete from feature f
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID )
+
+delete from zonegroup zg
+ where zg.PHYSICAL_ARRAY_DESIGN_ID = 1015897521113355;
+ 
+delete from arraydesignreportergrp
+ where array_design_id = 1015897521113355;
+delete from arraydesigncompositegrp
+ where array_design_id = 1015897521113355;
+delete from arraydesignfeaturegrp
+ where array_design_id = 1015897521113355;
+delete from arraydesign
+ where id =1015897521113355;
+
+/*
+Purpose:
+This procedure purges array design information from caArray 1.3/1.4 oracle
+database.
+
+How does it work? Specifically, it will delete objects under the following 
+MAGE-OM packages
+
+ArrayDesign
+DesignElement
+BioSequence
+
+and then update the references under Array to ArrayDesign (set to NULL). Upon 
+reload of the array design, the references can then be reset to the new ID.
+
+To avoid excessive undo generation (rollack segment), it commits after each
+delete. On the other hand, the proc can easily be modified to run in a 
+single transcation when we have a sufficiently large rollback segment.`
+
+Note that we do not disable or drop any constraints. This way, we can ensure
+data integrity and consistency. Secondly, this procedure may not be dealing with
+ALL the tables involved in the above packages. Hence, there is a possibility that
+it may fail to cover certain cases and therefore we may need more iterations to 
+get it to work perfectly.
+
+The following indexes are recommended for better query (delete) performance:
+
+create index dem_report_id_idx on designelementmap (reporter_id);
+create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
+
+The following graph depicts the parent/child relationships among the entities.
+The proc. will delete child tables and then move up the ladder to delete rows
+from parent tables.
+
+
+****REPORTER                                                                                                                                                                                          
+********DESIGNELEMENTMAP                                                                                                                                                                                
+**********FEATUREINFORMATION                                                                                                                                                                            
+************MISMATCHINFORMATION                                                                                                                                                                         
+****COMPOSITESEQUENCE                                                                                                                                                                                   
+******BIOLOGICALCHARACTERISTICS    
+******COMPSEQDIMENSIONCOMPSEQ                                                                                                                                                                     
+******DESIGNELEMENTMAP                                                                                                                                                                                  
+********FEATUREINFORMATION                                                                                                                                                                              
+**********MISMATCHINFORMATION 
+******DESIGNELEMENTGROUPTYPES                                                                                                                                                                           
+******FEATURE                                                                                                                                                                                           
+********FEATURECONTROLFEATURE                                                                                                                                                                           
+********FEATURECONTROLLEDFEATURE                                                                                                                                                                        
+********FEATUREDIMENSIONFEATURE                                                                                                                                                                         
+********FEATUREINFORMATION                                                                                                                                                                              
+**********MISMATCHINFORMATION                                                                                                                                                                           
+**********MISMATCHINFORMATION
+*/
+create or replace procedure purge_Array_Design(
+  p_id in number)
+is
+begin
+
+end purge_Array_Design;
+/
+sho errors
