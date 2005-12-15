@@ -399,6 +399,7 @@ select id, name, NUMBEROFFEATURES,              -- features in arraydesign tbl, 
         and instr(object_id, 'arraydesign') > 0
 		and replace(object_id, 'caarray;arraydesign;', '') = ad.id
      )
+order by 1
 
 create index feature_group_id_idx on feature(feature_group_id);
 
@@ -646,7 +647,8 @@ from temp_constraints
 start with fkey_constraint is null
 connect by prior pkey_constraint = r_constraint_name;
 
-
+create index feature_fgrp_idx on feature(feature_group_id);
+create index reporter_rgrp_idx on reporter(reporter_group_id);
 create index dem_report_id_idx on designelementmap (reporter_id);
 create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
 
@@ -773,6 +775,14 @@ delete from FEATURECONTROLFEATURE fcf
     where adfg.array_design_id = 1015897521113355
       and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
       and (fcf.feature_id = f.id or fcf.CONTROL_FEATURE_ID = f.id))
+delete from featurelocation fl
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and fl.id = f.id )
 delete from feature f
  where exists ( 
    select null
@@ -789,6 +799,10 @@ delete from arraydesigncompositegrp
  where array_design_id = 1015897521113355;
 delete from arraydesignfeaturegrp
  where array_design_id = 1015897521113355;
+
+update array
+   set ARRAY_DESIGN_ID = null
+ where ARRAY_DESIGN_ID = 1015897521113355;
 delete from arraydesign
  where id =1015897521113355;
 
@@ -804,8 +818,10 @@ ArrayDesign
 DesignElement
 BioSequence
 
-and then update the references under Array to ArrayDesign (set to NULL). Upon 
-reload of the array design, the references can then be reset to the new ID.
+and then update the references under Array to ArrayDesign (set to NULL). Furthermore,
+the proc. will/should not delete any "good data" - i.e., it assumes that any associated
+experiments, arrays, bioassays are good. Upon reload of the array design, the 
+references to array design can then be reset to the new ID.
 
 To avoid excessive undo generation (rollack segment), it commits after each
 delete. On the other hand, the proc can easily be modified to run in a 
@@ -813,21 +829,39 @@ single transcation when we have a sufficiently large rollback segment.`
 
 Note that we do not disable or drop any constraints. This way, we can ensure
 data integrity and consistency. Secondly, this procedure may not be dealing with
-ALL the tables involved in the above packages. Hence, there is a possibility that
+ALL the tables involved in the MAGE-OM packages. Hence, there is a possibility that
 it may fail to cover certain cases and therefore we may need more iterations to 
 get it to work perfectly.
 
 The following indexes are recommended for better query (delete) performance:
 
+create index feature_fgrp_idx on feature(feature_group_id);
+create index reporter_rgrp_idx on reporter(reporter_group_id);
 create index dem_report_id_idx on designelementmap (reporter_id);
 create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
+create index f_ctrlled_f_cfid_idx on featurecontrolledfeature (controlled_feature_id)
+create index f_ctrl_f_cfid_idx on featurecontrolfeature (control_feature_id)
 
-The following graph depicts the parent/child relationships among the entities.
+The following table depicts the parent/child relationships among the entities.
 The proc. will delete child tables and then move up the ladder to delete rows
-from parent tables.
+from parent tables. (as an exercise to the reader, certain paths can be deleted
+in parallel - how can this be implemented in plain pl/sql?)
 
-
-****REPORTER                                                                                                                                                                                          
+ARRAYDESIGN
+**ZONEGROUP                                                                                                                                                                                             
+****ZONE                                                                                                                                                                                                
+******FEATURE                                                                                                                                                                                           
+********FEATURECONTROLFEATURE                                                                                                                                                                           
+********FEATURECONTROLLEDFEATURE                                                                                                                                                                        
+********FEATUREDIMENSIONFEATURE
+********FEATURELOCATION
+********FEATUREINFORMATION                                                                                                                                                                              
+**********MISMATCHINFORMATION
+**********MISMATCHINFORMATION
+****ARRAYDESIGNCOMPOSITEGRP                                                                                                                                                                           
+****ARRAYDESIGNFEATUREGRP                                                                                                                                                                             
+****ARRAYDESIGNREPORTERGRP                                                                                                                                                                            
+******REPORTER                                                                                                                                                                                          
 ********DESIGNELEMENTMAP                                                                                                                                                                                
 **********FEATUREINFORMATION                                                                                                                                                                            
 ************MISMATCHINFORMATION                                                                                                                                                                         
@@ -837,14 +871,7 @@ from parent tables.
 ******DESIGNELEMENTMAP                                                                                                                                                                                  
 ********FEATUREINFORMATION                                                                                                                                                                              
 **********MISMATCHINFORMATION 
-******DESIGNELEMENTGROUPTYPES                                                                                                                                                                           
-******FEATURE                                                                                                                                                                                           
-********FEATURECONTROLFEATURE                                                                                                                                                                           
-********FEATURECONTROLLEDFEATURE                                                                                                                                                                        
-********FEATUREDIMENSIONFEATURE                                                                                                                                                                         
-********FEATUREINFORMATION                                                                                                                                                                              
-**********MISMATCHINFORMATION                                                                                                                                                                           
-**********MISMATCHINFORMATION
+
 */
 create or replace procedure purge_Array_Design(
   p_id in number)
