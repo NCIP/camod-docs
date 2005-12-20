@@ -79,3 +79,13 @@ The goal is to have an animal_availibility table which contains a column for ani
 
 28) What anatomy vocabularies should be used on the xenograft page? We have currently only a mouse anatomy vocabulary. What if the graft came from another species? 
 
+29) add J number to the publication object to allow us to store this information and link to the mouse tumor biology database
+
+30) Check the old Animal Model Requirements TestTrack instance for other issues
+
+31) Find a solution for entering the nomenclature and genotype information
+
+32) Consider splitting the taxon table in species and strain table (back to what we had before = DATOP)
+
+
+
