@@ -87,5 +87,13 @@ The goal is to have an animal_availibility table which contains a column for ani
 
 32) Consider splitting the taxon table in species and strain table (back to what we had before = DATOP)
 
+33) sort out the env factor, agent, therapy, treatment situation; distinguish better between a therapy to treat cancer and a carcinogenic intervention to trigger
+cancer development
+
+34) Find a way to show the in-vivo models that we imported from DTP as models in the animal models part of the database. This will increase our number
+of models by 386.
+
+
+
 
 
