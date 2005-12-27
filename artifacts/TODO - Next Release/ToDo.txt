@@ -2,27 +2,34 @@
 We decided to keep them for now, because it would be a difficult task to do the 
 mapping when we delete the duplicates. This might be a task that could be 
 done before the next release.
+Defect#326
 
 2) Look at enhancing the design for organ/disease table relations.
+Defect#327
 
-3) Add "Super User" functionality so that once person can modify all models.
+3) Add "Super User" functionality so that one person can modify all models.
+Done?
 
 4) Start infrastructure for check-in/unit testing
+Done
 
 5) Remove unecessary cross-reference tables
+Defect#328
 
 6) clean up field names? Example: The UID in the env_factor table is env_factor_id, 
-   but the invivo_result and the screening_result tables still refer to it as agent_id. 
+   but the invivo_result and the screening_result tables still refer to it as agent_id.    
+Defect#332   
    
 7) Refactor the Agent/EnvironmentalFactor tables.  A CarcionigenicIntervention is really not a Therapy.
-<<<<<<< ToDo.txt
+Defect#333
 
 8) Change the name of the attribute “tumorProgression” in the therapy object to “tumorResponse”? Tumor progression is defined as “The molecular steps that continually advance a cancer or cancer cell into a more malignant and aggressive phenotype. …….”
 What we want to capture on the therapy page is the opposite, we want to see how the tumor responds to the treatment (hopefully it goes back to a less severe state or disappears completely). 
 Srini and David agreed with emails on 09/29 and 09/30
+Defect#334
 
 9) The inhibition rate field in the screening_results table for the yeast data is not used. Delete it. 
-
+Defect#335
 =======
 
 8) Handle the Agent/Organ tables as lookup tables.  I.e. we can reuse the Agent/Organ, but create a 
@@ -32,68 +39,87 @@ Srini and David agreed with emails on 09/29 and 09/30
 9) Change the name of the attribute “tumorProgression” in the therapy object to “tumorResponse”? Tumor progression is defined as “The molecular steps that continually advance a cancer or cancer cell into a more malignant and aggressive phenotype. …….”
 What we want to capture on the therapy page is the opposite, we want to see how the tumor responds to the treatment (hopefully it goes back to a less severe state or disappears completely). 
 Srini and David agreed with emails on 09/29 and 09/30
+same as #8 above, Defect#334
 
 10) The inhibition rate field in the screening_results table for the yeast data is not used. Delete it. 
+same as #9 above, Defect#335
 
 11) Delete "inherited" attributes isCMAP_agent and source from the agent object (and all other attributes that we inherited from caBIO and don't use)
-
+Defect#336
 
 12) InducedMutation has a cross reference table to EnvironmentalFactor.  There should only be one EF for an IM, so this cross reference table can be removed.
+Defect#337
 
 13) add an "other" option to the drop-down list of clinical marker and let user enter terms. Change clinical marker object by adding "clinical_marker_unctrl_vocab" attribute 
 to store the newly entered terms. 
+Defect#338
 
 14) Add the ability to submit microarray data from the normal submission page and to handle the "Other URL" capability.
+Defect#339
 
 15) Change the relationship between animal_availibility and animal_distributor objects from many to many to one animal distributor can be associtaed with many animal_availibitlity records
 The goal is to have an animal_availibility table which contains a column for animal_distributor. 
+Defect#340
 
 16) use EVS tree for staining method to image submission page
+Defect#341
 
 17)  Histopathology object weightOfTumor and volumeOfTumor attributes are stored as Long in the database which will not allow us to append units or implement a dropdown on the GUI.
+Defect#342
 
 18) Change Harvest_date from a date field to a varchar so that we can store date ranges e.g. 5 days or 3 weeks
+Defect#343
 
 19)  when adding a histopathology with an organ we have to add a histopathology to the organ (see code).  This looks backwards and should be fixed.
+Defect#344
 
 20) MGI number has to be a varchar field, because a MGI number contains letters, e.g. MGI:2176176
+Defect#346
 
 21) Move the e-mail code to its own utility, 2) add code to e-mail only when submission is successful (not when submit fails), 
     3) clean up the use of e-mail addresses in the config file(s) to use username everywhere, 4) make the system e-mail only when 
     field is changed (example in Engineered Transgene).  ET Gene e-mails all fields with other even if other was pre-existing.
+Defect#347
 
 22) If we want to be consistent, add an uncontrolledVocab for administative route to Ab Cancer Model for Xenograft.  Or leave
     it as it is, adding directly to the table from the GUI.
+Defect#348
 
 23) Therapy page allows user to add chemical name (agent) which caused a duplicate agent in a model.  Change this to eliminate 
     any duplicates in entry.  Possibly look up NSC# first and populate the name, CAS# automatically OR at least check
     for the NSC# in the DB before entering it.  All options should be evaluated.
+Defect#349
 
 24) Either cascade deletes to Log and Comment objects or remove the foreign key constraints.
+Defect#350
 
-25) Clean-up images; I.e. we need to either code the full path everywhere or not at all. 
+25) Clean-up images; I.e. we need to either code the full path everywhere or not at all.
+Defect#351 
 
 26) fix the disease tree so that it again allows the submission of diagnoses that are not in the vocabulary. The 2-tier app entered 000000 in the EVS_code field and saved the newly entered term in the tumorclassification field. The app also send an email to the EVS team.
+Defect#352
 
-27) find a way for users to enter or generate the genotype of the model and the official nomenclature name
+27) find a way for users to enter or generate the genotype of the model and the official nomenclature name.  Find a solution for entering the nomenclature and genotype information
+Defect#356
 
 28) What anatomy vocabularies should be used on the xenograft page? We have currently only a mouse anatomy vocabulary. What if the graft came from another species? 
+Defect#357
 
 29) add J number to the publication object to allow us to store this information and link to the mouse tumor biology database
+Defect#303 - already entered
 
 30) Check the old Animal Model Requirements TestTrack instance for other issues
+Will be done by Ulli
 
-31) Find a solution for entering the nomenclature and genotype information
+31) Duplicate of #27 combined
 
 32) Consider splitting the taxon table in species and strain table (back to what we had before = DATOP)
+Defect#353
 
 33) sort out the env factor, agent, therapy, treatment situation; distinguish better between a therapy to treat cancer and a carcinogenic intervention to trigger
 cancer development
+Defect#354
 
 34) Find a way to show the in-vivo models that we imported from DTP as models in the animal models part of the database. This will increase our number
 of models by 386.
-
-
-
-
-
+Defect#355
