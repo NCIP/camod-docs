@@ -881,3 +881,18 @@ begin
 end purge_Array_Design;
 /
 sho errors
+
+
+select cs.IDENTIFIER
+ 	     from ARRAYDESIGNCOMPOSITEGRP adcg,
+		 	  COMPOSITESEQUENCE cs
+	    where adcg.array_design_id = 1015897523042021
+		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+order by 1
+
+
+select * from compositesequence where identifier = 'Affymetrix.com:CompositeSequence:hg-u133_plus_2.UnusedProbes';
+delete from compositesequence where id = '1015897527804781';
+commit;
+
+
