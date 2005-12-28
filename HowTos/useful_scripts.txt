@@ -891,7 +891,7 @@ select cs.IDENTIFIER
 order by 1
 
 
-select * from compositesequence where identifier = 'Affymetrix.com:CompositeSequence:hg-u133_plus_2.UnusedProbes';
+select id from compositesequence where identifier = 'Affymetrix.com:CompositeSequence:hg-u133_plus_2.UnusedProbes';
 delete from compositesequence where id = '1015897527804781';
 commit;
 
