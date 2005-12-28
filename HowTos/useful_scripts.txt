@@ -834,6 +834,8 @@ it may fail to cover certain cases and therefore we may need more iterations to
 get it to work perfectly.
 
 The following indexes are recommended for better query (delete) performance:
+(unindexed foreign keys can cause various problems during DML update/delete operations, 
+and even for simple query)
 
 create index feature_fgrp_idx on feature(feature_group_id);
 create index reporter_rgrp_idx on reporter(reporter_group_id);
@@ -877,7 +879,168 @@ create or replace procedure purge_Array_Design(
   p_id in number)
 is
 begin
-
+	delete from mismatchinformation mi
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   sequenceposition sp
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and mi.REPORTER_POSITION_ID = sp.ID
+		   and sp.REPORTER_ID = r.ID );
+	commit;
+	delete from MISMATCHINFORMATION mmi -- 154775
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   designelementmap dem,
+			   featureinformation fi
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and dem.reporter_id = r.ID
+		   and fi.FEATURE_REPORTER_MAP_ID = dem.ID
+		   and mmi.FEATURE_INFORMATION_ID = fi.ID);
+	commit;
+	delete from sequenceposition sp -- 154775 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and sp.REPORTER_ID = r.ID );
+	commit;
+	delete from featureinformation fi -- 309553 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   designelementmap dem
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and dem.reporter_id = r.ID
+		   and fi.FEATURE_REPORTER_MAP_ID = dem.ID);
+	commit;
+	delete from DESIGNELEMENTMAP dem -- 154775 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	 	   and dem.reporter_id = r.ID );
+	commit;
+	delete from reporter r -- 154775 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID);
+	commit;
+	delete from sequenceposition sp
+	 where exists (
+	    select null
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+	 	   and sp.composite_id = cs.ID );
+	commit;
+	delete from sequenceposition sp --94727 deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs,
+		       DESIGNELEMENTMAP dem
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+	 	   and dem.composite_sequence_id = cs.ID
+	 	   and sp.REPORTER_COMPOSITE_MAP_ID = dem.id );
+	commit;
+	delete from DESIGNELEMENTMAP dem -- 22645
+	 where exists (
+	    select null
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+	 	   and dem.composite_sequence_id = cs.ID );
+	commit;
+	delete from COMPSEQDIMENSIONCOMPSEQ csdcs --22645 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNCOMPOSITEGRP adcg,
+	           compositesequence cs
+	     where adcg.array_design_id = p_id
+	       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+	       and csdcs.COMP_SEQ_ID = cs.id);
+	commit;
+	delete from compositesequence cs --22645 rows deleted
+	 where exists (
+	    select null
+	      from ARRAYDESIGNCOMPOSITEGRP adcg
+	     where adcg.array_design_id = p_id
+	       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID );
+	commit;
+	delete from FEATUREDIMENSIONFEATURE fdf
+	 where exists ( 
+	   select null
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and fdf.feature_id = f.id );
+	commit;
+	delete from FEATURECONTROLLEDFEATURE fcf
+	 where exists ( 
+	   select null
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and (fcf.feature_id = f.id or fcf.CONTROLLED_FEATURE_ID = f.id));
+	commit;
+	delete from FEATURECONTROLFEATURE fcf
+	 where exists ( 
+	   select null
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and (fcf.feature_id = f.id or fcf.CONTROL_FEATURE_ID = f.id));
+	commit;
+	delete from featurelocation fl
+	 where exists ( 
+	   select null
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and fl.id = f.id );
+	commit;
+	delete from feature f
+	 where exists ( 
+	   select null
+	     from ARRAYDESIGNFEATUREGRP adfg
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
+	delete from zonegroup zg
+	 where zg.PHYSICAL_ARRAY_DESIGN_ID = p_id;
+	delete from arraydesignreportergrp
+	 where array_design_id = p_id;
+	delete from arraydesigncompositegrp
+	 where array_design_id = p_id;
+	delete from arraydesignfeaturegrp
+	 where array_design_id = p_id;
+	update array
+	   set ARRAY_DESIGN_ID = null
+	 where ARRAY_DESIGN_ID = p_id;
+	delete from arraydesign
+	 where id =p_id;
+	commit;
 end purge_Array_Design;
 /
 sho errors
