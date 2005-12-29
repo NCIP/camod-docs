@@ -35,6 +35,7 @@ Defect#335
 8) Handle the Agent/Organ tables as lookup tables.  I.e. we can reuse the Agent/Organ, but create a 
    new one if it's not there.  It's too hard currently to map the data from the current DB, but
    it should be more straightforward to do that in the new schema.>>>>>>> 1.7
+Defect#327 and added one for Agent table cleanup Defect#368
    
 9) Change the name of the attribute “tumorProgression” in the therapy object to “tumorResponse”? Tumor progression is defined as “The molecular steps that continually advance a cancer or cancer cell into a more malignant and aggressive phenotype. …….”
 What we want to capture on the therapy page is the opposite, we want to see how the tumor responds to the treatment (hopefully it goes back to a less severe state or disappears completely). 
