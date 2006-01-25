@@ -4,5 +4,5 @@ Change PATH variable
 
 Eclipse changes:
 
-[Window][preferences][compiler][compiler compliance level: 5.0]
-[window][preferences][Installed JREs] - Add name and location for jdk1.5.0_04]
+[Window][preferences][Java][compiler][compiler compliance level: 5.0]
+[window][preferences][Java][Installed JREs] - Add name and location for jdk1.5.0_04]
