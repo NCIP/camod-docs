@@ -863,8 +863,9 @@ ARRAYDESIGN
 ****ARRAYDESIGNCOMPOSITEGRP                                                                                                                                                                           
 ****ARRAYDESIGNFEATUREGRP                                                                                                                                                                             
 ****ARRAYDESIGNREPORTERGRP                                                                                                                                                                            
-******REPORTER                                                                                                                                                                                          
-********DESIGNELEMENTMAP                                                                                                                                                                                
+******REPORTER
+********IMMOBILIZEDCHARACTERISTICS
+********DESIGNELEMENTMAP
 **********FEATUREINFORMATION                                                                                                                                                                            
 ************MISMATCHINFORMATION                                                                                                                                                                         
 ****COMPOSITESEQUENCE                                                                                                                                                                                   
@@ -931,6 +932,15 @@ begin
 	     where adrg.ARRAY_DESIGN_ID = p_id
 		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
 	 	   and dem.reporter_id = r.ID );
+	commit;
+	delete from IMMOBILIZEDCHARACTERISTICS ic
+	 where exists (
+	    select null
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	 	   and ic.reporter_id = r.ID );
 	commit;
 	delete from reporter r -- 154775 rows deleted
 	 where exists (
@@ -1053,9 +1063,24 @@ select cs.IDENTIFIER
 		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
 order by 1
 
+select count(cs.IDENTIFIER)
+  from COMPOSITESEQUENCE cs 
+  join ARRAYDESIGNCOMPOSITEGRP adcg 
+    on adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ where adcg.array_design_id = 1015897523042021
 
 select id from compositesequence where identifier = 'Affymetrix.com:CompositeSequence:hg-u133_plus_2.UnusedProbes';
 delete from compositesequence where id = '1015897527804781';
 commit;
 
 
+
+select * from feature where id = 1015897523935375
+
+
+insert into as_user_role_protect_app
+select (rownum+6)*-1, UPDATE_DATE, ROLE_ID, APPLICATION_ID, PROTECTION_GROUP_ID, -2, PROTECTION_ELEMENT_ID, PROTECTION_TYPE_ID, START_DATE, END_DATE
+  from AS_USER_ROLE_PROTECT_APP 
+ where user_id = -1
+
+ commit;
