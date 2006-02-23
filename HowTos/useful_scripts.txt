@@ -838,6 +838,7 @@ The following indexes are recommended for better query (delete) performance:
 and even for simple query)
 
 create index feature_fgrp_idx on feature(feature_group_id);
+create index feature_zone_idx on feature(zone_id);
 create index reporter_rgrp_idx on reporter(reporter_group_id);
 create index dem_report_id_idx on designelementmap (reporter_id);
 create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
@@ -937,7 +938,7 @@ begin
 		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID );
 	commit;
 	delete from reporter r -- 154775 rows deleted
-	 where r.REPORTER_GROUP_ID (
+	 where r.REPORTER_GROUP_ID in (
 	    select adrg.REPORTER_GROUP_ID
 	      from ARRAYDESIGNREPORTERGRP adrg
 	     where adrg.ARRAY_DESIGN_ID = p_id );
@@ -970,6 +971,14 @@ begin
 	commit;
 	delete from COMPSEQDIMENSIONCOMPSEQ csdcs --22645 rows deleted
 	 where csdcs.COMP_SEQ_ID in (
+	    select cs.id
+	      from ARRAYDESIGNCOMPOSITEGRP adcg,
+	           compositesequence cs
+	     where adcg.array_design_id = p_id
+	       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID);
+	commit;
+	delete from BIOLOGICALCHARACTERISTICS bc--22645 rows deleted
+	 where bc.COMPOSITE_SEQUENCE_ID in (
 	    select cs.id
 	      from ARRAYDESIGNCOMPOSITEGRP adcg,
 	           compositesequence cs
@@ -1030,12 +1039,35 @@ begin
 	    where adfg.array_design_id = p_id
 	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
 	commit;
+	delete from MISMATCHINFORMATION mmi -- 154775
+	 where mmi.FEATURE_INFORMATION_ID in (
+	   select fi.ID
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f,
+	          featureinformation fi
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and fi.FEATURE_ID = f.id);
+	commit;
+	delete from featureinformation fi
+	 where fi.FEATURE_ID in (
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
 	delete from feature f
 	 where f.FEATURE_GROUP_ID in ( 
 	   select adfg.FEATURE_GROUP_ID
 	     from ARRAYDESIGNFEATUREGRP adfg
 	    where adfg.array_design_id = p_id );
 	commit;
+    delete from zone z
+     where z.zone_group_id in (
+        select id 
+          from zonegroup zg
+         where zg.PHYSICAL_ARRAY_DESIGN_ID = p_id );
 	delete from zonegroup zg
 	 where zg.PHYSICAL_ARRAY_DESIGN_ID = p_id;
 	delete from arraydesignreportergrp
@@ -1088,3 +1120,163 @@ select (rownum+6)*-1, UPDATE_DATE, ROLE_ID, APPLICATION_ID, PROTECTION_GROUP_ID,
  where user_id = -1
 
  commit;
+ 
+
+/**
+ * we will add a unique constraint to as_user.login_name.
+ */
+select login_name, count(*) 
+  from as_user 
+ group by login_name 
+having count(*) > 1
+/
+delete from AS_USER_ROLE_PROTECT_APP where user_id = 69;
+delete from as_user where user_id = 69;
+delete from AS_USER_ROLE_PROTECT_APP where user_id = 70;
+delete from as_user where user_id = 70;
+commit;
+
+alter table as_user modify login_name not null
+/
+alter table as_user 
+  add constraint unq_as_user_login_name
+  unique (login_name)
+/
+create table ca_file_status (
+  status               varchar2(50) primary key,
+  description          varchar2(255) not null
+)
+/
+
+insert into ca_file_status values( 'SUBMITTED', 'new submission')
+/
+insert into ca_file_status values( 'SUBMISSION ERROR', 'Error occured on submission of the file, see error code')
+/
+insert into ca_file_status values( 'IN PROCESS', 'In process...')
+/
+insert into ca_file_status values( 'PROCESSING ERROR', 'Error occured while processing the file, see error code')
+/
+insert into ca_file_status values( 'PROCESSING SUCCESSFUL', 'Processing Successful')
+/
+insert into ca_file_status values( 'DELETED', 'File is marked for deletion')
+/
+insert into ca_file_status values( 'DELETION ERROR', 'Error occured on deletion operation')
+/
+insert into ca_file_status values( 'VIRUS SCAN SUCCESSFUL', 'Virus scan successful')
+/
+insert into ca_file_status values( 'VIRUS SCAN ERROR ', 'Error occured on virus scan, see error code')
+/
+
+alter table ca_hybridfileuploadentry add (
+  originial_filename   varchar2(255),
+  user_id              varchar2(30),
+  status               varchar2(50) references ca_file_status,
+  status_date          date default sysdate not null,
+  validator_code       varchar2(255) default -1 not null
+)
+/
+
+-- NOTE: we will drop the columns valid & validationdate after we properly migrate the data to 
+-- the new columns
+-- NOTE: The new columns are mandatory
+-- The existing data must be migrated prior to turning them to NOT NULL
+
+alter table ca_hybridfileuploadentry modify experiment_id null
+/
+
+alter table ca_hybridfileuploadentry
+  add constraint ca_hfue_user_id_fk
+  foreign key (user_id)
+  references as_user (login_name)
+/
+
+create table ca_file_upload_history (
+  id                   number primary key,
+  file_upload_entry_id number not null references ca_hybridfileuploadentry,
+  status               varchar2(50) not null references ca_file_status,
+  status_date          date not null,
+  description          varchar2(255)
+)
+/
+
+alter table CA_ARRAYDSGNFILEUPLOADENTRY add (
+  originial_filename   varchar2(255),
+  user_id              varchar2(30),
+  status               varchar2(50) references ca_file_status,
+  status_date          date default sysdate not null,
+  validator_code       varchar2(255) default -1 not null
+)
+/
+-- NOTE: we will drop the columns valid & validationdate after we properly migrate the data to 
+-- the new columns
+-- NOTE: The new columns are mandatory
+-- The existing data must be migrated prior to turning them to NOT NULL
+
+alter table CA_ARRAYDSGNFILEUPLOADENTRY
+  add constraint ca_adfue_user_id_fk
+  foreign key (user_id)
+  references as_user (login_name)
+/
+
+
+
+alter table CA_FILEPARSINGENTRY modify PARSINGSUCCEEDED null
+/
+alter table CA_FILEPARSINGENTRY drop constraint CA_FILEPARSINGENTRY_CK1
+/
+alter table CA_FILEPARSINGENTRY modify (PARSINGSUCCEEDED varchar2(50))
+/
+update CA_FILEPARSINGENTRY
+   set PARSINGSUCCEEDED = 
+       decode(parsingsucceeded, 0, 'IN PROCESS',
+	                            1, 'PROCESSING SUCCESSFUL',
+	                            2, 'PROCESSING ERROR')
+/
+commit
+/
+alter table CA_FILEPARSINGENTRY
+  add constraint ca_fileparsingentry_ps_fk
+  foreign key (PARSINGSUCCEEDED)
+  references ca_file_status
+/
+alter table CA_FILEPARSINGENTRY
+  add constraint CA_FILEPARSINGENTRY_CK1
+  check (PARSINGSUCCEEDED in ('IN PROCESS', 'PROCESSING SUCCESSFUL', 'PROCESSING ERROR'))
+/
+
+
+alter table CA_FILEUPLOADGROUP modify PARSINGSUCCEEDED null
+/
+alter table CA_FILEUPLOADGROUP drop constraint CA_FILEUPLOADGROUP_CK1
+/
+alter table CA_FILEUPLOADGROUP modify (PARSINGSUCCEEDED varchar2(50))
+/
+update CA_FILEUPLOADGROUP
+   set PARSINGSUCCEEDED = 
+       decode(parsingsucceeded, 0, 'IN PROCESS',
+	                            1, 'PROCESSING SUCCESSFUL',
+	                            2, 'PROCESSING ERROR')
+/
+commit
+/
+alter table CA_FILEUPLOADGROUP
+  add constraint ca_CA_FILEUPLOADGROUP_ps_fk
+  foreign key (PARSINGSUCCEEDED)
+  references ca_file_status
+/
+alter table CA_FILEUPLOADGROUP
+  add constraint CA_FILEUPLOADGROUP_CK1
+  check (PARSINGSUCCEEDED in ('IN PROCESS', 'PROCESSING SUCCESSFUL', 'PROCESSING ERROR'))
+/
+
+
+/*
+alter table ca_hybridfileuploadentry modify (
+  orginial_filename not null,
+  user_id           not null,
+  status            not null
+)
+/
+*/
+
+
