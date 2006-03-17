@@ -837,6 +837,7 @@ The following indexes are recommended for better query (delete) performance:
 (unindexed foreign keys can cause various problems during DML update/delete operations, 
 and even for simple query)
 
+
 create index feature_fgrp_idx on feature(feature_group_id);
 create index feature_zone_idx on feature(zone_id);
 create index reporter_rgrp_idx on reporter(reporter_group_id);
@@ -1092,6 +1093,14 @@ end purge_Array_Design;
 sho errors
 
 
+declare
+begin
+  for c1 in (select id from arraydesign) loop
+     purge_array_design(c1.id);
+  end loop;
+end;
+/
+
 select cs.IDENTIFIER
  	     from ARRAYDESIGNCOMPOSITEGRP adcg,
 		 	  COMPOSITESEQUENCE cs
@@ -1280,3 +1289,102 @@ alter table ca_hybridfileuploadentry modify (
 */
 
 
+
+select nvl(login_name, 'PUBLIC'), count(*)
+  from AS_protection_element pe,
+       as_user u,
+       CA_HYBRIDFILEUPLOADENTRY fe
+ where instr(object_id, 'experiment') > 0
+   and replace(object_id, 'caarray;experiment;', '') = fe.experiment_id
+   and pe.user_id = u.user_id(+)
+group by rollup(login_name)
+/
+
+-- unindexed foreign keys...
+
+column columns format a20 word_wrapped
+column table_name format a30 word_wrapped
+
+select decode( b.table_name, NULL, '****', 'ok' ) Status, 
+	   a.table_name, a.columns, b.columns
+from 
+( select substr(a.table_name,1,30) table_name, 
+		 substr(a.constraint_name,1,30) constraint_name, 
+	     max(decode(position, 1,     substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 2,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 3,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 4,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 5,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 6,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 7,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 8,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 9,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,10,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,11,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,12,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,13,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,14,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,15,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,16,', '||substr(column_name,1,30),NULL)) columns
+    from user_cons_columns a, user_constraints b
+   where a.constraint_name = b.constraint_name
+     and b.constraint_type = 'R'
+   group by substr(a.table_name,1,30), substr(a.constraint_name,1,30) ) a, 
+( select substr(table_name,1,30) table_name, substr(index_name,1,30) index_name, 
+	     max(decode(column_position, 1,     substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 2,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 3,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 4,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 5,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 6,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 7,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 8,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 9,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,10,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,11,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,12,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,13,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,14,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,15,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,16,', '||substr(column_name,1,30),NULL)) columns
+    from user_ind_columns 
+   group by substr(table_name,1,30), substr(index_name,1,30) ) b
+where a.table_name = b.table_name (+)
+  and b.columns (+) like a.columns || '%'
+/
+
+
+
+--
+-- delete all array designs from the seed database
+--
+
+@disble_cons.sql
+truncate table mismatchinformation;
+truncate table sequenceposition;
+truncate table featureinformation;
+truncate table DESIGNELEMENTMAP;
+truncate table IMMOBILIZEDCHARACTERISTICS;
+truncate table reporter;
+truncate table DESIGNELEMENTMAP;
+truncate table DESIGNELEMENT;
+truncate table COMPSEQDIMENSIONCOMPSEQ;
+truncate table BIOLOGICALCHARACTERISTICS;
+truncate table biosequence;
+truncate table bioevent;
+truncate table compositesequence;
+truncate table FEATUREDIMENSIONFEATURE;
+truncate table FEATURECONTROLLEDFEATURE;
+truncate table FEATURECONTROLFEATURE;
+truncate table featurelocation;
+truncate table feature;
+truncate table zone;
+truncate table zonegroup;
+truncate table arraydesignreportergrp;
+truncate table arraydesigncompositegrp;
+truncate table arraydesignfeaturegrp;
+truncate table array;
+truncate table CA_ARRAYDSGNFILEUPLOADENTRY;
+truncate table arraydesignprovider;
+truncate table arraydesign;
+@enable_cons.sql
