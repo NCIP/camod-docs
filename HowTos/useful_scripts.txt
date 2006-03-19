@@ -1118,10 +1118,17 @@ select id from compositesequence where identifier = 'Affymetrix.com:CompositeSeq
 delete from compositesequence where id = '1015897527804781';
 commit;
 
+delete from COMPSEQDIMENSIONCOMPSEQ csds
+ where csds.COMP_SEQ_DIMENSION_ID = 1015897559579423 -- the design element dimension
 
+insert into COMPSEQDIMENSIONCOMPSEQ
+select 1015897559579423, cs.id
+  from ARRAYDESIGNCOMPOSITEGRP adcg,
+       COMPOSITESEQUENCE cs
+ where adcg.array_design_id = 1015897523042021 -- hgu133plus2 array id
+   and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
 
 select * from feature where id = 1015897523935375
-
 
 insert into as_user_role_protect_app
 select (rownum+6)*-1, UPDATE_DATE, ROLE_ID, APPLICATION_ID, PROTECTION_GROUP_ID, -2, PROTECTION_ELEMENT_ID, PROTECTION_TYPE_ID, START_DATE, END_DATE
