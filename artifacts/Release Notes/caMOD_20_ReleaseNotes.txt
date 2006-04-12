@@ -2,12 +2,10 @@
                           Release Notes
     
                              caMOD
-                          Version 2.0
-                         December 21, 2005
+                          Version 2.1
+                         June 10, 2006
 
        National Cancer Institute Center for Bioinformatics
-
-
 
 ================================================================
                             Contents
@@ -23,11 +21,11 @@
 
 
 ================================================================
-    1.0 - caMOD Version 1.0 Introduction and History
+    1.0 - caMOD Introduction and History
 ================================================================
  
 
-    caMOD 2.0, the Cancer Models Database, is a open source data management
+    caMOD, the Cancer Models Database, is a open source data management
     system developed for the management and sharing of data of animal models.
     caMOD features controlled vocabularies from a shared, publicly accessible 
     metadata repository (caDSR) and enterprise vocabulary services (EVS)
@@ -46,36 +44,98 @@
    -- http://emice.nci.nih.gov/ 
 
 
-
-
 ================================================================
     2.0 Release History
 ================================================================
 
+    caMOD Version 2.1
+    --	June 10 2006
+
     caMOD Version 2.0
     --	December 21 2005    
-
 
     caMOD Version 1.0
     --	Fall 2001; continously updated until April 2005
 
-
-
 ================================================================
     3.0 New Features and Updates
 ================================================================
+
+New Features in caMOD 2.1
+----------------------------------------------------------------
+
+General
+- Integration of tumor models from Jackson laboratories tumor biology database: 
+  caMOD provides access to tumor models in the MTB database. Basic information 
+  about the tumor models from MTB are provided in the model characteristics, genetic
+  description and histopathology pages and are identified with the Jax logo
+  in each of the display pages as well as the initial search hit lit. Hyperlinks
+  allow users to directly view detailed information about those models in
+  MTB database.
+
+- The caMOD API architecture provides the ability for accessing and retrieving 
+  caMOD data via several mechanisms.  The design provides functionality enabling 
+  remote applications to query and retrieve caMOD domain data using caCore and 
+  caGrid based methodologies, in addition to providing the necessary infrastructure 
+  for the integration of caMOD into the caBIG Index Service.
+
+  For mre information, please refer to 
+  caMOD 2.1 Remote API Reference Guide
+  caGrid 0.5 Technical Guide
+
+- Utilization of NCI Thesaurus: Cancer models database leverages caBIO 3.1 API to
+  selectively restrict the list of diagonis based upon an organ selection. The new
+  EVS Tree implementation makes use of the roles/relationship 
+  (e.g EO_Disease_Has_Associated_EO_Anatomy) to derive the list of applicable diseases
+  for the selected organ.
+
+- caMOD now uses the secure http protocol during the login procedure when the 
+  username and password is entered and submitted to the browser. After successful
+  authentication, the application will revert back to "regular http" for any
+  subsequent web transactions not requiring transmission of secure information
+  such as user_id/password.
+
+Search
+
+- caMOD 2.1 release provides the ability to save user’s queries and last 
+  execution date and time, and retrieve the queries at user’s request. The 
+  Search Results page allows users to save the query that generated the 
+  displayed results.  
+
+- In this new release, users will be able to retrieve 25 previously executed queries at 
+  any time for re-execution. Links will be provided in the left side navigation 
+  to give the user access to the View Saved Queries and View Query History pages.
+
+- Recalling a user’s most recent query from previous site visits. The query can 
+  be saved and/or executed Informing the user about new changes and new data 
+  available. The View Query History page displays a table of the last twenty (25)
+  queries that the user executed. This includes any execution of a query, 
+  including both queries that are not saved and saved queries that are 
+  resubmitted.
+
+- The Manage Saved Queries page is a new page that is accessed by clicking 
+  the “View Saved Queries” link in the side navigation bar.  The page displays 
+  a table of all queries that are currently saved for the user, and provides
+  the user the ability to change query/filter parameters.
+
+- caMOD release 2.1 allows users to configure the results table (hit list). 
+  Users will be able to customize the columns, order and the number of items
+  they would like to retreive in a page.
+
+Submission
+Administration
+
+New Feature in caMOD release 2.0
+----------------------------------------------------------------
 
 caMOD 2.0 is a caBIG Silver level compliant application. For caBIG compatibility information see http://https://cabig.nci.nih.gov/guidelines_documentation
 
 The caMOD Common Data Elements (CDEs) are available via caDSR (cancer Data Standard Repository)
 http://ncicb.nci.nih.gov/core/caDSR
 
-
-
 General
 - Utilization of NCI Thesaurus
 - Utilization of the Common Security Module (CSM) for user authentication
-
 
 Submission
 
@@ -166,7 +226,7 @@ Search
 ================================================================
 	
 
-	None
+	%%%% Include Test Track defect list....
     
 
 
