@@ -78,4 +78,6 @@ drop table taxon_mapping cascade constraints;
 drop table taxon_mapping_stg cascade constraints;
 drop table taxon_mapping_stg cascade constraints;
 drop table yst_mdl_trgtd_mod cascade constraints;
+drop table species_stain_stg cascade constraints;
+drop table abs_cancer_model_tmp cascade constraints;
 drop sequence hibernate_sequence;
