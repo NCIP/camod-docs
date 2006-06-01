@@ -49,12 +49,10 @@
 *	NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 *	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *
-* $$Id: camod-code-templates.xml,v 1.1 2005-12-23 17:25:37 georgeda Exp $$
+* $Id: camod-code-templates.xml,v 1.2 2006-06-01 16:48:01 georgeda Exp $
 *
-* $$Log: not supported by cvs2svn $
-* $Revision 1.1  2005/12/23 17:20:56  georgeda
-* $Initial revision
-* $$
+* $Log: not supported by cvs2svn $
+*
 */</template><template id="org.eclipse.jdt.ui.text.codetemplates.typecomment" name="typecomment" description="Comment for created types" context="typecomment_context" enabled="true" deleted="false" autoinsert="true">/**
  * @author ${user}
  *
