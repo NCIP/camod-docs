@@ -1,0 +1,26 @@
+-- This is a control file for MTB data from Jackson Labs
+LOAD DATA
+	INFILE "C:\temp\MTB_source_data.txt" 
+	BADFILE 'sample.bad'
+DISCARDFILE 'sample.dsc'
+REPLACE
+INTO TABLE jackson_Lab
+      when mtbid IS NOT NULL (
+      mtb_id CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      tumor_name CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      tumor_synonyms CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      strain_name CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      strain_types CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      strain_general_note CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"', 
+      treatment_type CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      treatment_agents CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      organ_affected CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      metastasized_to CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"', 
+      mtbids_of_corres_metastases CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      sex CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      reproductive_status CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      tumor_frequency CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      age_of_onset CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      age_of_detection CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"',
+      references CHAR TERMINATED BY WHITESPACE ENCLOSED BY 	'"'
+    )

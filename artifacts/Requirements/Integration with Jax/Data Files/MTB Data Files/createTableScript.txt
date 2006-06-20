@@ -1,0 +1,24 @@
+sqlldr camod/camod@camod3 control=c:\temp\control_file.ctl
+sqlldr camoddev21/dev!234@cadev.nci.nih.gov control=c:\temp\control_file.ctl
+
+drop table jackson_lab_tmp;
+
+create table jackson_lab_tmp (
+   mtb_id varchar2(255),
+   tumor_name varchar2(255),
+   tumor_synonyms clob,
+   strain_name varchar2(255),
+   strain_types varchar2(255),
+   strain_general_note varchar2(255),
+   treatment_type varchar2(255),
+   treatment_agents varchar2(255),
+   organ_affected varchar2(255),
+   metastasized_to clob,
+   mtbids_of_corres_metastases varchar2(255),
+   sex varchar2(255),
+   reproductive_status varchar2(255),
+   tumor_frequency varchar2(255),
+   age_of_onset varchar2(255),
+   age_of_detection varchar2(255),
+   references varchar2(255)
+);
