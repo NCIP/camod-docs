@@ -88,4 +88,7 @@ drop table SAVED_QUERY_ATTRIBUTE cascade constraints;
 drop table SPECIES_STRAIN_STG cascade constraints;
 drop table STRAIN_RATTUS_STG cascade constraints;
 drop table MORPHOLINO cascade constraints;
+drop table xenograft_invivo_result cascade constraints;
+drop table yst_mdl_scrning_result cascade constraints;
+drop table yst_mdl_trgtd_mod cascade constraints;
 drop sequence hibernate_sequence;
