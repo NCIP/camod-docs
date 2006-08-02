@@ -1,0 +1,85 @@
+--The following SQL scripts were run on camoddev22
+
+
+ALTER TABLE abs_cancer_model
+RENAME COLUMN is_tool_mouse to is_tool_strain;
+
+alter table abs_cancer_model 
+ADD external_source varchar2(255);
+
+alter table abs_cancer_model 
+ADD external_source_identifier varchar2(255);
+
+drop table MORPHOLINO cascade constraints;
+
+create table transient_interference (
+   transient_interference_id number(19,0) not null,
+   source varchar2(255),
+   source_unctr_vocab varchar2(255),
+   type varchar2(255),
+   sequence_direction varchar2(255),
+   targeted_region varchar2(255),
+   concentration varchar2(255),
+   concentration_unit varchar2(255),
+   delivery_method varchar2(255),
+   delivery_method_unctrl_vocab varchar2(255),
+   visual_ligand varchar2(255),
+   visual_ligand_unctrl_vocab varchar2(255),
+   comments clob,
+   trans_interference_method_id number(19,0) unique,
+   abs_cancer_model_id number(19,0) not null,
+   primary key (transient_interference_id)
+);
+
+create table transient_interference_method (
+   trans_interference_method_id number(19,0) not null,
+   name varchar2(255),
+   concept_code varchar2(255),
+   primary key (trans_interference_method_id)
+);
+
+INSERT INTO transient_interference_method VALUES (1, 'Morpholino phosphorodiamidate oligonucleotides', 'C60700');
+INSERT INTO transient_interference_method VALUES (2, 'siRNA','C2191');
+
+Add FK to transient_Interference:
+alter table transient_interference add constraint FKE89F80171CC8B88B foreign key (abs_cancer_model_id) references abs_cancer_model;
+alter table transient_interference add constraint FKE89F801778685E5B foreign key (trans_interference_method_id) references transient_interference_method;
+
+
+ALTER TABLE Histopathology
+ADD age_of_detection  varchar2(255);
+
+ALTER TABLE Histopathology
+ADD age_of_detection_unit  varchar2(255); 
+
+ALTER TABLE Genotype_summary
+RENAME COLUMN summary to name;
+
+ALTER TABLE Genotype_summary 
+DROP COLUMN genotype;
+
+-- To change name from genotype_summary to genotype
+RENAME genotype_summary TO genotype;
+
+ALTER TABLE Genotype
+ADD age_of_detection_unit  varchar2(255);
+
+
+--Genotype table changes
+Alter table Genotype
+abs_cancer_model_id number(19,0);
+
+
+-- Make column not null after loading data
+Alter table Genotype
+abs_cancer_model_id number(19,0) not null;
+
+
+-- Add constraint
+alter table genotype add constraint FK6C7642D91CC8B88B foreign key (abs_cancer_model_id) references abs_cancer_model;
+
+
+
+
+
+ 
