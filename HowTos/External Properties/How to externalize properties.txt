@@ -1,0 +1,20 @@
+How to externalize properties
+
+1.  create folder stucture C:\local\content\camod\config
+2.  add the following files:
+camod.properties
+mail.properties
+3.  add the following code to JBoss file named properties-service.xml
+located in jboss root\server\default\deploy
+
+PREVIOUS ENTRY:
+    <attribute name="Properties">
+      gov.nih.nci.security.configFile=C:/Devtools/jboss-4.0.2/server/default/CSM/ApplicationSecurityConfig.xml
+    </attribute>
+
+NEW ENTRY:
+    <attribute name="Properties">
+      	gov.nih.nci.security.configFile=C:/Devtools/jboss-4.0.2/server/default/CSM/ApplicationSecurityConfig.xml
+	gov.nih.nci.camod.camodProperties=C:/local/content/camod/config/camod.properties
+	gov.nih.nci.camod.mailProperties=C:/local/content/camod/config/mail.properties
+    </attribute>
