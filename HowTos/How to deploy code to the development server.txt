@@ -3,7 +3,9 @@ download putty - Free secure shell application
 TO BUILD CODE
 open putty - run putty.exe file
 
-login:  jboss-camo
+open connection to: cbiodev104
+
+login:  jboss-camod
 password:  jboss#c@m
 
 at prompt type: cd /local/home/jboss4b/caMOD  (capitalize MOD)
