@@ -20,6 +20,13 @@ When jboss4b is stopped:
 
  ./start_jboss       //start JBoss from the directory the file is located
 		     //located in:  /usr/local/jboss402/server/ncicb-app/bin
+		     
+		     
+		     
+UNIX TIPS:
+
+cd ~   //takes you to home directory
+tail -f server.log   //runs cmd output of the dev server		     
 
 
 
