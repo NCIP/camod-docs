@@ -1,17 +1,21 @@
 --The following SQL scripts were run on camoddev22
 
-
+-- Change column name from is_tool_mouse to is_tool_strain
 ALTER TABLE abs_cancer_model
 RENAME COLUMN is_tool_mouse to is_tool_strain;
 
+-- Add column named external_source
 alter table abs_cancer_model 
 ADD external_source varchar2(255);
 
+-- external_source_identifier
 alter table abs_cancer_model 
 ADD external_source_identifier varchar2(255);
 
+-- Drop Morpholino table
 drop table MORPHOLINO cascade constraints;
 
+-- Create new transient_interference table
 create table transient_interference (
    transient_interference_id number(19,0) not null,
    source varchar2(255),
@@ -31,6 +35,7 @@ create table transient_interference (
    primary key (transient_interference_id)
 );
 
+-- Create new transient_interference_method table
 create table transient_interference_method (
    trans_interference_method_id number(19,0) not null,
    name varchar2(255),
@@ -38,19 +43,38 @@ create table transient_interference_method (
    primary key (trans_interference_method_id)
 );
 
+-- Load values into transient_interference_method table
 INSERT INTO transient_interference_method VALUES (1, 'Morpholino phosphorodiamidate oligonucleotides', 'C60700');
 INSERT INTO transient_interference_method VALUES (2, 'siRNA','C2191');
 
-Add FK to transient_Interference:
+-- Add FK to transient_Interference:
 alter table transient_interference add constraint FKE89F80171CC8B88B foreign key (abs_cancer_model_id) references abs_cancer_model;
 alter table transient_interference add constraint FKE89F801778685E5B foreign key (trans_interference_method_id) references transient_interference_method;
 
-
+-- Add age_of_detection to Histopathology
 ALTER TABLE Histopathology
 ADD age_of_detection  varchar2(255);
 
+-- Add age_of_detection_unit to Histopathology
 ALTER TABLE Histopathology
 ADD age_of_detection_unit  varchar2(255); 
+
+-- Add TUMOR_INCIDENCE_RATE_tmp to Histopathology
+ALTER TABLE Histopathology
+ADD TUMOR_INCIDENCE_RATE_tmp  varchar2(255); 
+
+-- set TUMOR_INCIDENCE_RATE to varchar2 from float
+update histopathology h
+set  h.TUMOR_INCIDENCE_RATE_tmp = h.TUMOR_INCIDENCE_RATE
+
+update histopathology h
+set  h.TUMOR_INCIDENCE_RATE = null
+
+alter table histopathology
+drop column TUMOR_INCIDENCE_RATE
+
+alter table histopathology
+rename column TUMOR_INCIDENCE_RATE_tmp to TUMOR_INCIDENCE_RATE
 
 ALTER TABLE Genotype_summary
 RENAME COLUMN summary to name;
@@ -59,27 +83,97 @@ ALTER TABLE Genotype_summary
 DROP COLUMN genotype;
 
 -- To change name from genotype_summary to genotype
+ALTER TABLE Genotype
 RENAME genotype_summary TO genotype;
 
+-- To change name from genotype_summary_id to genotype_id
 ALTER TABLE Genotype
-ADD age_of_detection_unit  varchar2(255);
-
+RENAME column genotype_summary_id TO genotype_id;
 
 --Genotype table changes
 Alter table Genotype
-abs_cancer_model_id number(19,0);
+add abs_cancer_model_id number(19,0);
 
+-- INSERT Srini's Scripts Here
+create table engineered_gene_bkp as select * from engineered_gene;
+create table genotype_bkp as select * from genotype;
+
+-- Add abs_cancer_model_id for yeast strains from spreadsheet
+update genotype set abs_cancer_model_id = 1023 where genotype_id = 9;
+update genotype set abs_cancer_model_id = 1025 where genotype_id = 2;
+update genotype set abs_cancer_model_id = 1026 where genotype_id = 3;
+update genotype set abs_cancer_model_id = 1027 where genotype_id = 1;
+update genotype set abs_cancer_model_id = 1028 where genotype_id = 16;
+update genotype set abs_cancer_model_id = 1029 where genotype_id = 11;
+update genotype set abs_cancer_model_id = 1030 where genotype_id = 12;
+update genotype set abs_cancer_model_id = 1031 where genotype_id = 4;
+update genotype set abs_cancer_model_id = 1032 where genotype_id = 7;
+update genotype set abs_cancer_model_id = 1033 where genotype_id = 6;
+update genotype set abs_cancer_model_id = 1034 where genotype_id = 14;
+update genotype set abs_cancer_model_id = 1035 where genotype_id = 8;
+update genotype set abs_cancer_model_id = 1036 where genotype_id = 13;
+update genotype set abs_cancer_model_id = 1037 where genotype_id = 5;
+update genotype set abs_cancer_model_id = 1038 where genotype_id = 15;
+update genotype set abs_cancer_model_id = 1024 where genotype_id = 10;
+
+-- Add abs_cancer_model_id for remaining models from spreadsheet
+update genotype set abs_cancer_model_id = 3 where genotype_id = 19;
+update genotype set abs_cancer_model_id = 174 where genotype_id = 190;
+update genotype set abs_cancer_model_id = 199 where genotype_id = 215;
+update genotype set abs_cancer_model_id = 211 where genotype_id = 227;
+update genotype set abs_cancer_model_id = 212 where genotype_id = 228;
+update genotype set abs_cancer_model_id = 310 where genotype_id = 326;
+update genotype set abs_cancer_model_id = 328 where genotype_id = 344;
+update genotype set abs_cancer_model_id = 601 where genotype_id = 617;
+update genotype set abs_cancer_model_id = 176 where genotype_id = 192;
+update genotype set abs_cancer_model_id = 187 where genotype_id = 203;
+update genotype set abs_cancer_model_id = 198 where genotype_id = 214;
+update genotype set abs_cancer_model_id = 213 where genotype_id = 229;
+update genotype set abs_cancer_model_id = 556 where genotype_id = 572;
+
+-- Add FK constraint
+alter table genotype add constraint FK6C7642D91CC8B88B foreign key (abs_cancer_model_id) references abs_cancer_model;
 
 -- Make column not null after loading data
 Alter table Genotype
-abs_cancer_model_id number(19,0) not null;
+modify abs_cancer_model_id  not null;
+
+-- Null genotype_summary_id from engineered_gene table
+update engineered_gene set genotype_summary_id = null;
+
+-- Drop genotype_summary_id from engineered_gene table 
+alter table engineered_gene drop column genotype_summary_id;
 
 
--- Add constraint
-alter table genotype add constraint FK6C7642D91CC8B88B foreign key (abs_cancer_model_id) references abs_cancer_model;
 
 
+-- For #2: I create a temporary table to load the spreadsheet with all the mgi info. Then, removed the duplicates in engineered_gene_ids by
+--  **Missing script(s) run by Srini**
+delete from mgitemp mt
+ where exists (
+ select null from (
+   select engineered_gene_id id, min(rowid) rn
+     from mgitemp
+    group by engineered_gene_id
+   having count(*) > 1)
+ where mt.engineered_gene_id = id and mt.rowid != rn ); 
 
+-- And then, created mutation identifier records to link to engineered_gene. 
+
+alter table mgitemp add (mutation_identifier number); 
+
+update mgitemp set mutation_identifier = hibernate_sequence.nextval;
+
+insert into mutation_identifier
+ select mutation_identifier, mgi
+   from mgitemp;
+  
+
+update engineered_gene eg
+    set MUTATION_IDENTIFIER_ID = (
+   select tt.mutation_identifier
+     from mgitemp tt
+      where tt.engineered_gene_id = eg.engineered_gene_id );
 
 
  
