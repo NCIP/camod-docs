@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE server>
-<!-- $Id: properties-service.xml,v 1.1 2006-09-20 15:48:11 pandyas Exp $ -->
+<!-- $Id: properties-service.xml,v 1.2 2006-09-20 18:57:52 georgeda Exp $ -->
 
 <server>
 
@@ -57,8 +57,8 @@
 
     <attribute name="Properties">
       gov.nih.nci.security.configFile=C:/Devtools/jboss-4.0.2/server/default/CSM/ApplicationSecurityConfig.xml
-	gov.nih.nci.camod.camodProperties=C:/local/content/camod/config/camod.properties
-	gov.nih.nci.camod.mailProperties=C:/local/content/camod/config/mail.properties
+	gov.nih.nci.camod.camodProperties=/local/content/camod/config/camod.properties
+	gov.nih.nci.camod.mailProperties=/local/content/camod/config/mail.properties
     </attribute>
 
   </mbean>
