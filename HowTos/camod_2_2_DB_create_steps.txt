@@ -1,5 +1,8 @@
 --The following SQL scripts were run on camoddev22
 
+--Bug fix: drop organ_id unique key constraint on gene_delivery table
+ALTER TABLE DROP CONSTRAINT SYS_C0027601
+
 -- Change column name from is_tool_mouse to is_tool_strain
 ALTER TABLE abs_cancer_model
 RENAME COLUMN is_tool_mouse to is_tool_strain;

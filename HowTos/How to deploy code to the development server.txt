@@ -10,6 +10,7 @@ password:  jboss#c@m
 
 at prompt type: cd /local/home/jboss4b/caMOD  (capitalize MOD)
 at prompt type: ./build.sh
+OR: . build.sh (until we get execute rights on the file)
 
 The script will pull all code from CVS and build it.
 
