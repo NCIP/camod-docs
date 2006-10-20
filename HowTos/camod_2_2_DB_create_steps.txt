@@ -33,7 +33,7 @@ create table transient_interference (
    visual_ligand varchar2(255),
    visual_ligand_unctrl_vocab varchar2(255),
    comments clob,
-   trans_interference_method_id number(19,0) unique,
+   trans_interference_method_id number(19,0),
    abs_cancer_model_id number(19,0) not null,
    primary key (transient_interference_id)
 );
