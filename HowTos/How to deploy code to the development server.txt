@@ -38,6 +38,15 @@ This will copy (cp) the camod.war file into the development deploy folder.
 this is the deployment folder for the dev server (?):
 /usr/local/jboss402/server/ncicb-app/deploy
 
+-------------------------------------------------------------------
+Stop/start server in 
+
+cd ~
+cd bin
+type:   . stop_jboss
+wait for 2-4 minutes / check for process list??
+
+type:   . start_jboss
 
 
 -----------------------------------------------------------------------
