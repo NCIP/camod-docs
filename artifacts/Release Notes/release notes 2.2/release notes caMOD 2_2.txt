@@ -162,6 +162,10 @@ Defect #462: customizing search results doesn't work when carcinogen is selected
         After meeting with the caBio team, it was concluded that the development team 
         will need to eliminate lazy fetching forlibrary and tissue attributes 
         if we want to improve performance.
+     
+     4. Carcinogenic Agents cannot be added to a customized search results list.
+     
+     5. Data from the Mouse Tumor Biology dataset cannot be retrieved using the 	search features that allow the user to query for carcinogenic treatment and agent data.
    
     Please report any defects found to application support.
 
