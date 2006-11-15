@@ -1,9 +1,8 @@
 Step 1:  Refresh complete database from camod production
-Step 2:  Find and drop the unique key constraint for organ_id from the gene_delivery table
+Step 2:  Drop Unique Key Constraint on the ORGAN_ID column of the GENE_DELIVERY table
 --Bug fix: Note this constraint name is different on each tier
+Step 3:  Run the sql listed in order below
 
-
---The following SQL scripts were run on camoddev22
 
 -- Change column name from is_tool_mouse to is_tool_strain
 ALTER TABLE abs_cancer_model
