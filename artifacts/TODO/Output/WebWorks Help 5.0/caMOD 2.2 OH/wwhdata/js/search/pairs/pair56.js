@@ -6,5 +6,5 @@ x.t("includes","following");
 x.t("section","includes");
 x.t("database","searching");
 x.t("database","section");
-x.t("following","topics");
+x.t("following","topics:");
 }

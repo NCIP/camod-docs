@@ -5,9 +5,9 @@
  <head>
   <meta http-equiv="content-type" content="text/html">
   <meta http-equiv="charset"      content="UTF-8">
-  <!-- saved from url=(0014)about:internet -->
+  <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
 
-  <title>init2.htm</title>
+  <title>default.htm</title>
 
   <script type="text/javascript" language="JavaScript1.2">
    <!--
@@ -16,25 +16,27 @@
 
     // Set reference to top level help frame
     //
-    if ((typeof(parent.parent.WWHHelp) != "undefined") &&
-        (parent.parent.WWHHelp != null))
+    if ((typeof(parent.WWHHelp) != "undefined") &&
+        (parent.WWHHelp != null))
+    {
+      WWHFrame = eval("parent");
+    }
+    else if ((typeof(parent.parent.WWHHelp) != "undefined") &&
+             (parent.parent.WWHHelp != null))
     {
       WWHFrame = eval("parent.parent");
     }
-    else if ((typeof(parent.parent.parent.WWHHelp) != "undefined") &&
-             (parent.parent.parent.WWHHelp != null))
+
+    function  WWHContent_HandleOnLoad()
     {
-      WWHFrame = eval("parent.parent.parent");
+      // Display the first topic in the help set
+      //
+      WWHFrame.WWHHelp.fDisplayFirst();
     }
    // -->
   </script>
  </head>
 
- <body onLoad="WWHFrame.WWHHelp.fInitStage(3);">
-  <script type="text/javascript" language="JavaScript1.2">
-   <!--
-    document.write(WWHFrame.WWHHelp.mBooks.fInit_BookData_Script());
-   // -->
-  </script>
+ <body bgcolor="#FFFFFF" onLoad="WWHContent_HandleOnLoad();">
  </body>
 </html>
