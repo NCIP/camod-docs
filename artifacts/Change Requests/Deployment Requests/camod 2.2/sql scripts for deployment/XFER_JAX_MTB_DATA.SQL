@@ -397,7 +397,7 @@ BEGIN
 	-- -----------------------------------------------------------------------------------------
 	FOR aRec IN getMTBHistopathologyData LOOP
 
-	    IF LEN(aRec.TUMOR_SYNONYMS) is null THEN
+	    IF LENGTH(aRec.TUMOR_SYNONYMS) is null THEN
 		synonyms := ' ';
 	    ELSE
 		synonyms := 'Disease Name Synonyms: ' || replace(aRec.TUMOR_SYNONYMS, '|', ' & ');
