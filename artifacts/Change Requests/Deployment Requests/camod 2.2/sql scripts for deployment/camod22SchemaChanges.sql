@@ -71,7 +71,7 @@ ADD TUMOR_INCIDENCE_RATE_tmp  varchar2(255);
 
 -- set TUMOR_INCIDENCE_RATE to varchar2 from float
 update histopathology h
-set  h.TUMOR_INCIDENCE_RATE_tmp = h.TUMOR_INCIDENCE_RATE
+set  h.TUMOR_INCIDENCE_RATE_tmp = h.TUMOR_INCIDENCE_RATE;
 
 update histopathology h
 set  h.TUMOR_INCIDENCE_RATE = null;
