@@ -1,4 +1,4 @@
-Drop table in order
+--Drop table in order
 
 drop table yst_mdl_scrning_result cascade constraints;
 drop table xenograft_invivo_result cascade constraints;
@@ -65,6 +65,7 @@ drop table mutation_identifier cascade constraints;
 drop table sex_distribution cascade constraints;
 drop table availability cascade constraints;
 drop table genotype_summary cascade constraints;
+drop table genotype cascade constraints;
 drop table nomenclature cascade constraints;
 drop table disease_mapping_stg cascade constraints;
 drop table disease_stg cascade constraints;
@@ -91,4 +92,12 @@ drop table MORPHOLINO cascade constraints;
 drop table xenograft_invivo_result cascade constraints;
 drop table yst_mdl_scrning_result cascade constraints;
 drop table yst_mdl_trgtd_mod cascade constraints;
+
+-- Tables added in camod 2.2
+drop table transient_interference cascade constraints;
+drop table transient_interference_method cascade constraints;
+drop table engineered_gene_bkp cascade constraints;
+drop table genotype_bkp cascade constraints;
+drop table MGITEMP cascade constraints;
+
 drop sequence hibernate_sequence;
