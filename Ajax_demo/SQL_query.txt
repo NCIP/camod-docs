@@ -1,0 +1,19 @@
+SELECT ef.name, ef.name_unctrl_vocab 
+FROM environmental_factor ef 
+WHERE ef.type = 'Chemical / Drug'  
+AND ef.name IS NOT null 
+AND ef.environmental_factor_id IN (SELECT ce.environmental_factor_id 
+FROM carcinogen_exposure ce, abs_cancer_model am 
+WHERE ef.environmental_factor_id = ce.environmental_factor_id 
+AND am.abs_cancer_model_id = ce.abs_cancer_model_id AND am.state = 'Edited-approved')
+
+UNION
+
+SELECT distinct ef.name_unctrl_vocab
+FROM environmental_factor ef
+WHERE ef.TYPE_UNCTRL_VOCAB LIKE 'Hormone%'
+AND ef.name_unctrl_vocab IS NOT null 
+AND ef.environmental_factor_id IN (SELECT ce.environmental_factor_id 
+FROM carcinogen_exposure ce, abs_cancer_model am 
+WHERE ef.environmental_factor_id = ce.environmental_factor_id 
+AND am.abs_cancer_model_id = ce.abs_cancer_model_id AND am.state = 'Edited-approved');
