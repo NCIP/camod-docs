@@ -1,0 +1,2259 @@
+alter table engineered_gene add (mod_type_unctrl_vocab varchar2(255));
+alter table env_factor add (name_unctrl_vocab varchar2(255));
+alter table env_factor add (type_unctrl_vocab varchar2(255));
+alter table image add (STAINING_UNCTRL_VOCAB varchar2(255));
+alter table treatment add (admin_route_unctrl_vocab varchar2(255));
+
+
+update therapy set therapeutic_experiment = 0  where therapeutic_experiment is null;
+update env_factor set is_cmap_agent=0 where is_cmap_agent is null;
+update publication set first_time_reported = 0 where first_time_reported is null;
+
+select abs_cancer_model_type, count(*) from abs_cancer_model
+ group by abs_cancer_model_type;
+ 
+select distinct acm.abs_cancer_model_id, acm.abs_cancer_model_type
+ from abs_cancer_model acm, (
+select abs_cancer_model_id, abs_cancer_model_type, par_abs_can_model_id
+ from abs_cancer_model
+ where par_abs_can_model_id is not null
+ connect by prior par_abs_can_model_id = abs_cancer_model_id
+) t
+ where acm.abs_cancer_model_id = t.par_abs_can_model_id
+
+select acm.abs_cancer_model_type,
+       acm.taxon_id,
+       sr.stage stage,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and a.nsc_number in (337250, 122758)
+
+select distinct a.nsc_number
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   --and a.nsc_number = 704805
+
+
+
+
+select acm.abs_cancer_model_id, 
+       acm.abs_cancer_model_type,
+       ef.env_factor_id,
+       ef.nsc_number
+  from abs_cancer_model acm,
+       animal_model_therapy amt,
+       therapy t,
+       env_factor ef
+ where acm.abs_cancer_model_id = amt.abs_cancer_model_id
+   and amt.therapy_id = t.therapy_id
+   and t.env_factor_id = ef.env_factor_id
+   and ef.nsc_number in (
+select distinct a.nsc_number
+  from screening_Result sr,
+       env_factor a
+ where sr.agent_id = a.env_factor_id )
+ 
+ 
+select tx.ethnicity_strain,
+       sr.stage stage,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh,
+       a.env_factor_id
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+   
+   
+select tx.ethnicity_strain,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+   
+   
+select tx.ethnicity_strain,
+       t.dosage,
+       sr.aveinh aveinh,
+       sr.diffinh diffinh,
+       a.env_factor_id,
+       ymsr.abs_cancer_model_id
+  from screening_Result sr,
+       env_factor a,
+       YST_MDL_SCRNING_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.screening_result_id = ymsr.screening_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758
+   and sr.stage = '0'
+ order by 1, 2
+ 
+ 
+select acm.abs_cancer_model_id, 
+       acm.abs_cancer_model_type,
+       ef.env_factor_id,
+       ef.nsc_number
+  from abs_cancer_model acm,
+       animal_model_therapy amt,
+       therapy t,
+       env_factor ef
+ where acm.abs_cancer_model_id = amt.abs_cancer_model_id
+   and amt.therapy_id = t.therapy_id
+   and t.env_factor_id = ef.env_factor_id
+   and ef.nsc_number in (
+select distinct a.nsc_number
+  from invivo_Result sr,
+       env_factor a
+ where sr.agent_id = a.env_factor_id )
+ 
+ 
+select acm.abs_cancer_model_id,
+       acm.model_descriptor,
+       tx.ethnicity_strain,
+       count(*)
+  from invivo_Result sr,
+       env_factor a,
+       XENOGRAFT_INVIVO_RESULT ymsr,
+       abs_cancer_model acm,
+       treatment t,
+       taxon tx
+ where sr.agent_id = a.env_factor_id
+   and sr.invivo_result_id = ymsr.invivo_result_id
+   and sr.treatment_id = t.treatment_id
+   and ymsr.abs_cancer_model_id = acm.abs_cancer_model_id
+   and acm.taxon_id = tx.taxon_id
+   and a.nsc_number = 122758--in (337250, 122758)
+ group by acm.abs_cancer_model_id, acm.model_descriptor, tx.ethnicity_strain
+ order by 3, 2
+
+ 
+ 
+select invivoresu0_.abs_cancer_model_id as abs1___, 
+       invivoresu0_.invivo_result_id as invivo2___, invivoresu1_.invivo_result_id as invivo1_0_, 
+       invivoresu1_.evaluationDay as evaluati2_25_0_, 
+       invivoresu1_.toxicitySurvivors as toxicity3_25_0_, 
+       invivoresu1_.toxicityEvalDay as toxicity4_25_0_, 
+       invivoresu1_.percent_treated_control as percent5_25_0_, 
+       invivoresu1_.endpoint_code_id as endpoint6_25_0_, invivoresu1_.treatment_id as treatment7_25_0_,
+       invivoresu1_.agent_id as agent8_25_0_ 
+  from xenograft_invivo_result invivoresu0_ 
+     inner join invivo_result invivoresu1_ on 
+     invivoresu0_.invivo_result_id=invivoresu1_.invivo_result_id 
+  where invivoresu0_.abs_cancer_model_id=718
+
+select count(*)
+  from xenograft_invivo_result invivoresu0_ 
+     inner join invivo_result invivoresu1_ on 
+     invivoresu0_.invivo_result_id=invivoresu1_.invivo_result_id 
+  where invivoresu0_.abs_cancer_model_id=718
+  
+select xenograftc0_.par_abs_can_model_id as par28___, 
+	xenograftc0_.abs_cancer_model_id as abs1___, 
+	xenograftc0_.abs_cancer_model_id as abs1_0_, 
+	xenograftc0_.experiment_design as experiment3_2_0_, 
+	xenograftc0_.model_descriptor as model4_2_0_, 
+	xenograftc0_.state as state2_0_, 
+	xenograftc0_.availability_id as availabi6_2_0_, 
+	xenograftc0_.taxon_id as taxon7_2_0_, 
+	xenograftc0_.submitter_id as submitter8_2_0_, 
+	xenograftc0_.principal_investigator_id as principal9_2_0_, 
+	xenograftc0_.administrative_site as adminis10_2_0_, 
+	xenograftc0_.genetic_manipulation as genetic11_2_0_, 
+	xenograftc0_.modification_description as modific12_2_0_, 
+	xenograftc0_.parental_cell_line_name as parental13_2_0_, 
+	xenograftc0_.name as name2_0_, xenograftc0_.atcc_number as atcc15_2_0_, 
+	xenograftc0_.cell_amount as cell16_2_0_, xenograftc0_.harvest_date as harvest17_2_0_, 
+	xenograftc0_.graft_type as graft18_2_0_, xenograftc0_.graft_type_unctrl_vocab as graft19_2_0_, 
+	xenograftc0_.tumor_code_id as tumor20_2_0_, xenograftc0_.origin_species_id as origin21_2_0_, 
+	xenograftc0_.host_species_id as host22_2_0_, xenograftc0_.organ_id as organ23_2_0_ 
+ from abs_cancer_model xenograftc0_ where xenograftc0_.par_abs_can_model_id=1036 --?
+ 
+
+
+/* engineered gene, tms etc. */
+ select engineered_gene_type, count(*) from engineered_gene
+  group by engineered_gene_type
+  
+ENGINEERED   COUNT(*)
+---------- ----------
+GS                  3
+IM                 62
+T                 440
+TM                339
+
+
+select abs_cancer_model_id, eg.engineered_gene_type
+  from ani_mod_engineered_gene ameg, 
+       engineered_gene eg
+ where ameg.engineered_gene_id = eg.engineered_Gene_id
+   and eg.engineered_gene_type in ('GS', 'IM')
+   
+select modeluid from abs_cancer_model_tmp where abs_cancer_model_id in (
+select abs_cancer_model_id
+  from ani_mod_engineered_gene ameg, 
+       engineered_gene eg
+ where ameg.engineered_gene_id = eg.engineered_Gene_id
+   and eg.engineered_gene_type in ('GS', 'IM')
+)
+
+
+select distinct abs_cancer_model_id 
+  from ANIMAL_MODEL_THERAPY amt,
+       therapy t
+ where t.therapeutic_experiment = 0
+   and t.therapy_id = amt.therapy_id
+
+select type, count(*)
+  from env_factor e,
+       therapy t
+ where e.env_factor_id = t.env_factor_id
+   and t.therapeutic_experiment = 0
+ group by rollup(type)   
+
+ 
+select agent0_.env_factor_id as env1_0_, agent0_.env_factor_type, agent0_.type as type50_0_
+  from env_factor agent0_ 
+ where agent0_.env_factor_id in (
+ select distinct t.env_Factor_id
+  from ANIMAL_MODEL_THERAPY amt,
+       therapy t
+ where t.therapeutic_experiment = 0
+   and t.therapy_id = amt.therapy_id )
+--   and agent0_.env_factor_type='AG'
+
+
+select t.therapy_id, e.env_factor_id, e.env_factor_type, e.type
+  from env_factor e,
+       therapy t,
+       animal_model_therapy amt
+ where amt.therapy_id = t.therapy_id
+   and t.env_Factor_id = e.env_factor_id
+   and t.therapeutic_experiment = 0
+   and amt.abs_cancer_model_id = 190
+
+
+
+select ca.AGENTCATEGORY,
+       ca.AGENTNAME,
+       c.CARCINOGENUID,
+       c.MODELKEY,
+       c.CARCINOGENAGENTKEY,
+       c.SEX,
+       c.AGE,
+       c.CARCINOGENAGENTADMINKEY,
+       c.DOSE,
+       c.TREATMENTLENGTH
+  from CARCINOGEN c,CARCINOGENAGENT ca
+ where c.MODELKEY = 1782
+   and c.CARCINOGENAGENTKEY = ca.CARCINOGENAGENTUID
+ order by c.CARCINOGENUID
+
+
+select therapy_id, therapyuid, carcinogenuid, carcinogenagentkey
+  from therapy_tmp
+ where carcinogenuid in (1552, 1553, 1554, 1555, 1556)
+
+select name, env_factor_type, type
+   from env_factor_tmp
+  where carcinogenagentuid in (  59, 59, 23, 148, 163)
+
+
+select acm.abs_cancer_model_id,
+       t.therapy_id
+  from abs_cancer_model_tmp acm,
+       therapy_tmp t,
+       therapy@camodop_datop tc
+ where acm.modeluid = tc.modelkey
+   and t.therapyuid = tc.therapyuid
+order by 1
+
+select acm.abs_cancer_model_id,
+       t.therapy_id
+  from abs_cancer_model_tmp acm,
+       therapy_tmp t,
+       carcin@camodop_datop tc
+ where acm.modeluid = tc.modelkey
+   and t.therapyuid = tc.therapyuid
+
+select publication_id, year, authors
+  from publication
+ where publication_id in (
+	select min(publication_id) publication_id
+	  from publication
+	 where pmid in (
+		select distinct pmid
+		  from animal_model_therapy amt,
+		       therapy_publication tp,
+		       publication p
+		 where amt.abs_cancer_model_id = 3
+		   and amt.therapy_id = tp.therapy_id
+		   and tp.publication_id = p.publication_id
+		union
+		select distinct pmid
+		  from ani_mod_cell_line acl,
+		       cell_line_publication cp,
+		       publication p
+		 where acl.abs_cancer_model_id = 3
+		   and acl.cell_line_id = cp.cell_line_id
+		   and cp.publication_id = p.publication_id
+		union
+		select distinct pmid
+		  from abs_can_mod_publication acmp,
+		       publication p
+		 where acmp.abs_cancer_model_id = 3
+		   and acmp.publication_id = p.publication_id )
+	 group by pmid )
+ order by year desc, authors
+
+ALTER SEQUENCE hibernate_sequence
+INCREMENT BY 1000000;
+
+SELECT hibernate_sequence.NEXTVAL FROM dual;
+
+ALTER SEQUENCE hibernate_sequence
+INCREMENT BY 1;
+
+
+
+http://caimage.nci.nih.gov/lizardtech//iserv/getthumb?cat=Model&img=277.sid
+http://caimage.nci.nih.gov/lizardtech//iserv/catalogviewtumors.jsp?cat=Model&img=277.sid
+
+alter table sex_distribution add constraint sex_distribution_type_unq unique(type);
+alter table ANIMAL_DISTRIBUTOR add constraint ANIMAL_DISTRIBUTOR_name_unq unique(name);
+alter table CHEMICAL_CLASS add constraint CHEMICAL_CLASS_name_unq unique(CHEMICAL_CLASS_NAME);
+alter table BIOLOGICAL_PROCESS add constraint BIOLOGICAL_PROCESS_name_unq unique(PROCESS_NAME);
+alter table AGENT_TARGET add constraint TARGET_name_unq unique(TARGET_NAME);
+alter table EXP_LEVEL_DESC add constraint EXP_LEVEL_unq unique(EXPRESSION_LEVEL);
+alter table publication_status add constraint publication_status_name_unq unique(name);
+alter table REG_ELEMENT_TYPE add constraint REG_ELEMENT_TYPE_name_unq unique(name);
+alter table modification_type add constraint modification_type_name_unq unique(name);
+alter table party add constraint party_username_unq unique(username);
+alter table model_section add constraint model_section_name_unq unique(name);
+
+
+
+select id, name, NUMBEROFFEATURES,              -- features in arraydesign tbl, likely from header
+     ( select count(*)                          -- count of persisted/parsed rows
+ 	     from ARRAYDESIGNFEATUREGRP adfg,
+		 	  FEATURE f
+	    where adfg.array_design_id = ad.id
+		  and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID ) n_feature,
+     ( select count(*)                          -- count of persisted/parsed comp. sequences
+ 	     from ARRAYDESIGNCOMPOSITEGRP adcg,
+		 	  COMPOSITESEQUENCE cs
+	    where adcg.array_design_id = ad.id
+		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID ) n_comp_sequence,
+     ( select count(*)                          -- count of persisted/parsed reporters
+ 	     from ARRAYDESIGNREPORTERGRP adrg,
+		 	  REPORTER r
+	    where adrg.array_design_id = ad.id
+		  and adrg.reporter_group_id = r.reporter_group_id ) n_reporter
+  from arraydesign ad
+ where ad.deleted != 1                          -- not marked for deletion
+   and exists (
+     select null
+       from AS_protection_element pe,
+            AS_PROTECTION_GROUP_ELEMENT pge
+      where pe.PROTECTION_ELEMENT_ID = pge.PROTECTION_ELEMENT_ID
+        and pge.PROTECTION_GROUP_ID = 0         -- belongs to the "public" group
+        and instr(object_id, 'arraydesign') > 0
+		and replace(object_id, 'caarray;arraydesign;', '') = ad.id
+     )
+order by 1
+
+create index feature_group_id_idx on feature(feature_group_id);
+
+
+create global temporary table temp_constraints
+  as
+  select a.table_name,
+         a.constraint_name pkey_constraint,
+         b.constraint_name fkey_constraint,
+         b.r_constraint_name
+    from user_constraints a, user_constraints b
+   where 1=0
+alter table temp_constraints modify fkey_constraint NULL;
+
+truncate table temp_constraints;
+insert into temp_constraints
+ select table_name, constraint_name, null, null from user_constraints where 
+ constraint_type = 'P';
+insert into temp_constraints
+  select a.table_name,
+         a.constraint_name pkey_constraint,
+             b.constraint_name fkey_constraint,
+             b.r_constraint_name
+    from user_constraints a, user_constraints b
+   where a.table_name = b.table_name
+     and a.constraint_type = 'P'
+     and b.constraint_type = 'R';
+     
+insert into temp_constraints
+    select a.table_name,
+           a.constraint_name pkey_constraint,
+           b.constraint_name fkey_constraint,
+           b.r_constraint_name
+      from user_constraints a, user_constraints b
+     where a.table_name = b.table_name
+       and a.constraint_type = 'P'
+       and b.constraint_type = 'R'
+       and a.constraint_name != b.r_constraint_name;
+
+column table_name format a40
+select rpad( '*', (level-1)*2, '*' ) || table_name table_name
+from temp_constraints
+start with fkey_constraint is null
+connect by prior pkey_constraint = r_constraint_name
+
+
+create global temporary table allpcr_h(
+   entity varchar2(4000) unique,
+   allpcr_h_id integer primary key)
+on commit delete rows;
+
+
+
+create sequence allpcr_h_seq;
+
+CREATE TRIGGER allpcr_h_ID
+BEFORE INSERT ON allpcr_h
+FOR EACH ROW 
+begin
+  select allpcr_h_seq.nextval
+    into   :new.allpcr_h_ID
+    from dual;  
+end;
+/
+
+create global temporary table allpcr(
+   pid integer,
+   cid integer,
+   path varchar2(4000))
+on commit delete rows;
+
+
+create type numbertable is table of number;
+/
+
+create type longstringtable is table of varchar2(32767);
+/
+
+
+create or replace package hierarchical is
+     function in_list_number(vinstring in varchar2) return numbertable;
+
+     type CPType is record(
+        parent varchar2(512),
+        child varchar2(512));
+
+     type CPRType is REF Cursor return CPType;
+  
+     function AllPaths(vcp in CPRType,
+                       vonlylongest in integer default 1, -- if set to 0, all paths are returned
+                       vseparator in varchar2 default ' -> ') 
+       return longstringtable pipelined;
+end hierarchical;
+/
+
+create or replace package body hierarchical is
+
+function in_list_number(vinstring in varchar2) return numbertable is
+l_string        long default vinstring || ',';
+l_data          numbertable := numbertable();
+n               number;
+begin
+   loop
+      exit when l_string is null;
+      n := instr( l_string, ',' );
+      l_data.extend;
+      l_data(l_data.count) := 
+         ltrim( rtrim( substr( l_string, 1, n-1 ) ) );
+      l_string := substr( l_string, n+1 );
+   end loop;
+   return l_data;
+end in_list_number;
+
+
+function AllPaths(vcp in CPRType,
+                  vonlylongest in integer,
+                  vseparator in varchar2) return longstringtable pipelined is
+pragma autonomous_transaction;
+cp CPType;
+hnt numbertable;
+i integer;
+ret varchar2(32767);
+begin
+   loop
+      fetch vcp into cp;
+      exit when vcp%notfound;
+
+      insert into allpcr_h(entity)
+      (select cp.parent from dual
+      union all select cp.child from dual)
+      minus select entity from allpcr_h;
+      
+      insert into allpcr(pid, cid, path) 
+      select hp.allpcr_h_id, hc.allpcr_h_id, hp.allpcr_h_id || ',' || hc.allpcr_h_id 
+      from allpcr_h hp, allpcr_h hc
+      where hp.entity = cp.parent
+      and hc.entity = cp.child
+      minus select pid, cid, path from allpcr;
+   end loop;
+         
+   close vcp;
+
+   loop
+      insert into allpcr(pid, cid, path)
+      select ap.pid, ac.cid, ap.pid || ',' || ac.path
+      from allpcr ap, allpcr ac
+      where ap.cid = ac.pid
+      and (ap.pid, ac.cid) in
+           (select ap.pid, ac.cid            
+            from allpcr ap, allpcr ac
+            where ap.cid = ac.pid
+            minus
+            select pid, cid
+            from allpcr);
+      exit when sql%rowcount = 0;
+   end loop;   
+
+      
+   if vonlylongest != 0 then
+      delete allpcr ad
+      where exists
+        (select 1
+         from allpcr aa
+         where aa.rowid != ad.rowid
+         and (aa.path like '%,' || ad.path
+           or aa.path like ad.path || ',%'));
+   end if;
+
+
+   for allpcr_rec in (select * from allpcr) loop
+      hnt := in_list_number(allpcr_rec.path);
+      ret := null;
+      for i in 1 .. hnt.count loop
+         if ret is null then
+            select entity
+            into ret
+            from allpcr_h
+            where allpcr_h_id = hnt(i);
+         else
+            select entity || vseparator || ret
+            into ret
+            from allpcr_h
+            where allpcr_h_id = hnt(i);         
+         end if;         
+      end loop;
+      pipe row(ret);
+   end loop;
+   
+   rollback;
+   
+   return;
+end AllPaths;
+  
+end hierarchical;
+/
+
+
+
+select * from table(hierarchical.allpaths(cursor(select a.table_name as parent,  
+b.table_name as child from user_constraints a, user_constraints b where 
+a.constraint_name = b.r_constraint_name and a.constraint_type = 'P' and 
+b.constraint_type = 'R')))
+
+
+
+delete from temp_constraints where table_name in ('BIOASSAYCREATION');
+delete from temp_constraints where table_name in ('ARRAYMANUFACTUREDEVIATION');
+delete from temp_constraints where table_name in ('FIDUCIAL');
+delete from temp_constraints where table_name in ('ARRAYMANUFACTURE');
+delete from temp_constraints where table_name in ('QUANTITATIONTYPE');
+delete from temp_constraints where table_name in ('BIOASSAYCHANNEL');
+delete from temp_constraints where table_name in ('CA_HYBRIDIZATIONFILEUPLOAD');
+delete from temp_constraints where table_name in ('BIOASSAYMAPBIOASSAY');
+delete from temp_constraints where table_name in ('IMAGE');
+delete from temp_constraints where table_name in ('BIOASSAYTUPLE');
+delete from temp_constraints where table_name in ('FEATUREEXTRACTION');
+delete from temp_constraints where table_name in ('BIOSOURCECONTACT');
+delete from temp_constraints where table_name in ('LABELEDEXTRACTCOMPOUND');
+delete from temp_constraints where table_name in ('NAMEVALUETYPE');
+delete from temp_constraints where table_name in ('TREATMENT');
+delete from temp_constraints where table_name in ('BIOMATERIAL');
+delete from temp_constraints where table_name in ('DATABASEENTRY');
+delete from temp_constraints where table_name in ('SEQFEATURELOCATION');
+delete from temp_constraints where table_name in ('IMMOBILIZEDCHARACTERISTICS');
+
+delete from temp_constraints where table_name in ('DESIGNELEMENTGROUPTYPES');
+delete from temp_constraints where table_name in ('CA_CHANNELTWOFACTORVALUES');
+delete from temp_constraints where table_name in ('MISMATCHINFORMATION');
+delete from temp_constraints where table_name in ('REPORTERDIMENSIONREPORTER');
+delete from temp_constraints where table_name in ('EXPERIMENTALFACTOR');
+delete from temp_constraints where table_name in ('HARDWAREAPPLICATION');
+delete from temp_constraints where table_name in ('SOFTWARE');
+delete from temp_constraints where table_name in ('FEATURECONTROLLEDFEATURE');
+delete from temp_constraints where table_name in ('HARDWARE');
+delete from temp_constraints where table_name in ('EXPERIMENTDESIGNTYPE');
+delete from temp_constraints where table_name in ('FACTORVALUE');
+delete from temp_constraints where table_name in ('FEATURECONTROLFEATURE');
+delete from temp_constraints where table_name in ('NODEVALUE');
+delete from temp_constraints where table_name in ('SEQUENCEPOSITION');
+delete from temp_constraints where table_name in ('FEATUREINFORMATION');
+delete from temp_constraints where table_name in ('FEATUREDEFECT');
+
+select rpad( '*', (level-1)*2, '*' ) || table_name table_name
+from temp_constraints
+start with fkey_constraint is null
+connect by prior pkey_constraint = r_constraint_name;
+
+create index feature_fgrp_idx on feature(feature_group_id);
+create index reporter_rgrp_idx on reporter(reporter_group_id);
+create index dem_report_id_idx on designelementmap (reporter_id);
+create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
+
+delete from mismatchinformation mi
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   sequenceposition sp
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and mi.REPORTER_POSITION_ID = sp.ID
+	   and sp.REPORTER_ID = r.ID )
+delete from MISMATCHINFORMATION mmi -- 154775
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   designelementmap dem,
+		   featureinformation fi
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and dem.reporter_id = r.ID
+	   and fi.FEATURE_REPORTER_MAP_ID = dem.ID
+	   and mmi.FEATURE_INFORMATION_ID = fi.ID)
+delete from sequenceposition sp -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and sp.REPORTER_ID = r.ID )
+delete from featureinformation fi -- 309553 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r,
+		   designelementmap dem
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+	   and dem.reporter_id = r.ID
+	   and fi.FEATURE_REPORTER_MAP_ID = dem.ID)
+delete from DESIGNELEMENTMAP dem -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg,
+	       reporter r
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+ 	   and dem.reporter_id = r.ID )
+
+delete from reporter r -- 154775 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNREPORTERGRP adrg
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID)
+
+delete from sequenceposition sp
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and sp.composite_id = cs.ID )
+delete from sequenceposition sp --94727 deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs,
+	       DESIGNELEMENTMAP dem
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and dem.composite_sequence_id = cs.ID
+ 	   and sp.REPORTER_COMPOSITE_MAP_ID = dem.id )
+
+delete from DESIGNELEMENTMAP dem -- 22645
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adrg,
+	       compositesequence cs
+     where adrg.ARRAY_DESIGN_ID = 1015897521113355
+	   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ 	   and dem.composite_sequence_id = cs.ID )
+
+delete from COMPSEQDIMENSIONCOMPSEQ csdcs --22645 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adcg,
+           compositesequence cs
+     where adcg.array_design_id = 1015897521113355
+       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+       and csdcs.COMP_SEQ_ID = cs.id);
+
+delete from compositesequence cs --22645 rows deleted
+ where exists (
+    select null
+      from ARRAYDESIGNCOMPOSITEGRP adcg
+     where adcg.array_design_id = 1015897521113355
+       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID );
+delete from FEATUREDIMENSIONFEATURE fdf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and fdf.feature_id = f.id )
+delete from FEATURECONTROLLEDFEATURE fcf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and (fcf.feature_id = f.id or fcf.CONTROLLED_FEATURE_ID = f.id))
+delete from FEATURECONTROLFEATURE fcf
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and (fcf.feature_id = f.id or fcf.CONTROL_FEATURE_ID = f.id))
+delete from featurelocation fl
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg,
+          feature f
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+      and fl.id = f.id )
+delete from feature f
+ where exists ( 
+   select null
+     from ARRAYDESIGNFEATUREGRP adfg
+    where adfg.array_design_id = 1015897521113355
+      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID )
+
+delete from zonegroup zg
+ where zg.PHYSICAL_ARRAY_DESIGN_ID = 1015897521113355;
+ 
+delete from arraydesignreportergrp
+ where array_design_id = 1015897521113355;
+delete from arraydesigncompositegrp
+ where array_design_id = 1015897521113355;
+delete from arraydesignfeaturegrp
+ where array_design_id = 1015897521113355;
+
+update array
+   set ARRAY_DESIGN_ID = null
+ where ARRAY_DESIGN_ID = 1015897521113355;
+delete from arraydesign
+ where id =1015897521113355;
+
+/*
+Purpose:
+This procedure purges array design information from caArray 1.3/1.4 oracle
+database.
+
+How does it work? Specifically, it will delete objects under the following 
+MAGE-OM packages
+
+ArrayDesign
+DesignElement
+BioSequence
+
+and then update the references under Array to ArrayDesign (set to NULL). Furthermore,
+the proc. will/should not delete any "good data" - i.e., it assumes that any associated
+experiments, arrays, bioassays are good. Upon reload of the array design, the 
+references to array design can then be reset to the new ID.
+
+To avoid excessive undo generation (rollack segment), it commits after each
+delete. On the other hand, the proc can easily be modified to run in a 
+single transcation when we have a sufficiently large rollback segment.`
+
+Note that we do not disable or drop any constraints. This way, we can ensure
+data integrity and consistency. Secondly, this procedure may not be dealing with
+ALL the tables involved in the MAGE-OM packages. Hence, there is a possibility that
+it may fail to cover certain cases and therefore we may need more iterations to 
+get it to work perfectly.
+
+The following indexes are recommended for better query (delete) performance:
+(unindexed foreign keys can cause various problems during DML update/delete operations, 
+and even for simple query)
+
+
+create index feature_fgrp_idx on feature(feature_group_id);
+create index feature_zone_idx on feature(zone_id);
+create index reporter_rgrp_idx on reporter(reporter_group_id);
+create index dem_report_id_idx on designelementmap (reporter_id);
+create index dem_com_seq_id_idx on designelementmap (composite_sequence_id);
+create index f_ctrlled_f_cfid_idx on featurecontrolledfeature (controlled_feature_id)
+create index f_ctrl_f_cfid_idx on featurecontrolfeature (control_feature_id)
+
+The following table depicts the parent/child relationships among the entities.
+The proc. will delete child tables and then move up the ladder to delete rows
+from parent tables. (as an exercise to the reader, certain paths can be deleted
+in parallel - how can this be implemented in plain pl/sql?)
+
+ARRAYDESIGN
+**ZONEGROUP                                                                                                                                                                                             
+****ZONE                                                                                                                                                                                                
+******FEATURE                                                                                                                                                                                           
+********FEATURECONTROLFEATURE                                                                                                                                                                           
+********FEATURECONTROLLEDFEATURE                                                                                                                                                                        
+********FEATUREDIMENSIONFEATURE
+********FEATURELOCATION
+********FEATUREINFORMATION                                                                                                                                                                              
+**********MISMATCHINFORMATION
+**********MISMATCHINFORMATION
+****ARRAYDESIGNCOMPOSITEGRP                                                                                                                                                                           
+****ARRAYDESIGNFEATUREGRP                                                                                                                                                                             
+****ARRAYDESIGNREPORTERGRP                                                                                                                                                                            
+******REPORTER
+********IMMOBILIZEDCHARACTERISTICS
+********DESIGNELEMENTMAP
+**********FEATUREINFORMATION                                                                                                                                                                            
+************MISMATCHINFORMATION                                                                                                                                                                         
+****COMPOSITESEQUENCE                                                                                                                                                                                   
+******BIOLOGICALCHARACTERISTICS    
+******COMPSEQDIMENSIONCOMPSEQ                                                                                                                                                                     
+******DESIGNELEMENTMAP                                                                                                                                                                                  
+********FEATUREINFORMATION                                                                                                                                                                              
+**********MISMATCHINFORMATION 
+
+*/
+create or replace procedure purge_Array_Design(
+  p_id in number)
+is
+begin
+	delete from mismatchinformation mi
+	 where mi.reporter_position_id in (
+	    select sp.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   sequenceposition sp
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and sp.REPORTER_ID = r.ID );
+	commit;
+	delete from MISMATCHINFORMATION mmi -- 154775
+	 where mmi.FEATURE_INFORMATION_ID in (
+	    select fi.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   designelementmap dem,
+			   featureinformation fi
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and dem.reporter_id = r.ID
+		   and fi.FEATURE_REPORTER_MAP_ID = dem.ID );
+	commit;
+	delete from sequenceposition sp -- 154775 rows deleted
+	 where sp.REPORTER_ID in (
+	    select r.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID );
+	commit;
+	delete from featureinformation fi -- 309553 rows deleted
+	 where fi.FEATURE_REPORTER_MAP_ID in (
+	    select dem.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r,
+			   designelementmap dem
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID
+		   and dem.reporter_id = r.ID );
+	commit;
+	delete from DESIGNELEMENTMAP dem -- 154775 rows deleted
+	 where dem.reporter_id in (
+	    select r.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID );
+	commit;
+	delete from IMMOBILIZEDCHARACTERISTICS ic
+	 where ic.reporter_id in (
+	    select r.ID
+	      from ARRAYDESIGNREPORTERGRP adrg,
+		       reporter r
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.REPORTER_GROUP_ID = r.REPORTER_GROUP_ID );
+	commit;
+	delete from reporter r -- 154775 rows deleted
+	 where r.REPORTER_GROUP_ID in (
+	    select adrg.REPORTER_GROUP_ID
+	      from ARRAYDESIGNREPORTERGRP adrg
+	     where adrg.ARRAY_DESIGN_ID = p_id );
+	commit;
+	delete from sequenceposition sp
+	 where sp.composite_id in (
+	    select cs.ID
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID );
+	commit;
+	delete from sequenceposition sp --94727 deleted
+	 where sp.REPORTER_COMPOSITE_MAP_ID in (
+	    select dem.id
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs,
+		       DESIGNELEMENTMAP dem
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+	 	   and dem.composite_sequence_id = cs.ID );
+	commit;
+	delete from DESIGNELEMENTMAP dem -- 22645
+	 where dem.composite_sequence_id in (
+	    select cs.ID
+	      from ARRAYDESIGNCOMPOSITEGRP adrg,
+		       compositesequence cs
+	     where adrg.ARRAY_DESIGN_ID = p_id
+		   and adrg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID );
+	commit;
+	delete from COMPSEQDIMENSIONCOMPSEQ csdcs --22645 rows deleted
+	 where csdcs.COMP_SEQ_ID in (
+	    select cs.id
+	      from ARRAYDESIGNCOMPOSITEGRP adcg,
+	           compositesequence cs
+	     where adcg.array_design_id = p_id
+	       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID);
+	commit;
+	delete from BIOLOGICALCHARACTERISTICS bc--22645 rows deleted
+	 where bc.COMPOSITE_SEQUENCE_ID in (
+	    select cs.id
+	      from ARRAYDESIGNCOMPOSITEGRP adcg,
+	           compositesequence cs
+	     where adcg.array_design_id = p_id
+	       and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID);
+	commit;
+	delete from compositesequence cs --22645 rows deleted
+	 where cs.COMPOSITE_GROUP_ID in (
+	    select adcg.COMPOSITE_GROUP_ID
+	      from ARRAYDESIGNCOMPOSITEGRP adcg
+	     where adcg.array_design_id = p_id );
+	commit;
+	delete from FEATUREDIMENSIONFEATURE fdf
+	 where fdf.feature_id in ( 
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
+	delete from FEATURECONTROLLEDFEATURE fcf
+	 where fcf.feature_id in ( 
+	   select f.id 
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
+	delete from FEATURECONTROLLEDFEATURE fcf
+	 where fcf.CONTROLLED_FEATURE_ID in ( 
+	   select f.id 
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID);
+	commit;
+	delete from FEATURECONTROLFEATURE fcf
+	 where fcf.feature_id in ( 
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID);
+	commit;
+	delete from FEATURECONTROLFEATURE fcf
+	 where fcf.CONTROL_FEATURE_ID in ( 
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID);
+	commit;
+	delete from featurelocation fl
+	 where fl.id in ( 
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
+	delete from MISMATCHINFORMATION mmi -- 154775
+	 where mmi.FEATURE_INFORMATION_ID in (
+	   select fi.ID
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f,
+	          featureinformation fi
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID
+	      and fi.FEATURE_ID = f.id);
+	commit;
+	delete from featureinformation fi
+	 where fi.FEATURE_ID in (
+	   select f.id
+	     from ARRAYDESIGNFEATUREGRP adfg,
+	          feature f
+	    where adfg.array_design_id = p_id
+	      and adfg.FEATURE_GROUP_ID = f.FEATURE_GROUP_ID );
+	commit;
+	delete from feature f
+	 where f.FEATURE_GROUP_ID in ( 
+	   select adfg.FEATURE_GROUP_ID
+	     from ARRAYDESIGNFEATUREGRP adfg
+	    where adfg.array_design_id = p_id );
+	commit;
+    delete from zone z
+     where z.zone_group_id in (
+        select id 
+          from zonegroup zg
+         where zg.PHYSICAL_ARRAY_DESIGN_ID = p_id );
+	delete from zonegroup zg
+	 where zg.PHYSICAL_ARRAY_DESIGN_ID = p_id;
+	delete from arraydesignreportergrp
+	 where array_design_id = p_id;
+	delete from arraydesigncompositegrp
+	 where array_design_id = p_id;
+	delete from arraydesignfeaturegrp
+	 where array_design_id = p_id;
+	update array
+	   set ARRAY_DESIGN_ID = null
+	 where ARRAY_DESIGN_ID = p_id;
+	update CA_ARRAYDSGNFILEUPLOADENTRY
+	   set ARRAY_DESIGN_ID = null
+	 where ARRAY_DESIGN_ID = p_id;
+	delete from arraydesignprovider
+	 where ARRAY_DESIGN_ID = p_id;
+	delete from arraydesign
+	 where id =p_id;
+	commit;
+end purge_Array_Design;
+/
+sho errors
+
+
+declare
+begin
+  for c1 in (select id from arraydesign) loop
+     purge_array_design(c1.id);
+  end loop;
+end;
+/
+
+select cs.IDENTIFIER
+ 	     from ARRAYDESIGNCOMPOSITEGRP adcg,
+		 	  COMPOSITESEQUENCE cs
+	    where adcg.array_design_id = 1015897523042021
+		  and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+order by 1
+
+select count(cs.IDENTIFIER)
+  from COMPOSITESEQUENCE cs 
+  join ARRAYDESIGNCOMPOSITEGRP adcg 
+    on adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+ where adcg.array_design_id = 1015897523042021
+
+select id from compositesequence where identifier = 'Affymetrix.com:CompositeSequence:hg-u133_plus_2.UnusedProbes';
+delete from compositesequence where id = '1015897527804781';
+commit;
+
+delete from COMPSEQDIMENSIONCOMPSEQ csds
+ where csds.COMP_SEQ_DIMENSION_ID = 1015897559579423 -- the design element dimension
+
+insert into COMPSEQDIMENSIONCOMPSEQ
+select 1015897559579423, cs.id
+  from ARRAYDESIGNCOMPOSITEGRP adcg,
+       COMPOSITESEQUENCE cs
+ where adcg.array_design_id = 1015897523042021 -- hgu133plus2 array id
+   and adcg.COMPOSITE_GROUP_ID = cs.COMPOSITE_GROUP_ID
+
+select * from feature where id = 1015897523935375
+
+insert into as_user_role_protect_app
+select (rownum+6)*-1, UPDATE_DATE, ROLE_ID, APPLICATION_ID, PROTECTION_GROUP_ID, -2, PROTECTION_ELEMENT_ID, PROTECTION_TYPE_ID, START_DATE, END_DATE
+  from AS_USER_ROLE_PROTECT_APP 
+ where user_id = -1
+
+ commit;
+ 
+
+/**
+ * we will add a unique constraint to as_user.login_name.
+ */
+select login_name, count(*) 
+  from as_user 
+ group by login_name 
+having count(*) > 1
+/
+delete from AS_USER_ROLE_PROTECT_APP where user_id = 69;
+delete from as_user where user_id = 69;
+delete from AS_USER_ROLE_PROTECT_APP where user_id = 70;
+delete from as_user where user_id = 70;
+commit;
+
+alter table as_user modify login_name not null
+/
+alter table as_user 
+  add constraint unq_as_user_login_name
+  unique (login_name)
+/
+create table ca_file_status (
+  status               varchar2(50) primary key,
+  description          varchar2(255) not null
+)
+/
+
+insert into ca_file_status values( 'SUBMITTED', 'new submission')
+/
+insert into ca_file_status values( 'SUBMISSION ERROR', 'Error occured on submission of the file, see error code')
+/
+insert into ca_file_status values( 'IN PROCESS', 'In process...')
+/
+insert into ca_file_status values( 'PROCESSING ERROR', 'Error occured while processing the file, see error code')
+/
+insert into ca_file_status values( 'PROCESSING SUCCESSFUL', 'Processing Successful')
+/
+insert into ca_file_status values( 'DELETED', 'File is marked for deletion')
+/
+insert into ca_file_status values( 'DELETION ERROR', 'Error occured on deletion operation')
+/
+insert into ca_file_status values( 'VIRUS SCAN SUCCESSFUL', 'Virus scan successful')
+/
+insert into ca_file_status values( 'VIRUS SCAN ERROR ', 'Error occured on virus scan, see error code')
+/
+
+alter table ca_hybridfileuploadentry add (
+  originial_filename   varchar2(255),
+  user_id              varchar2(30),
+  status               varchar2(50) references ca_file_status,
+  status_date          date default sysdate not null,
+  validator_code       varchar2(255) default -1 not null
+)
+/
+
+-- NOTE: we will drop the columns valid & validationdate after we properly migrate the data to 
+-- the new columns
+-- NOTE: The new columns are mandatory
+-- The existing data must be migrated prior to turning them to NOT NULL
+
+alter table ca_hybridfileuploadentry modify experiment_id null
+/
+
+alter table ca_hybridfileuploadentry
+  add constraint ca_hfue_user_id_fk
+  foreign key (user_id)
+  references as_user (login_name)
+/
+
+create table ca_file_upload_history (
+  id                   number primary key,
+  file_upload_entry_id number not null references ca_hybridfileuploadentry,
+  status               varchar2(50) not null references ca_file_status,
+  status_date          date not null,
+  description          varchar2(255)
+)
+/
+
+alter table CA_ARRAYDSGNFILEUPLOADENTRY add (
+  originial_filename   varchar2(255),
+  user_id              varchar2(30),
+  status               varchar2(50) references ca_file_status,
+  status_date          date default sysdate not null,
+  validator_code       varchar2(255) default -1 not null
+)
+/
+-- NOTE: we will drop the columns valid & validationdate after we properly migrate the data to 
+-- the new columns
+-- NOTE: The new columns are mandatory
+-- The existing data must be migrated prior to turning them to NOT NULL
+
+alter table CA_ARRAYDSGNFILEUPLOADENTRY
+  add constraint ca_adfue_user_id_fk
+  foreign key (user_id)
+  references as_user (login_name)
+/
+
+
+
+alter table CA_FILEPARSINGENTRY modify PARSINGSUCCEEDED null
+/
+alter table CA_FILEPARSINGENTRY drop constraint CA_FILEPARSINGENTRY_CK1
+/
+alter table CA_FILEPARSINGENTRY modify (PARSINGSUCCEEDED varchar2(50))
+/
+update CA_FILEPARSINGENTRY
+   set PARSINGSUCCEEDED = 
+       decode(parsingsucceeded, 0, 'IN PROCESS',
+	                            1, 'PROCESSING SUCCESSFUL',
+	                            2, 'PROCESSING ERROR')
+/
+commit
+/
+alter table CA_FILEPARSINGENTRY
+  add constraint ca_fileparsingentry_ps_fk
+  foreign key (PARSINGSUCCEEDED)
+  references ca_file_status
+/
+alter table CA_FILEPARSINGENTRY
+  add constraint CA_FILEPARSINGENTRY_CK1
+  check (PARSINGSUCCEEDED in ('IN PROCESS', 'PROCESSING SUCCESSFUL', 'PROCESSING ERROR'))
+/
+
+
+alter table CA_FILEUPLOADGROUP modify PARSINGSUCCEEDED null
+/
+alter table CA_FILEUPLOADGROUP drop constraint CA_FILEUPLOADGROUP_CK1
+/
+alter table CA_FILEUPLOADGROUP modify (PARSINGSUCCEEDED varchar2(50))
+/
+update CA_FILEUPLOADGROUP
+   set PARSINGSUCCEEDED = 
+       decode(parsingsucceeded, 0, 'IN PROCESS',
+	                            1, 'PROCESSING SUCCESSFUL',
+	                            2, 'PROCESSING ERROR')
+/
+commit
+/
+alter table CA_FILEUPLOADGROUP
+  add constraint ca_CA_FILEUPLOADGROUP_ps_fk
+  foreign key (PARSINGSUCCEEDED)
+  references ca_file_status
+/
+alter table CA_FILEUPLOADGROUP
+  add constraint CA_FILEUPLOADGROUP_CK1
+  check (PARSINGSUCCEEDED in ('IN PROCESS', 'PROCESSING SUCCESSFUL', 'PROCESSING ERROR'))
+/
+
+
+/*
+alter table ca_hybridfileuploadentry modify (
+  orginial_filename not null,
+  user_id           not null,
+  status            not null
+)
+/
+*/
+
+
+
+select nvl(login_name, 'PUBLIC'), count(*)
+  from AS_protection_element pe,
+       as_user u,
+       CA_HYBRIDFILEUPLOADENTRY fe
+ where instr(object_id, 'experiment') > 0
+   and replace(object_id, 'caarray;experiment;', '') = fe.experiment_id
+   and pe.user_id = u.user_id(+)
+group by rollup(login_name)
+/
+
+-- unindexed foreign keys...
+
+column columns format a20 word_wrapped
+column table_name format a30 word_wrapped
+
+select decode( b.table_name, NULL, '****', 'ok' ) Status, 
+	   a.table_name, a.columns, b.columns
+from 
+( select substr(a.table_name,1,30) table_name, 
+		 substr(a.constraint_name,1,30) constraint_name, 
+	     max(decode(position, 1,     substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 2,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 3,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 4,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 5,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 6,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 7,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 8,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position, 9,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,10,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,11,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,12,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,13,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,14,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,15,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(position,16,', '||substr(column_name,1,30),NULL)) columns
+    from user_cons_columns a, user_constraints b
+   where a.constraint_name = b.constraint_name
+     and b.constraint_type = 'R'
+   group by substr(a.table_name,1,30), substr(a.constraint_name,1,30) ) a, 
+( select substr(table_name,1,30) table_name, substr(index_name,1,30) index_name, 
+	     max(decode(column_position, 1,     substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 2,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 3,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 4,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 5,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 6,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 7,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 8,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position, 9,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,10,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,11,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,12,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,13,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,14,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,15,', '||substr(column_name,1,30),NULL)) || 
+	     max(decode(column_position,16,', '||substr(column_name,1,30),NULL)) columns
+    from user_ind_columns 
+   group by substr(table_name,1,30), substr(index_name,1,30) ) b
+where a.table_name = b.table_name (+)
+  and b.columns (+) like a.columns || '%'
+/
+
+alter table ACTIONPROTOCOLTYPE disable constraint ACTIONPROTOCOLTYPE_FK_2;
+alter table ACTIONPROTOCOLTYPE disable constraint ACTIONPROTOCOLTYPE_FK_1;
+alter table AFFYMETRIX disable constraint AFFYMETRIX_FK_2;
+alter table AFFYMETRIX disable constraint AFFYMETRIX_FK_1;
+alter table ANALYSISRESULTS disable constraint ANALYSISRESULTS_FK_2;
+alter table ANALYSISRESULTS disable constraint ANALYSISRESULTS_FK_1;
+alter table APPLICATIONPERFORMER disable constraint APPLICATIONPERFORMER_FK2;
+alter table APPLICATIONPERFORMER disable constraint APPLICATIONPERFORMER_FK1;
+alter table ARRAY disable constraint ARRAY_FK_5;
+alter table ARRAY disable constraint ARRAY_FK_4;
+alter table ARRAY disable constraint ARRAY_FK_3;
+alter table ARRAY disable constraint ARRAY_FK_2;
+alter table ARRAY disable constraint ARRAY_FK_1;
+alter table ARRAYDESIGN disable constraint ARRAYDESIGN_FK_2;
+alter table ARRAYDESIGN disable constraint ARRAYDESIGN_FK_1;
+alter table ARRAYDESIGNCOMPOSITEGRP disable constraint ARRAYDESIGNCOMPOSITEGRP_FK2;
+alter table ARRAYDESIGNCOMPOSITEGRP disable constraint ARRAYDESIGNCOMPOSITEGRP_FK1;
+alter table ARRAYDESIGNFEATUREGRP disable constraint ARRAYDESIGNFEATUREGRP_FK2;
+alter table ARRAYDESIGNFEATUREGRP disable constraint ARRAYDESIGNFEATUREGRP_FK1;
+alter table ARRAYDESIGNPROVIDER disable constraint ARRAYDESIGNPROVIDER_FK3;
+alter table ARRAYDESIGNPROVIDER disable constraint ARRAYDESIGNPROVIDER_FK2;
+alter table ARRAYDESIGNPROVIDER disable constraint ARRAYDESIGNPROVIDER_FK1;
+alter table ARRAYDESIGNREPORTERGRP disable constraint ARRAYDESIGNREPORTERGRP_FK2;
+alter table ARRAYDESIGNREPORTERGRP disable constraint ARRAYDESIGNREPORTERGRP_FK1;
+alter table ARRAYGROUP disable constraint ARRAYGROUP_FK_3;
+alter table ARRAYGROUP disable constraint ARRAYGROUP_FK_1;
+alter table ARRAYGROUP disable constraint ARRAYGROUP_FK_2;
+alter table ARRAYMANUFACTURE disable constraint ARRAYMANUFACTURE_FK_1;
+alter table ARRAYMANUFACTUREDEVIATION disable constraint ARRAYMANUFACTUREDEVIATION_FK_1;
+alter table ARRAYMANUFACTURER disable constraint EXPERIMENTPROVIDER_FK_2;
+alter table ARRAYMANUFACTURER disable constraint ARRAYMANUFACTURER_FK_1;
+alter table AS_APPLICATION_PRIVILEGE disable constraint SYS_C006261;
+alter table AS_APPLICATION_PRIVILEGE disable constraint SYS_C006262;
+alter table AS_APP_PROTECTION_ELEMENT disable constraint SYS_C006263;
+alter table AS_APP_PROTECTION_ELEMENT disable constraint SYS_C006264;
+alter table AS_APP_PROTECTION_GROUP disable constraint SYS_C006265;
+alter table AS_APP_PROTECTION_GROUP disable constraint SYS_C006266;
+alter table AS_LOG disable constraint SYS_C006580;
+alter table AS_LOG disable constraint SYS_C006581;
+alter table AS_LOG disable constraint SYS_C006582;
+alter table AS_LOG disable constraint SYS_C006583;
+alter table AS_LOG disable constraint SYS_C006584;
+alter table AS_LOG disable constraint SYS_C006585;
+alter table AS_LOG disable constraint SYS_C006586;
+alter table AS_LOG disable constraint SYS_C006587;
+alter table AS_LOG disable constraint SYS_C006588;
+alter table AS_LOG disable constraint SYS_C006589;
+alter table AS_LOG disable constraint SYS_C006590;
+alter table AS_LOG disable constraint SYS_C006591;
+alter table AS_LOG disable constraint SYS_C006592;
+alter table AS_PROTECTION_ELEMENT disable constraint SYS_C006593;
+alter table AS_PROTECTION_GROUP disable constraint SYS_C006594;
+alter table AS_PROTECTION_GROUP_ELEMENT disable constraint SYS_C006595;
+alter table AS_PROTECTION_GROUP_ELEMENT disable constraint SYS_C006596;
+alter table AS_ROLE disable constraint SYS_C006597;
+alter table AS_ROLE_PRIVILEGE disable constraint SYS_C006598;
+alter table AS_ROLE_PRIVILEGE disable constraint SYS_C006599;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006600;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006601;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006602;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006603;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006604;
+alter table AS_USER_ROLE_PROTECT_APP disable constraint SYS_C006605;
+alter table AUDIT_TBL disable constraint AUDIT_TBL_FK_1;
+alter table AUDIT_TBL disable constraint AUDIT_TBL_FK_2;
+alter table BIBLIOGRAPHICREFERENCE disable constraint BIBLIOGRAPHICREFERENCE_FK_2;
+alter table BIBLIOGRAPHICREFERENCE disable constraint BIBLIOGRAPHICREFERENCE_FK_1;
+alter table BIOASSAY disable constraint BIOASSAY_FK_4;
+alter table BIOASSAY disable constraint BIOASSAY_FK_3;
+alter table BIOASSAY disable constraint BIOASSAY_FK_2;
+alter table BIOASSAY disable constraint BIOASSAY_FK_1;
+alter table BIOASSAYCHANNEL disable constraint BIOASSAYCHANNEL_FK2;
+alter table BIOASSAYCHANNEL disable constraint BIOASSAYCHANNEL_FK1;
+alter table BIOASSAYCREATION disable constraint BIOASSAYCREATION_FK_3;
+alter table BIOASSAYCREATION disable constraint BIOASSAYCREATION_FK_2;
+alter table BIOASSAYCREATION disable constraint BIOASSAYCREATION_FK_1;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_6;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_5;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_4;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_3;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_2;
+alter table BIOASSAYDATA disable constraint BIOASSAYDATA_FK_1;
+alter table BIOASSAYDATACLUSTER disable constraint BIOASSAYDATACLUSTER_FK_2;
+alter table BIOASSAYDATACLUSTER disable constraint BIOASSAYDATACLUSTER_FK_1;
+alter table BIOASSAYDIMENSION disable constraint BIOASSAYDIMENSION_FK_1;
+alter table BIOASSAYDIMENSIONBIOASSAY disable constraint BIOASSAYDIMENSIONBIOASSAY_FK1;
+alter table BIOASSAYDIMENSIONBIOASSAY disable constraint BIOASSAYDIMENSIONBIOASSAY_FK2;
+alter table BIOASSAYFACTORVALUE disable constraint BIOASSAYFACTORVALUE_FK_1;
+alter table BIOASSAYMAP disable constraint BIOASSAYMAP_FK_2;
+alter table BIOASSAYMAP disable constraint BIOASSAYMAP_FK_1;
+alter table BIOASSAYMAPBIOASSAY disable constraint BIOASSAYMAPBIOASSAY_FK_2;
+alter table BIOASSAYMAPBIOASSAY disable constraint BIOASSAYMAPBIOASSAY_FK_1;
+alter table BIOASSAYMAPS disable constraint BIOASSAYMAPS_FK2;
+alter table BIOASSAYMAPS disable constraint BIOASSAYMAPS_FK1;
+alter table BIOASSAYTREATMENT disable constraint BIOASSAYTREATMENT_FK_3;
+alter table BIOASSAYTREATMENT disable constraint BIOASSAYTREATMENT_FK_2;
+alter table BIOASSAYTREATMENT disable constraint BIOASSAYTREATMENT_FK_1;
+alter table BIOASSAYTUPLE disable constraint BIOASSAYTUPLE_FK_2;
+alter table BIOASSAYTUPLE disable constraint BIOASSAYTUPLE_FK_1;
+alter table BIODATAVALUES disable constraint BIODATAVALUES_FK_2;
+alter table BIODATAVALUES disable constraint BIODATAVALUES_FK_1;
+alter table BIOLOGICALCHARACTERISTICS disable constraint BIOLOGICALCHARACTERISTICS_FK2;
+alter table BIOLOGICALCHARACTERISTICS disable constraint BIOLOGICALCHARACTERISTICS_FK1;
+alter table BIOMATERIAL disable constraint BIOMATERIAL_FK_3;
+alter table BIOMATERIAL disable constraint BIOMATERIAL_FK_2;
+alter table BIOMATERIAL disable constraint BIOMATERIAL_FK_1;
+alter table BIOMATERIALCHARACTERISTICS disable constraint BIOMATERIALCHARACTERISTICS_FK2;
+alter table BIOMATERIALCHARACTERISTICS disable constraint BIOMATERIALCHARACTERISTICS_FK1;
+alter table BIOMATERIALMEASUREMENT disable constraint BIOMATERIALMEASUREMENT_FK_4;
+alter table BIOMATERIALMEASUREMENT disable constraint BIOMATERIALMEASUREMENT_FK_3;
+alter table BIOMATERIALMEASUREMENT disable constraint BIOMATERIALMEASUREMENT_FK_2;
+alter table BIOMATERIALMEASUREMENT disable constraint BIOMATERIALMEASUREMENT_FK_1;
+alter table BIOSEQUENCE disable constraint BIOSEQUENCE_FK_2;
+alter table BIOSEQUENCE disable constraint BIOSEQUENCE_FK_1;
+alter table BIOSEQUENCE disable constraint BIOSEQUENCE_FK_3;
+alter table BIOSEQUENCE disable constraint BIOSEQUENCE_FK_4;
+alter table BIOSEQUENCEONTOLOGYENTRY disable constraint BIOSEQUENCEONTOLOGYENTRY_FK_2;
+alter table BIOSEQUENCEONTOLOGYENTRY disable constraint BIOSEQUENCEONTOLOGYENTRY_FK_1;
+alter table BIOSOURCECONTACT disable constraint BIOSOURCECONTACT_FK2;
+alter table BIOSOURCECONTACT disable constraint BIOSOURCECONTACT_FK1;
+alter table CA_ADDITIONALFILE disable constraint CA_ADDITIONALFILE_FK1;
+alter table CA_ADDITIONALPROCESSFILE disable constraint CA_ADDITIONALPROCESSFILEFK2;
+alter table CA_ADDITIONALPROCESSFILE disable constraint CA_ADDITIONALPROCESSFILEFK1;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY disable constraint CA_ARRAYDSGNFILEUPLOADENTFK2;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY disable constraint CA_ARRAYDSGNFILEUPLOADENTFK3;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY disable constraint CA_ARRAYDSGNFILEUPLOADENTFK4;
+alter table CA_CH1FACTORVALUES disable constraint CA_CH1FACTORVALUES_FK1;
+alter table CA_CH1FACTORVALUES disable constraint CA_CH1FACTORVALUES_FK2;
+alter table CA_CH2FACTORVALUES disable constraint CA_CH2FACTORVALUES_FK1;
+alter table CA_CH2FACTORVALUES disable constraint CA_CH2FACTORVALUES_FK2;
+alter table CA_CHANNELONEFACTORVALUES disable constraint CA_CHANNELONEFACTORVALUES_FK2;
+alter table CA_CHANNELTWOFACTORVALUES disable constraint CA_CHANNELTWOFACTORVALUES_FK2;
+alter table CA_FILEPARSINGENTRY disable constraint CA_FILEPARSINGENTRY_PS_FK;
+alter table CA_FILEUPLOADENTRY disable constraint CA_FUE_USER_ID_FK;
+alter table CA_FILEUPLOADENTRY disable constraint SYS_C006703;
+alter table CA_FILEUPLOADENTRY disable constraint SYS_C006704;
+alter table CA_FILEUPLOADGROUP disable constraint CA_CA_FILEUPLOADGROUP_PS_FK;
+alter table CA_FILE_UPLOAD_HISTORY disable constraint SYS_C006716;
+alter table CA_FILE_UPLOAD_HISTORY disable constraint SYS_C006717;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK2;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK3;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK4;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK5;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK6;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK7;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK8;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK9;
+alter table CA_HYBRIDFILEUPLOADENTRY disable constraint CA_HYBRIDFILEUPLOADENTRY_FK10;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK7;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK6;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK5;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK4;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK3;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK2;
+alter table CA_HYBRIDIZATIONFILEUPLOAD disable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK1;
+alter table CA_MAGEMLFILEUPLOADENTRY disable constraint CA_MAGEMLFILEUPLOADENTRY_FK13;
+alter table CA_MAGEMLFILEUPLOADENTRY disable constraint SYS_C006709;
+alter table CA_MAGEMLFILEUPLOADENTRY disable constraint SYS_C006710;
+alter table CA_MAGEMLFILEUPLOADENTRY disable constraint SYS_C006711;
+alter table CA_TOPMOSTBIOMATERIAL disable constraint CA_TOPMOSTBIOMATERIAL_FK1;
+alter table CA_TOPMOSTBIOMATERIAL disable constraint CA_TOPMOSTBIOMATERIAL_FK2;
+alter table CHANNEL disable constraint CHANNEL_FK_2;
+alter table CHANNEL disable constraint CHANNEL_FK_1;
+alter table CHANNELCOMPOUND disable constraint CHANNELCOMPOUND_FK2;
+alter table CHANNELCOMPOUND disable constraint CHANNELCOMPOUND_FK1;
+alter table CHROMOSOMALABBERATIONTYPE disable constraint CHROMOSOMALABBERATIONTYPE_FK2;
+alter table CHROMOSOMALABBERATIONTYPE disable constraint CHROMOSOMALABBERATIONTYPE_FK1;
+alter table COMPOSITESEQUENCE disable constraint COMPOSITESEQUENCE_FK_3;
+alter table COMPOSITESEQUENCE disable constraint COMPOSITESEQUENCE_FK_2;
+alter table COMPOSITESEQUENCE disable constraint COMPOSITESEQUENCE_FK_1;
+alter table COMPOUND disable constraint COMPOUND_FK_1;
+alter table COMPOUND disable constraint COMPOUND_FK_2;
+alter table COMPOUNDMEASUREMENT disable constraint COMPOUNDMEASUREMENT_FK_4;
+alter table COMPOUNDMEASUREMENT disable constraint COMPOUNDMEASUREMENT_FK_3;
+alter table COMPOUNDMEASUREMENT disable constraint COMPOUNDMEASUREMENT_FK_2;
+alter table COMPOUNDMEASUREMENT disable constraint COMPOUNDMEASUREMENT_FK_1;
+alter table COMPSEQDIMENSIONCOMPSEQ disable constraint COMPSEQDIMENSIONCOMPSEQ_FK2;
+alter table COMPSEQDIMENSIONCOMPSEQ disable constraint COMPSEQDIMENSIONCOMPSEQ_FK1;
+alter table DATABASE disable constraint DATABASE_FK_1;
+alter table DATABASECONTACT disable constraint DATABASECONTACT_FK_2;
+alter table DATABASECONTACT disable constraint DATABASECONTACT_FK_1;
+alter table DATABASEENTRY disable constraint DATABASEENTRY_FK_5;
+alter table DATABASEENTRY disable constraint DATABASEENTRY_FK_4;
+alter table DATABASEENTRY disable constraint DATABASEENTRY_FK_3;
+alter table DATABASEENTRY disable constraint DATABASEENTRY_FK_2;
+alter table DATABASEENTRY disable constraint DATABASEENTRY_FK_1;
+alter table DERIVEDBIOASSAYDATA disable constraint DERIVEDBIOASSAYDATA_FK_2;
+alter table DERIVEDBIOASSAYDATA disable constraint DERIVEDBIOASSAYDATA_FK_1;
+alter table DESCRIPTION disable constraint DESCRIPTION_FK_2;
+alter table DESCRIPTION disable constraint DESCRIPTION_FK_1;
+alter table DESCRIPTIONONTOLOGYENTRY disable constraint DESCRIPTIONONTOLOGYENTRY_FK1;
+alter table DESCRIPTIONONTOLOGYENTRY disable constraint DESCRIPTIONONTOLOGYENTRY_FK2;
+alter table DESIGNELEMENTDIMENSION disable constraint DESIGNELEMENTDIMENSION_FK_1;
+alter table DESIGNELEMENTGROUP disable constraint DESIGNELEMENTGROUP_FK_5;
+alter table DESIGNELEMENTGROUP disable constraint DESIGNELEMENTGROUP_FK_4;
+alter table DESIGNELEMENTGROUP disable constraint DESIGNELEMENTGROUP_FK_3;
+alter table DESIGNELEMENTGROUP disable constraint DESIGNELEMENTGROUP_FK_2;
+alter table DESIGNELEMENTGROUP disable constraint DESIGNELEMENTGROUP_FK_1;
+alter table DESIGNELEMENTGROUPTYPES disable constraint DESIGNELEMENTGROUPTYPES_FK_2;
+alter table DESIGNELEMENTGROUPTYPES disable constraint DESIGNELEMENTGROUPTYPES_FK_1;
+alter table DESIGNELEMENTMAP disable constraint DESIGNELEMENTMAP_FK_3;
+alter table DESIGNELEMENTMAP disable constraint DESIGNELEMENTMAP_FK_2;
+alter table DESIGNELEMENTMAP disable constraint DESIGNELEMENTMAP_FK_1;
+alter table DESIGNELEMENTMAPS disable constraint DESIGNELEMENTMAPS_FK2;
+alter table DESIGNELEMENTMAPS disable constraint DESIGNELEMENTMAPS_FK1;
+alter table DESIGNELEMENTTUPLE disable constraint DESIGNELEMENTTUPLE_FK_1;
+alter table EXPERIMENT disable constraint EXPERIMENT_FK_1;
+alter table EXPERIMENTALFACTOR disable constraint EXPERIMENTALFACTOR_FK_3;
+alter table EXPERIMENTALFACTOR disable constraint EXPERIMENTALFACTOR_FK_2;
+alter table EXPERIMENTALFACTOR disable constraint EXPERIMENTALFACTOR_FK_1;
+alter table EXPERIMENTBIOASSAY disable constraint EXPERIMENTBIOASSAY_FK_2;
+alter table EXPERIMENTBIOASSAY disable constraint EXPERIMENTBIOASSAY_FK_1;
+alter table EXPERIMENTBIOASSAYDATA disable constraint EXPERIMENTBIOASSAYDATA_FK_2;
+alter table EXPERIMENTBIOASSAYDATA disable constraint EXPERIMENTBIOASSAYDATA_FK_1;
+alter table EXPERIMENTDESIGN disable constraint EXPERIMENTDESIGN_FK_4;
+alter table EXPERIMENTDESIGN disable constraint EXPERIMENTDESIGN_FK_3;
+alter table EXPERIMENTDESIGN disable constraint EXPERIMENTDESIGN_FK_2;
+alter table EXPERIMENTDESIGN disable constraint EXPERIMENTDESIGN_FK_1;
+alter table EXPERIMENTDESIGN disable constraint EXPERIMENTDESIGN_FK_5;
+alter table EXPERIMENTDESIGNTYPE disable constraint EXPERIMENTDESIGNTYPE_FK2;
+alter table EXPERIMENTDESIGNTYPE disable constraint EXPERIMENTDESIGNTYPE_FK1;
+alter table EXPERIMENTPROVIDER disable constraint EXPERIMENTPROVIDER_FK3;
+alter table EXPERIMENTPROVIDER disable constraint EXPERIMENTPROVIDER_FK2;
+alter table EXPERIMENTPROVIDER disable constraint EXPERIMENTPROVIDER_FK1;
+alter table FACTORVALUE disable constraint FACTORVALUE_FK_4;
+alter table FACTORVALUE disable constraint FACTORVALUE_FK_3;
+alter table FACTORVALUE disable constraint FACTORVALUE_FK_2;
+alter table FACTORVALUE disable constraint FACTORVALUE_FK_1;
+alter table FEATURE disable constraint FEATURE_FK_6;
+alter table FEATURE disable constraint FEATURE_FK_5;
+alter table FEATURE disable constraint FEATURE_FK_4;
+alter table FEATURE disable constraint FEATURE_FK_3;
+alter table FEATURE disable constraint FEATURE_FK_2;
+alter table FEATURE disable constraint FEATURE_FK_1;
+alter table FEATURECONTROLFEATURE disable constraint FEATURECONTROLFEATURE_FK2;
+alter table FEATURECONTROLFEATURE disable constraint FEATURECONTROLFEATURE_FK1;
+alter table FEATURECONTROLLEDFEATURE disable constraint FEATURECONTROLLEDFEATURE_FK1;
+alter table FEATURECONTROLLEDFEATURE disable constraint FEATURECONTROLLEDFEATURE_FK2;
+alter table FEATUREDEFECT disable constraint FEATUREDEFECT_FK_4;
+alter table FEATUREDEFECT disable constraint FEATUREDEFECT_FK_3;
+alter table FEATUREDEFECT disable constraint FEATUREDEFECT_FK_2;
+alter table FEATUREDEFECT disable constraint FEATUREDEFECT_FK_1;
+alter table FEATUREDIMENSIONFEATURE disable constraint FEATUREDIMENSIONFEATURE_FK2;
+alter table FEATUREDIMENSIONFEATURE disable constraint FEATUREDIMENSIONFEATURE_FK1;
+alter table FEATUREEXTRACTION disable constraint FEATUREEXTRACTION_FK_3;
+alter table FEATUREEXTRACTION disable constraint FEATUREEXTRACTION_FK_2;
+alter table FEATUREEXTRACTION disable constraint FEATUREEXTRACTION_FK_1;
+alter table FEATUREINFORMATION disable constraint FEATUREINFORMATION_FK_2;
+alter table FEATUREINFORMATION disable constraint FEATUREINFORMATION_FK_1;
+alter table FIDUCIAL disable constraint FIDUCIAL_FK_2;
+alter table FIDUCIAL disable constraint FIDUCIAL_FK_5;
+alter table FIDUCIAL disable constraint FIDUCIAL_FK_4;
+alter table FIDUCIAL disable constraint FIDUCIAL_FK_3;
+alter table FIDUCIAL disable constraint FIDUCIAL_FK_1;
+alter table HARDWARE disable constraint HARDWARE_FK_3;
+alter table HARDWARE disable constraint HARDWARE_FK_2;
+alter table HARDWARE disable constraint HARDWARE_FK_1;
+alter table HARDWAREAPPLICATION disable constraint HARDWAREAPPLICATION_FK_4;
+alter table HARDWAREAPPLICATION disable constraint HARDWAREAPPLICATION_FK_3;
+alter table HARDWAREAPPLICATION disable constraint HARDWAREAPPLICATION_FK_2;
+alter table HARDWAREAPPLICATION disable constraint HARDWAREAPPLICATION_FK_1;
+alter table HARDWAREMANUFACTURERS disable constraint HARDWAREMANUFACTURERS_FK1;
+alter table HARDWAREMANUFACTURERS disable constraint HARDWAREMANUFACTURERS_FK2;
+alter table IMAGE disable constraint IMAGE_FK_1;
+alter table IMAGE disable constraint IMAGE_FK_4;
+alter table IMAGE disable constraint IMAGE_FK_3;
+alter table IMAGE disable constraint IMAGE_FK_2;
+alter table IMMOBILIZEDCHARACTERISTICS disable constraint IMMOBILIZEDCHARACTERISTICS_FK2;
+alter table IMMOBILIZEDCHARACTERISTICS disable constraint IMMOBILIZEDCHARACTERISTICS_FK1;
+alter table LABELEDEXTRACTCOMPOUND disable constraint LABELEDEXTRACTCOMPOUND_FK2;
+alter table LABELEDEXTRACTCOMPOUND disable constraint LABELEDEXTRACTCOMPOUND_FK1;
+alter table MANUFACTURELIMS disable constraint MANUFACTURELIMS_FK_5;
+alter table MANUFACTURELIMS disable constraint MANUFACTURELIMS_FK_4;
+alter table MANUFACTURELIMS disable constraint MANUFACTURELIMS_FK_3;
+alter table MANUFACTURELIMS disable constraint MANUFACTURELIMS_FK_2;
+alter table MANUFACTURELIMS disable constraint MANUFACTURELIMS_FK_1;
+alter table MEASUREDBIOASSAYDATA disable constraint MEASUREDBIOASSAYDATA_FK_2;
+alter table MEASUREDBIOASSAYDATA disable constraint MEASUREDBIOASSAYDATA_FK_1;
+alter table MEASUREMENT disable constraint MEASUREMENT_FK_1;
+alter table MISMATCHINFORMATION disable constraint MISMATCHINFORMATION_FK_3;
+alter table MISMATCHINFORMATION disable constraint MISMATCHINFORMATION_FK_2;
+alter table MISMATCHINFORMATION disable constraint MISMATCHINFORMATION_FK_1;
+alter table NAMEVALUETYPE disable constraint NAMEVALUETYPE_FK_5;
+alter table NAMEVALUETYPE disable constraint NAMEVALUETYPE_FK_2;
+alter table NAMEVALUETYPE disable constraint NAMEVALUETYPE_FK_4;
+alter table NAMEVALUETYPE disable constraint NAMEVALUETYPE_FK_3;
+alter table NODE disable constraint NODE_FK_1;
+alter table NODE disable constraint NODE_FK_3;
+alter table NODE disable constraint NODE_FK_2;
+alter table NODECONTENTS disable constraint NODECONTENTS_FK_5;
+alter table NODECONTENTS disable constraint NODECONTENTS_FK_4;
+alter table NODECONTENTS disable constraint NODECONTENTS_FK_3;
+alter table NODECONTENTS disable constraint NODECONTENTS_FK_2;
+alter table NODECONTENTS disable constraint NODECONTENTS_FK_1;
+alter table NODEVALUE disable constraint NODEVALUE_FK_4;
+alter table NODEVALUE disable constraint NODEVALUE_FK_3;
+alter table NODEVALUE disable constraint NODEVALUE_FK_2;
+alter table NODEVALUE disable constraint NODEVALUE_FK_1;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_19;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_9;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_4;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_25;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_24;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_23;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_22;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_21;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_20;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_2;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_18;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_17;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_16;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_15;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_11;
+alter table ONTOLOGYENTRY disable constraint ONTOLOGYENTRY_FK_1;
+alter table ONTOLOGYENTRYCHILDREN disable constraint ONTOLOGYENTRYCHILDREN_FK_2;
+alter table ONTOLOGYENTRYCHILDREN disable constraint ONTOLOGYENTRYCHILDREN_FK_1;
+alter table ORGANIZATION disable constraint ORGANIZATION_FK_4;
+alter table ORGANIZATION disable constraint ORGANIZATION_FK_3;
+alter table ORGANIZATION disable constraint ORGANIZATION_FK_2;
+alter table ORGANIZATION disable constraint ORGANIZATION_FK_1;
+alter table PARAMETER disable constraint PARAMETER_FK_2;
+alter table PARAMETER disable constraint PARAMETER_FK_1;
+alter table PARAMETER disable constraint PARAMETER_FK_4;
+alter table PARAMETER disable constraint PARAMETER_FK_3;
+alter table PARAMETERVALUE disable constraint PARAMETERVALUE_FK_1;
+alter table PARAMETERVALUE disable constraint PARAMETERVALUE_FK_2;
+alter table PERSON disable constraint PERSON_FK_4;
+alter table PERSON disable constraint PERSON_FK_3;
+alter table PERSON disable constraint PERSON_FK_2;
+alter table PERSON disable constraint PERSON_FK_1;
+alter table POSITION disable constraint POSITION_FK_1;
+alter table POSITIONDELTA disable constraint POSITIONDELTA_FK_1;
+alter table PROTOCOL disable constraint PROTOCOL_FK_3;
+alter table PROTOCOL disable constraint PROTOCOL_FK_2;
+alter table PROTOCOL disable constraint PROTOCOL_FK_1;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_6;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_5;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_3;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_2;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_1;
+alter table PROTOCOLAPPLICATION disable constraint PROTOCOLAPPLICATION_FK_4;
+alter table PROTOCOLHARDWARE disable constraint PROTOCOLHARDWARE_FK2;
+alter table PROTOCOLHARDWARE disable constraint PROTOCOLHARDWARE_FK1;
+alter table PROTOCOLSOFTWARE disable constraint PROTOCOLSOFTWARE_FK2;
+alter table PROTOCOLSOFTWARE disable constraint PROTOCOLSOFTWARE_FK1;
+alter table QUANTITATIONTYPE disable constraint QUANTITATIONTYPE_FK_4;
+alter table QUANTITATIONTYPE disable constraint QUANTITATIONTYPE_FK_3;
+alter table QUANTITATIONTYPE disable constraint QUANTITATIONTYPE_FK_2;
+alter table QUANTITATIONTYPE disable constraint QUANTITATIONTYPE_FK_5;
+alter table QUANTITATIONTYPE disable constraint QUANTITATIONTYPE_FK_1;
+alter table QUANTITATIONTYPEDIMENSION disable constraint QUANTITATIONTYPEDIMENSION_FK_1;
+alter table QUANTITATIONTYPEMAP disable constraint QUANTITATIONTYPEMAP_FK_2;
+alter table QUANTITATIONTYPEMAP disable constraint QUANTITATIONTYPEMAP_FK_1;
+alter table QUANTITATIONTYPEMAPS disable constraint QUANTITATIONTYPEMAPS_FK2;
+alter table QUANTITATIONTYPEMAPS disable constraint QUANTITATIONTYPEMAPS_FK1;
+alter table QUANTITATIONTYPEMAPSOURCES disable constraint QUANTITATIONTYPEMAPSOURCES_FK2;
+alter table QUANTITATIONTYPEMAPSOURCES disable constraint QUANTITATIONTYPEMAPSOURCES_FK1;
+alter table QUANTITATIONTYPETUPLE disable constraint QUANTITATIONTYPETUPLE_FK_4;
+alter table QUANTITATIONTYPETUPLE disable constraint QUANTITATIONTYPETUPLE_FK_2;
+alter table QUANTITATIONTYPETUPLE disable constraint QUANTITATIONTYPETUPLE_FK_1;
+alter table QUANTTYPEDIMENSIONQUANTTYPE disable constraint QUANTTYPEDIMENSIONQUANTTYPEFK2;
+alter table QUANTTYPEDIMENSIONQUANTTYPE disable constraint QUANTTYPEDIMENSIONQUANTTYPEFK1;
+alter table REPORTER disable constraint REPORTER_FK_4;
+alter table REPORTER disable constraint REPORTER_FK_3;
+alter table REPORTER disable constraint REPORTER_FK_2;
+alter table REPORTER disable constraint REPORTER_FK_1;
+alter table REPORTERDIMENSIONREPORTER disable constraint REPORTERDIMENSIONREPORTER_FK2;
+alter table REPORTERDIMENSIONREPORTER disable constraint REPORTERDIMENSIONREPORTER_FK1;
+alter table REPORTERONTOLOGYENTRY disable constraint REPORTERONTOLOGYENTRY_FK_2;
+alter table REPORTERONTOLOGYENTRY disable constraint REPORTERONTOLOGYENTRY_FK_1;
+alter table SECURITY disable constraint SECURITY_FK_1;
+alter table SECURITYCONTACT disable constraint SECURITYCONTACT_FK_2;
+alter table SECURITYCONTACT disable constraint SECURITYCONTACT_FK_1;
+alter table SECURITYGROUP disable constraint SECURITYGROUP_FK_1;
+alter table SECURITYGROUPCONTACT disable constraint SECURITYGROUPCONTACT_FK_2;
+alter table SECURITYGROUPCONTACT disable constraint SECURITYGROUPCONTACT_FK_1;
+alter table SECURITYSECURITYGROUP disable constraint SECURITYSECURITYGROUP_FK_1;
+alter table SECURITYSECURITYGROUP disable constraint SECURITYSECURITYGROUP_FK_2;
+alter table SEQFEATURE disable constraint SEQFEATURE_FK_2;
+alter table SEQFEATURE disable constraint SEQFEATURE_FK_1;
+alter table SEQFEATURELOCATION disable constraint SEQFEATURELOCATION_FK_3;
+alter table SEQFEATURELOCATION disable constraint SEQFEATURELOCATION_FK_2;
+alter table SEQFEATURELOCATION disable constraint SEQFEATURELOCATION_FK_1;
+alter table SEQUENCEPOSITION disable constraint SEQUENCEPOSITION_FK_4;
+alter table SEQUENCEPOSITION disable constraint SEQUENCEPOSITION_FK_3;
+alter table SEQUENCEPOSITION disable constraint SEQUENCEPOSITION_FK_2;
+alter table SEQUENCEPOSITION disable constraint SEQUENCEPOSITION_FK_1;
+alter table SOFTWARE disable constraint SOFTWARE_FK_4;
+alter table SOFTWARE disable constraint SOFTWARE_FK_3;
+alter table SOFTWARE disable constraint SOFTWARE_FK_2;
+alter table SOFTWARE disable constraint SOFTWARE_FK_1;
+alter table SOFTWARE disable constraint SOFTWARE_FK_5;
+alter table SOFTWARE2SOFTWARE disable constraint SOFTWARE2SOFTWARE_FK_2;
+alter table SOFTWARE2SOFTWARE disable constraint SOFTWARE2SOFTWARE_FK_1;
+alter table SOFTWAREAPPLICATION disable constraint SOFTWAREAPPLICATION_FK_4;
+alter table SOFTWAREAPPLICATION disable constraint SOFTWAREAPPLICATION_FK_3;
+alter table SOFTWAREAPPLICATION disable constraint SOFTWAREAPPLICATION_FK_2;
+alter table SOFTWAREAPPLICATION disable constraint SOFTWAREAPPLICATION_FK_1;
+alter table SOFTWAREMANUFACTURERS disable constraint SOFTWAREMANUFACTURERS_FK1;
+alter table SOFTWAREMANUFACTURERS disable constraint SOFTWAREMANUFACTURERS_FK2;
+alter table TOPLEVELBIOASSAYS disable constraint TOPLEVELBIOASSAYS_FK_2;
+alter table TOPLEVELBIOASSAYS disable constraint TOPLEVELBIOASSAYS_FK_1;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_6;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_5;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_4;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_3;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_2;
+alter table TRANSFORMATION disable constraint TRANSFORMATION_FK_1;
+alter table TRANSFORMEDBIOASSAYDATA disable constraint TRANSFORMEDBIOASSAYDATA_FK_2;
+alter table TRANSFORMEDBIOASSAYDATA disable constraint TRANSFORMEDBIOASSAYDATA_FK_1;
+alter table TREATMENT disable constraint TREATMENT_FK_3;
+alter table TREATMENT disable constraint TREATMENT_FK_2;
+alter table TREATMENT disable constraint TREATMENT_FK_1;
+alter table TREATMENT disable constraint TREATMENT_FK_4;
+alter table TST_A_AASSOC disable constraint FK_A_AASSOC_AASSOC;
+alter table TST_A_AASSOC disable constraint FK_A_AASSOC_A;
+alter table TST_BASE disable constraint FK_BASE_ASSOC;
+alter table TST_B_ASSOC disable constraint FK_B_ASSOC_B;
+alter table TST_C_ASSOC disable constraint FK_C_ASSOC_C;
+alter table ZONE disable constraint ZONE_FK_2;
+alter table ZONE disable constraint ZONE_FK_1;
+alter table ZONE disable constraint ZONE_FK_3;
+alter table ZONEDEFECT disable constraint ZONEDEFECT_FK_4;
+alter table ZONEDEFECT disable constraint ZONEDEFECT_FK_3;
+alter table ZONEDEFECT disable constraint ZONEDEFECT_FK_2;
+alter table ZONEDEFECT disable constraint ZONEDEFECT_FK_1;
+alter table ZONEGROUP disable constraint ZONEGROUP_FK_2;
+alter table ZONEGROUP disable constraint ZONEGROUP_FK_1;
+alter table ZONEGROUP disable constraint ZONEGROUP_FK_3;
+alter table ZONELAYOUT disable constraint ZONELAYOUT_FK_1;
+
+alter table ACTIONPROTOCOLTYPE enable constraint ACTIONPROTOCOLTYPE_FK_2;
+alter table ACTIONPROTOCOLTYPE enable constraint ACTIONPROTOCOLTYPE_FK_1;
+alter table AFFYMETRIX enable constraint AFFYMETRIX_FK_2;
+alter table AFFYMETRIX enable constraint AFFYMETRIX_FK_1;
+alter table ANALYSISRESULTS enable constraint ANALYSISRESULTS_FK_2;
+alter table ANALYSISRESULTS enable constraint ANALYSISRESULTS_FK_1;
+alter table APPLICATIONPERFORMER enable constraint APPLICATIONPERFORMER_FK2;
+alter table APPLICATIONPERFORMER enable constraint APPLICATIONPERFORMER_FK1;
+alter table ARRAY enable constraint ARRAY_FK_5;
+alter table ARRAY enable constraint ARRAY_FK_4;
+alter table ARRAY enable constraint ARRAY_FK_3;
+alter table ARRAY enable constraint ARRAY_FK_2;
+alter table ARRAY enable constraint ARRAY_FK_1;
+alter table ARRAYDESIGN enable constraint ARRAYDESIGN_FK_2;
+alter table ARRAYDESIGN enable constraint ARRAYDESIGN_FK_1;
+alter table ARRAYDESIGNCOMPOSITEGRP enable constraint ARRAYDESIGNCOMPOSITEGRP_FK2;
+alter table ARRAYDESIGNCOMPOSITEGRP enable constraint ARRAYDESIGNCOMPOSITEGRP_FK1;
+alter table ARRAYDESIGNFEATUREGRP enable constraint ARRAYDESIGNFEATUREGRP_FK2;
+alter table ARRAYDESIGNFEATUREGRP enable constraint ARRAYDESIGNFEATUREGRP_FK1;
+alter table ARRAYDESIGNPROVIDER enable constraint ARRAYDESIGNPROVIDER_FK3;
+alter table ARRAYDESIGNPROVIDER enable constraint ARRAYDESIGNPROVIDER_FK2;
+alter table ARRAYDESIGNPROVIDER enable constraint ARRAYDESIGNPROVIDER_FK1;
+alter table ARRAYDESIGNREPORTERGRP enable constraint ARRAYDESIGNREPORTERGRP_FK2;
+alter table ARRAYDESIGNREPORTERGRP enable constraint ARRAYDESIGNREPORTERGRP_FK1;
+alter table ARRAYGROUP enable constraint ARRAYGROUP_FK_3;
+alter table ARRAYGROUP enable constraint ARRAYGROUP_FK_1;
+alter table ARRAYGROUP enable constraint ARRAYGROUP_FK_2;
+alter table ARRAYMANUFACTURE enable constraint ARRAYMANUFACTURE_FK_1;
+alter table ARRAYMANUFACTUREDEVIATION enable constraint ARRAYMANUFACTUREDEVIATION_FK_1;
+alter table ARRAYMANUFACTURER enable constraint EXPERIMENTPROVIDER_FK_2;
+alter table ARRAYMANUFACTURER enable constraint ARRAYMANUFACTURER_FK_1;
+alter table AS_APPLICATION_PRIVILEGE enable constraint SYS_C006261;
+alter table AS_APPLICATION_PRIVILEGE enable constraint SYS_C006262;
+alter table AS_APP_PROTECTION_ELEMENT enable constraint SYS_C006263;
+alter table AS_APP_PROTECTION_ELEMENT enable constraint SYS_C006264;
+alter table AS_APP_PROTECTION_GROUP enable constraint SYS_C006265;
+alter table AS_APP_PROTECTION_GROUP enable constraint SYS_C006266;
+alter table AS_LOG enable constraint SYS_C006580;
+alter table AS_LOG enable constraint SYS_C006581;
+alter table AS_LOG enable constraint SYS_C006582;
+alter table AS_LOG enable constraint SYS_C006583;
+alter table AS_LOG enable constraint SYS_C006584;
+alter table AS_LOG enable constraint SYS_C006585;
+alter table AS_LOG enable constraint SYS_C006586;
+alter table AS_LOG enable constraint SYS_C006587;
+alter table AS_LOG enable constraint SYS_C006588;
+alter table AS_LOG enable constraint SYS_C006589;
+alter table AS_LOG enable constraint SYS_C006590;
+alter table AS_LOG enable constraint SYS_C006591;
+alter table AS_LOG enable constraint SYS_C006592;
+alter table AS_PROTECTION_ELEMENT enable constraint SYS_C006593;
+alter table AS_PROTECTION_GROUP enable constraint SYS_C006594;
+alter table AS_PROTECTION_GROUP_ELEMENT enable constraint SYS_C006595;
+alter table AS_PROTECTION_GROUP_ELEMENT enable constraint SYS_C006596;
+alter table AS_ROLE enable constraint SYS_C006597;
+alter table AS_ROLE_PRIVILEGE enable constraint SYS_C006598;
+alter table AS_ROLE_PRIVILEGE enable constraint SYS_C006599;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006600;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006601;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006602;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006603;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006604;
+alter table AS_USER_ROLE_PROTECT_APP enable constraint SYS_C006605;
+alter table AUDIT_TBL enable constraint AUDIT_TBL_FK_1;
+alter table AUDIT_TBL enable constraint AUDIT_TBL_FK_2;
+alter table BIBLIOGRAPHICREFERENCE enable constraint BIBLIOGRAPHICREFERENCE_FK_2;
+alter table BIBLIOGRAPHICREFERENCE enable constraint BIBLIOGRAPHICREFERENCE_FK_1;
+alter table BIOASSAY enable constraint BIOASSAY_FK_4;
+alter table BIOASSAY enable constraint BIOASSAY_FK_3;
+alter table BIOASSAY enable constraint BIOASSAY_FK_2;
+alter table BIOASSAY enable constraint BIOASSAY_FK_1;
+alter table BIOASSAYCHANNEL enable constraint BIOASSAYCHANNEL_FK2;
+alter table BIOASSAYCHANNEL enable constraint BIOASSAYCHANNEL_FK1;
+alter table BIOASSAYCREATION enable constraint BIOASSAYCREATION_FK_3;
+alter table BIOASSAYCREATION enable constraint BIOASSAYCREATION_FK_2;
+alter table BIOASSAYCREATION enable constraint BIOASSAYCREATION_FK_1;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_6;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_5;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_4;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_3;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_2;
+alter table BIOASSAYDATA enable constraint BIOASSAYDATA_FK_1;
+alter table BIOASSAYDATACLUSTER enable constraint BIOASSAYDATACLUSTER_FK_2;
+alter table BIOASSAYDATACLUSTER enable constraint BIOASSAYDATACLUSTER_FK_1;
+alter table BIOASSAYDIMENSION enable constraint BIOASSAYDIMENSION_FK_1;
+alter table BIOASSAYDIMENSIONBIOASSAY enable constraint BIOASSAYDIMENSIONBIOASSAY_FK1;
+alter table BIOASSAYDIMENSIONBIOASSAY enable constraint BIOASSAYDIMENSIONBIOASSAY_FK2;
+alter table BIOASSAYFACTORVALUE enable constraint BIOASSAYFACTORVALUE_FK_1;
+alter table BIOASSAYMAP enable constraint BIOASSAYMAP_FK_2;
+alter table BIOASSAYMAP enable constraint BIOASSAYMAP_FK_1;
+alter table BIOASSAYMAPBIOASSAY enable constraint BIOASSAYMAPBIOASSAY_FK_2;
+alter table BIOASSAYMAPBIOASSAY enable constraint BIOASSAYMAPBIOASSAY_FK_1;
+alter table BIOASSAYMAPS enable constraint BIOASSAYMAPS_FK2;
+alter table BIOASSAYMAPS enable constraint BIOASSAYMAPS_FK1;
+alter table BIOASSAYTREATMENT enable constraint BIOASSAYTREATMENT_FK_3;
+alter table BIOASSAYTREATMENT enable constraint BIOASSAYTREATMENT_FK_2;
+alter table BIOASSAYTREATMENT enable constraint BIOASSAYTREATMENT_FK_1;
+alter table BIOASSAYTUPLE enable constraint BIOASSAYTUPLE_FK_2;
+alter table BIOASSAYTUPLE enable constraint BIOASSAYTUPLE_FK_1;
+alter table BIODATAVALUES enable constraint BIODATAVALUES_FK_2;
+alter table BIODATAVALUES enable constraint BIODATAVALUES_FK_1;
+alter table BIOLOGICALCHARACTERISTICS enable constraint BIOLOGICALCHARACTERISTICS_FK2;
+alter table BIOLOGICALCHARACTERISTICS enable constraint BIOLOGICALCHARACTERISTICS_FK1;
+alter table BIOMATERIAL enable constraint BIOMATERIAL_FK_3;
+alter table BIOMATERIAL enable constraint BIOMATERIAL_FK_2;
+alter table BIOMATERIAL enable constraint BIOMATERIAL_FK_1;
+alter table BIOMATERIALCHARACTERISTICS enable constraint BIOMATERIALCHARACTERISTICS_FK2;
+alter table BIOMATERIALCHARACTERISTICS enable constraint BIOMATERIALCHARACTERISTICS_FK1;
+alter table BIOMATERIALMEASUREMENT enable constraint BIOMATERIALMEASUREMENT_FK_4;
+alter table BIOMATERIALMEASUREMENT enable constraint BIOMATERIALMEASUREMENT_FK_3;
+alter table BIOMATERIALMEASUREMENT enable constraint BIOMATERIALMEASUREMENT_FK_2;
+alter table BIOMATERIALMEASUREMENT enable constraint BIOMATERIALMEASUREMENT_FK_1;
+alter table BIOSEQUENCE enable constraint BIOSEQUENCE_FK_2;
+alter table BIOSEQUENCE enable constraint BIOSEQUENCE_FK_1;
+alter table BIOSEQUENCE enable constraint BIOSEQUENCE_FK_3;
+alter table BIOSEQUENCE enable constraint BIOSEQUENCE_FK_4;
+alter table BIOSEQUENCEONTOLOGYENTRY enable constraint BIOSEQUENCEONTOLOGYENTRY_FK_2;
+alter table BIOSEQUENCEONTOLOGYENTRY enable constraint BIOSEQUENCEONTOLOGYENTRY_FK_1;
+alter table BIOSOURCECONTACT enable constraint BIOSOURCECONTACT_FK2;
+alter table BIOSOURCECONTACT enable constraint BIOSOURCECONTACT_FK1;
+alter table CA_ADDITIONALFILE enable constraint CA_ADDITIONALFILE_FK1;
+alter table CA_ADDITIONALPROCESSFILE enable constraint CA_ADDITIONALPROCESSFILEFK2;
+alter table CA_ADDITIONALPROCESSFILE enable constraint CA_ADDITIONALPROCESSFILEFK1;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY enable constraint CA_ARRAYDSGNFILEUPLOADENTFK2;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY enable constraint CA_ARRAYDSGNFILEUPLOADENTFK3;
+alter table CA_ARRAYDSGNFILEUPLOADENTRY enable constraint CA_ARRAYDSGNFILEUPLOADENTFK4;
+alter table CA_CH1FACTORVALUES enable constraint CA_CH1FACTORVALUES_FK1;
+alter table CA_CH1FACTORVALUES enable constraint CA_CH1FACTORVALUES_FK2;
+alter table CA_CH2FACTORVALUES enable constraint CA_CH2FACTORVALUES_FK1;
+alter table CA_CH2FACTORVALUES enable constraint CA_CH2FACTORVALUES_FK2;
+alter table CA_CHANNELONEFACTORVALUES enable constraint CA_CHANNELONEFACTORVALUES_FK2;
+alter table CA_CHANNELTWOFACTORVALUES enable constraint CA_CHANNELTWOFACTORVALUES_FK2;
+alter table CA_FILEPARSINGENTRY enable constraint CA_FILEPARSINGENTRY_PS_FK;
+alter table CA_FILEUPLOADENTRY enable constraint CA_FUE_USER_ID_FK;
+alter table CA_FILEUPLOADENTRY enable constraint SYS_C006703;
+alter table CA_FILEUPLOADENTRY enable constraint SYS_C006704;
+alter table CA_FILEUPLOADGROUP enable constraint CA_CA_FILEUPLOADGROUP_PS_FK;
+alter table CA_FILE_UPLOAD_HISTORY enable constraint SYS_C006716;
+alter table CA_FILE_UPLOAD_HISTORY enable constraint SYS_C006717;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK2;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK3;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK4;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK5;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK6;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK7;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK8;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK9;
+alter table CA_HYBRIDFILEUPLOADENTRY enable constraint CA_HYBRIDFILEUPLOADENTRY_FK10;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK7;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK6;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK5;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK4;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK3;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK2;
+alter table CA_HYBRIDIZATIONFILEUPLOAD enable constraint CA_HYBRIDIZATIONFILEUPLOAD_FK1;
+alter table CA_MAGEMLFILEUPLOADENTRY enable constraint CA_MAGEMLFILEUPLOADENTRY_FK13;
+alter table CA_MAGEMLFILEUPLOADENTRY enable constraint SYS_C006709;
+alter table CA_MAGEMLFILEUPLOADENTRY enable constraint SYS_C006710;
+alter table CA_MAGEMLFILEUPLOADENTRY enable constraint SYS_C006711;
+alter table CA_TOPMOSTBIOMATERIAL enable constraint CA_TOPMOSTBIOMATERIAL_FK1;
+alter table CA_TOPMOSTBIOMATERIAL enable constraint CA_TOPMOSTBIOMATERIAL_FK2;
+alter table CHANNEL enable constraint CHANNEL_FK_2;
+alter table CHANNEL enable constraint CHANNEL_FK_1;
+alter table CHANNELCOMPOUND enable constraint CHANNELCOMPOUND_FK2;
+alter table CHANNELCOMPOUND enable constraint CHANNELCOMPOUND_FK1;
+alter table CHROMOSOMALABBERATIONTYPE enable constraint CHROMOSOMALABBERATIONTYPE_FK2;
+alter table CHROMOSOMALABBERATIONTYPE enable constraint CHROMOSOMALABBERATIONTYPE_FK1;
+alter table COMPOSITESEQUENCE enable constraint COMPOSITESEQUENCE_FK_3;
+alter table COMPOSITESEQUENCE enable constraint COMPOSITESEQUENCE_FK_2;
+alter table COMPOSITESEQUENCE enable constraint COMPOSITESEQUENCE_FK_1;
+alter table COMPOUND enable constraint COMPOUND_FK_1;
+alter table COMPOUND enable constraint COMPOUND_FK_2;
+alter table COMPOUNDMEASUREMENT enable constraint COMPOUNDMEASUREMENT_FK_4;
+alter table COMPOUNDMEASUREMENT enable constraint COMPOUNDMEASUREMENT_FK_3;
+alter table COMPOUNDMEASUREMENT enable constraint COMPOUNDMEASUREMENT_FK_2;
+alter table COMPOUNDMEASUREMENT enable constraint COMPOUNDMEASUREMENT_FK_1;
+alter table COMPSEQDIMENSIONCOMPSEQ enable constraint COMPSEQDIMENSIONCOMPSEQ_FK2;
+alter table COMPSEQDIMENSIONCOMPSEQ enable constraint COMPSEQDIMENSIONCOMPSEQ_FK1;
+alter table DATABASE enable constraint DATABASE_FK_1;
+alter table DATABASECONTACT enable constraint DATABASECONTACT_FK_2;
+alter table DATABASECONTACT enable constraint DATABASECONTACT_FK_1;
+alter table DATABASEENTRY enable constraint DATABASEENTRY_FK_5;
+alter table DATABASEENTRY enable constraint DATABASEENTRY_FK_4;
+alter table DATABASEENTRY enable constraint DATABASEENTRY_FK_3;
+alter table DATABASEENTRY enable constraint DATABASEENTRY_FK_2;
+alter table DATABASEENTRY enable constraint DATABASEENTRY_FK_1;
+alter table DERIVEDBIOASSAYDATA enable constraint DERIVEDBIOASSAYDATA_FK_2;
+alter table DERIVEDBIOASSAYDATA enable constraint DERIVEDBIOASSAYDATA_FK_1;
+alter table DESCRIPTION enable constraint DESCRIPTION_FK_2;
+alter table DESCRIPTION enable constraint DESCRIPTION_FK_1;
+alter table DESCRIPTIONONTOLOGYENTRY enable constraint DESCRIPTIONONTOLOGYENTRY_FK1;
+alter table DESCRIPTIONONTOLOGYENTRY enable constraint DESCRIPTIONONTOLOGYENTRY_FK2;
+alter table DESIGNELEMENTDIMENSION enable constraint DESIGNELEMENTDIMENSION_FK_1;
+alter table DESIGNELEMENTGROUP enable constraint DESIGNELEMENTGROUP_FK_5;
+alter table DESIGNELEMENTGROUP enable constraint DESIGNELEMENTGROUP_FK_4;
+alter table DESIGNELEMENTGROUP enable constraint DESIGNELEMENTGROUP_FK_3;
+alter table DESIGNELEMENTGROUP enable constraint DESIGNELEMENTGROUP_FK_2;
+alter table DESIGNELEMENTGROUP enable constraint DESIGNELEMENTGROUP_FK_1;
+alter table DESIGNELEMENTGROUPTYPES enable constraint DESIGNELEMENTGROUPTYPES_FK_2;
+alter table DESIGNELEMENTGROUPTYPES enable constraint DESIGNELEMENTGROUPTYPES_FK_1;
+alter table DESIGNELEMENTMAP enable constraint DESIGNELEMENTMAP_FK_3;
+alter table DESIGNELEMENTMAP enable constraint DESIGNELEMENTMAP_FK_2;
+alter table DESIGNELEMENTMAP enable constraint DESIGNELEMENTMAP_FK_1;
+alter table DESIGNELEMENTMAPS enable constraint DESIGNELEMENTMAPS_FK2;
+alter table DESIGNELEMENTMAPS enable constraint DESIGNELEMENTMAPS_FK1;
+alter table DESIGNELEMENTTUPLE enable constraint DESIGNELEMENTTUPLE_FK_1;
+alter table EXPERIMENT enable constraint EXPERIMENT_FK_1;
+alter table EXPERIMENTALFACTOR enable constraint EXPERIMENTALFACTOR_FK_3;
+alter table EXPERIMENTALFACTOR enable constraint EXPERIMENTALFACTOR_FK_2;
+alter table EXPERIMENTALFACTOR enable constraint EXPERIMENTALFACTOR_FK_1;
+alter table EXPERIMENTBIOASSAY enable constraint EXPERIMENTBIOASSAY_FK_2;
+alter table EXPERIMENTBIOASSAY enable constraint EXPERIMENTBIOASSAY_FK_1;
+alter table EXPERIMENTBIOASSAYDATA enable constraint EXPERIMENTBIOASSAYDATA_FK_2;
+alter table EXPERIMENTBIOASSAYDATA enable constraint EXPERIMENTBIOASSAYDATA_FK_1;
+alter table EXPERIMENTDESIGN enable constraint EXPERIMENTDESIGN_FK_4;
+alter table EXPERIMENTDESIGN enable constraint EXPERIMENTDESIGN_FK_3;
+alter table EXPERIMENTDESIGN enable constraint EXPERIMENTDESIGN_FK_2;
+alter table EXPERIMENTDESIGN enable constraint EXPERIMENTDESIGN_FK_1;
+alter table EXPERIMENTDESIGN enable constraint EXPERIMENTDESIGN_FK_5;
+alter table EXPERIMENTDESIGNTYPE enable constraint EXPERIMENTDESIGNTYPE_FK2;
+alter table EXPERIMENTDESIGNTYPE enable constraint EXPERIMENTDESIGNTYPE_FK1;
+alter table EXPERIMENTPROVIDER enable constraint EXPERIMENTPROVIDER_FK3;
+alter table EXPERIMENTPROVIDER enable constraint EXPERIMENTPROVIDER_FK2;
+alter table EXPERIMENTPROVIDER enable constraint EXPERIMENTPROVIDER_FK1;
+alter table FACTORVALUE enable constraint FACTORVALUE_FK_4;
+alter table FACTORVALUE enable constraint FACTORVALUE_FK_3;
+alter table FACTORVALUE enable constraint FACTORVALUE_FK_2;
+alter table FACTORVALUE enable constraint FACTORVALUE_FK_1;
+alter table FEATURE enable constraint FEATURE_FK_6;
+alter table FEATURE enable constraint FEATURE_FK_5;
+alter table FEATURE enable constraint FEATURE_FK_4;
+alter table FEATURE enable constraint FEATURE_FK_3;
+alter table FEATURE enable constraint FEATURE_FK_2;
+alter table FEATURE enable constraint FEATURE_FK_1;
+alter table FEATURECONTROLFEATURE enable constraint FEATURECONTROLFEATURE_FK2;
+alter table FEATURECONTROLFEATURE enable constraint FEATURECONTROLFEATURE_FK1;
+alter table FEATURECONTROLLEDFEATURE enable constraint FEATURECONTROLLEDFEATURE_FK1;
+alter table FEATURECONTROLLEDFEATURE enable constraint FEATURECONTROLLEDFEATURE_FK2;
+alter table FEATUREDEFECT enable constraint FEATUREDEFECT_FK_4;
+alter table FEATUREDEFECT enable constraint FEATUREDEFECT_FK_3;
+alter table FEATUREDEFECT enable constraint FEATUREDEFECT_FK_2;
+alter table FEATUREDEFECT enable constraint FEATUREDEFECT_FK_1;
+alter table FEATUREDIMENSIONFEATURE enable constraint FEATUREDIMENSIONFEATURE_FK2;
+alter table FEATUREDIMENSIONFEATURE enable constraint FEATUREDIMENSIONFEATURE_FK1;
+alter table FEATUREEXTRACTION enable constraint FEATUREEXTRACTION_FK_3;
+alter table FEATUREEXTRACTION enable constraint FEATUREEXTRACTION_FK_2;
+alter table FEATUREEXTRACTION enable constraint FEATUREEXTRACTION_FK_1;
+alter table FEATUREINFORMATION enable constraint FEATUREINFORMATION_FK_2;
+alter table FEATUREINFORMATION enable constraint FEATUREINFORMATION_FK_1;
+alter table FIDUCIAL enable constraint FIDUCIAL_FK_2;
+alter table FIDUCIAL enable constraint FIDUCIAL_FK_5;
+alter table FIDUCIAL enable constraint FIDUCIAL_FK_4;
+alter table FIDUCIAL enable constraint FIDUCIAL_FK_3;
+alter table FIDUCIAL enable constraint FIDUCIAL_FK_1;
+alter table HARDWARE enable constraint HARDWARE_FK_3;
+alter table HARDWARE enable constraint HARDWARE_FK_2;
+alter table HARDWARE enable constraint HARDWARE_FK_1;
+alter table HARDWAREAPPLICATION enable constraint HARDWAREAPPLICATION_FK_4;
+alter table HARDWAREAPPLICATION enable constraint HARDWAREAPPLICATION_FK_3;
+alter table HARDWAREAPPLICATION enable constraint HARDWAREAPPLICATION_FK_2;
+alter table HARDWAREAPPLICATION enable constraint HARDWAREAPPLICATION_FK_1;
+alter table HARDWAREMANUFACTURERS enable constraint HARDWAREMANUFACTURERS_FK1;
+alter table HARDWAREMANUFACTURERS enable constraint HARDWAREMANUFACTURERS_FK2;
+alter table IMAGE enable constraint IMAGE_FK_1;
+alter table IMAGE enable constraint IMAGE_FK_4;
+alter table IMAGE enable constraint IMAGE_FK_3;
+alter table IMAGE enable constraint IMAGE_FK_2;
+alter table IMMOBILIZEDCHARACTERISTICS enable constraint IMMOBILIZEDCHARACTERISTICS_FK2;
+alter table IMMOBILIZEDCHARACTERISTICS enable constraint IMMOBILIZEDCHARACTERISTICS_FK1;
+alter table LABELEDEXTRACTCOMPOUND enable constraint LABELEDEXTRACTCOMPOUND_FK2;
+alter table LABELEDEXTRACTCOMPOUND enable constraint LABELEDEXTRACTCOMPOUND_FK1;
+alter table MANUFACTURELIMS enable constraint MANUFACTURELIMS_FK_5;
+alter table MANUFACTURELIMS enable constraint MANUFACTURELIMS_FK_4;
+alter table MANUFACTURELIMS enable constraint MANUFACTURELIMS_FK_3;
+alter table MANUFACTURELIMS enable constraint MANUFACTURELIMS_FK_2;
+alter table MANUFACTURELIMS enable constraint MANUFACTURELIMS_FK_1;
+alter table MEASUREDBIOASSAYDATA enable constraint MEASUREDBIOASSAYDATA_FK_2;
+alter table MEASUREDBIOASSAYDATA enable constraint MEASUREDBIOASSAYDATA_FK_1;
+alter table MEASUREMENT enable constraint MEASUREMENT_FK_1;
+alter table MISMATCHINFORMATION enable constraint MISMATCHINFORMATION_FK_3;
+alter table MISMATCHINFORMATION enable constraint MISMATCHINFORMATION_FK_2;
+alter table MISMATCHINFORMATION enable constraint MISMATCHINFORMATION_FK_1;
+alter table NAMEVALUETYPE enable constraint NAMEVALUETYPE_FK_5;
+alter table NAMEVALUETYPE enable constraint NAMEVALUETYPE_FK_2;
+alter table NAMEVALUETYPE enable constraint NAMEVALUETYPE_FK_4;
+alter table NAMEVALUETYPE enable constraint NAMEVALUETYPE_FK_3;
+alter table NODE enable constraint NODE_FK_1;
+alter table NODE enable constraint NODE_FK_3;
+alter table NODE enable constraint NODE_FK_2;
+alter table NODECONTENTS enable constraint NODECONTENTS_FK_5;
+alter table NODECONTENTS enable constraint NODECONTENTS_FK_4;
+alter table NODECONTENTS enable constraint NODECONTENTS_FK_3;
+alter table NODECONTENTS enable constraint NODECONTENTS_FK_2;
+alter table NODECONTENTS enable constraint NODECONTENTS_FK_1;
+alter table NODEVALUE enable constraint NODEVALUE_FK_4;
+alter table NODEVALUE enable constraint NODEVALUE_FK_3;
+alter table NODEVALUE enable constraint NODEVALUE_FK_2;
+alter table NODEVALUE enable constraint NODEVALUE_FK_1;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_19;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_9;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_4;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_25;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_24;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_23;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_22;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_21;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_20;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_2;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_18;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_17;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_16;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_15;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_11;
+alter table ONTOLOGYENTRY enable constraint ONTOLOGYENTRY_FK_1;
+alter table ONTOLOGYENTRYCHILDREN enable constraint ONTOLOGYENTRYCHILDREN_FK_2;
+alter table ONTOLOGYENTRYCHILDREN enable constraint ONTOLOGYENTRYCHILDREN_FK_1;
+alter table ORGANIZATION enable constraint ORGANIZATION_FK_4;
+alter table ORGANIZATION enable constraint ORGANIZATION_FK_3;
+alter table ORGANIZATION enable constraint ORGANIZATION_FK_2;
+alter table ORGANIZATION enable constraint ORGANIZATION_FK_1;
+alter table PARAMETER enable constraint PARAMETER_FK_2;
+alter table PARAMETER enable constraint PARAMETER_FK_1;
+alter table PARAMETER enable constraint PARAMETER_FK_4;
+alter table PARAMETER enable constraint PARAMETER_FK_3;
+alter table PARAMETERVALUE enable constraint PARAMETERVALUE_FK_1;
+alter table PARAMETERVALUE enable constraint PARAMETERVALUE_FK_2;
+alter table PERSON enable constraint PERSON_FK_4;
+alter table PERSON enable constraint PERSON_FK_3;
+alter table PERSON enable constraint PERSON_FK_2;
+alter table PERSON enable constraint PERSON_FK_1;
+alter table POSITION enable constraint POSITION_FK_1;
+alter table POSITIONDELTA enable constraint POSITIONDELTA_FK_1;
+alter table PROTOCOL enable constraint PROTOCOL_FK_3;
+alter table PROTOCOL enable constraint PROTOCOL_FK_2;
+alter table PROTOCOL enable constraint PROTOCOL_FK_1;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_6;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_5;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_3;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_2;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_1;
+alter table PROTOCOLAPPLICATION enable constraint PROTOCOLAPPLICATION_FK_4;
+alter table PROTOCOLHARDWARE enable constraint PROTOCOLHARDWARE_FK2;
+alter table PROTOCOLHARDWARE enable constraint PROTOCOLHARDWARE_FK1;
+alter table PROTOCOLSOFTWARE enable constraint PROTOCOLSOFTWARE_FK2;
+alter table PROTOCOLSOFTWARE enable constraint PROTOCOLSOFTWARE_FK1;
+alter table QUANTITATIONTYPE enable constraint QUANTITATIONTYPE_FK_4;
+alter table QUANTITATIONTYPE enable constraint QUANTITATIONTYPE_FK_3;
+alter table QUANTITATIONTYPE enable constraint QUANTITATIONTYPE_FK_2;
+alter table QUANTITATIONTYPE enable constraint QUANTITATIONTYPE_FK_5;
+alter table QUANTITATIONTYPE enable constraint QUANTITATIONTYPE_FK_1;
+alter table QUANTITATIONTYPEDIMENSION enable constraint QUANTITATIONTYPEDIMENSION_FK_1;
+alter table QUANTITATIONTYPEMAP enable constraint QUANTITATIONTYPEMAP_FK_2;
+alter table QUANTITATIONTYPEMAP enable constraint QUANTITATIONTYPEMAP_FK_1;
+alter table QUANTITATIONTYPEMAPS enable constraint QUANTITATIONTYPEMAPS_FK2;
+alter table QUANTITATIONTYPEMAPS enable constraint QUANTITATIONTYPEMAPS_FK1;
+alter table QUANTITATIONTYPEMAPSOURCES enable constraint QUANTITATIONTYPEMAPSOURCES_FK2;
+alter table QUANTITATIONTYPEMAPSOURCES enable constraint QUANTITATIONTYPEMAPSOURCES_FK1;
+alter table QUANTITATIONTYPETUPLE enable constraint QUANTITATIONTYPETUPLE_FK_4;
+alter table QUANTITATIONTYPETUPLE enable constraint QUANTITATIONTYPETUPLE_FK_2;
+alter table QUANTITATIONTYPETUPLE enable constraint QUANTITATIONTYPETUPLE_FK_1;
+alter table QUANTTYPEDIMENSIONQUANTTYPE enable constraint QUANTTYPEDIMENSIONQUANTTYPEFK2;
+alter table QUANTTYPEDIMENSIONQUANTTYPE enable constraint QUANTTYPEDIMENSIONQUANTTYPEFK1;
+alter table REPORTER enable constraint REPORTER_FK_4;
+alter table REPORTER enable constraint REPORTER_FK_3;
+alter table REPORTER enable constraint REPORTER_FK_2;
+alter table REPORTER enable constraint REPORTER_FK_1;
+alter table REPORTERDIMENSIONREPORTER enable constraint REPORTERDIMENSIONREPORTER_FK2;
+alter table REPORTERDIMENSIONREPORTER enable constraint REPORTERDIMENSIONREPORTER_FK1;
+alter table REPORTERONTOLOGYENTRY enable constraint REPORTERONTOLOGYENTRY_FK_2;
+alter table REPORTERONTOLOGYENTRY enable constraint REPORTERONTOLOGYENTRY_FK_1;
+alter table SECURITY enable constraint SECURITY_FK_1;
+alter table SECURITYCONTACT enable constraint SECURITYCONTACT_FK_2;
+alter table SECURITYCONTACT enable constraint SECURITYCONTACT_FK_1;
+alter table SECURITYGROUP enable constraint SECURITYGROUP_FK_1;
+alter table SECURITYGROUPCONTACT enable constraint SECURITYGROUPCONTACT_FK_2;
+alter table SECURITYGROUPCONTACT enable constraint SECURITYGROUPCONTACT_FK_1;
+alter table SECURITYSECURITYGROUP enable constraint SECURITYSECURITYGROUP_FK_1;
+alter table SECURITYSECURITYGROUP enable constraint SECURITYSECURITYGROUP_FK_2;
+alter table SEQFEATURE enable constraint SEQFEATURE_FK_2;
+alter table SEQFEATURE enable constraint SEQFEATURE_FK_1;
+alter table SEQFEATURELOCATION enable constraint SEQFEATURELOCATION_FK_3;
+alter table SEQFEATURELOCATION enable constraint SEQFEATURELOCATION_FK_2;
+alter table SEQFEATURELOCATION enable constraint SEQFEATURELOCATION_FK_1;
+alter table SEQUENCEPOSITION enable constraint SEQUENCEPOSITION_FK_4;
+alter table SEQUENCEPOSITION enable constraint SEQUENCEPOSITION_FK_3;
+alter table SEQUENCEPOSITION enable constraint SEQUENCEPOSITION_FK_2;
+alter table SEQUENCEPOSITION enable constraint SEQUENCEPOSITION_FK_1;
+alter table SOFTWARE enable constraint SOFTWARE_FK_4;
+alter table SOFTWARE enable constraint SOFTWARE_FK_3;
+alter table SOFTWARE enable constraint SOFTWARE_FK_2;
+alter table SOFTWARE enable constraint SOFTWARE_FK_1;
+alter table SOFTWARE enable constraint SOFTWARE_FK_5;
+alter table SOFTWARE2SOFTWARE enable constraint SOFTWARE2SOFTWARE_FK_2;
+alter table SOFTWARE2SOFTWARE enable constraint SOFTWARE2SOFTWARE_FK_1;
+alter table SOFTWAREAPPLICATION enable constraint SOFTWAREAPPLICATION_FK_4;
+alter table SOFTWAREAPPLICATION enable constraint SOFTWAREAPPLICATION_FK_3;
+alter table SOFTWAREAPPLICATION enable constraint SOFTWAREAPPLICATION_FK_2;
+alter table SOFTWAREAPPLICATION enable constraint SOFTWAREAPPLICATION_FK_1;
+alter table SOFTWAREMANUFACTURERS enable constraint SOFTWAREMANUFACTURERS_FK1;
+alter table SOFTWAREMANUFACTURERS enable constraint SOFTWAREMANUFACTURERS_FK2;
+alter table TOPLEVELBIOASSAYS enable constraint TOPLEVELBIOASSAYS_FK_2;
+alter table TOPLEVELBIOASSAYS enable constraint TOPLEVELBIOASSAYS_FK_1;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_6;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_5;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_4;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_3;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_2;
+alter table TRANSFORMATION enable constraint TRANSFORMATION_FK_1;
+alter table TRANSFORMEDBIOASSAYDATA enable constraint TRANSFORMEDBIOASSAYDATA_FK_2;
+alter table TRANSFORMEDBIOASSAYDATA enable constraint TRANSFORMEDBIOASSAYDATA_FK_1;
+alter table TREATMENT enable constraint TREATMENT_FK_3;
+alter table TREATMENT enable constraint TREATMENT_FK_2;
+alter table TREATMENT enable constraint TREATMENT_FK_1;
+alter table TREATMENT enable constraint TREATMENT_FK_4;
+alter table TST_A_AASSOC enable constraint FK_A_AASSOC_AASSOC;
+alter table TST_A_AASSOC enable constraint FK_A_AASSOC_A;
+alter table TST_BASE enable constraint FK_BASE_ASSOC;
+alter table TST_B_ASSOC enable constraint FK_B_ASSOC_B;
+alter table TST_C_ASSOC enable constraint FK_C_ASSOC_C;
+alter table ZONE enable constraint ZONE_FK_2;
+alter table ZONE enable constraint ZONE_FK_1;
+alter table ZONE enable constraint ZONE_FK_3;
+alter table ZONEDEFECT enable constraint ZONEDEFECT_FK_4;
+alter table ZONEDEFECT enable constraint ZONEDEFECT_FK_3;
+alter table ZONEDEFECT enable constraint ZONEDEFECT_FK_2;
+alter table ZONEDEFECT enable constraint ZONEDEFECT_FK_1;
+alter table ZONEGROUP enable constraint ZONEGROUP_FK_2;
+alter table ZONEGROUP enable constraint ZONEGROUP_FK_1;
+alter table ZONEGROUP enable constraint ZONEGROUP_FK_3;
+alter table ZONELAYOUT enable constraint ZONELAYOUT_FK_1;
+
+
+--
+-- delete all array designs from the seed database
+--
+
+@disble_cons.sql
+truncate table mismatchinformation;
+truncate table sequenceposition;
+truncate table featureinformation;
+truncate table DESIGNELEMENTMAP;
+truncate table IMMOBILIZEDCHARACTERISTICS;
+truncate table reporter;
+truncate table DESIGNELEMENTMAP;
+truncate table DESIGNELEMENT;
+truncate table COMPSEQDIMENSIONCOMPSEQ;
+truncate table BIOLOGICALCHARACTERISTICS;
+truncate table biosequence;
+truncate table bioevent;
+truncate table compositesequence;
+truncate table FEATUREDIMENSIONFEATURE;
+truncate table FEATURECONTROLLEDFEATURE;
+truncate table FEATURECONTROLFEATURE;
+truncate table featurelocation;
+truncate table feature;
+truncate table zone;
+truncate table zonegroup;
+truncate table arraydesignreportergrp;
+truncate table arraydesigncompositegrp;
+truncate table arraydesignfeaturegrp;
+truncate table array;
+truncate table CA_ARRAYDSGNFILEUPLOADENTRY;
+truncate table arraydesignprovider;
+truncate table arraydesign;
+@enable_cons.sql
+
