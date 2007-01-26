@@ -1,6 +1,0 @@
-<ERDiagram version="1.1">
-  <Connection session="MGI" database="model" />
-  <Drawing gridVisible="false" snapOn="false" fastRouting="false" />
-  <Tables />
-  <Relationships />
-</ERDiagram>

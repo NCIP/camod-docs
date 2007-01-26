@@ -1,5 +1,0 @@
-caMod 2.1 TODO
-
-1.   Ask Ulli where to put constructSequence 
-(not in Image so has to be inside genomicsegment/transgene loops)
-2.  
