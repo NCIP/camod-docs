@@ -1,0 +1,60 @@
+
+
+*****************************AFTER******************************************
+	public List getEnvironmentalFactors(String inType) throws PersistenceException {
+
+		log.info("Entering QueryManagerImpl.getEnvironmentalFactors");
+
+		// Format the query
+		HQLParameter[] theParams = new HQLParameter[1];
+		theParams[0] = new HQLParameter();
+		theParams[0].setName("type");
+		theParams[0].setValue(inType);
+		theParams[0].setType(Hibernate.STRING);
+        
+        SessionFactory sessionFactory =
+            new Configuration().configure().buildSessionFactory();
+        
+        Session session = sessionFactory.openSession();
+        
+		String theHQLQuery = "select distinct ef.name from EnvironmentalFactor as ef where ef.type = :type and ef.name is not null order by ef.name asc ";
+        
+        Query q = session.createQuery(theHQLQuery);
+        q.setString("type", inType);
+        
+		List theList =  q.list();
+            
+        //Search.query(theHQLQuery, theParams);
+
+		//log.info("Found matching items: " + theList.size());
+
+	log.info("Exiting QueryManagerImpl.getAdministrativeRoutes");
+	return theList;
+	}
+
+********************************BEFORE**************************************
+	public List getEnvironmentalFactors(String inType) throws PersistenceException {
+
+		log.info("Entering QueryManagerImpl.getEnvironmentalFactors");
+
+		// Format the query
+		HQLParameter[] theParams = new HQLParameter[1];
+		theParams[0] = new HQLParameter();
+		theParams[0].setName("type");
+		theParams[0].setValue(inType);
+		theParams[0].setType(Hibernate.STRING);
+        
+        SessionFactory sessionFactory =
+            new Configuration().configure().buildSessionFactory();
+        
+        Session session = sessionFactory.openSession();
+        
+		String theHQLQuery = "select distinct ef.name from EnvironmentalFactor as ef where ef.type = :type and ef.name is not null order by ef.name asc ";
+        
+		List theList = Search.query(theHQLQuery, theParams);
+
+		log.info("Found matching items: " + theList.size());
+
+		log.info("Exiting QueryManagerImpl.getAdministrativeRoutes");
+		return theList;
+	}	
