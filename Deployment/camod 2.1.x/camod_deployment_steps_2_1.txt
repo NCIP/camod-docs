@@ -1,0 +1,25 @@
+PRE-DEPLOYMENT STEPS:
+
+
+1) Downtime page; access to the 2-tier application will be turned off on the morning of 5-25 (Thursday)
+
+   1.1) After this time, redirect all requests to the application to the supplied maintance_2.1.html page.
+   
+
+2) Database setup/configuration.
+
+    2.1) On Thursday morning 8:00am the production database will be shut down.
+
+    2.2) The DBA group transfers the production database to cadev/camoddev.
+
+    2.3) Derek Kong runs scripts to load the data into camoddev21 using the camoddev data and other data sources
+
+    2.4) After we confirm the correctness of the data in the camoddev21, the DBA group can transfer the camoddev into camod stage and production databases by export and import.
+
+   
+DEPLOYMENT INSTRUCTIONS:
+
+1. Copy the camod.war built on the build server to the Jboss402-app deploy folder.
+2. Copy the IEVSTree.war built on the build server to the Jboss402-app deploy folder.
+3. Restart Jboss402 server, if necessary.
+4. Verify if the apache configuration has been updated for camod and IEVSTree aliases to point to the JBoss402 installation.

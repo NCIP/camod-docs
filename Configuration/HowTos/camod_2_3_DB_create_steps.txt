@@ -1,0 +1,29 @@
+// Drop old JACKSON_LAB_TMP table
+drop table JACKSON_LAB_TMP cascade constraints;
+
+//On stage alter hibernate sequence
+DROP SEQUENCE hibernate_sequence;
+CREATE SEQUENCE hibernate_sequence INCREMENT BY 1 START WITH 50050000;
+commit
+
+// Create table in camoddev21 from camoddev22
+copy the JACKSON_LAB_TMP table from camoddev22@cadev.nci.nih.gov to the current tier
+
+// Run delete script
+Run REMOVE_JAX_MTB_DATA.sql
+
+// Run load script
+Run XFER_JAX_MTB_DATA.sql
+
+
+// 2.3 Steps
+
+// Run modified delete script with <50050000 instead of 60000000
+Run REMOVE_JAX_MTB_DATA.sql
+
+// Run modified load script with Jax agent type values matching caMOD values already used
+Run XFER_JAX_MTB_DATA.sql
+
+-- make search display work again
+-- make saved query work
+-- make customize search results work with option to select CE again
