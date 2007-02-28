@@ -1,5 +1,3 @@
-
-
 INSERT INTO MICRO_ARRAY_DATA ( MICRO_ARRAY_DATA_ID, EXPERIMENT_NAME, EXPERIMENT_ID,
 OTHER_LOCATION_URL, ABS_CANCER_MODEL_ID ) VALUES ( 
 6, 'Identification of large-scale embryonic and oncogenic transcriptional modules in human colon cancer using mouse models comparisons'
@@ -23,5 +21,6 @@ OTHER_LOCATION_URL, ABS_CANCER_MODEL_ID ) VALUES (
 INSERT INTO MICRO_ARRAY_DATA ( MICRO_ARRAY_DATA_ID, EXPERIMENT_NAME, EXPERIMENT_ID,
 OTHER_LOCATION_URL, ABS_CANCER_MODEL_ID ) VALUES ( 
 10, 'Murine KRASLA lung cancer gene expression', 1.01589759023117E15, NULL, 147); 
+
 commit;
  
