@@ -1,0 +1,16 @@
+--Step 1.  Drop old JACKSON_LAB_TMP table - submitted as a sql script
+Run BEFORE_CLOB_FIX.sql
+
+--Step 2.  Copy JACKSON_LAB_TMP from camoddev22 to the current tier
+copy the JACKSON_LAB_TMP table from camoddev22@cadev.nci.nih.gov to the
+current tier
+
+--Step 3.  Run delete script - submitted as a sql script
+Run REMOVE_JAX_MTB_DATA.sql
+
+--Step 4.  Run load script - submitted as a sql script
+Run XFER_JAX_MTB_DATA.sql
+
+-- Step 5.  Run hibernate sequence set sql
+Run AFTER_CLOB_FIX.sql 
+
