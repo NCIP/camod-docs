@@ -228,12 +228,19 @@ BEGIN
 		IF ( aRec.TREATMENT_TYPE <> 'None (Spontaneous)' ) THEN
 
 			treatmentType := aRec.TREATMENT_TYPE;
-			IF (  aRec.TREATMENT_TYPE = 'Chemical/Drug ' ) THEN
-				treatmentType := 'Chemical / Drug';
+			IF (  aRec.TREATMENT_TYPE = 'Growth Factor' ) THEN
+				treatmentType := 'Growth Factor Type';
 			END IF;
-			IF (  aRec.TREATMENT_TYPE = 'Virus' ) THEN
-				treatmentType := 'Viral';
+			IF (  aRec.TREATMENT_TYPE = 'Hormone' ) THEN
+				treatmentType := 'Hormone Type';
 			END IF;
+			IF (  aRec.TREATMENT_TYPE = 'Radiation Factor' ) THEN
+				treatmentType := 'Radiation Type';
+			END IF;
+			IF (  aRec.TREATMENT_TYPE = 'Other' ) THEN
+				treatmentType := 'Other Type';
+			END IF;
+
 	    		INSERT INTO ENVIRONMENTAL_FACTOR
 	    			( ENVIRONMENTAL_FACTOR_ID, TYPE_UNCTRL_VOCAB, NAME_UNCTRL_VOCAB )
 	    		VALUES
@@ -543,6 +550,8 @@ BEGIN
 
 END;
 /
+
+
 
 Execute XFER_JAX_MTB_DATA;
 
