@@ -67,6 +67,10 @@ alter table genotype drop constraint FK6ECA840B35AE2BF;
 -- Add FK constraint to Nomenclature table
 alter table Nomenclature add constraint FK6ECA840B35AE2BF foreign key (abs_cancer_model_id) references abs_cancer_model;
 
+-- Remove rows with no name in Nomenclature
+delete nomenclature n
+where n.name IS NULL;
+
 -- Make column not null after loading data
 Alter table Nomenclature
 modify abs_cancer_model_id  not null;
@@ -81,6 +85,4 @@ alter table genotype  drop column Nomenclature_id;
 delete genotype g
 where g.name IS NULL;
 
--- Remove rows with no name in Nomenclature
-delete nomenclature n
-where n.name IS NULL;
+commit;
