@@ -1,0 +1,25 @@
+--Step 1.  Drop old JACKSON_LAB_TMP table - submitted as a sql script
+Run BEFORE_CLOB_FIX.sql
+
+--Step 2.  Copy JACKSON_LAB_TMP from camoddev22 to the current tier
+Copy the JACKSON_LAB_TMP table from camoddev22@cadev.nci.nih.gov to the
+current tier.  You have sql for this step.
+
+--Step 3.  Run delete script - submitted as a sql script
+Run REMOVE_JAX_MTB_DATA.sql
+
+--Step 4.  Run load script - submitted as a sql script
+Run XFER_JAX_MTB_DATA.sql
+
+-- Step 5.  Run hibernate sequence set sql
+Run AFTER_CLOB_FIX.sql
+
+-- Step 6.  Run Nomenclature.sql
+RUN Nomenclature.sql
+
+-- Step 7.  Run AddMicroArray.sql
+RUN AddMicroArray.sql
+
+
+-- Step 8.  Build Application with new tag
+New tag:  camod_dev_2_2_deploy-dev_build_6
