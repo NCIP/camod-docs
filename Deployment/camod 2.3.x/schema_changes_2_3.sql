@@ -1,7 +1,29 @@
--- remove and reload jax data with EF.type values for CI
+-- Modify EF.type values instead of reloading data
 -- Protect disease, organ, microarray, ect.
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Chemical / Drug' 
+where ef.TYPE_UNCTRL_VOCAB = 'Chemical/Drug' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
 
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Growth Factor' 
+where ef.TYPE_UNCTRL_VOCAB = 'Growth Factor Type' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
 
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Hormone' 
+where ef.TYPE_UNCTRL_VOCAB = 'Hormone Type' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
+
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Other' 
+where ef.TYPE_UNCTRL_VOCAB = 'Other Type' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
+
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Viral' 
+where ef.TYPE_UNCTRL_VOCAB = 'Virus' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
 
 -- Add column named zfin_Number to Mutation_Identifier
 alter table Mutation_Identifier
@@ -26,6 +48,10 @@ ADD site VARCHAR2(255);
 -- Insert animal distributor for models from zfin
 INSERT INTO ANIMAL_DISTRIBUTOR (ANIMAL_DISTRIBUTOR_ID, NAME )
 VALUES(5, 'ZFIN');
+
+-- Insert Small Molecule option into chemical_class lookup table
+INSERT INTO CHEMICAL_CLASS(CHEMICAL_CLASS_ID, NAME)
+VALUES(7, 'Small Molecule');
 
 -- Add column named developmental_stage to Therapy
 alter table Therapy
@@ -61,5 +87,7 @@ UPDATE ABS_CANCER_MODEL ac
 SET ac.PRINCIPAL_INVESTIGATOR_ID = '56' 
 where ac.ABS_CANCER_MODEL_TYPE = 'AM'
 and ac.PRINCIPAL_INVESTIGATOR_ID IS NULL;
+
+
 
 
