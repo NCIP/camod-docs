@@ -234,7 +234,7 @@ BEGIN
 			IF (  aRec.TREATMENT_TYPE = 'Hormone' ) THEN
 				treatmentType := 'Hormone Type';
 			END IF;
-			IF (  aRec.TREATMENT_TYPE = 'Radiation Type' ) THEN
+			IF (  aRec.TREATMENT_TYPE = 'Radiation Factor' ) THEN
 				treatmentType := 'Radiation Type';
 			END IF;
 			IF (  aRec.TREATMENT_TYPE = 'Other' ) THEN
