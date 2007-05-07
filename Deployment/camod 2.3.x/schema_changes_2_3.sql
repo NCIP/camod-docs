@@ -96,6 +96,12 @@ SET ac.PRINCIPAL_INVESTIGATOR_ID = '56'
 where ac.ABS_CANCER_MODEL_TYPE = 'AM'
 and ac.PRINCIPAL_INVESTIGATOR_ID IS NULL;
 
+-- Add column named NAME_UNCTRL_VOCAB to Disease to store other option for Zebrafish dropdown
+alter table DISEASE
+ADD NAME_UNCTRL_VOCAB VARCHAR2(255);
 
+-- Add column named zfin_number to hold identifier for Zebrafish publications (ex. ZDB-PUB-010207-3)
+alter table PUBLICATION
+ADD ZFIN_ID VARCHAR2(255);
 
 
