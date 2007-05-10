@@ -102,6 +102,6 @@ ADD NAME_UNCTRL_VOCAB VARCHAR2(255);
 
 -- Add column named zfin_number to hold identifier for Zebrafish publications (ex. ZDB-PUB-010207-3)
 alter table PUBLICATION
-ADD ZFIN_ID VARCHAR2(255);
+ADD ZFIN_PUB_ID VARCHAR2(255);
 
 
