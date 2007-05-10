@@ -30,8 +30,12 @@ type:  cp [hit both left and right mouse button]
 
 You will see:  cp /local/home/jboss4b/caMOD/camod_dev/build
 add:  /camod.war .  
-complete command: cp /local/home/jboss4b/caMOD/camod_dev/build/camod.war . 
+complete command: cp /local/home/jboss4b/caMOD/camod/build/camod.war . 
 ** need "space ." at end **
+
+// Added these commands the build.sh so the war is moved to the correct directory automatically
+cd /usr/local/jboss-4.0.2/server/ncicb-app/deploy/
+cp /local/home/jboss4b/caMOD/camod/build/camod.war .
 
 This will copy (cp) the camod.war file into the development deploy folder.
 
@@ -61,6 +65,17 @@ directory The name to give to a new copy.
 newfiles The directory of were the new files are going to be. 
 
 Unix EXAMPLE
-
 cp file1.txt newdir - Copies the file1.txt to the newdir directory. 
 
+To get a list of files in a directory with the date stamp - i.e. check for a new camod.war:
+ls -l 
+
+//edit build.sh
+vi build.sh   
+move only with arrows
+using the "x" characters deletes the char under the cursor
+// save edits:
+":wq"  needs colon
+
+//Show overview on the "rm" command - use any of the commands 
+man rm 
