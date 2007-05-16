@@ -100,4 +100,7 @@ drop table engineered_gene_bkp cascade constraints;
 drop table genotype_bkp cascade constraints;
 drop table MGITEMP cascade constraints;
 
+-- Tables added in camod 2.3
+drop table developmental_stage cascade constraints;
+
 drop sequence hibernate_sequence;
