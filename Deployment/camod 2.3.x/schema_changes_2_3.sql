@@ -104,4 +104,16 @@ ADD NAME_UNCTRL_VOCAB VARCHAR2(255);
 alter table PUBLICATION
 ADD ZFIN_PUB_ID VARCHAR2(255);
 
+// Create table for developmental stage used for Therapy
+create table developmental_stage (
+   developmental_stage_id number(19,0) not null,
+   name varchar2(255),
+   concept_code varchar2(255),
+   primary key (developmental_stage_id)
+);
+
+alter table Therapy
+ADD developmental_stage_id number(19,0);
+
+alter table therapy add constraint FKAF8F6C6936A94812 foreign key (developmental_stage_id) references developmental_stage;
 
