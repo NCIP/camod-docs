@@ -1,0 +1,11 @@
+How to update Online Help files
+
+1.  Find zip file under L:\Technical Writing\For Sima (or wherever they were put) 
+2.  Unzip to a location of your choice
+3.  The output files are under "caMOD Online Help\caMOD Online Help\Output\WebWorks Help 5.0\caMOD" (providing the folder was called "caMOD Online Help."
+4.  Completely replace all the files under this folder into the project (i.e. rename the final folder under "caMOD Online Help\Output\WebWorks Help 5.0" to caMOD
+ and copy paste into project for caMOD to work)
+Note:  Do not copy all the parent folders that are worthless in the project
+
+5.  GO to ContextSensitiveHelp.properties and replace the context with the new context name from from context.js (i.e. context=caMOD_2.2_OH needs to be "caMOD_Online_Help")
+Note:  In the future this context should stay the same
