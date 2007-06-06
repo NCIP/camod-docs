@@ -26,7 +26,7 @@
 ================================================================
  
 
-    caMOD 2.2, the Cancer Models Database, is a open source data management 
+    caMOD 2.3, the Cancer Models Database, is a open source data management 
     system developed for the management and sharing of data of animal models. 
     caMOD features controlled vocabularies from a shared, publicly accessible metadata 
     repository (caDSR) and enterprise vocabulary services (EVS) from the National 
@@ -68,7 +68,7 @@
 ================================================================
 
 Expanded EVS vocabulary support
-- Update EVS Tree application to render additional species specific vocabularies (Rat anatomy and disease and staining methods) (gforge entry #6378)
+- Update EVS Tree application to render additional species-specific vocabularies (Rat anatomy and disease and staining methods) (gforge entry #6378)
 - Upgrade EVSTree app to render anatomy and developmental stage vocabulary trees for Zebrafish from the DTS server (gforge entry #6379)
 
 Improved functionality for submission and search with Zebrafish models:
