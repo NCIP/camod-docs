@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2007-06-07 14:48:21">
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2007-06-08 10:42:21">
 	<XMI.header>
 		<XMI.documentation>
 			<XMI.exporter>Enterprise Architect</XMI.exporter>
@@ -14750,6 +14750,7 @@
 		<UML:TaggedValue tag="rose_uuid" xmi.id="EAID_CD7672BB_D0F5_4af0_A47F_8F05FFC67D2D" value="40574E6F0001" modelElement="EAID_568573E9_3438_4d07_A500_3CED447303C4"/>
 		<UML:TaggedValue tag="style" xmi.id="EAID_16556DCB_CD35_4c62_8C2D_55A8640491EB" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=0;HSwimLanes=0;BorderStyle=0;" modelElement="EAID_568573E9_3438_4d07_A500_3CED447303C4"/>
 		<UML:TaggedValue tag="tagged" xmi.id="EAID_FAD07B08_BD59_4905_B8A4_292DAD3DB4D3" value="0" modelElement="EAID_568573E9_3438_4d07_A500_3CED447303C4"/>
+		<UML:TaggedValue tag="documentation" xmi.id="EAID_333A1A5B_10A2_4926_A0A9_85F285611FA5" value="Data of proteomics experiments generated from the animal model." modelElement="EAID_5A0DB8A2_2FA8_47ac_9A7D_670D52119382"/>
 		<UML:TaggedValue tag="documentation" xmi.id="EAID_D1F2846A_4B59_4740_88F1_C3D06702AB9D" value="Data about transient interference experiments. Morpholinos are antisense oligonucleotides used to inhibit translation or splicing of particular mRNAs. siRNA used to &quot;knock-down&quot; genes in a sequence-specific fashion at the posttranscriptional level." modelElement="EAID_5C13C6D3_0D1D_45cd_8BAC_0FB9D5F2A656"/>
 		<UML:TaggedValue tag="date_created" xmi.id="EAID_13223F90_B7C0_42f9_BDA5_221229C70E1E" value="2004-10-20 10:54:14" modelElement="EAID_5D4E6C02_2945_41c7_89E8_C842DA28B229"/>
 		<UML:TaggedValue tag="date_modified" xmi.id="EAID_B1E497A4_BBE5_4428_B589_6E8D0A109BD2" value="2004-10-20 10:54:14" modelElement="EAID_5D4E6C02_2945_41c7_89E8_C842DA28B229"/>
@@ -14827,8 +14828,8 @@
 		<UML:TaggedValue tag="tagged" xmi.id="EAID_E74E9F5E_6D4F_40e4_A5A0_4E0D9ED1B9DD" value="0" modelElement="EAID_70F48EB0_F4F3_4923_9A3A_0EEDB7B84A40"/>
 		<UML:TaggedValue tag="date_created" xmi.id="EAID_69D4ABD4_A4C3_4cba_8621_79A6E23CA295" value="2004-10-20 10:54:16" modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
 		<UML:TaggedValue tag="date_modified" xmi.id="EAID_B196FB5D_D762_43ff_972A_1D9827FC04D3" value="2004-10-20 10:54:16" modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
-		<UML:TaggedValue tag="documentation" xmi.id="EAID_29A46F85_9D41_4a57_B674_6FF9E6532AE4" value="A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is &quot;ontolog-able,&quot; provides access to its ancestral and descendant terms in the vocabulary." modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
 		<UML:TaggedValue tag="documentation" xmi.id="EAID_EF68EF7C_0984_4398_8728_4F337FDF9137" value="A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is &quot;ontolog-able,&quot; provides access to its ancestral and descendant terms in the vocabulary." modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
+		<UML:TaggedValue tag="documentation" xmi.id="EAID_29A46F85_9D41_4a57_B674_6FF9E6532AE4" value="A representation of an organ whose name occurs in a controlled vocabulary; provides access to any Histopathology objects for the organ, and, because it is &quot;ontolog-able,&quot; provides access to its ancestral and descendant terms in the vocabulary." modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
 		<UML:TaggedValue tag="ea_ntype" xmi.id="EAID_DCB35C74_EADD_4a40_B40E_546798B54ABE" value="0" modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
 		<UML:TaggedValue tag="ea_stype" xmi.id="EAID_D2A08E8A_D801_4c49_9972_79C3C39469FE" value="Class" modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
 		<UML:TaggedValue tag="isSpecification" xmi.id="EAID_8D3D4A5A_BCD9_4557_ACA5_6F4548712999" value="false" modelElement="EAID_73722995_7217_4d54_88E0_C145880D99C2"/>
@@ -15150,8 +15151,8 @@
 		<UML:TaggedValue tag="tagged" xmi.id="EAID_D62585DE_3B21_4312_9BA0_8A42CBF1A5C4" value="0" modelElement="EAID_FF353CF9_5C12_4788_A2F8_A161BB84E6A3"/>
 		<UML:TaggedValue tag="date_created" xmi.id="EAID_8364A2C8_21D8_46c0_AFA5_22A6021843D9" value="2004-10-20 10:54:15" modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
 		<UML:TaggedValue tag="date_modified" xmi.id="EAID_4254C7E5_07C8_4a0c_87E1_FA1B9275D1D8" value="2004-10-20 10:54:15" modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
-		<UML:TaggedValue tag="documentation" xmi.id="EAID_4D32FC1A_8EE7_4c5e_AD3C_F3CC4418726D" value="An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue." modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
 		<UML:TaggedValue tag="documentation" xmi.id="EAID_0B179111_001A_4731_B3F6_FECF1A65F2EA" value="An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue." modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
+		<UML:TaggedValue tag="documentation" xmi.id="EAID_4D32FC1A_8EE7_4c5e_AD3C_F3CC4418726D" value="An object representing the various names (scientific, common, abbreviated, etc.) for a species associated with a specific instance of a Gene, Chromosome, Pathway, Protein, or Tissue." modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
 		<UML:TaggedValue tag="ea_ntype" xmi.id="EAID_F5A35011_793D_4ec0_8256_4241E05F482B" value="0" modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
 		<UML:TaggedValue tag="ea_stype" xmi.id="EAID_2E327509_093A_4df7_BCBC_F009BF25566F" value="Class" modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
 		<UML:TaggedValue tag="isSpecification" xmi.id="EAID_96069FCA_0616_4540_9010_5C8C8DC9FD81" value="false" modelElement="EAID_FF777B15_DD88_4bbc_AED2_45A4B865CBEA"/>
