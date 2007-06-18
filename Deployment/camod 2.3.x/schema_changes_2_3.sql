@@ -48,6 +48,9 @@ ADD rgd_Id VARCHAR2(255);
 ALTER TABLE Mutation_Identifier
 RENAME COLUMN mgi_number to mgi_id;
 
+-- Add column named developmental_stage to abs_cancer_model (for Animal_Model)
+alter table abs_cancer_model
+ADD developmental_stage  VARCHAR2(255);
 
 -- Add column named targetSite to Transient_Interference
 alter table Transient_Interference
@@ -60,10 +63,6 @@ VALUES(5, 'ZFIN');
 -- Insert Small Molecule option into chemical_class lookup table
 INSERT INTO CHEMICAL_CLASS(CHEMICAL_CLASS_ID, NAME)
 VALUES(7, 'Small Molecule');
-
--- Add column named developmental_stage to Therapy
-alter table Therapy
-ADD developmental_stage VARCHAR2(255);
 
 -- Add column named conditioning_regimen  to Abs_Cancer _Model
 alter table Abs_Cancer_Model
