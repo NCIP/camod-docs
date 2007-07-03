@@ -25,6 +25,10 @@ where ef.TYPE_UNCTRL_VOCAB = 'Other Type'
 and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
 
 -- Radiation Type in newest QA, Stage and Prod script - not in dev
+UPDATE environmental_factor ef 
+SET ef.TYPE_UNCTRL_VOCAB = 'Radiation' 
+where ef.TYPE_UNCTRL_VOCAB = 'Radiation Type' 
+and ef.TYPE_UNCTRL_VOCAB IS NOT NULL;
 
 -- Synronize type = Viral
 UPDATE environmental_factor ef 
