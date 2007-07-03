@@ -103,7 +103,7 @@ ADD NAME_UNCTRL_VOCAB VARCHAR2(255);
 alter table PUBLICATION
 ADD ZFIN_PUB_ID VARCHAR2(255);
 
-// Create table for developmental stage used for Therapy
+-- Create table for developmental stage used for Therapy
 create table developmental_stage (
    developmental_stage_id number(19,0) not null,
    name varchar2(255),
@@ -116,7 +116,7 @@ ADD developmental_stage_id number(19,0);
 
 alter table therapy add constraint FKAF8F6C6936A94812 foreign key (developmental_stage_id) references developmental_stage;
 
-// Add proteomics_DATA table for future implementation
+-- Add proteomics_DATA table for future implementation
 CREATE TABLE PROTEOMICS_DATA
 (
   PROTEOMICS_DATA_ID  NUMBER(19)               NOT NULL,
@@ -127,3 +127,5 @@ CREATE TABLE PROTEOMICS_DATA
 );
 
 alter table PROTEOMICS_DATA add constraint FKC3D0BA2B1CC8B88E foreign key (abs_cancer_model_id) references abs_cancer_model;
+
+commit;
