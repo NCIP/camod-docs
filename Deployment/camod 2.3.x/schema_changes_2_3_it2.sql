@@ -46,4 +46,12 @@ ALTER TABLE INVIVO_RESULT RENAME COLUMN endpoint_code_id to endpoint_id;
 -- Add foreign key constraint for endpoint and invivo_result (automatically deleted when the table was dropped)
 Alter table invivo_result add constraint FKC187E8CB887C658A foreign key (endpoint_id) references endpoint;
 
+-- Create bkp table to hold data
+create table repository_info_bkp as select * from repository_info;
+
+-- Drop table also drops constraint in abs_cancer_model table
+Drop table repository_info cascade constraints;
+
+-- Remove repository_info_id from abs_cancer_model
+Alter table abs_cancer_model drop column repository_info_id;
 
