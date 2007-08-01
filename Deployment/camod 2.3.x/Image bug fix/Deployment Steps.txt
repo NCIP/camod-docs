@@ -13,5 +13,5 @@ caimage.ftp.server=lpgftp.nci.nih.gov
 caimage.ftp.username=lizardftp
 caimage.ftp.password=1amL!zrd
 
-Get last stage tag:  
-Tag ImageManagerImpl.java to build
+Get last stage tag:  camod_dev_2_3_deploy-stage_build_1
+Tag ImageManagerImpl.java to build (done)
