@@ -1,0 +1,14 @@
+Deployment steps
+
+Step 1.  Under C:\local\content\camod\config in the camod.properties file verify and/or modify the following properties
+
+a. caimage.ftp.modelstoragedirectory=Images/images/Model_Images/Model/
+b. caimage.ftp.genconstoragedirectory=Images/images/Model_Images/GeneticConstruct/
+c. caimage.modelview.uri=http://caimage.nci.nih.gov/lizardtech/Model_Images/Model/
+d. caimage.genconview.uri=http://caimage.nci.nih.gov/lizardtech/Model_Images/GeneticConstruct/
+
+Step 2.  Verify the following properties on all tiers:
+caimage.host=caimage.nci.nih.gov
+caimage.ftp.server=lpgftp.nci.nih.gov
+caimage.ftp.username=lizardftp
+caimage.ftp.password=1amL!zrd
