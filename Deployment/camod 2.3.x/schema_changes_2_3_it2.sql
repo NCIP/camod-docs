@@ -55,3 +55,9 @@ Drop table repository_info cascade constraints;
 -- Remove repository_info_id from abs_cancer_model
 Alter table abs_cancer_model drop column repository_info_id;
 
+-- Modify Graft.graft_type to Graft.source_type
+ALTER TABLE ABS_CANCER_MODEL RENAME COLUMN GRAFT_TYPE to SOURCE_TYPE;
+
+-- Modify Graft.graft_type_UNCTRL_VOCAB to Graft.source_type_UNCTRL_VOCAB
+ALTER TABLE ABS_CANCER_MODEL RENAME COLUMN GRAFT_TYPE_UNCTRL_VOCAB to SOURCE_TYPE_UNCTRL_VOCAB;
+

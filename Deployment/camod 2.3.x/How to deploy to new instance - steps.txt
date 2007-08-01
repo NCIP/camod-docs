@@ -1,0 +1,8 @@
+Building new instance for caMOD 2.3
+
+1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder not made and displays as /app/content/evstree/tree_cache_files/
+
+2.  /local/content/camod/config/ holds camod.properties and mail.properties- folder now made and displays as /app/content/camod/
+
+3.  /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ holds camod.war, EVSTree.war, oracle-ds.xml, and properties-service.xml
+new location = /usr/local/jboss-4.0.5.GA/server/ncicb-app/deploy/
