@@ -49,7 +49,7 @@ Alter table invivo_result add constraint FKC187E8CB887C658A foreign key (endpoin
 -- Create bkp table to hold data
 create table repository_info_bkp as select * from repository_info;
 
--- Drop table also drops constraint in abs_cancer_model table
+-- Drop table also drops constraint in repository_info table
 Drop table repository_info cascade constraints;
 
 -- Remove repository_info_id from abs_cancer_model
@@ -61,3 +61,23 @@ ALTER TABLE ABS_CANCER_MODEL RENAME COLUMN GRAFT_TYPE to SOURCE_TYPE;
 -- Modify Graft.graft_type_UNCTRL_VOCAB to Graft.source_type_UNCTRL_VOCAB
 ALTER TABLE ABS_CANCER_MODEL RENAME COLUMN GRAFT_TYPE_UNCTRL_VOCAB to SOURCE_TYPE_UNCTRL_VOCAB;
 
+-- Create table with new name
+CREATE TABLE GRAFT_INVIVO_RESULT
+(
+  ABS_CANCER_MODEL_ID  NUMBER(19)               NOT NULL,
+  INVIVO_RESULT_ID     NUMBER(19)               NOT NULL
+);
+
+-- Create bkp table to hold data
+create table XENOGRAFT_INVIVO_RESULT_bkp as select * from XENOGRAFT_INVIVO_RESULT;
+
+-- Move data to new table from bkp
+Insert into GRAFT_INVIVO_RESULT
+ select ABS_CANCER_MODEL_ID, INVIVO_RESULT_ID
+   from XENOGRAFT_INVIVO_RESULT_bkp;
+   
+-- Drop table also drops constraint in XENOGRAFT_INVIVO_RESULT table
+Drop table XENOGRAFT_INVIVO_RESULT cascade constraints;
+
+-- Drop table also drops constraint in XENOGRAFT_INVIVO_RESULT_bkp table
+Drop table XENOGRAFT_INVIVO_RESULT_bkp cascade constraints;
