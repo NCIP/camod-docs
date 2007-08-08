@@ -1,4 +1,4 @@
-Exporting package to 'C:\Documents and Settings\wagneru\workspace\camod\docs\CABIG compliance\xmi\caMOD_v2.3\caMOD_v2_3_rv1.xmi'
+Exporting package to 'C:\Documents and Settings\wagneru\workspace\camod\docs\CABIG compliance\caMOD 2.3\xmi\caMOD_v2_3_rv1.xmi'
 Retrieving data for export: packages
 Retrieving data for export: diagram elements
 Retrieving data for export: links
@@ -54,7 +54,7 @@ Element:8: domain
 ***** Processing package: domain *****
 Element:9: Publication
 Element:10: Disease
-Element:11: EndpointCode
+Element:11: Endpoint
 Element:12: SpontaneousMutation
 Element:13: ScreeningResult
 Element:14: Image
@@ -73,66 +73,65 @@ Element:26: Conditionality
 Element:27: ClinicalMarker
 Element:28: Treatment
 Element:29: AnimalDistributor
-Element:30: RepositoryInfo
-Element:31: ProteomicsData
-Element:32: TransientInterference
-Element:33: GeneDelivery
-Element:34: StainingMethod
-Element:35: PublicationStatus
-Element:36: TumorCode
-Element:37: Availability
-Element:38: InvivoResult
-Element:39: Organ
-Element:40: DevelopmentalStage
-Element:41: Agent
-Element:42: ModificationType
-Element:43: TargetedModification
-Element:44: Role
-Element:45: Organization
-Element:46: MutationIdentifier
-Element:47: Transgene
-Element:48: ExpressionFeature
-Element:49: Nomenclature
-Element:50: Party
-Element:51: Strain
-Element:52: AnimalModel
-Element:53: InducedMutation
-Element:54: GeneticAlteration
-Element:55: ContactInfo
-Element:56: BiologicalProcess
-Element:57: CarcinogenExposure
-Element:58: EngineeredGene
-Element:59: SegmentType
-Element:60: Genotype
-Element:61: SexDistribution
-Element:62: ModelSection
-Element:63: RegulatoryElement
-Element:64: AbstractCancerModel
-Element:65: Xenograft
-Element:66: ExpressionLevelDesc
-Element:67: AnimalAvailability
-Element:68: RegulatoryElementType
-Element:69: ChemicalClass
-Element:70: GenomicSegment
-Element:71: YeastModel
-Element:72: MicroArrayData
-Element:73: Species
+Element:30: ProteomicsData
+Element:31: TransientInterference
+Element:32: GeneDelivery
+Element:33: StainingMethod
+Element:34: PublicationStatus
+Element:35: TumorCode
+Element:36: Availability
+Element:37: InvivoResult
+Element:38: Organ
+Element:39: DevelopmentalStage
+Element:40: Agent
+Element:41: ModificationType
+Element:42: TargetedModification
+Element:43: Role
+Element:44: Organization
+Element:45: MutationIdentifier
+Element:46: Transgene
+Element:47: ExpressionFeature
+Element:48: Nomenclature
+Element:49: Party
+Element:50: Strain
+Element:51: AnimalModel
+Element:52: InducedMutation
+Element:53: GeneticAlteration
+Element:54: ContactInfo
+Element:55: BiologicalProcess
+Element:56: CarcinogenExposure
+Element:57: EngineeredGene
+Element:58: SegmentType
+Element:59: Genotype
+Element:60: SexDistribution
+Element:61: ModelSection
+Element:62: RegulatoryElement
+Element:63: AbstractCancerModel
+Element:64: Graft
+Element:65: ExpressionLevelDesc
+Element:66: AnimalAvailability
+Element:67: RegulatoryElementType
+Element:68: ChemicalClass
+Element:69: GenomicSegment
+Element:70: YeastModel
+Element:71: MicroArrayData
+Element:72: Species
 ***** Processing package: java *****
-Element:74: util
-Element:75: sql
-Element:76: lang
+Element:73: util
+Element:74: sql
+Element:75: lang
 ***** Processing package: lang *****
-Element:77: Boolean
-Element:78: Long
-Element:79: Float
-Element:80: Integer
-Element:81: String
-Element:82: Double
+Element:76: Boolean
+Element:77: Long
+Element:78: Float
+Element:79: Integer
+Element:80: String
+Element:81: Double
 ***** Processing package: sql *****
-Element:83: Clob
+Element:82: Clob
 ***** Processing package: util *****
-Element:84: Hashtable
-Element:85: Collection
-Element:86: Date
+Element:83: Hashtable
+Element:84: Collection
+Element:85: Date
 Formatting output XML...please wait
 XMI Document Export Complete!
