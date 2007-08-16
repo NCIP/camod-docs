@@ -1,8 +1,19 @@
 Building new instance for caMOD 2.3
 
-1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder not made and displays as /app/content/evstree/tree_cache_files/
+1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder structure was modified slightly
+Move files to /app/content/ncicb-app/evstree/tree_cache_files/ on specified tier
 
-2.  /local/content/camod/config/ holds camod.properties and mail.properties- folder now made and displays as /app/content/camod/
+2.  /local/content/camod/config/ holds camod.properties and mail.properties- folder now made and displays as /app/content/ncicb-app/camod/
+Copy both files to the new folder structure on the specified tier
+Modify the properties-service.xml to point to the current location of the properties files (add "/ncicb-app")
+
+    <attribute name="Properties">
+	gov.nih.nci.camod.camodProperties=/local/content/ncicb-app/camod/config/camod.properties
+	gov.nih.nci.camod.mailProperties=/local/content/ncicb-app/camod/config/mail.properties   
+	</attribute>    
 
 3.  /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ holds camod.war, EVSTree.war, oracle-ds.xml, and properties-service.xml
 new location = /usr/local/jboss-4.0.5.GA/server/ncicb-app/deploy/
+
+4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds login-config.xml 
+Move file from current location on specified tier to the location on the new instance
