@@ -2,7 +2,7 @@
     
                              caMOD
                           Version 2.3
-                         June, 2007
+                         Sept, 2007
 
        National Cancer Institute Center for Bioinformatics
 
@@ -45,8 +45,8 @@
 ================================================================
     2.0 Release History
 ================================================================
-    caMOD Version 2.3 (Iteration 1)
-    --	June 2007 
+    caMOD Version 2.3 
+    --	Sept 2007 
         
     caMOD Version 2.2
     --	November 30th 2006 
@@ -94,6 +94,13 @@ Simple and advanced search enhancements
 Online Help
 - A new version of online help including a downloadable user guide (PDF file) has been updated. 
 
+Administration
+- Administration edit page needs additional filters
+
+NCICB Technology Stack Requirements
+- Upgrade to Jboss 4.0.5 from 4.0.2 
+- Upgrade to newer version of ANT for project
+
 
 The caMOD 2.1 Common Data Elements (CDEs) are available via caDSR 
 (cancer Data Standard Repository) http://ncicb.nci.nih.gov/core/caDSR
@@ -102,12 +109,15 @@ The caMOD 2.1 Common Data Elements (CDEs) are available via caDSR
 ================================================================
     4.0 Defects Fixed Since Last Release
 ================================================================
-	
-Defect #5284:  	Fix MGI link on genetic description pages and at the same time fix existing data
-Defect #5267: 	MTB radiation data are not shown
-Defect #5259: 	Adv search for carcinogens does not include data from Jackson Lab
-Defect #5236: 	Fix Jax lab availability link and data - part 2
+
 Defect #5227: 	Customizing search results doesn't work when carcinogen is selected
+Defect #5236: 	Fix Jax lab availability link and data - part 2	
+Defect #5259: 	Adv search for carcinogens does not include data from Jackson Lab
+Defect #5267: 	MTB radiation data are not shown
+Defect #5284:  	Fix MGI link on genetic description pages and at the same time fix existing data
+Defect #6269:   Corrected concept codes for rat and zebrafish on existing models now that the new vocabularies are available from EVS
+Defect #7099:   Do not show human in species drop down list on model characteristics page
+   
 
 ================================================================
     5.0 Known Issues/Defects
