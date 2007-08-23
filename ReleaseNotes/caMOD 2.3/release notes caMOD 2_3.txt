@@ -22,7 +22,7 @@
 
 
 ================================================================
-    1.0 - caMOD Version 2.3 Introduction and History
+    1.0 caMOD Version 2.3 Introduction and History
 ================================================================
  
 
@@ -30,8 +30,7 @@
     system developed for the management and sharing of data of animal models. 
     caMOD features controlled vocabularies from a shared, publicly accessible metadata 
     repository (caDSR) and enterprise vocabulary services (EVS) from the National 
-    Cancer Institute.  caMOD database also features Application Programming 
-    Interfaces (APIs) for programmatic access to the data. 
+    Cancer Institute.  
 
     -- http://cancermodels.nci.nih.gov
 
@@ -68,7 +67,7 @@
 ================================================================
 
 Expanded EVS vocabulary support
-- Render additional species-specific vocabularies (Rat anatomy, Diseases of Rats, Zebrafish anatomy, Zebrafish developmental stages, and staining methods) (gforge entry #6378, #6379, #4759, #4781))
+- Render additional species-specific vocabularies (Rat anatomy, Diseases of Rats, Zebrafish anatomy, Zebrafish developmental stages, and staining methods) (gforge entry #6378, #6379, #4759, #4781)
 
 Add functionality for submission and search of Zebrafish and Rat models:
 - Link to zfin.org or to RGD (Rat Genome Database) for allele details on genetic description pages (gforge entry #6776)
@@ -88,9 +87,9 @@ Other
 - A new version of online help including a downloadable user guide (PDF file) has been updated. 
 
 Administration
-- Administration pages have additional filters
+- Administration pages have additional filters (gforge entry #4784)
 
-NCICB Technology Stack Requirements
+NCICB Technology Stack Requirements (gforge entry #6779, 7079)
 - Upgrade to Jboss 4.0.5 from 4.0.2 
 - Upgrade to newer version of ANT for project
 
@@ -160,10 +159,6 @@ Defect #7099:   	Do not show human in species drop down list on model characteri
     
     NCICB Application Support
     --  http://ncicb.nci.nih.gov/NCICB/support
-
-
-    NCICB Download Center
-    --  http://ncicb.nci.nih.gov/download/
 
     caMOD
     --  http://cancermodels.nci.nih.gov/
