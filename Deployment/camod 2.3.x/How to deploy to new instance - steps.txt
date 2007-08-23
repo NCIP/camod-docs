@@ -17,3 +17,15 @@ new location = /usr/local/jboss-4.0.5.GA/server/ncicb-app/deploy/
 
 4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds login-config.xml 
 Move file from current location on specified tier to the location on the new instance
+
+    <!-- camod application -->
+    <application-policy name = "camod">
+       <authentication>
+           <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
+               <module-option name = "ldapHost">ldaps://cbioweb.nci.nih.gov:636</module-option>
+<!--           <module-option name = "ldapHost">ldaps://ncids5a.nci.nih.gov:636</module-option> -->
+               <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
+               <module-option name="ldapUserIdLabel">cn</module-option>
+           </login-module>
+       </authentication>
+    </application-policy>
