@@ -1,0 +1,20 @@
+Building original instance for caMOD 2.3
+
+1.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds login-config.xml 
+
+a.  Verify that the working LDAP server is being referenced
+    <!-- camod application -->
+    <application-policy name = "camod">
+       <authentication>
+           <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
+               <module-option name = "ldapHost">ldaps://cbioweb.nci.nih.gov:636</module-option>
+<!--           <module-option name = "ldapHost">ldaps://ncids5a.nci.nih.gov:636</module-option> -->
+               <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
+               <module-option name="ldapUserIdLabel">cn</module-option>
+           </login-module>
+       </authentication>
+    </application-policy>
+    
+b.  modify camod.properties to point to the working LDAP server under /local/home/content/camod/config
+    
+2.  Build from tag given
