@@ -3,23 +3,29 @@ Building new instance for caMOD 2.3
 1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder structure was modified slightly
 Move files to /app/content/ncicb-app/evstree/tree_cache_files/ on specified tier
 
-2.  /local/content/camod/config/ holds camod.properties and mail.properties - 
-folder now made and displays as /app/content/ncicb-app/camod/
-Copy both files to the new folder structure on the specified tier
+2.  <jboss_home>/deploy (/usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) holds the 
+oracle-ds.xml, and properties-service.xml files
 
-3.  Modify the properties-service.xml to point to the current location of the properties files (add "/ncicb-app")
-
-    <attribute name="Properties">
-	gov.nih.nci.camod.camodProperties=/local/content/ncicb-app/camod/config/camod.properties
-	gov.nih.nci.camod.mailProperties=/local/content/ncicb-app/camod/config/mail.properties   
-	</attribute>    
-
-3.  /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ holds camod.war, EVSTree.war, oracle-ds.xml, and properties-service.xml
-new location = /usr/local/jboss-4.0.5.GA/server/ncicb-app/deploy/
-a. Copy all file from old instance to the new instance
+a. Copy all files from JBoss_home/deploy folder on the old instance to the new instance location
 b. Replace the correct values in the oracle-ds.xml file for the tier-specific database
 
-4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds login-config.xml 
+3.  Modify the properties-service.xml 
+a.  to point to the current location of the properties files 
+
+    <attribute name="Properties">
+	gov.nih.nci.camod.camodProperties=/usr/content/ncicb-app/camod/config/camod.properties
+	gov.nih.nci.camod.mailProperties=/usr/content/ncicb-app/camod/config/mail.properties   
+	</attribute>  
+	
+b. Comment out the reference to  ApplicationSecurityConfig.xml (no longer used) 
+<!-- gov.nih.nci.security.configFile=/usr/local/jboss-4.0.2/server/ncicb-app/csmconfig/ApplicationSecurityConfig.xml -->
+
+3.  /local/content/camod/config/ holds camod.properties and mail.properties - 
+folder structure was modified slightly and displays as /app/content/ncicb-app/camod/
+
+a. Copy both files to the new folder structure on the specified tier
+
+4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
 Move file from current location on specified tier to the location on the new instance
 
 a.  Verify that the working LDAP server is being referenced
@@ -34,3 +40,6 @@ a.  Verify that the working LDAP server is being referenced
            </login-module>
        </authentication>
     </application-policy>
+    
+5.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder 
+(/usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier)
