@@ -2,9 +2,10 @@ Building new instance for caMOD 2.3
 
 1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder structure was modified slightly
 Move files to /app/content/ncicb-app/evstree/tree_cache_files/ on specified tier
+** You may not have rights for this so, if not, send in help desk request **
 
-2.  <jboss_home>/deploy (/usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) holds the 
-oracle-ds.xml, and properties-service.xml files
+2.  <jboss_home>/deploy (example: /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) holds the 
+oracle-ds.xml and properties-service.xml files
 
 a. Copy all files from JBoss_home/deploy folder on the old instance to the new instance location
 b. Replace the correct values in the oracle-ds.xml file for the tier-specific database
@@ -28,6 +29,10 @@ a. Copy both files to the new folder structure on the specified tier
 4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
 Move file from current location on specified tier to the location on the new instance
 
+Note:  The LDAP servers are not working well and apps support has been changing this URL.  Check to see if the 
+current tier has a ldapHost that is working before trying this one or submitting a help desk request.  We had
+to move to a third server for dev before we could log into the application.
+
 a.  Verify that the working LDAP server is being referenced
     <!-- camod application -->
     <application-policy name = "camod">
@@ -41,5 +46,7 @@ a.  Verify that the working LDAP server is being referenced
        </authentication>
     </application-policy>
     
-5.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder 
-(/usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier)
+5.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with tag from Sima
+
+- JBoss_Home for specific tier is defined on e-mail from apps support
+(example: /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) 
