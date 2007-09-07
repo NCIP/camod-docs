@@ -1,52 +1,45 @@
 Building new instance for caMOD 2.3
 
-1.  /local/content/evstree/tree_cache_files/ holds the cache files - folder structure was modified slightly
-Move files to /app/content/ncicb-app/evstree/tree_cache_files/ on specified tier
-** You may not have rights for this so, if not, send in help desk request **
+Step 1.  /local/content/evstree/tree_cache_files/ holds all the EVSTree cache files - 
+The folder structure was modified slightly and is /local/content/ncicb-app/evstree/tree_cache_files/ now (add ncicb-app).
+Move all the .index and .data files to /local/content/ncicb-app/evstree/tree_cache_files/ on the specified tier.
 
-2.  <jboss_home>/deploy (example: /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) holds the 
+Step 2.  /local/content/camod/config/ holds camod.properties and mail.properties - 
+The folder structure was modified slightly and is /local/content/ncicb-app/camod/config now (add ncicb-app).
+Move both the camod.properties and mail.properties to /local/content/ncicb-app/camod/config on the specified tier
+
+
+Step 3.  <jboss_home>/deploy (example: /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) holds the 
 oracle-ds.xml and properties-service.xml files
 
-a. Copy all files from JBoss_home/deploy folder on the old instance to the new instance location
-b. Replace the correct values in the oracle-ds.xml file for the tier-specific database
+a. Copy the oracle-ds.xml and properties-service.xml files from JBoss_home/deploy folder on the old instance to the new instance location
+b. Modify the properties-service.xml in the <JBoss_Home>/deploy folder to point to the current location of the properties files (add ncicb-app/)
 
-3.  Modify the properties-service.xml in the <JBoss_Home>/deploy folder
-a.  to point to the current location of the properties files (add ncicb-app/)
-
+For example
     <attribute name="Properties">
 	gov.nih.nci.camod.camodProperties=/local/content/ncicb-app/camod/config/camod.properties
 	gov.nih.nci.camod.mailProperties=/local/content/ncicb-app/camod/config/mail.properties   
 	</attribute>  
 	
-b. Comment out the reference to  ApplicationSecurityConfig.xml (no longer used) 
+c. Comment out the reference to the ApplicationSecurityConfig.xml (no longer used) 
+For Example:
 <!-- gov.nih.nci.security.configFile=/usr/local/jboss-4.0.2/server/ncicb-app/csmconfig/ApplicationSecurityConfig.xml -->
 
-3.  /local/content/camod/config/ holds camod.properties and mail.properties - 
-folder structure was modified slightly and displays as /app/content/ncicb-app/camod/
 
-a. Copy both files to the new folder structure on the specified tier
+Step 4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
+Move file from previous location on specified tier to the location on the new instance
 
-4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
-Move file from current location on specified tier to the location on the new instance
-
-Note:  The LDAP servers are not working well and apps support has been changing this URL.  Check to see if the 
-current tier has a ldapHost that is working before trying this one or submitting a help desk request.  We had
-to move to a third server for dev before we could log into the application.
-
-a.  Verify that the working LDAP server is being referenced
+Note:  Verify that the working LDAP server is being referenced 
     <!-- camod application -->
     <application-policy name = "camod">
        <authentication>
            <login-module code = "gov.nih.nci.security.authentication.loginmodules.LDAPLoginModule" flag = "required" >
-               <module-option name = "ldapHost">ldaps://cbioweb.nci.nih.gov:636</module-option>
-<!--           <module-option name = "ldapHost">ldaps://ncids5a.nci.nih.gov:636</module-option> -->
+               <module-option name = "ldapHost">ldaps://cbioweb-stage-ldap.nci.nih.gov:636</module-option>
                <module-option name="ldapSearchableBase">ou=nci,o=nih</module-option>
                <module-option name="ldapUserIdLabel">cn</module-option>
            </login-module>
        </authentication>
     </application-policy>
     
-5.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with tag from Sima
+Step 6.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tag 
 
-- JBoss_Home for specific tier is defined on e-mail from apps support
-(example: /usr/local/jboss-4.0.2/server/ncicb-app/deploy/ on dev tier) 
