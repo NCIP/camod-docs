@@ -84,3 +84,25 @@ using the "x" characters deletes the char under the cursor
 
 //Show overview on the "rm" command - use any of the commands 
 man rm 
+
+----------------------Tricks (short cuts) ------------------
+Tip 1.  At any point, you can run the below commands to determine who you are within the shell:
+
+$ id
+$ whoami
+
+Tip 2.  NOTE: Occasionally there are issues w/ changes to JSP pages not being updated to the newest version.  To fix this, you must remove the camod directory under
+~work/jboss.web/localhost.  I.e.
+
+	cd ~/work/jboss.web/localhost
+	rm –Rf camod
+
+	And then redeploy the application 
+	
+Tip 3.  You can change the overall permissions for the group file by executing the following command
+
+ “chmod 644 server.log” from the role account (also from the folder with server.log).  This will give everyone read access to the log file. 
+
+
+
+
