@@ -3,6 +3,7 @@ Building new instance for caMOD 2.3
 Step 1.  /local/content/evstree/tree_cache_files/ holds all the EVSTree cache files - 
 a. Create this folder structure on the new instance.
 b. Move all the .index and .data files to /local/content/evstree/tree_cache_files/ on the specified tier.
+c. Verify that this folder has read and write access from EVSTree application
 
 Step 2.  /local/content/camod/config/ holds camod.properties and mail.properties - 
 a. Create this folder structure on the new instance.
@@ -16,7 +17,7 @@ For Example:
 
 
 Step 4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
-Move file from previous location on specified tier to the location on the new instance
+Move this file from previous location on specified tier to the location on the new instance
 
 Note:  Verify that the working LDAP server is being referenced according to the LDAP assigned to the specified tier
 For example:
@@ -31,5 +32,7 @@ For example:
        </authentication>
     </application-policy>
     
-Step 6.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tag 
+Step 6.  Add another entry in the apache conf files to redirect /EVSTree context to tomcat container.   
+
+Step 7.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tags 
 
