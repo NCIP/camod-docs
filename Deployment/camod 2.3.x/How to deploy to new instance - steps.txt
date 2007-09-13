@@ -1,26 +1,29 @@
 Building new instance for caMOD 2.3
 
-Step 1.  /local/content/evstree/tree_cache_files/ holds all the EVSTree cache files - 
-a. Create this folder structure on the new instance.
-b. Move all the .index and .data files to /local/content/evstree/tree_cache_files/ on the specified tier.
-c. Verify that this folder has read and write access from EVSTree application
+FIRST:  /local/content/evstree/tree_cache_files/ holds all the EVSTree cache files  
+Step 1. Create this folder structure on the new instance.
+Step 2. Move all the .index and .data files to /local/content/evstree/tree_cache_files/ on the specified tier.
+Step 3. Verify that this folder has read and write access from EVSTree application
 
-Step 2.  /local/content/camod/config/ holds camod.properties and mail.properties - 
-a. Create this folder structure on the new instance.
-b. Move both the camod.properties and mail.properties to /local/content/camod/config on the specified tier
+Second:  /local/content/camod/config/ holds camod.properties and mail.properties  
+Step 4. Create this folder structure on the new instance.
+Step 5. Move both the camod.properties and mail.properties to /local/content/camod/config on the specified tier
+Step 6. Verify that the camod.properties files has the following property: ldap.provider.url=ldaps://ncids4a.nci.nih.gov:636
 
-Step 3.  <jboss_home>/deploy holds the oracle-ds.xml and properties-service.xml files
-a. Copy the oracle-ds.xml and properties-service.xml files from JBoss_home/deploy folder on the old instance to the new instance location
-b. Comment out or remove the reference to the ApplicationSecurityConfig.xml (no longer used) 
+Third:  <jboss_home>/deploy holds the oracle-ds.xml and properties-service.xml files
+Step 7. Copy the oracle-ds.xml and properties-service.xml files from JBoss_home/deploy folder on the old instance to the new instance location
+Step 8. Comment out or remove the reference to the ApplicationSecurityConfig.xml (no longer used) 
 For Example:
 	<!--gov.nih.nci.security.configFile=/usr/local/jboss-4.0.2/server/csmconfig/ApplicationSecurityConfig.xml-->
 
+Step 9:  <jboss_home>/lib needs to contain the ojdbc14.jar
+Move this jar file from previous instance to the new instance on the specified tier
 
-Step 4.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
-Move this file from previous location on specified tier to the location on the new instance
+Step 10.  /usr/local/jboss-4.0.2/server/ncicb-app/config holds the login-config.xml 
+Move this file from previous instance to the new instance on the specified tier
 
-Note:  Verify that the working LDAP server is being referenced according to the LDAP assigned to the specified tier
-For example:
+Step 11:  Verify that the working LDAP server is being referenced according to the LDAP assigned to the specified tier
+For example (for stage tier):
     <!-- camod application -->
     <application-policy name = "camod">
        <authentication>
@@ -32,7 +35,9 @@ For example:
        </authentication>
     </application-policy>
     
-Step 6.  Add another entry in the apache conf files to redirect /EVSTree context to tomcat container.   
+Step 12.  Move the SSL configuration from the current instance to the new caMOD instance on the specified tier
 
-Step 7.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tags 
+Step 13.  Add another entry in the apache conf files to redirect /EVSTree context to tomcat container.  See Sriram if you need more detail.  
+
+Step 14.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tags 
 
