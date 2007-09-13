@@ -41,3 +41,5 @@ Step 13.  Add another entry in the apache conf files to redirect /EVSTree contex
 
 Step 14.  Build the camod.war and EVSTree.war to the <jboss_home>/deploy folder with specified tags 
 
+Step 15.  Start and Stop JBoss on specified tier
+
