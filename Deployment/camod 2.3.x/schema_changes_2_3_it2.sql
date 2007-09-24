@@ -79,4 +79,6 @@ Insert into GRAFT_INVIVO_RESULT
 -- Drop table also drops constraint in XENOGRAFT_INVIVO_RESULT table
 Drop table XENOGRAFT_INVIVO_RESULT cascade constraints;
 
+commit;
+
 
