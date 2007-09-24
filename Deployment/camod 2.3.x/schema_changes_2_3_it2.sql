@@ -79,37 +79,4 @@ Insert into GRAFT_INVIVO_RESULT
 -- Drop table also drops constraint in XENOGRAFT_INVIVO_RESULT table
 Drop table XENOGRAFT_INVIVO_RESULT cascade constraints;
 
--- Drop table also drops constraint in XENOGRAFT_INVIVO_RESULT_bkp table
-Drop table XENOGRAFT_INVIVO_RESULT_bkp cascade constraints;
 
--- Update Rat and Zebrafish organ tree name and concept codes
-update organ o set o.NAME = 'Rat Mammary Gland' where o.ORGAN_ID = '102';
-update organ o set o.CONCEPT_CODE = 'C60585' where o.ORGAN_ID = '102';
-
-update organ o set o.NAME = 'Rat Pancreas' where o.ORGAN_ID = '39';
-update organ o set o.CONCEPT_CODE = 'C60597' where o.ORGAN_ID = '39';
-
-update organ o set o.NAME = 'Rat Liver' where o.ORGAN_ID = '90';
-update organ o set o.CONCEPT_CODE = 'C60581' where o.ORGAN_ID = '90';
-
-update organ o set o.NAME = 'Rat Kidney' where o.ORGAN_ID = '67';
-update organ o set o.CONCEPT_CODE = 'C60577' where o.ORGAN_ID = '67';
-
-update organ o set o.NAME = 'Rat Liver' where o.ORGAN_ID = '89';
-update organ o set o.CONCEPT_CODE = 'C60581' where o.ORGAN_ID = '89';
-
-update organ o set o.NAME = 'Rat Lung' where o.ORGAN_ID = '10009660';
-update organ o set o.CONCEPT_CODE = 'C60582' where o.ORGAN_ID = '10009660';
-
-update organ o set o.NAME = 'lymphatic system' where o.ORGAN_ID = '99';
-update organ o set o.CONCEPT_CODE = 'ZFA:0000385' where o.ORGAN_ID = '99';
-
-update organ o set o.NAME = 'thymus' where o.ORGAN_ID = '166';
-update organ o set o.CONCEPT_CODE = 'ZFA:0001078' where o.ORGAN_ID = '166';
-
--- Update Rat and Zebrafish disease tree name and concept codes
-update disease d set d.NAME = 'Rat Islet Cell Adenoma' where d.DISEASE_ID = '263';
-update disease d set d.CONCEPT_CODE = 'C60421' where d.DISEASE_ID = '263';
-
-update disease d set d.NAME = 'Rat Islet Cell Carcinoma' where d.DISEASE_ID = '265';
-update disease d set d.CONCEPT_CODE = 'C60422' where d.DISEASE_ID = '265';
