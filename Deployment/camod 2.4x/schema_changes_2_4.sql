@@ -128,4 +128,55 @@ CREATE TABLE Gene_Identifier
   Entrez_Gene_ID      VARCHAR2(255)
 );
 
+-- Update disease_id for rat models
+UPDATE histopathology h
+SET h.DISEASE_ID = '138'
+WHERE h.ABS_CANCER_MODEL_ID = '26' 
+and h.HISTOPATHOLOGY_ID = '750';
+
+UPDATE histopathology h
+SET h.DISEASE_ID = '138'
+WHERE h.ABS_CANCER_MODEL_ID = '30' 
+and h.HISTOPATHOLOGY_ID = '945';
+
+UPDATE histopathology h
+SET h.DISEASE_ID = '183'
+WHERE h.ABS_CANCER_MODEL_ID = '52' 
+and h.HISTOPATHOLOGY_ID = '955';
+
+UPDATE histopathology h
+SET h.DISEASE_ID = '138'
+WHERE h.ABS_CANCER_MODEL_ID is null
+and h.HISTOPATHOLOGY_ID = '956';
+
+UPDATE histopathology h
+SET h.DISEASE_ID = '10009738'
+WHERE h.ABS_CANCER_MODEL_ID = '10009706' 
+and h.HISTOPATHOLOGY_ID = '10009737';
+
+UPDATE histopathology h
+SET h.DISEASE_ID = '10009844'
+WHERE h.ABS_CANCER_MODEL_ID is null
+and h.HISTOPATHOLOGY_ID = '10009843';
+
+-- Update organ_id for Zebrafish models
+INSERT INTO ORGAN o
+(organ_id, concept_code, name)
+VALUES
+(hibernate_sequence.nextval, 'ZFA:0001078', 'Thymus');
+
+UPDATE histopathology h
+SET h.ORGAN_ID = (SELECT organ_id from organ o
+where o.CONCEPT_CODE = 'ZFA:0001078'
+and o.NAME = 'Thymus')
+WHERE h.ABS_CANCER_MODEL_ID = '10010598'
+and h.HISTOPATHOLOGY_ID = '10010609';
+
+UPDATE histopathology h
+SET h.ORGAN_ID = (SELECT organ_id from organ o
+where o.CONCEPT_CODE = 'ZFA:0001078'
+and o.NAME = 'Thymus')
+WHERE h.ABS_CANCER_MODEL_ID = '10010640'
+and h.HISTOPATHOLOGY_ID = '10010651';
+
 commit;
