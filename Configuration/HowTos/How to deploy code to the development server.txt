@@ -102,6 +102,7 @@ Tip 2.  NOTE: Occasionally there are issues w/ changes to JSP pages not being up
 Tip 3.  You can change the overall permissions for the group file by executing the following command
 
  “chmod 644 server.log” from the role account (also from the folder with server.log).  This will give everyone read access to the log file. 
+ You can change the file name to get access to other files.
 
 
 
