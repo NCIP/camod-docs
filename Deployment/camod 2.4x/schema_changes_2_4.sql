@@ -4,13 +4,13 @@
 create table GRAFT_INVIVO_RESULT_bkp as select * from GRAFT_INVIVO_RESULT;
 
 -- Create table with new name
-create table Transplantation_INVIVO_RESULT (
+create table Transplant_INVIVO_RESULT (
   ABS_CANCER_MODEL_ID  NUMBER(19)               NOT NULL,
   INVIVO_RESULT_ID     NUMBER(19)               NOT NULL
 );
 
 -- Move data to new table from bkp
-Insert into Transplantation_INVIVO_RESULT
+Insert into Transplant_INVIVO_RESULT
  select ABS_CANCER_MODEL_ID, INVIVO_RESULT_ID
    from GRAFT_INVIVO_RESULT_bkp;
 
