@@ -179,4 +179,21 @@ and o.NAME = 'Thymus')
 WHERE h.ABS_CANCER_MODEL_ID = '10010640'
 and h.HISTOPATHOLOGY_ID = '10010651';
 
+--Migrate data from spontaneous_mutation and Engineered_gene for gene_identifier
+-- Create bkp table to hold data
+create table spontaneous_mutation_bkp as select * from spontaneous_mutation;
+
+insert into GENE_IDENTIFIER
+ select hibernate_sequence.nextval, GENE_IDENTIFIER_ID
+   from spontaneous_mutation_bkp sp
+   where sp.GENE_IDENTIFIER_ID IS NOT NULL;   
+   
+update spontaneous_mutation sp
+    set sp.GENE_IDENTIFIER_ID = (
+   select gi.GENE_IDENTIFIER_ID
+     from gene_identifier gi
+      where sp.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID );
+
+
+
 commit;
