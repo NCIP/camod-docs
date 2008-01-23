@@ -216,11 +216,7 @@ update engineered_gene eg
      from GENE_IDENTIFIER gi
       where eg.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID ); 
       
-drop table engineered_gene_bkp;
-
-drop table GENE_IDENTIFIER_bkp;      
-               
-               
+drop table engineered_gene_bkp;               
    
 
 commit;
