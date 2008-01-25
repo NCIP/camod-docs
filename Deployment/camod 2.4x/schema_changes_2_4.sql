@@ -160,7 +160,7 @@ WHERE h.ABS_CANCER_MODEL_ID is null
 and h.HISTOPATHOLOGY_ID = '10009843';
 
 -- Update organ_id for Zebrafish models
-INSERT INTO ORGAN o
+INSERT INTO ORGAN
 (organ_id, concept_code, name)
 VALUES
 (hibernate_sequence.nextval, 'ZFA:0001078', 'Thymus');
