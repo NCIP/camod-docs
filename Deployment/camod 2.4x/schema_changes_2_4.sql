@@ -128,6 +128,46 @@ CREATE TABLE Gene_Identifier
   Entrez_Gene_ID      VARCHAR2(255)
 );
 
+--Migrate data from spontaneous_mutation for gene_identifier
+-- Create bkp table to hold data
+create table spontaneous_mutation_bkp as select * from spontaneous_mutation;
+
+insert into GENE_IDENTIFIER
+ select hibernate_sequence.nextval, GENE_IDENTIFIER_ID
+   from spontaneous_mutation_bkp sp
+   where sp.GENE_IDENTIFIER_ID IS NOT NULL;   
+   
+update spontaneous_mutation sp
+    set sp.GENE_IDENTIFIER_ID = (
+   select gi.GENE_IDENTIFIER_ID
+     from gene_identifier gi
+      where sp.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID );
+
+drop table spontaneous_mutation_bkp;
+
+--Migrate data from Engineered_gene for gene_identifier
+-- Create bkp table to hold data
+drop table engineered_gene_bkp;
+
+create table engineered_gene_bkp as select * from engineered_gene;
+
+insert into GENE_IDENTIFIER
+ select hibernate_sequence.nextval, GENE_IDENTIFIER_ID
+   from engineered_gene_bkp eg
+   where eg.GENE_IDENTIFIER_ID IS NOT NULL;
+   
+DELETE FROM GENE_IDENTIFIER 
+WHERE rowid not in (SELECT MIN(rowid) FROM GENE_IDENTIFIER GROUP BY entrez_gene_ID);	
+   
+update engineered_gene eg
+    set eg.GENE_IDENTIFIER_ID = (
+   select gi.GENE_IDENTIFIER_ID
+     from GENE_IDENTIFIER gi
+      where eg.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID ); 
+      
+drop table engineered_gene_bkp;               
+   
+
 -- Update disease_id for rat models
 UPDATE histopathology h
 SET h.DISEASE_ID = '138'
@@ -179,44 +219,6 @@ and o.NAME = 'Thymus')
 WHERE h.ABS_CANCER_MODEL_ID = '10010640'
 and h.HISTOPATHOLOGY_ID = '10010651';
 
---Migrate data from spontaneous_mutation for gene_identifier
--- Create bkp table to hold data
-create table spontaneous_mutation_bkp as select * from spontaneous_mutation;
 
-insert into GENE_IDENTIFIER
- select hibernate_sequence.nextval, GENE_IDENTIFIER_ID
-   from spontaneous_mutation_bkp sp
-   where sp.GENE_IDENTIFIER_ID IS NOT NULL;   
-   
-update spontaneous_mutation sp
-    set sp.GENE_IDENTIFIER_ID = (
-   select gi.GENE_IDENTIFIER_ID
-     from gene_identifier gi
-      where sp.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID );
-
-drop table spontaneous_mutation_bkp;
-
---Migrate data from Engineered_gene for gene_identifier
--- Create bkp table to hold data
-drop table engineered_gene_bkp;
-
-create table engineered_gene_bkp as select * from engineered_gene;
-
-insert into GENE_IDENTIFIER
- select hibernate_sequence.nextval, GENE_IDENTIFIER_ID
-   from engineered_gene_bkp eg
-   where eg.GENE_IDENTIFIER_ID IS NOT NULL;
-   
-DELETE FROM GENE_IDENTIFIER 
-WHERE rowid not in (SELECT MIN(rowid) FROM GENE_IDENTIFIER GROUP BY entrez_gene_ID);	
-   
-update engineered_gene eg
-    set eg.GENE_IDENTIFIER_ID = (
-   select gi.GENE_IDENTIFIER_ID
-     from GENE_IDENTIFIER gi
-      where eg.GENE_IDENTIFIER_ID = gi.ENTREZ_GENE_ID ); 
-      
-drop table engineered_gene_bkp;               
-   
 
 commit;
