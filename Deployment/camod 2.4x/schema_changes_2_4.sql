@@ -219,6 +219,29 @@ and o.NAME = 'Thymus')
 WHERE h.ABS_CANCER_MODEL_ID = '10010640'
 and h.HISTOPATHOLOGY_ID = '10010651';
 
+-- Update organ_id for Zebrafish Transplant models
+-- New sql on dev only
+UPDATE ABS_CANCER_MODEL ac
+SET ac.ORGAN_ID = (SELECT organ_id from organ o
+where o.CONCEPT_CODE = 'ZFA:0001078'
+and o.NAME = 'Thymus')
+WHERE ac.ABS_CANCER_MODEL_ID = '10010611'
+and ac.PAR_ABS_CAN_MODEL_ID = '10010598';
 
+UPDATE ABS_CANCER_MODEL ac
+SET ac.ORGAN_ID = (SELECT organ_id from organ o
+where o.CONCEPT_CODE = 'ZFA:0001078'
+and o.NAME = 'Thymus')
+WHERE ac.ABS_CANCER_MODEL_ID = '10010658'
+and ac.PAR_ABS_CAN_MODEL_ID = '10010640';
+
+-- Fix Cory Abate-She model assignment
+update ABS_CANCER_MODEL ac
+set ac.SUBMITTER_ID = '50054891'
+where ac.ABS_CANCER_MODEL_ID = '180';
+
+update ABS_CANCER_MODEL ac
+set ac.PRINCIPAL_INVESTIGATOR_ID = '50054891'
+where ac.ABS_CANCER_MODEL_ID = '180';
 
 commit;
