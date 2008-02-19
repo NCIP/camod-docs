@@ -1,0 +1,12 @@
+Steps to login/configure to CruiseControl
+
+1. go to the Remote desktop (remote desktop client) into cbiovwdev5001
+user id: caintcc
+password: C@1ntcc
+Select to log into the cbiovwdev5001 local instance (drop down will appear)
+
+Folders:
+c:\devtools\CruiseControl
+C:\devtools\ccsetup
+
+caMod Project is checkout nightly under c:\devtools\CruiseControl\checkout

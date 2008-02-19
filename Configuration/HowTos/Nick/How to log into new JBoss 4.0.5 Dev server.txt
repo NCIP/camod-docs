@@ -1,0 +1,13 @@
+How to log into new JBoss 4.0.5 Dev server
+
+Use filezilla to see directory folders, get server.log, move wars to tmp folder, ect - But must use putty.exe to copy wars to the deploy folder (need to be in superuser account).
+
+1. log into cbiovdev5058.nci.nih.gov
+username: pandyas
+password: caFun!0
+
+2.  to change to the super user account
+type: "su - jboss45a"
+password = caFun!0
+
+This account lets you copy the war from the tmp folder to the deploy folder.  Can't move wars directly to deploy folder.

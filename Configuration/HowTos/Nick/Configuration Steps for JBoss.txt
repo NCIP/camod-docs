@@ -1,0 +1,28 @@
+READ ME:
+
+1.  Add EVSTree cacahe files to: C:\local\content\evstree\tree_cache_files
+2.  Add camod.properties and mail.properties to: C:\local\content\camod\config
+
+3. DOwnload JBoss 4.0.5 and open zip under C:\devtools\jboss-4.0.5  **This is a new version implemented in the Feb 2008 build**
+4. Add properties-service.xml and oracle-ds.xml entries to each file in <JBoss_Home>\deploy folder (copy files if not present)
+4. Add entry for login-config.xml file in <JBoss_Home>\config folder (copy file if not present)
+5. Make sure that there is a copy of ojdbc.jar in the <JBoss_Home>\lib folder (copy file if not present)
+
+6. Download the camod project from new gforge location:
+:pserver:<username>@cbiocvs2.nci.nih.gov:/share/content/gforge/camod
+
+7. Download the evstree project from new gforge location:
+:pserver:<username>@cbiocvs2.nci.nih.gov:/share/content/gforge/evstree
+
+8.  FIX the http to https switch for the upgrade to JBoss 4.0.5
+Note:  login as http://localhost:8080/camod/
+       Accept use guidelines
+       Redirect is not configured correctly (see Struts Recipes chapter on "switching to SSL and back again" p 329 and the web)
+
+Upload any changes when you get it working.  Sorry I didn't have time to fix my local instance after this build.
+
+9.  We are still using Oracle 9i so you may have this installed on you computer still.  Since we upgraded to use JNDI you will automatically connect to the camoddev22 database defined in the hibernate-cf.xml as "java:camod: which gets its database parameters from the oracle-ds.xml file.  There are no longer tier specific camod.properties files in the project.  There is also not a way to hard code a connection to a local database unless you insist and want to define it in your local oracle-ds.xml file.  It is easier to develop on the dev tier directly now.
+
+10. Compare your tnsnames entries for dev, qa, and stage tier
+
+11. Usernames and passwords for all database tiers are stored in T:\camod\General\
