@@ -1,0 +1,5 @@
+ - reportForUlli.zip is the first set of data we got from the Jackson Laboratory in Juli 2006
+
+- MTB.2008.02.27-2.zip - data set 2, received from Jackson Lab on February 27, 2008; the file has the extension "-2" because the first version of the file contained formating mistakes; this data set is clean and was imported into Oracle without problems
+
+- MTB.2008.05.08.zip - data set 3, received from Jackson Lab on May 8, 2008. We asked for this update to help us develop the SQL scripts for importing and updating data
