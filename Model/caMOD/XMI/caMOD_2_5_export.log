@@ -1,0 +1,138 @@
+Exporting package to 'C:\Documents and Settings\wagneru\workspace\camod\docs\Model\caMOD\XMI\caMOD_2_5.xmi'
+Retrieving data for export: packages
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+***** Processing package: Logical View *****
+Element:0: Logical Model
+***** Processing package: Logical Model *****
+Element:1: DIAGRAMS
+Element:2: gov
+Element:3: java
+Diagram: Logical Model
+Diagram: caMOD 2.3 changes
+***** Processing package: DIAGRAMS *****
+Element:4: CAMOD
+Diagram: caMOD::CancerModel
+Diagram: caMOD::AnimalModel
+Diagram: caMOD::YeastModel
+Diagram: caMOD::InVivoModel (Xenograft)
+Diagram: caMOD::Comments & Logging
+***** Processing package: CAMOD *****
+Diagram: Logical Model
+Diagram: AnimalModel
+Diagram: Availability
+Diagram: CarcinogenicIntervention
+Diagram: Conditionality
+Diagram: ContactInfo
+Diagram: InvivoResult
+Diagram: EngineeredGene
+Diagram: InducedMutation
+Diagram: GenomicSegment
+Diagram: GenotypeSummary
+Diagram: TargetedModification
+Diagram: Publication
+Diagram: RegulatoryElement
+Diagram: ScreeningResult
+Diagram: Xenograft
+Diagram: Histopathology-Disease
+***** Processing package: gov *****
+Element:5: nih
+***** Processing package: nih *****
+Element:6: nci
+***** Processing package: nci *****
+Element:7: camod
+***** Processing package: camod *****
+Element:8: domain
+***** Processing package: domain *****
+Element:9: Publication
+Element:10: Disease
+Element:11: Endpoint
+Element:12: SpontaneousMutation
+Element:13: ScreeningResult
+Element:14: Image
+Element:15: Person
+Element:16: EnvironmentalFactor
+Element:17: AgentTarget
+Element:18: Comments
+Element:19: Histopathology
+Element:20: GeneFunction
+Element:21: CellLine
+Element:22: Log
+Element:23: Therapy
+Element:24: TransientInterferenceMethod
+Element:25: Phenotype
+Element:26: Conditionality
+Element:27: ClinicalMarker
+Element:28: Treatment
+Element:29: AnimalDistributor
+Element:30: ProteomicsData
+Element:31: TransientInterference
+Element:32: GeneDelivery
+Element:33: StainingMethod
+Element:34: PublicationStatus
+Element:35: TumorCode
+Element:36: Availability
+Element:37: InvivoResult
+Element:38: Organ
+Element:39: DevelopmentalStage
+Element:40: Agent
+Element:41: ModificationType
+Element:42: TargetedModification
+Element:43: Role
+Element:44: Organization
+Element:45: MutationIdentifier
+Element:46: Transgene
+Element:47: ExpressionFeature
+Element:48: Nomenclature
+Element:49: Party
+Element:50: Strain
+Element:51: AnimalModel
+Element:52: InducedMutation
+Element:53: GeneticAlteration
+Element:54: ContactInfo
+Element:55: BiologicalProcess
+Element:56: CarcinogenExposure
+Element:57: EngineeredGene
+Element:58: SegmentType
+Element:59: GeneIdentifier
+Element:60: Genotype
+Element:61: SexDistribution
+Element:62: ModelSection
+Element:63: RegulatoryElement
+Element:64: AbstractCancerModel
+Element:65: Transplantation
+Element:66: ExpressionLevelDesc
+Element:67: AnimalAvailability
+Element:68: RegulatoryElementType
+Element:69: ChemicalClass
+Element:70: GenomicSegment
+Element:71: YeastModel
+Element:72: MicroArrayData
+Element:73: Species
+***** Processing package: java *****
+Element:74: util
+Element:75: sql
+Element:76: lang
+***** Processing package: lang *****
+Element:77: Boolean
+Element:78: Long
+Element:79: Float
+Element:80: Integer
+Element:81: String
+Element:82: Double
+***** Processing package: sql *****
+Element:83: Clob
+***** Processing package: util *****
+Element:84: Hashtable
+Element:85: Collection
+Element:86: Date
+Formatting output XML...please wait
+XMI Document Export Complete!
