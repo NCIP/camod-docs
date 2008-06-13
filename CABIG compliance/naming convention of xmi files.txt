@@ -1,0 +1,10 @@
+Naming convention of xmi files
+
+caMOD_2_x.xmi 
+- is the unannotated file exported from Enterprise Architect
+
+roundtrip_caMOD_2_x.xmi 
+- is the file after performing the SIW roundtrip; the roundtrip looks for previously loaded versions of the project in our case caMOD 2.1 (the project is called "Cancer Models Database 2.1" in caDSR) and assosciates objects and attributes automatically with existing CDEs
+
+FirstPass_caMOD_2_x.xmi
+- is the file after a search against EVS was performed and one or more EVS concepts have been automatically attached to the objects and attributes. This file is passed on the the caDSR/EVS. This file is the input to the Curate XMI File step which is performed by the caDSR/EVS team.
