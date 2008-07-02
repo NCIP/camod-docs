@@ -33,3 +33,8 @@ update species sp
 set sp.SCIENTIFIC_NAME = 'Ovis aries'
 where sp.SPECIES_ID = 12; 
 
+--  Add urlAlternEntry to image object for MTB import
+alter table IMAGE
+ADD URL_ALTERN_ENTRY       VARCHAR2(255);
+
+commit;
