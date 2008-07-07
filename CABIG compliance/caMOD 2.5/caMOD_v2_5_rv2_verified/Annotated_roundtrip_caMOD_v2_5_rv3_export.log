@@ -1,0 +1,144 @@
+Exporting package to 'C:\Documents and Settings\wagneru\workspace\camod\docs\CABIG compliance\caMOD 2.5\caMOD_v2_5_rv2_verified\Annotated_roundtrip_caMOD_v2_5_rv3.xmi'
+Retrieving data for export: packages
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+***** Processing package: Logical View *****
+Element:0: Logical Model
+***** Processing package: Logical Model *****
+Element:1: ValueDomains
+Element:2: DIAGRAMS
+Element:3: gov
+Element:4: java
+Diagram: Logical Model
+Diagram: caMOD 2.3 changes
+***** Processing package: DIAGRAMS *****
+Element:5: CAMOD
+Diagram: caMOD::CancerModel
+Diagram: caMOD::AnimalModel
+Diagram: caMOD::YeastModel
+Diagram: caMOD::InVivoModel (Xenograft)
+Diagram: caMOD::Comments & Logging
+***** Processing package: CAMOD *****
+Diagram: Logical Model
+Diagram: AnimalModel
+Diagram: Availability
+Diagram: CarcinogenicIntervention
+Diagram: Conditionality
+Diagram: ContactInfo
+Diagram: InvivoResult
+Diagram: EngineeredGene
+Diagram: InducedMutation
+Diagram: GenomicSegment
+Diagram: GenotypeSummary
+Diagram: TargetedModification
+Diagram: Publication
+Diagram: RegulatoryElement
+Diagram: ScreeningResult
+Diagram: Xenograft
+Diagram: Histopathology-Disease
+***** Processing package: gov *****
+Element:6: nih
+***** Processing package: nih *****
+Element:7: nci
+***** Processing package: nci *****
+Element:8: camod
+***** Processing package: camod *****
+Element:9: domain
+***** Processing package: domain *****
+Element:10: Publication
+Element:11: Disease
+Element:12: Endpoint
+Element:13: SpontaneousMutation
+Element:14: ScreeningResult
+Element:15: Image
+Element:16: Person
+Element:17: EnvironmentalFactor
+Element:18: AgentTarget
+Element:19: Comments
+Element:20: Histopathology
+Element:21: GeneFunction
+Element:22: CellLine
+Element:23: Log
+Element:24: Therapy
+Element:25: TransientInterferenceMethod
+Element:26: Phenotype
+Element:27: Conditionality
+Element:28: ClinicalMarker
+Element:29: Treatment
+Element:30: AnimalDistributor
+Element:31: ProteomicsData
+Element:32: TransientInterference
+Element:33: GeneDelivery
+Element:34: StainingMethod
+Element:35: PublicationStatus
+Element:36: TumorCode
+Element:37: Availability
+Element:38: InvivoResult
+Element:39: Organ
+Element:40: DevelopmentalStage
+Element:41: Agent
+Element:42: ModificationType
+Element:43: TargetedModification
+Element:44: Role
+Element:45: Organization
+Element:46: MutationIdentifier
+Element:47: Transgene
+Element:48: ExpressionFeature
+Element:49: Nomenclature
+Element:50: Party
+Element:51: Strain
+Element:52: AnimalModel
+Element:53: InducedMutation
+Element:54: GeneticAlteration
+Element:55: ContactInfo
+Element:56: BiologicalProcess
+Element:57: CarcinogenExposure
+Element:58: EngineeredGene
+Element:59: SegmentType
+Element:60: GeneIdentifier
+Element:61: Genotype
+Element:62: SexDistribution
+Element:63: ModelSection
+Element:64: RegulatoryElement
+Element:65: AbstractCancerModel
+Element:66: Transplantation
+Element:67: ExpressionLevelDesc
+Element:68: AnimalAvailability
+Element:69: RegulatoryElementType
+Element:70: ChemicalClass
+Element:71: GenomicSegment
+Element:72: YeastModel
+Element:73: MicroArrayData
+Element:74: Species
+***** Processing package: java *****
+Element:75: util
+Element:76: sql
+Element:77: lang
+***** Processing package: lang *****
+Element:78: Boolean
+Element:79: Long
+Element:80: Float
+Element:81: Integer
+Element:82: String
+Element:83: Double
+***** Processing package: sql *****
+Element:84: Clob
+***** Processing package: util *****
+Element:85: Hashtable
+Element:86: Collection
+Element:87: Date
+***** Processing package: ValueDomains *****
+Element:88: ZebrafishDevelopmentalStageName
+Element:89: AnatomicalTermName
+Element:90: DiagnosticTermName
+Element:91: StainingMethodName
+Formatting output XML...please wait
+XMI Document Export Complete!

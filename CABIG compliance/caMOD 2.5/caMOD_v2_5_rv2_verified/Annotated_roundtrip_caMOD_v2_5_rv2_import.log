@@ -1,0 +1,114 @@
+
+***** Gather external references for later resolution *****
+***** Deleting existing packages from model *****
+Importing Model from XMI
+***** Root Package: Logical Model *****
+Add Classifier Role: DIAGRAMS
+Add Classifier Role: gov
+Add Classifier Role: java
+***** Append Package: DIAGRAMS *****
+Add Classifier Role: CAMOD
+***** Append Package: CAMOD *****
+***** Append Package: gov *****
+Add Classifier Role: nih
+***** Append Package: nih *****
+Add Classifier Role: nci
+***** Append Package: nci *****
+Add Classifier Role: camod
+***** Append Package: camod *****
+Add Classifier Role: domain
+***** Append Package: domain *****
+Add Classifier: Publication
+Add Classifier: Disease
+Add Classifier: Endpoint
+Add Classifier: SpontaneousMutation
+Add Classifier: ScreeningResult
+Add Classifier: Image
+Add Classifier: Person
+Add Classifier: EnvironmentalFactor
+Add Classifier: AgentTarget
+Add Classifier: Comments
+Add Classifier: Histopathology
+Add Classifier: GeneFunction
+Add Classifier: CellLine
+Add Classifier: Log
+Add Classifier: Therapy
+Add Classifier: TransientInterferenceMethod
+Add Classifier: Phenotype
+Add Classifier: Conditionality
+Add Classifier: ClinicalMarker
+Add Classifier: Treatment
+Add Classifier: AnimalDistributor
+Add Classifier: ProteomicsData
+Add Classifier: TransientInterference
+Add Classifier: GeneDelivery
+Add Classifier: StainingMethod
+Add Classifier: PublicationStatus
+Add Classifier: TumorCode
+Add Classifier: Availability
+Add Classifier: InvivoResult
+Add Classifier: Organ
+Add Classifier: DevelopmentalStage
+Add Classifier: Agent
+Add Classifier: ModificationType
+Add Classifier: TargetedModification
+Add Classifier: Role
+Add Classifier: Organization
+Add Classifier: MutationIdentifier
+Add Classifier: Transgene
+Add Classifier: ExpressionFeature
+Add Classifier: Nomenclature
+Add Classifier: Party
+Add Classifier: Strain
+Add Classifier: AnimalModel
+Add Classifier: InducedMutation
+Add Classifier: GeneticAlteration
+Add Classifier: ContactInfo
+Add Classifier: BiologicalProcess
+Add Classifier: CarcinogenExposure
+Add Classifier: EngineeredGene
+Add Classifier: SegmentType
+Add Classifier: GeneIdentifier
+Add Classifier: Genotype
+Add Classifier: SexDistribution
+Add Classifier: ModelSection
+Add Classifier: RegulatoryElement
+Add Classifier: AbstractCancerModel
+Add Classifier: Transplantation
+Add Classifier: ExpressionLevelDesc
+Add Classifier: AnimalAvailability
+Add Classifier: RegulatoryElementType
+Add Classifier: ChemicalClass
+Add Classifier: GenomicSegment
+Add Classifier: YeastModel
+Add Classifier: MicroArrayData
+Add Classifier: Species
+***** Append Package: java *****
+Add Classifier Role: util
+Add Classifier Role: sql
+Add Classifier Role: lang
+***** Append Package: lang *****
+Add Classifier: Boolean
+Add Classifier: Long
+Add Classifier: Float
+Add Classifier: Integer
+Add Classifier: String
+Add Classifier: Double
+***** Append Package: sql *****
+Add Classifier: Clob
+***** Append Package: util *****
+Add Classifier: Hashtable
+Add Classifier: Collection
+Add Classifier: Date
+***** Resolving Classifiers *****
+***** Resolving Ownerss *****
+***** Resolve Package Links *****
+***** Add Extensions ******
+***** Add Diagrams *****
+***** Resolving DiagramIDs *****
+***** Resolving Association Classes *****
+***** Resolving Parameter Types *****
+***** Resolving Attribute Types *****
+***** Resolving Note links *****
+***** Fixup external references *****
+Import Complete!
