@@ -7,6 +7,7 @@ READ ME:
 
 6.  Download the camod project from new gforge location:
 :pserver:<username>@cbiocvs2.nci.nih.gov:/share/content/gforge/camod
+or /share/content/cvsroot
 
 7. Download the evstree project from new gforge location:
 :pserver:<username>@cbiocvs2.nci.nih.gov:/share/content/gforge/evstree
@@ -21,6 +22,8 @@ to path variable
 11. goto [window][preferences][MyEclipse folder][Servers][JBoss][JBoss 4x] and define where your JBoss 4.0.2 
 is located and select "Enable"
 
-12.  Deleate the existing war from the deploy folder before redeplpoying (reminder for Sima)
+12.  download JDK and install under program files.  Define jdk under JBoss 4x\ JDK tab
 
-13.  Copy StartupListener from working instance (not sure why this is an error)
+13.  Deleate the existing war from the deploy folder before redeplpoying (reminder for Sima)
+
+14.  Copy StartupListener from working instance (not sure why this is an error)
