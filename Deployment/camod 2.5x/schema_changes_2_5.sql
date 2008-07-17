@@ -26,5 +26,9 @@ update treatment t
 set t.DOSAGE_UNIT = 'microliter/animal/injection'
 where t.id = '50050274';
 
+--  Add RGD_PUB_ID to Publication object for MTB import
+alter table PUBLICATION
+ADD RGD_PUB_ID       VARCHAR2(255);
+
  
 
