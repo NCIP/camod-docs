@@ -136,9 +136,13 @@ Element:85: Hashtable
 Element:86: Collection
 Element:87: Date
 ***** Processing package: ValueDomains *****
-Element:88: ZebrafishDevelopmentalStageName
-Element:89: AnatomicalTermName
-Element:90: DiagnosticTermName
-Element:91: StainingMethodName
+Element:88: AnatomicalTermCode
+Element:89: StainingMethodName
+Element:90: DiagnosticTermCode
+Element:91: StainingMethodCode
+Element:92: ZebrafishDevelopmentalStageCode
+Element:93: ZebrafishDevelopmentalStageName
+Element:94: AnatomicalTermName
+Element:95: DiagnosticTermName
 Formatting output XML...please wait
 XMI Document Export Complete!
