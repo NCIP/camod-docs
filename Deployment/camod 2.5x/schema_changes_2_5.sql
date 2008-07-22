@@ -34,6 +34,11 @@ ADD RGD_PUB_ID       VARCHAR2(255);
 delete from environmental_factor ef
 where ef.ENVIRONMENTAL_FACTOR_ID = '50053159';
 
+delete from environmental_factor ef
+where ef.ENVIRONMENTAL_FACTOR_ID = '50057007';
+
+commit;
+
 
 
  
