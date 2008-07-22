@@ -1,0 +1,199 @@
+<HTML>
+  <head>
+  <script language="JavaScript" src="./EVSTreeScript.js"></script>
+  </head>
+<BODY>
+<!-- ================================================================================ -->
+
+<script>
+var skin = 'evsMOD';
+</script>
+
+<H2>EVS Tree Example</h2>
+	<FORM name="exampleSearchForm" method="POST" action="#">
+
+	<table>
+		<TR><TD><B>SEARCH MODE</B></TD></TR>
+         <TR id="OrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Mouse Tissue</TD>
+			<TD>
+  		        <a href="javascript:showMouseTissueTree('exampleSearchForm', 'organTissueCode', 'organTissueName', 'organ', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="organTissueName" type="hidden"/>
+		 		<INPUT name="organTissueCode" type="hidden"/>
+			</TD>
+		</TR>
+		
+		<TR id="DiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Mouse Diagnosis</TD>
+			<TD>
+  		        <a href="javascript:showMouseDiagnosisTree('exampleSearchForm', 'diagnosisCode', 'diagnosisName', 'diagnosis', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="diagnosisName"/>
+                        <input type="hidden" name="diagnosisCode"/>
+			</TD>
+		</TR>
+		
+         <TR id="OrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Rat Tissue</TD>
+			<TD>
+  		        <a href="javascript:showRatTissueTree('exampleSearchForm', 'organTissueCode', 'organTissueName', 'rat_organ', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="rat_organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="organTissueName" type="hidden"/>
+		 		<INPUT name="organTissueCode" type="hidden"/>
+			</TD>
+		</TR>		
+
+		<TR id="DiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Rat Diagnosis</TD>
+			<TD>
+  		        <a href="javascript:showRatDiagnosisTree('exampleSearchForm', 'diagnosisCode', 'diagnosisName', 'rat_diagnosis', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="rat_diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="diagnosisName"/>
+                        <input type="hidden" name="diagnosisCode"/>
+			</TD>
+		</TR>
+
+		<TR id="HumanOrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Human Tissue</TD>
+			<TD>
+  		        <a href="javascript:showHumanTissueTree('exampleSearchForm', 'HumanOrganTissueCode', 'HumanOrganTissueName', 'human_organ', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="human_organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="HumanOrganTissueName" type="hidden"/>
+		 		<INPUT name="HumanOrganTissueCode" type="hidden"/>
+			</TD>
+		</TR>
+
+
+		<TR id="HumanDiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Human Diagnosis</TD>
+			<TD>
+  		        <a href="javascript:showHumanDiagnosisTree('exampleSearchForm', 'HumanDiagnosisCode', 'HumanDiagnosisName', 'human_diagnosis', 'false')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="human_diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="HumanDiagnosisName"/>
+                        <input type="hidden" name="HumanDiagnosisCode"/>
+			</TD>
+		</TR>
+			
+    </table>
+    
+	</FORM>
+    
+    <P><P>
+    
+    <FORM name="exampleSubmitForm" method="POST" action="#">
+
+	<table>
+		<TR><TD><B>SUBMIT MODE</B></TD></TR>
+                <TR id="OrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Mouse Tissue</TD>
+			<TD>
+  		        <a href="javascript:showMouseTissueTree('exampleSubmitForm', 'organTissueCode', 'organTissueName', 'organ', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="organTissueName" type="hidden"/>
+		 		<INPUT name="organTissueCode" type="hidden"/>
+			</TD>
+		</TR>
+		
+		<TR id="DiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Mouse Diagnosis</TD>
+			<TD>
+  		        <a href="javascript:showMouseDiagnosisTree('exampleSubmitForm', 'diagnosisCode', 'diagnosisName', 'diagnosis', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="diagnosisName"/>
+                <input type="hidden" name="diagnosisCode"/>
+			</TD>
+		</TR>
+
+		<TR id="RatTissueSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Rat Tissue Method</TD>
+			<TD>
+  		        <a href="javascript:showRatTissueTree('exampleSubmitForm', 'RatTissueCode', 'RatTissueName', 'rat_organ', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="rat_organ" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="RatTissueName"/>
+                <input type="hidden" name="RatTissueCode"/>
+			</TD>
+		</TR>
+		
+		<TR id="RatDiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Rat Diagnosis Method</TD>
+			<TD>
+  		        <a href="javascript:showRatDiagnosisTree('exampleSubmitForm', 'RatDiagnosisCode', 'RatDiagnosisName', 'rat_diagnosis', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="rat_diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="RatDiagnosisName"/>
+                <input type="hidden" name="RatDiagnosisCode"/>
+			</TD>
+		</TR>
+
+		<TR id="HumanOrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Human Tissue</TD>
+			<TD>
+  		        <a href="javascript:showHumanTissueTree('exampleSubmitForm', 'HumanOrganTissueCode', 'HumanOrganTissueName', 'human_organ', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="human_organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="HumanOrganTissueName" type="hidden"/>
+		 		<INPUT name="HumanOrganTissueCode" type="hidden"/>
+			</TD>
+		</TR>
+
+
+		<TR id="HumanDiagnosisSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Human Diagnosis</TD>
+			<TD>
+  		        <a href="javascript:showHumanDiagnosisTree('exampleSubmitForm', 'HumanDiagnosisCode', 'HumanDiagnosisName', 'human_diagnosis', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="human_diagnosis" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="HumanDiagnosisName"/>
+                <input type="hidden" name="HumanDiagnosisCode"/>
+			</TD>
+		</TR>
+		
+		<TR id="ZebrafishOrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Zebrafish Tissue (New)</TD>
+			<TD>
+  		        <a href="javascript:showZebrafishTissueTree('exampleSubmitForm', 'ZebrafishOrganTissueCode', 'ZebrafishOrganTissueName', 'zebrafish_organ', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="zebrafish_organ" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="ZebrafishOrganTissueName" type="hidden"/>
+		 		<INPUT name="ZebrafishOrganTissueCode" type="hidden"/>
+			</TD>
+		</TR>	
+		
+		<TR id="ZebrafishOrganSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Zebrafish Stages (New)</TD>
+			<TD>
+  		        <a href="javascript:showZebrafishStageTree('exampleSubmitForm', 'ZebrafishStageCode', 'ZebrafishStageName', 'stages', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="stages" type="TEXT" size="50" maxlength="255"/>
+				<INPUT name="ZebrafishStageName" type="hidden"/>
+		 		<INPUT name="ZebrafishStageCode" type="hidden"/>
+			</TD>
+		</TR>								
+		
+		<TR id="StainingMethodSelect" align="LEFT" valign="TOP">
+			<TD class="blbo">Staining Methods</TD>
+			<TD>
+  		        <a href="javascript:showStainingMethodTree('exampleSubmitForm', 'StainingMethodCode', 'StainingMethodName', 'staining_methods', 'true')">
+  		        <img name="browse" src="images/selectUP.gif" vspace="0" hspace="0" border="0"/></a>&nbsp;
+  		        <INPUT name="staining_methods" type="TEXT" size="50" maxlength="255"/>
+				<input type="hidden" name="StainingMethodName"/>
+                <input type="hidden" name="StainingMethodCode"/>
+			</TD>
+		</TR>	
+			
+			
+    </table>
+    
+	</form>
+    </body>
+</HTML>

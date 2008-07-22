@@ -1,0 +1,47 @@
+H3.subhelp {
+	margin-left : 15px;
+}
+H2.help {
+    font-family : Arial, Helvetica, sans-serif;
+    font-size : 14pt;
+    font-style : normal;
+    color : Black;
+    background-color : White;
+    text-indent : 50px;
+}
+H2.title {Font: 14pt Arial, Helvetica, sans-serif; COLOR: black; FONT-VARIANT: bold;}
+H2.title2 {Font: 12pt Arial, Helvetica, sans-serif; COLOR: black; FONT-VARIANT: bold;}
+
+A.pagetop {
+	FONT: 12pt Arial, Helvetica, sans-serif; COLOR: maroon
+}
+TD.label {
+	FONT: bold 12pt Arial, Helvetica, sans-serif; COLOR: maroon
+}
+
+TD {
+	FONT: 10pt Arial, Helvetica, sans-serif
+}
+Font.label{
+
+FONT: bold 12pt Arial, Helvetica, sans-serif; COLOR: blue
+
+}
+TD.secondlevel {
+	FONT: 8pt Arial, Helvetica, sans-serif
+}
+BODY {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ccccee; FONT-VARIANT: normal
+}
+P.label {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-VARIANT: normal
+}
+TD.blbo {
+	FONT: bold 10pt Arial, Helvetica, sans-serif; COLOR: black
+}
+TD.blbo2 {
+	FONT: bold 12pt Arial, Helvetica, sans-serif; COLOR: black
+}
+P.blbo {
+	FONT: bold 12pt Arial, Helvetica, sans-serif; COLOR: black
+}

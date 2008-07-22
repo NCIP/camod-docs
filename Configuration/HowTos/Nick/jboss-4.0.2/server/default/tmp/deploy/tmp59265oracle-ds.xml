@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss Server Configuration                                           -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: tmp59265oracle-ds.xml,v 1.1 2008-07-22 19:39:51 pandyas Exp $ -->
+<!-- ==================================================================== -->
+<!--  Datasource config for Oracle                                        -->
+<!-- ==================================================================== -->
+
+<!--
+<datasources>
+   <local-tx-datasource>
+      <jndi-name><<application_context_name>></jndi-name>
+      <connection-url><<database_url>></connection-url>
+      <user-name><<database_user_id>></user-name>
+      <password><<database_user_password>></password>
+      <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+      <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+    </local-tx-datasource>
+</datasources>
+-->
+
+<datasources>
+   <local-tx-datasource>
+      <jndi-name>camod</jndi-name>
+      <connection-url>jdbc:oracle:thin:@cbiodb2-d.nci.nih.gov:1521:cadev</connection-url>
+      <user-name>camoddev22</user-name>
+      <password>dev!234</password>
+      <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+      <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+
+        <!--pooling parameters-->
+        <min-pool-size>10</min-pool-size>
+        <max-pool-size>20</max-pool-size>
+        <blocking-timeout-millis>5000</blocking-timeout-millis>
+        <idle-timeout-minutes>15</idle-timeout-minutes>
+    </local-tx-datasource>
+</datasources>
+
+
+
