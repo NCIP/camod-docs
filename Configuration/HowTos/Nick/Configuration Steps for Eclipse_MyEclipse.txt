@@ -2,7 +2,7 @@ READ ME:
 
 1.  instal latest version of all in one installer (myEclipse 6.5.0 and Eclipse 3.3.2
 2.  Define default workspace as c:\dev|workspace
-4.  Open "Navigator" from [Window][show vies][other][Navigator]
+4.  Open "Navigator" from [Window][show vies][other][Navigator][General]
 5.  Save perspective so the display opens with default
 
 6.  Download the camod project from new gforge location:
@@ -14,8 +14,14 @@ or /share/content/cvsroot
 
 8.  Copy ant to c:\devtools\ant1.6.5 folder.  Set ANT_HOME in environmental properties under control panel and add "%ANT_HOME%\bin" 
 to path variable
+variable name=ANT_HOME
+variable value=C:\devtools\apache-ant-1.6.5
 
 9.  Add JAVA_HOME variable and add to path
+variable name=JAVA_HOME
+variable value=C:\Program Files\Java\jdk1.5.0_10
+
+Classpath=.;%ANT_HOME%\BIN;%JAVA_HOME%\BIN;C:\Program Files\Java\jre1.6.0_05\lib\ext\QTJava.zip
 
 10. in Eclipse/myEclipse goto [project][properties] add missing lib directories
 
