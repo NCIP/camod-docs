@@ -30,5 +30,11 @@ where t.id = '50050274';
 alter table PUBLICATION
 ADD RGD_PUB_ID       VARCHAR2(255);
 
+-- clean up IM records from EF table to clean up CI adv search dropdown
+delete from environmental_factor ef
+where ef.ENVIRONMENTAL_FACTOR_ID = '50053159';
+
+
+
  
 
