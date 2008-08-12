@@ -9,6 +9,9 @@ UPDATE CONTACT_INFO
 SET EMAIL = Null
 WHERE EMAIL IS NOT NULL;
 
+-- Remove EMAIL from CONTACT_INFO 
+Alter table CONTACT_INFO drop column EMAIL;
+
 --  #13898 Renamed OtherLocationURL in micro array data object to url
 ALTER TABLE MICRO_ARRAY_DATA
 RENAME COLUMN OTHER_LOCATION_URL to URL;
@@ -36,6 +39,11 @@ where ef.ENVIRONMENTAL_FACTOR_ID = '50053159';
 
 delete from environmental_factor ef
 where ef.ENVIRONMENTAL_FACTOR_ID = '50057007';
+
+-- clean up Animal Availability records for models with IMSR (test models added)
+-- clean up models not deleted correctly through GUI
+delete from ANIMAL_AVAILABILITY aa
+where aa.ABS_CANCER_MODEL_ID is null;
 
 commit;
 
