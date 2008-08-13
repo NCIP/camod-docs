@@ -21,13 +21,13 @@ alter table ENVIRONMENTAL_FACTOR
 ADD is_Induced_Mutation_Trigger       NUMBER(1);
 
 -- update models that previously used dose units no longer selectable
-update treatment t
+update TREATMENT t
 set t.DOSAGE_UNIT = 'ml/animal/injection'
-where t.id = '10009554';
+where t.TREATMENT_id = '10009554';
 
 update treatment t
 set t.DOSAGE_UNIT = 'microliter/animal/injection'
-where t.id = '50050274';
+where t.TREATMENT_id = '50050274';
 
 --  Add RGD_PUB_ID to Publication object for MTB import
 alter table PUBLICATION
