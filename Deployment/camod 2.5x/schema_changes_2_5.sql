@@ -45,6 +45,16 @@ where ef.ENVIRONMENTAL_FACTOR_ID = '50057007';
 delete from ANIMAL_AVAILABILITY aa
 where aa.ABS_CANCER_MODEL_ID is null;
 
+-- (NOT RUN ON DEV) Update Environmental_Factor and set IS_INDUCED_MUTATION_TRIGGER flag for CE
+update Environmental_Factor ef
+set IS_INDUCED_MUTATION_TRIGGER = 0
+where ef.TYPE IS NOT NULL
+and ef.name IS NOT NULL;
+
+
+
+
+
 commit;
 
 
