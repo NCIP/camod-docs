@@ -45,13 +45,15 @@ where ef.ENVIRONMENTAL_FACTOR_ID = '50057007';
 delete from ANIMAL_AVAILABILITY aa
 where aa.ABS_CANCER_MODEL_ID is null;
 
--- (NOT RUN ON DEV) Update Environmental_Factor and set IS_INDUCED_MUTATION_TRIGGER flag for CE
+-- Update Environmental_Factor and set IS_INDUCED_MUTATION_TRIGGER flag for CE and IM
 update Environmental_Factor ef
-set IS_INDUCED_MUTATION_TRIGGER = 0
-where ef.TYPE IS NOT NULL
-and ef.name IS NOT NULL;
+set ef.IS_INDUCED_MUTATION_TRIGGER = 1
+where ef.environmental_factor_id IN 
+(select environmental_factor_id from engineered_gene where engineered_gene_type='IM' and environmental_factor_id is not null);
 
-
+update Environmental_Factor ef
+set ef.IS_INDUCED_MUTATION_TRIGGER = 0
+where ef.IS_INDUCED_MUTATION_TRIGGER IS NULL;
 
 
 
