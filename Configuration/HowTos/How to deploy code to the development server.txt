@@ -103,6 +103,15 @@ Tip 3.  You can change the overall permissions for the group file by executing t
 
  “chmod 644 server.log” from the role account (also from the folder with server.log).  This will give everyone read access to the log file. 
  You can change the file name to get access to other files.
+ 
+ 
+ *****************************
+cd /usr/local/jboss405/server/ncicb-app/deploy
+cp camod.war /usr/local/jboss405/server/ncicb-app/deploy
+cd /usr/local/jboss405/server/ncicb-app/bin
+ 
+cd /tmp
+ 
 
 
 
