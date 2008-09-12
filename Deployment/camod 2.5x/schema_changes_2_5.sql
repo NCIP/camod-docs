@@ -55,6 +55,10 @@ update Environmental_Factor ef
 set ef.IS_INDUCED_MUTATION_TRIGGER = 0
 where ef.IS_INDUCED_MUTATION_TRIGGER IS NULL;
 
+--  Add comments to PROTEOMICS_DATA object for 2.5 Grid Data Service (match with OM)
+alter table PROTEOMICS_DATA
+ADD COMMENTS  VARCHAR2(2000);
+
 
 
 commit;
