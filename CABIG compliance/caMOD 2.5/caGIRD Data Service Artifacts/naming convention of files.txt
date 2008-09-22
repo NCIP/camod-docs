@@ -1,0 +1,19 @@
+Naming convention of xmi files
+
+Workflow:
+
+1. caMOD 2.5 EAP exported to run in caAdapter
+camod_pre_adapter.xmi 
+- is the original EA Object Model file (2.5) with the Data Model (database schema imported) 
+
+2.  The camod_pre_adapter.xmi file is loaded into caAdapter to link the OM Objects to DB Tables 
+and the OM attributes to DB columns.
+camod_post_adapter.xmi 
+- is the EA Object Model file (2.5.1) after caAdapter adds tags and links data to objects
+
+3.  The camod_post_adapter.xmi file is loaded back into EA to add Dependency Mappings before it
+is export (round trip) for caCORE SDK 4.0
+camod.xmi 
+- is the xmi file run in caCORE SDK used to create the Data Source input file for caGRID (Introduce)
+
+4.  
