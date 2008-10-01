@@ -233,10 +233,21 @@ INTERSECT
 select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22515','C22517','C22516','C22518','C22519'))
 
 o	Mouse model with metastases
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
+INTERSECT
+select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
 
 o	Rat model (Rattus rattus)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=3)
 
 o	Rat model (Rattus norvegicus)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=4)
 
 o	Transplant models
 
