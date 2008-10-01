@@ -12,7 +12,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am where am.model_descriptor='Msh6 deficient'
 
-o	PI name (examples needed)
+o	PI name (selected Varmus, Harold from drop down list on simple and advanced search pages)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
@@ -20,7 +20,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.
 o	Species (mouse)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
+select a.abs_cancer_model_id from abs_cancer_model a Inner join STRAIN s on a.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'OR upper(s.NAME_ALTERN_ENTRY) like '%129%'
 
 o	Strain
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -30,7 +30,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join STRAIN s on am
 *TODO
 upper(s.NAME_ALTERN_ENTRY) like '%129%
 
-o	Site of Lesion / Tumor (mammary gland, prostate)
+o	Site of Lesion / Tumor (query for a specific term that the user entered in the free-text field. The GUI is case-insensitive)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
@@ -46,7 +46,7 @@ where hist.ORGAN_ID=o.ORGAN_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND uppe
 *TODO
 AND o.CONCEPT_CODE IN ( ?? )
 
-o	Diagnosis (examples needed)
+o	Diagnosis (free text entry for the term ‘tumor’, no species specified)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
@@ -56,7 +56,17 @@ where hist.DISEASE_ID=d.DISEASE_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND 
 *TODO
 AND d.CONCEPT_CODE IN ( ?? )
 
-o	Phenotype (tumor)
+o	Phenotype (free text entry for the term ‘succumb’)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select abs.ABS_CANCER_MODEL_ID 
+from abs_cancer_model abs, Phenotype ph
+where abs.PHENOTYPE_ID=ph.PHENOTYPE_ID 
+AND upper(ph.DESCRIPTION) like '%SUCCUMB%'
+
+ 
+
+o    Phenotype (free text entry for the term ‘mice succumb to tumors’)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select abs.ABS_CANCER_MODEL_ID 
@@ -250,6 +260,11 @@ INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=4)
 
 o	Transplant models
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select am.par_abs_can_model_id from abs_cancer_model am where am.par_abs_can_model_id is not null
+
+ 
 
 
 
