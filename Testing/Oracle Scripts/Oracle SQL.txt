@@ -57,10 +57,17 @@ AND ph.DESCRIPTION like '%mice succumb to tumors%'
 
 o	Transgene (checkbox only)
 o	Transgene (examples needed)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE name LIKE '%v-jun%' AND engineered_gene_type = 'T')
 
 o	Targeted modification (checkbox only)
 o	Targeted modification (examples needed)
-
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE name LIKE '%v-jun%' AND engineered_gene_type = 'TM')
 
 o	Genomic Segment (pick one from the list)
 o	Induced Mutation (pick one from the list)
@@ -75,7 +82,6 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
 INTERSECT
-
 select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
 
 o	Transient Interference
