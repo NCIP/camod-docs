@@ -6,7 +6,7 @@ select am.abs_cancer_model_id from abs_cancer_model am, availability av where am
 o	Model descriptor (examples needed)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select am.abs_cancer_model_id from abs_cancer_model am where am.model_descriptor LIKE '%C%' or am.model_descriptor like '%c%'
+select am.abs_cancer_model_id from abs_cancer_model am where upper(am.model_descriptor) LIKE '%C%'
 
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -15,7 +15,7 @@ select am.abs_cancer_model_id from abs_cancer_model am where am.model_descriptor
 o	PI name (examples needed)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where p.LAST_NAME like '%Varmus%' AND p.FIRST_NAME like '%Harold%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
+select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
 
 o	Species (mouse)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -25,23 +25,23 @@ select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (selec
 o	Strain
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select am.abs_cancer_model_id from abs_cancer_model am Inner join STRAIN s on am.STRAIN_ID=s.STRAIN_ID where s.NAME like '%129%'
+select am.abs_cancer_model_id from abs_cancer_model am Inner join STRAIN s on am.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'
 
 *TODO
-s.NAME_ALTERN_ENTRY like '%129%
+upper(s.NAME_ALTERN_ENTRY) like '%129%
 
 o	Site of Lesion / Tumor (mammary gland, prostate)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist INNER join Organ o on hist.ORGAN_ID = o.ORGAN_ID
-where hist.ABS_CANCER_MODEL_ID IS NOT null AND o.NAME like '%Stomach%'
+where hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(o.NAME) like '%STOMACH%'
 
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist, Organ o
-where hist.ORGAN_ID=o.ORGAN_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND o.NAME like '%Prostate%'
+where hist.ORGAN_ID=o.ORGAN_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(o.NAME) like '%PROSTATE%'
 
 *TODO
 AND o.CONCEPT_CODE IN ( ?? )
@@ -51,7 +51,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist, Disease d
-where hist.DISEASE_ID=d.DISEASE_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND d.NAME like '%Oral Cavity Neoplasms%'  
+where hist.DISEASE_ID=d.DISEASE_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(d.NAME) like '%ORAL CAVITY NEOPLASMS%'  
 
 *TODO
 AND d.CONCEPT_CODE IN ( ?? )
@@ -62,27 +62,27 @@ INTERSECT
 select abs.ABS_CANCER_MODEL_ID 
 from abs_cancer_model abs, Phenotype ph
 where abs.PHENOTYPE_ID=ph.PHENOTYPE_ID 
-AND ph.DESCRIPTION like '%mice succumb to tumors%'
+AND upper(ph.DESCRIPTION) like '%MICE SUCCUMB TO TUMORS%'
 
 o	Transgene (checkbox only)
 o	Transgene (examples needed)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
-(SELECT distinct engineered_gene_id FROM engineered_gene WHERE name LIKE '%v-jun%' AND engineered_gene_type = 'T')
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%V-JUN%' AND engineered_gene_type = 'T')
 
 o	Targeted modification (checkbox only)
 o	Targeted modification (examples needed)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
-(SELECT distinct engineered_gene_id FROM engineered_gene WHERE name LIKE '%v-jun%' AND engineered_gene_type = 'TM')
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%V-JUN%' AND engineered_gene_type = 'TM')
 
 o	Genomic Segment (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
-(SELECT distinct engineered_gene_id FROM engineered_gene WHERE clone_designator LIKE '%PTH-D1%' AND engineered_gene_type = 'GS')
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(clone_designator) LIKE '%PTH-D1%' AND engineered_gene_type = 'GS')
 
 o	Induced Mutation (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -113,7 +113,7 @@ AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 o	Cell line (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-SELECT c.abs_cancer_model_id FROM cell_line c WHERE c.name like '%M6%'
+SELECT c.abs_cancer_model_id FROM cell_line c WHERE upper(c.name) like '%M6%'
 
 o	Therapeutic Approaches (checkbox only)
 o	Therapeutic Approaches (pick one from the list)
@@ -121,7 +121,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 SELECT distinct ther.abs_cancer_model_id FROM therapy ther 
 WHERE ther.therapy_id IN (SELECT t.therapy_id FROM therapy t, agent ag
-WHERE t.agent_id = ag.agent_id AND ag.name like '%farnesyl transferase inhibitor%')
+WHERE t.agent_id = ag.agent_id AND upper(ag.name) like '%FARNESYL TRANSFERASE INHIBITOR%')
 
 o	Metastasis
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -133,7 +133,7 @@ select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopath
 o	Transient Interference - Current no data in db
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-SELECT distinct t.abs_cancer_model_id FROM transient_interference t WHERE t.targeted_region like '%%'
+SELECT distinct t.abs_cancer_model_id FROM transient_interference t WHERE upper(t.targeted_region) like '%%'
 
 o	Tool Strain
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -147,7 +147,7 @@ o	Images
 SELECT distinct abs_cancer_model_id FROM image
 
 o	External Source (pick one from list)
-SELECT distinct am.abs_cancer_model_id FROM abs_cancer_model am WHERE am.EXTERNAL_SOURCE like '%Jax MTB%' 
+SELECT distinct am.abs_cancer_model_id FROM abs_cancer_model am WHERE upper(am.EXTERNAL_SOURCE_ like '%JAX MTB%' 
 
 o	Combinations of the above mentioned queries (examples needed)
 
