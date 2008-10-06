@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <!DOCTYPE XMI SYSTEM "UML_EA.dtd">
-<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2008-10-06 12:01:00">
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2008-10-06 12:08:21">
 	<XMI.header>
 		<XMI.documentation>
 			<XMI.exporter>Enterprise Architect</XMI.exporter>
@@ -911,7 +911,7 @@
 												<UML:TaggedValue tag="mapped-attributes" value="gov.nih.nci.camod.domain.EngineeredGene.locationOfIntegration" xmi.id="EAID_4C9FD6B7_E256_492e_AFB3_9B54DE9D0D65"/>
 												<UML:TaggedValue tag="mapped-attributes" value="gov.nih.nci.camod.domain.EngineeredGene.locationOfIntegration" xmi.id="EAID_66D3ED5F_660B_46b0_8061_76CFECE4C4F8"/>
 												<UML:TaggedValue tag="mapped-attributes" value="gov.nih.nci.camod.domain.EngineeredGene.locationOfIntegration" xmi.id="EAID_B634803E_5A5F_41db_956C_7F6F5F7B042D"/>
-												<UML:TaggedValue tag="mapped-attributes" value="gov.nih.nci.camod.domain.GenomicSegment.locationOfIntegration,gov.nih.nci.camod.domain.Transgen.locationOfIntegration,gov.nih.nci.camod.domain.EngineeredGene.locationOfIntegration" xmi.id="EAID_C7D792A2_251C_4d75_A4D7_6BA58925CA66"/>
+												<UML:TaggedValue tag="mapped-attributes" value="gov.nih.nci.camod.domain.GenomicSegment.locationOfIntegration,gov.nih.nci.camod.domain.Transgene.locationOfIntegration" xmi.id="EAID_C7D792A2_251C_4d75_A4D7_6BA58925CA66"/>
 											</UML:ModelElement.taggedValue>
 										</UML:Attribute>
 										<UML:Attribute name="IS_RANDOM" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
