@@ -3,11 +3,12 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 
 select am.abs_cancer_model_id from abs_cancer_model am, availability av where am.AVAILABILITY_ID=av.availability_id and  am.STATE='Edited-approved'  and av.release_date < sysdate
 
-o	Model descriptor (examples needed)
+o	Model descriptor (querying for all models with the letter C)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am where upper(am.model_descriptor) LIKE '%C%'
 
+o	Model descriptor (querying for all models with model_descriptor='Msh6 deficient')
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am where am.model_descriptor='Msh6 deficient'
@@ -17,18 +18,16 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
 
-o	Species (mouse)
+o	Strain (select for all models where strain name includes 129; either selected from drop down list or manually entered)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a Inner join STRAIN s on a.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'OR upper(s.NAME_ALTERN_ENTRY) like '%129%'
 
-o	Strain
+o	Species (mouse)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select am.abs_cancer_model_id from abs_cancer_model am Inner join STRAIN s on am.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
 
-*TODO
-upper(s.NAME_ALTERN_ENTRY) like '%129%
 
 o	Site of Lesion / Tumor (query for a specific term that the user entered in the free-text field. The GUI is case-insensitive)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -36,6 +35,7 @@ INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist INNER join Organ o on hist.ORGAN_ID = o.ORGAN_ID
 where hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(o.NAME) like '%STOMACH%'
+
 
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -56,6 +56,9 @@ where hist.DISEASE_ID=d.DISEASE_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND 
 *TODO
 AND d.CONCEPT_CODE IN ( ?? )
 
+
+
+
 o	Phenotype (free text entry for the term ‘succumb’)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -66,6 +69,8 @@ AND upper(ph.DESCRIPTION) like '%SUCCUMB%'
 
  
 
+
+
 o    Phenotype (free text entry for the term ‘mice succumb to tumors’)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -74,25 +79,53 @@ from abs_cancer_model abs, Phenotype ph
 where abs.PHENOTYPE_ID=ph.PHENOTYPE_ID 
 AND upper(ph.DESCRIPTION) like '%MICE SUCCUMB TO TUMORS%'
 
+
+
+
+
 o	Transgene (checkbox only)
-o	Transgene (examples needed)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select eg.abs_cancer_model_id from engineered_gene eg where engineered_gene_type='T'
+
+
+
+
+o	Transgene (specific transgene)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
 (SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%V-JUN%' AND engineered_gene_type = 'T')
 
+
+
+
 o	Targeted modification (checkbox only)
-o	Targeted modification (examples needed)
+
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select eg.abs_cancer_model_id from engineered_gene eg where engineered_gene_type='TM'
+
+
+
+o	Targeted modification (specific targeted modification)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
-(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%V-JUN%' AND engineered_gene_type = 'TM')
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%p53%' AND engineered_gene_type = 'TM')
+
+
+
 
 o	Genomic Segment (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
 (SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(clone_designator) LIKE '%PTH-D1%' AND engineered_gene_type = 'GS')
+
+
+
+
 
 o	Induced Mutation (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
@@ -101,7 +134,10 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg
 WHERE eg.ENGINEERED_GENE_ID IN ( SELECT distinct engineered_gene_id FROM environmental_factor ef, engineered_gene eg
 WHERE ef.NAME = 'ENU' AND ef.ENVIRONMENTAL_FACTOR_ID = eg.ENVIRONMENTAL_FACTOR_ID) AND engineered_gene_type = 'IM'
 
-o	One query for each carcinogen agent TYPE (without specifying the agent name)
+
+
+
+o	One query for Chemical / Drug as carcinogen agent TYPE (with specifying the agent name)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
@@ -111,7 +147,11 @@ WHERE ce.environmental_factor_id = ef.environmental_factor_id
 AND (ef.name = '12-O-tetradecanoylphorbol-13-acetate (TPA)' OR ef.name_altern_entry = '12-O-tetradecanoylphorbol-13-acetate (TPA)' )
 AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 
-o	One query for each carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+o	One query for Chemical / Drug as carcinogen agent TYPE (without specifying the agent name)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
@@ -120,12 +160,203 @@ WHERE ce.environmental_factor_id IN
 WHERE ce.environmental_factor_id = ef.environmental_factor_id 
 AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 
+
+
+
+
+o	One query for Antibody as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Antibody as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+o	One query for Bacteria as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Bacteria as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+o	One query for Environment as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Environment as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+o	One query for Growth Factor as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Growth Factor as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+o	One query for Hormone as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Hormone as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+o	One query for Nutrition as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Nutrition as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+o	One query for Other as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Other as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+
+o	One query for Plasmid as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Plasmid as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+o	One query for Radiation as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Radiation as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+
+o	One query for Transposon as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Transposon as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+
+o	One query for Viral as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Viral as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+
+
+
+o	One query for Signaling Molecule as carcinogen agent TYPE (with specifying the agent name)
+
+
+
+
+
+o	One query for Signaling Molecule as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 o	Cell line (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT c.abs_cancer_model_id FROM cell_line c WHERE upper(c.name) like '%M6%'
 
+
+
 o	Therapeutic Approaches (checkbox only)
+
+
+
+
+
+
 o	Therapeutic Approaches (pick one from the list)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
