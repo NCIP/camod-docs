@@ -352,8 +352,9 @@ SELECT c.abs_cancer_model_id FROM cell_line c WHERE upper(c.name) like '%M6%'
 
 o	Therapeutic Approaches (checkbox only)
 
-
-
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT ther.abs_cancer_model_id FROM therapy ther WHERE ther.abs_cancer_model_id is not null
 
 
 
@@ -364,31 +365,52 @@ SELECT distinct ther.abs_cancer_model_id FROM therapy ther
 WHERE ther.therapy_id IN (SELECT t.therapy_id FROM therapy t, agent ag
 WHERE t.agent_id = ag.agent_id AND upper(ag.name) like '%FARNESYL TRANSFERASE INHIBITOR%')
 
-o	Metastasis
+
+
+o	Metastasis (species independent)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
-INTERSECT
 select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
+
+
+
 
 o	Transient Interference - Current no data in db
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct t.abs_cancer_model_id FROM transient_interference t WHERE upper(t.targeted_region) like '%%'
 
+
+
+
 o	Tool Strain
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct abs_cancer_model_id FROM abs_cancer_model WHERE is_tool_strain = 1
 
+
+
+
 o	Microarray (Select all)
-SELECT distinct abs_cancer_model_id FROM micro_array_data
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT abs_cancer_model_id FROM micro_array_data
+
+
 
 o	Images
-SELECT distinct abs_cancer_model_id FROM image
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT abs_cancer_model_id FROM image
+
+
 
 o	External Source (pick one from list)
-SELECT distinct am.abs_cancer_model_id FROM abs_cancer_model am WHERE upper(am.EXTERNAL_SOURCE_ like '%JAX MTB%' 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT am.abs_cancer_model_id FROM abs_cancer_model am WHERE upper(am.EXTERNAL_SOURCE) like '%JAX MTB%'
+
+
 
 o	Combinations of the above mentioned queries (examples needed)
 
