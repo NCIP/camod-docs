@@ -59,7 +59,10 @@ where ef.IS_INDUCED_MUTATION_TRIGGER IS NULL;
 alter table PROTEOMICS_DATA
 ADD COMMENTS  VARCHAR2(2000);
 
-
+-- Replace Amnon's party_id (submitter_id column in abs_cancer_model)  with the curator account id for all models
+update abs_cancer_model ac
+set ac.SUBMITTER_ID = '50057228'
+where ac.SUBMITTER_ID = '10006111';
 
 commit;
 
