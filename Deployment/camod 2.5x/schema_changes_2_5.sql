@@ -9,8 +9,8 @@ UPDATE CONTACT_INFO
 SET EMAIL = Null
 WHERE EMAIL IS NOT NULL;
 
--- Remove EMAIL from CONTACT_INFO 
-Alter table CONTACT_INFO drop column EMAIL;
+-- Remove EMAIL from CONTACT_INFO in another release (caDSR registered must match grid schema)
+--Alter table CONTACT_INFO drop column EMAIL;
 
 --  #13898 Renamed OtherLocationURL in micro array data object to url
 ALTER TABLE MICRO_ARRAY_DATA
