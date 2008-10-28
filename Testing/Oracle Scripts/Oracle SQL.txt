@@ -18,7 +18,7 @@ select am.abs_cancer_model_id from abs_cancer_model am Inner join availability a
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
 
-o	Strain (select for all models where strain name includes 129; either selected from drop down list or manually entered)
+o	Strain (select for all models where strain name includes 129; either selected from drop down list or manually entered, no such search exists on the simple or advanced search page)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a Inner join STRAIN s on a.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'OR upper(s.NAME_ALTERN_ENTRY) like '%129%'
@@ -102,9 +102,7 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_I
 
 o	Targeted modification (checkbox only)
 
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
-INTERSECT
-select eg.abs_cancer_model_id from engineered_gene eg where engineered_gene_type='TM'
+c
 
 
 
@@ -112,7 +110,7 @@ o	Targeted modification (specific targeted modification)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
-(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%p53%' AND engineered_gene_type = 'TM')
+(SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%P53%' AND engineered_gene_type = 'TM')
 
 
 
@@ -418,7 +416,7 @@ Table of Contents
 o	Mouse model with primary tumor in cardiovascular system
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN (''C22497'',''C22499'',''C22498''))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22497','C22499','C22498'))
 
 o	Mouse model with primary tumor in digestive system
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
