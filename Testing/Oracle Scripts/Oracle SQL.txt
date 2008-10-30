@@ -1,53 +1,73 @@
-o	All models – no criteria entered
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved' and av.release_date < sysdate
+--All models  no criteria entered
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved' and av.release_date < sysdate
 
-select am.abs_cancer_model_id from abs_cancer_model am, availability av where am.AVAILABILITY_ID=av.availability_id and  am.STATE='Edited-approved'  and av.release_date < sysdate
+select am.abs_cancer_model_id from abs_cancer_model am, availability av where am.AVAILABILITY_ID=av.availability_id 
+and  am.STATE='Edited-approved'  and av.release_date < sysdate
 
-o	Model descriptor (querying for all models with the letter C)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Model descriptor (querying for all models with the letter C)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am where upper(am.model_descriptor) LIKE '%C%'
 
-o	Model descriptor (querying for all models with model_descriptor='Msh6 deficient')
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Model descriptor (querying for all models with model_descriptor='Msh6 deficient')
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.abs_cancer_model_id from abs_cancer_model am where am.model_descriptor='Msh6 deficient'
 
-o	PI name (selected Varmus, Harold from drop down list on simple and advanced search pages)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
-INTERSECT
-select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
 
-o	Strain (select for all models where strain name includes 129; either selected from drop down list or manually entered, no such search exists on the simple or advanced search page)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+-- PI name (selected Varmus, Harold from drop down list on simple and advanced search pages)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select am.abs_cancer_model_id from abs_cancer_model am Inner join Party p on am.PRINCIPAL_INVESTIGATOR_ID=p.PARTY_ID 
+where upper(p.LAST_NAME) like '%VARMUS%' AND upper(p.FIRST_NAME) like '%HAROLD%' AND p.IS_PRINCIPAL_INVESTIGATOR=1
+
+
+
+--Strain (select for all models where strain name includes 129; no such search exists on the simple or advanced search page)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a Inner join STRAIN s on a.STRAIN_ID=s.STRAIN_ID where upper(s.NAME) like '%129%'OR upper(s.NAME_ALTERN_ENTRY) like '%129%'
 
-o	Species (mouse)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+--Species (mouse)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
 
 
-o	Site of Lesion / Tumor (query for a specific term that the user entered in the free-text field. The GUI is case-insensitive)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+--Site of Lesion / Tumor (query for a specific term that the user entered in the free-text field. The GUI is case-insensitive)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist INNER join Organ o on hist.ORGAN_ID = o.ORGAN_ID
 where hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(o.NAME) like '%STOMACH%'
 
 
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist, Organ o
 where hist.ORGAN_ID=o.ORGAN_ID AND hist.ABS_CANCER_MODEL_ID IS NOT null AND upper(o.NAME) like '%PROSTATE%'
 
-*TODO
-AND o.CONCEPT_CODE IN ( ?? )
 
-o	Diagnosis (free text entry for the term ‘tumor’, no species specified)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+-- 	Diagnosis (free text entry for the term ‘tumor’, no species specified)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select hist.ABS_CANCER_MODEL_ID 
 from histopathology hist, Disease d
@@ -59,8 +79,9 @@ AND d.CONCEPT_CODE IN ( ?? )
 
 
 
-o	Phenotype (free text entry for the term ‘succumb’)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Phenotype (free text entry for the term ‘succumb’)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select abs.ABS_CANCER_MODEL_ID 
 from abs_cancer_model abs, Phenotype ph
@@ -71,8 +92,9 @@ AND upper(ph.DESCRIPTION) like '%SUCCUMB%'
 
 
 
-o    Phenotype (free text entry for the term ‘mice succumb to tumors’)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+--    Phenotype (free text entry for the term ‘mice succumb to tumors’)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select abs.ABS_CANCER_MODEL_ID 
 from abs_cancer_model abs, Phenotype ph
@@ -83,16 +105,18 @@ AND upper(ph.DESCRIPTION) like '%MICE SUCCUMB TO TUMORS%'
 
 
 
-o	Transgene (checkbox only)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- 	Transgene (checkbox only)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select eg.abs_cancer_model_id from engineered_gene eg where engineered_gene_type='T'
 
 
 
 
-o	Transgene (specific transgene)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Transgene (specific transgene)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
 (SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%V-JUN%' AND engineered_gene_type = 'T')
@@ -100,14 +124,14 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_I
 
 
 
-o	Targeted modification (checkbox only)
-
-c
+-- Targeted modification (checkbox only)
 
 
 
-o	Targeted modification (specific targeted modification)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+--  Targeted modification (specific targeted modification)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
 (SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(name) LIKE '%P53%' AND engineered_gene_type = 'TM')
@@ -115,8 +139,9 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_I
 
 
 
-o	Genomic Segment (pick one from the list)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- 	Genomic Segment (pick one from the list)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_ID IN
 (SELECT distinct engineered_gene_id FROM engineered_gene WHERE upper(clone_designator) LIKE '%PTH-D1%' AND engineered_gene_type = 'GS')
@@ -125,8 +150,9 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_I
 
 
 
-o	Induced Mutation (pick one from the list)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- 	Induced Mutation (pick one from the list)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg 
 WHERE eg.ENGINEERED_GENE_ID IN ( SELECT distinct engineered_gene_id FROM environmental_factor ef, engineered_gene eg
@@ -135,8 +161,9 @@ WHERE ef.NAME = 'ENU' AND ef.ENVIRONMENTAL_FACTOR_ID = eg.ENVIRONMENTAL_FACTOR_I
 
 
 
-o	One query for Chemical / Drug as carcinogen agent TYPE (with specifying the agent name)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- 	One query for Chemical / Drug as carcinogen agent TYPE (with specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
 WHERE ce.environmental_factor_id IN 
@@ -149,8 +176,9 @@ AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 
 
 
-o	One query for Chemical / Drug as carcinogen agent TYPE (without specifying the agent name)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- 	One query for Chemical / Drug as carcinogen agent TYPE (without specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
 WHERE ce.environmental_factor_id IN 
@@ -162,88 +190,88 @@ AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 
 
 
-o	One query for Antibody as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Antibody as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Antibody as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Antibody as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
 
-o	One query for Bacteria as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Bacteria as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Bacteria as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Bacteria as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
 
-o	One query for Environment as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Environment as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Environment as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Environment as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
-o	One query for Growth Factor as carcinogen agent TYPE (with specifying the agent name)
+--  One query for Growth Factor as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Growth Factor as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Growth Factor as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
-o	One query for Hormone as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Hormone as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Hormone as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Hormone as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
 
-o	One query for Nutrition as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Nutrition as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Nutrition as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Nutrition as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
-o	One query for Other as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Other as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Other as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Other as carcinogen agent TYPE (without specifying the agent name)
 
 
 
@@ -251,25 +279,25 @@ o	One query for Other as carcinogen agent TYPE (without specifying the agent nam
 
 
 
-o	One query for Plasmid as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Plasmid as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Plasmid as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Plasmid as carcinogen agent TYPE (without specifying the agent name)
 
 
 
 
 
-o	One query for Radiation as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Radiation as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Radiation as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Radiation as carcinogen agent TYPE (without specifying the agent name)
 
 
 
@@ -277,13 +305,13 @@ o	One query for Radiation as carcinogen agent TYPE (without specifying the agent
 
 
 
-o	One query for Transposon as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Transposon as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Transposon as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Transposon as carcinogen agent TYPE (without specifying the agent name)
 
 
 
@@ -291,13 +319,13 @@ o	One query for Transposon as carcinogen agent TYPE (without specifying the agen
 
 
 
-o	One query for Viral as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Viral as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Viral as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Viral as carcinogen agent TYPE (without specifying the agent name)
 
 
 
@@ -307,13 +335,13 @@ o	One query for Viral as carcinogen agent TYPE (without specifying the agent nam
 
 
 
-o	One query for Signaling Molecule as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for Signaling Molecule as carcinogen agent TYPE (with specifying the agent name)
 
 
 
 
 
-o	One query for Signaling Molecule as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for Signaling Molecule as carcinogen agent TYPE (without specifying the agent name)
 
 
 
@@ -341,23 +369,26 @@ o	One query for Signaling Molecule as carcinogen agent TYPE (without specifying 
 
 
 
-o	Cell line (pick one from the list)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Cell line (pick one from the list)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT c.abs_cancer_model_id FROM cell_line c WHERE upper(c.name) like '%M6%'
 
 
 
-o	Therapeutic Approaches (checkbox only)
+-- Therapeutic Approaches (checkbox only)
 
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT ther.abs_cancer_model_id FROM therapy ther WHERE ther.abs_cancer_model_id is not null
 
 
 
-o	Therapeutic Approaches (pick one from the list)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Therapeutic Approaches (pick one from the list)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct ther.abs_cancer_model_id FROM therapy ther 
 WHERE ther.therapy_id IN (SELECT t.therapy_id FROM therapy t, agent ag
@@ -365,153 +396,249 @@ WHERE t.agent_id = ag.agent_id AND upper(ag.name) like '%FARNESYL TRANSFERASE IN
 
 
 
-o	Metastasis (species independent)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Metastasis (species independent)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
+select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id 
+IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
 
 
 
 
-o	Transient Interference - Current no data in db
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Transient Interference - Current no data in db
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct t.abs_cancer_model_id FROM transient_interference t WHERE upper(t.targeted_region) like '%%'
 
 
 
 
-o	Tool Strain
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Tool Strain
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT distinct abs_cancer_model_id FROM abs_cancer_model WHERE is_tool_strain = 1
 
 
 
 
-o	Microarray (Select all)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Microarray (Select all)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT abs_cancer_model_id FROM micro_array_data
 
 
 
-o	Images
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Images
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT abs_cancer_model_id FROM image
 
 
 
-o	External Source (pick one from list)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- External Source (pick one from list)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 SELECT am.abs_cancer_model_id FROM abs_cancer_model am WHERE upper(am.EXTERNAL_SOURCE) like '%JAX MTB%'
 
 
 
-o	Combinations of the above mentioned queries (examples needed)
+-- Combinations of the above mentioned queries
 
-Table of Contents
-o	Mouse model with primary tumor in cardiovascular system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- TABLE OF CONTENTS
+-- Mouse model with primary tumor in cardiovascular system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22497','C22499','C22498'))
 
-o	Mouse model with primary tumor in digestive system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
-INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22500','C22502','C22509','C22508','C22510','C22521','C22526','C22527','C22533','C22532','C22528','C22529','C22531','C22530','C22522','C22524','C22523','C22525','C22511','C22513','C22514','C22512','C22515','C22517','C22516','C22518','C22519','C22507','C24044','C22639','C22640','C22641','C22642','C24043','C24045','C22643','C24041','C22520','C24042','C22501','C22503','C22506','C22505','C22504'))
 
-o	Mouse model with primary tumor in endocrine gland system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
-INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22634','C22646','C22649','C22648','C22647','C22650','C22651','C22652','C22639','C22640','C22641','C22642','C22635','C22636','C22638','C22637','C22645','C22644'))
 
-o	Mouse model with primary tumor in integument system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Mouse model with primary tumor in digestive system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22534','C22550','C22535','C22543','C22545','C22547','C22546','C22548','C22544','C22537','C22536','C22539','C22541','C22540','C22542','C22538','C22549'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22500','C22502','C22509','C22508','C22510','C22521','C22526','C22527','C22533','C22532','C22528','C22529','C22531','C22530','C22522',
+'C22524','C22523','C22525','C22511','C22513','C22514','C22512','C22515','C22517','C22516','C22518','C22519','C22507','C24044','C22639','C22640',
+'C22641','C22642','C24043','C24045','C22643','C24041','C22520','C24042','C22501','C22503','C22506','C22505','C22504'))
 
-o	Mouse model with primary tumor in lymphohematopoetic system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in endocrine gland system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22551','C22569','C22568','C22570','C22585','C22584','C22572','C22575','C22582','C22574','C22576','C22577','C22578','C22579','C22581','C22573','C22580','C22583','C22586','C22587','C22588','C22595','C22589','C22571','C22590','C22593','C22592','C22591','C22594','C22565','C22564','C22556','C22557','C22558','C22567','C22559','C22566','C22561','C22553','C22555','C22554','C22560','C22596','C24191','C22563','C22552','C22562'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22634','C22646','C22649','C22648','C22647','C22650','C22651','C22652','C22639','C22640','C22641','C22642','C22635','C22636','C22638','C22637','C22645','C22644'))
 
-o	Mouse model with primary tumor in musculoskeletal system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in integument system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C24194','C22679','C22681','C22680','C22682','C22684','C22683','C22685','C22687','C22686','C22689','C22688','C22691','C22694','C22696','C22698','C22695','C22693','C22692','C22690','C22709','C22708','C22703','C22705','C22704','C22697','C22707','C22706','C22699','C24198','C22701','C22700','C22702'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22534','C22550','C22535','C22543','C22545','C22547','C22546','C22548','C22544','C22537','C22536','C22539','C22541','C22540','C22542','C22538','C22549'))
 
-o	Mouse model with primary tumor in reproductive system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in lymphohematopoetic system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C24192','C22653','C22667','C22655','C22654','C22656','C22666','C22661','C22660','C22663','C22662','C22657','C22659','C22658','C22665','C22664','C22677','C22676','C22668','C22669','C22678','C22671','C22673','C22672','C22675','C22674','C22670','C22165','C22167','C22166','C24047','C24048','C24046','C22169','C22173','C22172','C22175','C22177','C22174','C22176','C22168','C22178','C22181','C22185','C22180','C22184','C22182','C22183','C22186','C22179','C22170','C22171','C24193'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22551','C22569','C22568','C22570','C22585','C22584','C22572','C22575','C22582','C22574','C22576','C22577','C22578','C22579','C22581','C22573',
+'C22580','C22583','C22586','C22587','C22588','C22595','C22589','C22571','C22590','C22593','C22592','C22591','C22594','C22565','C22564','C22556','C22557',
+'C22558','C22567','C22559','C22566','C22561','C22553','C22555','C22554','C22560','C22596','C24191','C22563','C22552','C22562'))
 
-o	Mouse model with primary tumor in nervous system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in musculoskeletal system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22604','C22631','C22628','C24189','C22629','C24190','C22632','C22630','C22605','C22606','C22617','C22616','C22619','C22618','C22607','C22624','C22613','C22612','C22615','C22614','C22609','C22608','C22611','C22610','C22621','C22620','C22623','C22622','C22625','C22626','C22627'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C24194','C22679','C22681','C22680','C22682','C22684','C22683','C22685','C22687','C22686','C22689','C22688','C22691','C22694','C22696',
+'C22698','C22695','C22693','C22692','C22690','C22709','C22708','C22703','C22705','C22704','C22697','C22707','C22706','C22699','C24198','C22701','C22700','C22702'))
 
-o	Mouse model with primary tumor in respiratory system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in nervous system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22597','C22599','C22600','C22601','C22603','C22602','C24050','C22598'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22604','C22631','C22628','C24189','C22629','C24190','C22632','C22630','C22605','C22606','C22617','C22616','C22619','C22618','C22607','C22624',
+'C22613','C22612','C22615','C22614','C22609','C22608','C22611','C22610','C22621','C22620','C22623','C22622','C22625','C22626','C22627'))
 
-o	Mouse model with primary tumor in special sensory organ
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+
+
+-- Mouse model with primary tumor in reproductive system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22710','C22723','C22724','C22725','C22726','C22727','C22711','C22717','C22722','C22716','C22719','C22718','C22721','C22720','C22712','C22713','C22715','C22714'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C24192','C22653','C22667','C22655','C22654','C22656','C22666','C22661','C22660','C22663','C22662','C22657','C22659','C22658','C22665',
+'C22664','C22677','C22676','C22668','C22669','C22678','C22671','C22673','C22672','C22675','C22674','C22670','C22165','C22167','C22166',
+'C24047','C24048','C24046','C22169','C22173','C22172','C22175','C22177','C22174','C22176','C22168','C22178','C22181','C22185','C22180',
+'C22184','C22182','C22183','C22186','C22179','C22170','C22171','C24193'))
 
-o	Mouse model with primary tumor in urinary system
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in respiratory system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22728','C22737','C22739','C22740','C22729','C22738','C22730','C22736','C22731','C22733','C22735','C22734','C22732'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22597','C22599','C22600','C22601','C22603','C22602','C24050','C22598'))
 
-o	Mouse model with tumor in head/neck tumor
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in special sensory organ
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C26401','C23045','C23046','C23061','C23062','C23053','C23055','C23054','C23063','C23064','C23065','C23066','C23067','C23056','C23057','C23058','C23059','C23060','C23047','C23048','C23052','C23049','C23125','C23126','C23127','C23137','C23136','C23128','C23130','C23140','C23146','C23141','C23145','C23144','C23143','C23142','C23148','C23149','C23150','C23151','C23147','C23068','C23079','C23080','C23069','C23071','C23073','C23072','C23070','C23074','C23075','C23076','C23083','C23084','C23085','C23086','C23087','C23077','C23078','C23081','C23082','C23109','C23121','C23122','C23118','C23119','C23120','C23123','C23124','C23110','C23111','C23112','C23117','C23116','C23113','C23115','C23088','C23107','C23108','C23097','C23098','C23095','C23096','C23099','C23100','C23101','C23103','C23104','C23089','C23090','C23091','C23092','C23094','C23105','C23106'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22710','C22723','C22724','C22725','C22726','C22727','C22711','C22717','C22722','C22716','C22719','C22718','C22721','C22720','C22712','C22713','C22715','C22714'))
 
-o	Mouse model with tumor in prostate
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Mouse model with primary tumor in urinary system
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22166','C24047','C24048','C24046','C22169'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22728','C22737','C22739','C22740','C22729','C22738','C22730','C22736','C22731','C22733','C22735','C22734','C22732'))
 
-o	Mouse model with tumor in mammary gland
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- MOUSE MODELS WITH TUMORS IN THE FOLLOWING SITES
+
+-- Mouse model with tumor in head/neck tumor
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C26401','C23045','C23046','C23061','C23062','C23053','C23055','C23054','C23063','C23064','C23065','C23066','C23067','C23056','C23057','C23058',
+'C23059','C23060','C23047','C23048','C23052','C23049','C23125','C23126','C23127','C23137','C23136','C23128','C23130','C23140','C23146','C23141',
+'C23145','C23144','C23143','C23142','C23148','C23149','C23150','C23151','C23147','C23068','C23079','C23080','C23069','C23071','C23073','C23072',
+'C23070','C23074','C23075','C23076','C23083','C23084','C23085','C23086','C23087','C23077','C23078','C23081','C23082','C23109','C23121','C23122',
+'C23118','C23119','C23120','C23123','C23124','C23110','C23111','C23112','C23117','C23116','C23113','C23115','C23088','C23107','C23108','C23097',
+'C23098','C23095','C23096','C23099','C23100','C23101','C23103','C23104','C23089','C23090','C23091','C23092','C23094','C23105','C23106'))
+
+
+-- Mouse model with tumor in prostate
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22166','C24047','C24048','C24046','C22169'))
+
+
+-- Mouse model with tumor in mammary gland
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22549'))
 
-o	Mouse model with tumor in brain
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
-INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22606','C22617','C22616','C22619','C22618','C22607','C22624','C22613','C22612','C22615','C22614','C22609','C22608','C22611','C22610','C22621','C22620','C22623','C22622'))
 
-o	Mouse model with tumor in liver
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+-- Mouse model with tumor in brain
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
-select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code IN ('C22515','C22517','C22516','C22518','C22519'))
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22606','C22617','C22616','C22619','C22618','C22607','C22624','C22613','C22612','C22615','C22614','C22609','C22608','C22611','C22610','C22621','C22620','C22623','C22622'))
 
-o	Mouse model with metastases
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+-- Mouse model with tumor in liver
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select distinct h.abs_cancer_model_id from histopathology h where h.organ_id IN (select o.organ_id from organ o where o.concept_code 
+IN ('C22515','C22517','C22516','C22518','C22519'))
+
+
+-- MOUSE MODELS WITH METASTASES
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
 INTERSECT
-select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id from histopathology h where h.parent_histopathology_id is not null)
+select distinct hp.abs_cancer_model_id from histopathology hp where hp.histopathology_id IN (select h.parent_histopathology_id 
+from histopathology h where h.parent_histopathology_id is not null)
 
-o	Rat model (Rattus rattus)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+
+-- Rat model (Rattus rattus)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=3)
 
-o	Rat model (Rattus norvegicus)
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+-- RAT MODELS
+-- Rattus norvegicus)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=4)
 
-o	Transplant models
-select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id where am.STATE='Edited-approved'  and av.release_date < sysdate
+
+--Rattus rattus
+
+
+
+-- TRANSPLANT MODELS 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select am.par_abs_can_model_id from abs_cancer_model am where am.par_abs_can_model_id is not null
 
