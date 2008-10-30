@@ -40,11 +40,46 @@ select a.abs_cancer_model_id from abs_cancer_model a Inner join STRAIN s on a.ST
 
 
 
---Species (mouse)
+--Species (mouse) 
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
 where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
 select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=1)
+
+
+
+--Species (rattus norvegicus) 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=4)
+
+
+--Species (rattus rattus) 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=3)
+
+
+--Species (zebrafish) 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=16)
+
+
+--Species (hamster) 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=6)
+
+
+
+
+
+
 
 
 --Site of Lesion / Tumor (query for a specific term that the user entered in the free-text field. The GUI is case-insensitive)
@@ -126,6 +161,10 @@ SELECT eg.ABS_CANCER_MODEL_ID FROM engineered_gene eg WHERE eg.ENGINEERED_GENE_I
 
 -- Targeted modification (checkbox only)
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select eg.abs_cancer_model_id from engineered_gene eg where engineered_gene_type='TM'
 
 
 
@@ -159,9 +198,81 @@ WHERE eg.ENGINEERED_GENE_ID IN ( SELECT distinct engineered_gene_id FROM environ
 WHERE ef.NAME = 'ENU' AND ef.ENVIRONMENTAL_FACTOR_ID = eg.ENVIRONMENTAL_FACTOR_ID) AND engineered_gene_type = 'IM'
 
 
+-- CARCINOGENIC INTERVENTION 
 
 
--- 	One query for Chemical / Drug as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for ANTIBODY as carcinogen agent type WITHOUT specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Antibody' OR ef.type_altern_entry = 'Antibody') )
+
+
+
+
+Anti-prostaglandin E2
+
+
+
+
+-- 	One query for ANTIBODY as carcinogen agent type WITH specifying the agent name)
+
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'Anti-prostaglandin E<sub>2</sub>' OR ef.name_altern_entry = 'Anti-prostaglandin E<sub>2</sub>' )
+AND (ef.type = 'Antibody' OR ef.type_altern_entry = 'Antibody') )
+
+
+
+-- 	One query for BACTERIA as carcinogen agent type WITHOUT specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Bacteria' OR ef.type_altern_entry = 'Bacteria') )
+
+
+
+
+-- 	One query for BACTERIA as carcinogen agent type WITH specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'helicobacter felis' OR ef.name_altern_entry = 'helicobacter felis' )
+AND (ef.type = 'Bacteria' OR ef.type_altern_entry = 'Bacteria') )
+
+
+
+-- 	One query for chemical / drug as carcinogen agent type WITHOUT specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
+
+
+
+
+-- 	One query for chemical / drug as carcinogen agent type WITH specifying the agent name)
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
 where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -176,7 +287,12 @@ AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
 
 
 
--- 	One query for Chemical / Drug as carcinogen agent TYPE (without specifying the agent name)
+
+
+
+
+-- 	One query for ENVIRONMENT as carcinogen agent type WITHOUT specifying the agent name 
+
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
 where am.STATE='Edited-approved'  and av.release_date < sysdate
 INTERSECT
@@ -184,183 +300,221 @@ SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce
 WHERE ce.environmental_factor_id IN 
 (SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
 WHERE ce.environmental_factor_id = ef.environmental_factor_id 
-AND (ef.type = 'Chemical / Drug' OR ef.type_altern_entry = 'Chemical / Drug') )
+AND (ef.type = 'Environment' OR ef.type_altern_entry = 'Environment') )
 
 
 
+-- 	One query for  ENVIRONMENT as carcinogen agent type WITH specifying the agent name 
+-- no data in db for this specific query
 
 
--- 	One query for Antibody as carcinogen agent TYPE (with specifying the agent name)
 
 
 
+-- 	One query for GROWTH FACTOR  as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Growth Factor' OR ef.type_altern_entry = 'Growth Factor') )
 
--- 	One query for Antibody as carcinogen agent TYPE (without specifying the agent name)
 
 
+-- 	One query for GROWTH FACTOR  as carcinogen agent type WITH specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'interleukin 10' OR ef.name_altern_entry = 'interleukin 10' )
+AND (ef.type = 'Growth Factor' OR ef.type_altern_entry = 'Growth Factor') )
 
 
 
--- 	One query for Bacteria as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for HORMONE as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Hormone' OR ef.type_altern_entry = 'Hormone') )
 
 
 
+-- 	One query for HORMONE as carcinogen agent type WITH specifying the agent name 
 
--- 	One query for Bacteria as carcinogen agent TYPE (without specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'estradiol' OR ef.name_altern_entry = 'estradiol' )
+AND (ef.type = 'Hormone' OR ef.type_altern_entry = 'Hormone') )
 
 
 
+-- 	One query for NUTRITION as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Nutrition' OR ef.type_altern_entry = 'Nutrition') )
 
 
--- 	One query for Environment as carcinogen agent TYPE (with specifying the agent name)
 
+-- 	One query for NUTRITION as carcinogen agent type WITH specifying the agent name 
+-- no data for specific type available
 
 
 
 
--- 	One query for Environment as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for OTHER as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Other' OR ef.type_altern_entry = 'Other') )
 
 
 
+-- 	One query for OTHER as carcinogen agent type WITH specifying the agent name 
 
---  One query for Growth Factor as carcinogen agent TYPE (with specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'splenectomy' OR ef.name_altern_entry = 'splenectomy' )
+AND (ef.type = 'Other' OR ef.type_altern_entry = 'Other') )
 
 
+-- 	One query for PLASMID as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Plasmid' OR ef.type_altern_entry = 'Plasmid') )
 
 
--- 	One query for Growth Factor as carcinogen agent TYPE (without specifying the agent name)
 
+-- 	One query for PLASMID as carcinogen agent type WITH specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'Firefly Luciferase & Transposase containing plasmid pPGK-SB13.' OR ef.name_altern_entry = 'Firefly Luciferase & Transposase containing plasmid pPGK-SB13.' )
+AND (ef.type = 'Plasmid' OR ef.type_altern_entry = 'Plasmid') )
 
 
 
--- 	One query for Hormone as carcinogen agent TYPE (with specifying the agent name)
+-- 	One query for RADIATION as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Radiation' OR ef.type_altern_entry = 'Radiation') )
 
 
 
+-- 	One query for RADIATION as carcinogen agent type WITH specifying the agent name 
 
--- 	One query for Hormone as carcinogen agent TYPE (without specifying the agent name)
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = '137Cs' OR ef.name_altern_entry = '137Cs' )
+AND (ef.type = 'Radiation' OR ef.type_altern_entry = 'Radiation') )
 
 
 
+-- 	One query for  TRANSPOSON as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Transposon' OR ef.type_altern_entry = 'Transposon') )
 
 
--- 	One query for Nutrition as carcinogen agent TYPE (with specifying the agent name)
 
+-- 	One query for  TRANSPOSON as carcinogen agent type WITH specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'Transposase containing plasmid pPGK-SB13. & Sleeping Beauty transposon encoding V12G37Nras' OR ef.name_altern_entry = 'Transposase containing plasmid pPGK-SB13. & Sleeping Beauty transposon encoding V12G37Nras' )
+AND (ef.type = 'Transposon' OR ef.type_altern_entry = 'Transposon') )
 
 
 
--- 	One query for Nutrition as carcinogen agent TYPE (without specifying the agent name)
+-- 	One query for VIRAL as carcinogen agent type WITHOUT specifying the agent name 
 
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.type = 'Viral' OR ef.type_altern_entry = 'Viral') )
 
 
 
+-- 	One query for VIRAL as carcinogen agent type WITH specifying the agent name 
 
--- 	One query for Other as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Other as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
-
-
--- 	One query for Plasmid as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Plasmid as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
--- 	One query for Radiation as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Radiation as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
-
-
--- 	One query for Transposon as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Transposon as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
-
-
--- 	One query for Viral as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Viral as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
-
-
-
-
--- 	One query for Signaling Molecule as carcinogen agent TYPE (with specifying the agent name)
-
-
-
-
-
--- 	One query for Signaling Molecule as carcinogen agent TYPE (without specifying the agent name)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+SELECT distinct ce.abs_cancer_model_id FROM carcinogen_exposure ce 
+WHERE ce.environmental_factor_id IN 
+(SELECT ef.environmental_factor_id FROM carcinogen_exposure ce, environmental_factor ef
+WHERE ce.environmental_factor_id = ef.environmental_factor_id 
+AND (ef.name = 'Adenovirus' OR ef.name_altern_entry = 'Adenovirus' )
+AND (ef.type = 'Viral' OR ef.type_altern_entry = 'Viral') )
 
 
 
@@ -633,7 +787,10 @@ select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (selec
 
 
 --Rattus rattus
-
+select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
+where am.STATE='Edited-approved'  and av.release_date < sysdate
+INTERSECT
+select a.abs_cancer_model_id from abs_cancer_model a where a.STRAIN_ID IN (select st.strain_id from strain st where st.species_id=4)
 
 
 -- TRANSPLANT MODELS 
