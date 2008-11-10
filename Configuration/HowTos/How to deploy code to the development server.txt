@@ -120,6 +120,9 @@ unzip wsrf.war.zip
 
 
 cp wsrf.war.zip /usr/local/jboss404/server/ncicb-app/deploy
+
+cd /usr/local/jboss404/server/ncicb-app/bin
+
 cp globus_lib_files.zip /usr/local/jboss404/server/ncicb-app/lib
 
 
