@@ -1,0 +1,551 @@
+Searching for gov.nih.nci.camod.domain.AbstractCancerModel
+Printing gov.nih.nci.camod.domain.AbstractCancerModel
+	Id:48
+	State:Edited-approved
+	ExperimentDesign:The basic experimental model involves the transplantaton of mammary duct from 8-10 week old BALB/c female p53 null mice into the cleared mammary fat pads of three week old wildtype BALB/c female mice. The transplants( 0.5 mm) grow and fill the mammary fat pad in approximatley 8 weeks.  The recipient mice can either be left untreated or subjected to various experimental drugs or manipulations to examine the effect of the desired  treatment on development of the transplants or on tumorigenesis or on gene expression.
+
+
+	ModelDescriptor:BALB/c p53 null transplant
+	Availability:gov.nih.nci.camod.domain.Availability@30
+	Submitter:gov.nih.nci.camod.domain.Person@cd
+	PrincipalInvestigator:gov.nih.nci.camod.domain.Person@cd
+	PublicationCollection:size=7
+	LogCollection:size=4
+	Strain:gov.nih.nci.camod.domain.Strain@72
+	CommentsCollection:size=0
+Searching for gov.nih.nci.camod.domain.Agent
+Printing gov.nih.nci.camod.domain.Agent
+	Name:Zoledronic Acid
+	Id:553
+	Source:null
+	Comments:null
+	ConceptCode:C1699
+	CasNumber:null
+	IsCMAPAgent:false
+	NscNumber:721517
+	BiologicalProcessCollection:size=0
+	AgentTargetCollection:size=0
+	ChemicalClassCollection:size=0
+Searching for gov.nih.nci.camod.domain.AgentTarget
+Printing gov.nih.nci.camod.domain.AgentTarget
+	Name:Angiogenesis Targets
+	Id:1
+	AgentCollection:size=13
+Searching for gov.nih.nci.camod.domain.AnimalAvailability
+Printing gov.nih.nci.camod.domain.AnimalAvailability
+	Name:FVB/N-Tg(Trp53R172H)8512Jmr  (Tg p53 R172H)
+	Id:10008951
+	Comments:null
+	PrincipalInvestigator:null
+	StockNumber:01XE5
+	AnimalDistributor:gov.nih.nci.camod.domain.AnimalDistributor@3
+Searching for gov.nih.nci.camod.domain.AnimalDistributor
+Printing gov.nih.nci.camod.domain.AnimalDistributor
+	Name:Investigator
+	Id:1
+Searching for gov.nih.nci.camod.domain.AnimalModel
+Printing gov.nih.nci.camod.domain.AnimalModel
+	Comments:null
+	DevelopmentalStage:null
+	ExternalSource:null
+	ExternalSourceIdentifier:null
+	IsToolStrain:false
+	Url:http://sciencepark.mdanderson.org/ggeg/p53/default.html
+	EngineeredGeneCollection:size=1
+	AnimalAvailabilityCollection:size=1
+	ImageCollection:size=0
+	SpontaneousMutationCollection:size=0
+	TherapyCollection:size=0
+	CarcinogenExposureCollection:size=0
+	NomenclatureCollection:size=1
+	GeneDeliveryCollection:size=0
+	ProteomicsDataCollection:size=0
+	GenotypeCollection:size=1
+	TransientInterferenceCollection:size=0
+	CellLineCollection:size=1
+	HistopathologyCollection:size=0
+	Phenotype:gov.nih.nci.camod.domain.Phenotype@30
+	MicroArrayDataCollection:size=0
+	Id:48
+	State:Edited-approved
+	ExperimentDesign:The basic experimental model involves the transplantaton of mammary duct from 8-10 week old BALB/c female p53 null mice into the cleared mammary fat pads of three week old wildtype BALB/c female mice. The transplants( 0.5 mm) grow and fill the mammary fat pad in approximatley 8 weeks.  The recipient mice can either be left untreated or subjected to various experimental drugs or manipulations to examine the effect of the desired  treatment on development of the transplants or on tumorigenesis or on gene expression.
+
+
+	ModelDescriptor:BALB/c p53 null transplant
+	Availability:gov.nih.nci.camod.domain.Availability@30
+	Submitter:gov.nih.nci.camod.domain.Person@cd
+	PrincipalInvestigator:gov.nih.nci.camod.domain.Person@cd
+	PublicationCollection:size=7
+	LogCollection:size=4
+	Strain:gov.nih.nci.camod.domain.Strain@72
+	CommentsCollection:size=0
+Searching for gov.nih.nci.camod.domain.Availability
+Printing gov.nih.nci.camod.domain.Availability
+	Id:285
+	EnteredDate:2006-07-05 00:00:00.0
+	ModifiedDate:2008-10-17 00:00:00.0
+	ReleaseDate:2003-10-03 00:00:00.0
+	VisibleTo:PUBLIC
+Searching for gov.nih.nci.camod.domain.BiologicalProcess
+Printing gov.nih.nci.camod.domain.BiologicalProcess
+	Name:Adhesion, Molility, Invasion, Metastasis
+	Id:1
+	AgentCollection:size=17
+Searching for gov.nih.nci.camod.domain.CarcinogenExposure
+Printing gov.nih.nci.camod.domain.CarcinogenExposure
+	Id:50002347
+	EnvironmentalFactor:gov.nih.nci.camod.domain.EnvironmentalFactor@2faf9ab
+	Treatment:null
+Searching for gov.nih.nci.camod.domain.CellLine
+Printing gov.nih.nci.camod.domain.CellLine
+	Name:testing 2.3 bug fix
+	Id:50050355
+	Comments:null
+	PublicationCollection:size=0
+	Organ:gov.nih.nci.camod.domain.Organ@98b823
+	Experiment:null
+	Results:null
+Searching for gov.nih.nci.camod.domain.ChemicalClass
+Printing gov.nih.nci.camod.domain.ChemicalClass
+	Name:Alkylating Agents
+	Id:1
+	AgentCollection:size=7
+Searching for gov.nih.nci.camod.domain.ClinicalMarker
+Searching for gov.nih.nci.camod.domain.Comments
+Printing gov.nih.nci.camod.domain.Comments
+	Id:10009716
+	State:Screened-rejected
+	Availability:gov.nih.nci.camod.domain.Availability@98bc75
+	Submitter:gov.nih.nci.camod.domain.Person@ac
+	Remark: Lung tumor cell lines (3LL) were injected subcutaneously to the abdominal wall of the models to check how the cells grow and metastasize to the lung. this appears twice in the description so it needs to be removed at the end of the section
+	ModelSection:gov.nih.nci.camod.domain.ModelSection@1
+Searching for gov.nih.nci.camod.domain.Conditionality
+Printing gov.nih.nci.camod.domain.Conditionality
+	Id:50057095
+	Description:null
+	ConditionedBy:0
+Searching for gov.nih.nci.camod.domain.ContactInfo
+Printing gov.nih.nci.camod.domain.ContactInfo
+	Address:Center for Genetics and Genomics 917 Thorn Building, 20 Shattuck Street
+	Id:141
+	State:MA
+	City:Boston
+	Fax:617-975-0982
+	Institute:Harvard Medical School
+	Lab:Kucherlapati lab
+	Phone:617-732-6378
+	Zip:02115
+	PartyCollection:size=1
+Searching for gov.nih.nci.camod.domain.DevelopmentalStage
+Printing gov.nih.nci.camod.domain.DevelopmentalStage
+	Name:Blastula:30%-epiboly
+	Id:50055623
+	ConceptCode:ZFS:0000016
+	TherapyCollection:size=1
+Searching for gov.nih.nci.camod.domain.Disease
+Printing gov.nih.nci.camod.domain.Disease
+	Name:Patchy hyperplasia of myenteric plexus
+	Id:10010312
+	NameAlternEntry:null
+	ConceptCode:000000
+Searching for gov.nih.nci.camod.domain.Endpoint
+Printing gov.nih.nci.camod.domain.Endpoint
+	Id:1
+	Description:Mean tumor weight
+	Code:1
+Searching for gov.nih.nci.camod.domain.EngineeredGene
+Printing gov.nih.nci.camod.domain.EngineeredGene
+	Name:Pml (LocusID: 18854)
+	Id:378
+	Comments:Part of exon 2 were replaced with neomycin.
+	Image:null
+	GeneIdentifier:gov.nih.nci.camod.domain.GeneIdentifier@2fbc7ee
+	MutationIdentifier:gov.nih.nci.camod.domain.MutationIdentifier@98c3f6
+	ExpressionFeatureCollection:size=0
+	GeneFunctionCollection:size=0
+	Conditionality:gov.nih.nci.camod.domain.Conditionality@7ae
+Searching for gov.nih.nci.camod.domain.EnvironmentalFactor
+Printing gov.nih.nci.camod.domain.EnvironmentalFactor
+	Name:null
+	Id:50003287
+	Type:null
+	Comments:null
+	NameAlternEntry:propylthiouracil
+	CasNumber:null
+	NscNumber:null
+	IsInducedMutationTrigger:false
+	TypeAlternEntry:Chemical / Drug
+Searching for gov.nih.nci.camod.domain.ExpressionFeature
+Printing gov.nih.nci.camod.domain.ExpressionFeature
+	Id:50052203
+	Comments:null
+	Organ:gov.nih.nci.camod.domain.Organ@2fbbc6c
+	ExpressionLevelDesc:gov.nih.nci.camod.domain.ExpressionLevelDesc@c
+Searching for gov.nih.nci.camod.domain.ExpressionLevelDesc
+Printing gov.nih.nci.camod.domain.ExpressionLevelDesc
+	Id:1
+	ExpressionLevel:not tested
+Searching for gov.nih.nci.camod.domain.GeneDelivery
+Printing gov.nih.nci.camod.domain.GeneDelivery
+	Id:10009400
+	Comments:null
+	GeneInVirus:Cre
+	ViralVector:Adenovirus
+	ViralVectorAlternEntry:null
+	Treatment:gov.nih.nci.camod.domain.Treatment@98bb3a
+	Organ:gov.nih.nci.camod.domain.Organ@98bb39
+Searching for gov.nih.nci.camod.domain.GeneFunction
+Printing gov.nih.nci.camod.domain.GeneFunction
+	Id:50057097
+	Function:123
+	EngineeredGene:gov.nih.nci.camod.domain.Transgene@2fbcf86
+Searching for gov.nih.nci.camod.domain.GeneIdentifier
+Printing gov.nih.nci.camod.domain.GeneIdentifier
+	Id:50057105
+	EntrezGeneID:123
+Searching for gov.nih.nci.camod.domain.GeneticAlteration
+Printing gov.nih.nci.camod.domain.GeneticAlteration
+	Id:50057106
+	MethodOfObservation:123
+	Observation:123
+Searching for gov.nih.nci.camod.domain.GenomicSegment
+Printing gov.nih.nci.camod.domain.GenomicSegment
+	ConstructSequence:null
+	CloneDesignator:tstsdfasdf
+	IsRandom:true
+	LocationOfIntegration:null
+	SegmentSize:null
+	SegmentType:gov.nih.nci.camod.domain.SegmentType@2fbc9ea
+	Name:null
+	Id:50055657
+	Comments:adfadsfsadfsdaf sdafsdafsadfsdf
+	Image:null
+	GeneIdentifier:null
+	MutationIdentifier:null
+	ExpressionFeatureCollection:size=1
+	GeneFunctionCollection:size=0
+	Conditionality:null
+Searching for gov.nih.nci.camod.domain.Genotype
+Printing gov.nih.nci.camod.domain.Genotype
+	Name:ggg
+	Id:50051860
+Searching for gov.nih.nci.camod.domain.Histopathology
+Printing gov.nih.nci.camod.domain.Histopathology
+	Id:1158
+	Comments:null
+	GeneticAlteration:gov.nih.nci.camod.domain.GeneticAlteration@3a
+	Organ:gov.nih.nci.camod.domain.Organ@40
+	AgeOfDetection:null
+	AgeOfDetectionUnit:null
+	AgeOfOnset:4.5 months
+	AgeOfOnsetUnit:null
+	ComparativeData:null
+	GrossDescription:1-15 mm diameter; frequently multiple tumors (up to 8)
+	MicroscopicDescription:The tumor growth pattern is typically a plaque-like mucosal thickening, usually without a well-defined nonneoplastic mucosal stalk. Some adenomas have a complex architectural glandular pattern consistent with high-grade dysplasia. In over 50% of tumors progression to carcinoma is observable. 
+Some tumors penetrate through the full thickness of the intestinal wall along with a surrounding peritoneal inflammatory reaction.
+	RelationalOperation:null
+	SurvivalInfo:null
+	TumorIncidenceRate:26
+	VolumeOfTumor:null
+	WeightOfTumor:null
+	MetastasisCollection:size=0
+	Disease:gov.nih.nci.camod.domain.Disease@14
+	ClinicalMarkerCollection:size=0
+Searching for gov.nih.nci.camod.domain.Image
+Printing gov.nih.nci.camod.domain.Image
+	Id:192
+	Description:Annapolis slide set: Slide# 115, Boxslot# 87; Mammary tumor, aneuploidy. This low magnification image shows an invasive neoplasm with small glands embedded in a dense connective tissue. HistoBank Number: 1264
+
+	Comments:null
+	Url:http://caimage.nci.nih.gov/lizardtech//iserv/getthumb?cat=Model&img=192.sid; catalogviewtumors.jsp?cat=Model&img=192.sid
+	Title:WAP-p53 172R-H
+	UrlAlternEntry:null
+	StainingMethod:gov.nih.nci.camod.domain.StainingMethod@3
+Searching for gov.nih.nci.camod.domain.InducedMutation
+Printing gov.nih.nci.camod.domain.InducedMutation
+	Description:null
+	GeneticAlteration:null
+	EnvironmentalFactor:gov.nih.nci.camod.domain.EnvironmentalFactor@28250
+	Name:Apc<sup>MIN</sup> (LocusID: 11789)
+	Id:465
+	Comments:null
+	Image:null
+	GeneIdentifier:gov.nih.nci.camod.domain.GeneIdentifier@2fbc775
+	MutationIdentifier:gov.nih.nci.camod.domain.MutationIdentifier@98c1d4
+	ExpressionFeatureCollection:size=0
+	GeneFunctionCollection:size=0
+	Conditionality:null
+Searching for gov.nih.nci.camod.domain.InvivoResult
+Printing gov.nih.nci.camod.domain.InvivoResult
+	Id:7
+	Treatment:gov.nih.nci.camod.domain.Treatment@e
+	EvaluationDay:076
+	PercentTreatedControl:117.0
+	ToxicityEvalDay:76
+	ToxicitySurvivors:09/10
+	Endpoint:gov.nih.nci.camod.domain.Endpoint@3
+	Agent:gov.nih.nci.camod.domain.Agent@268
+Searching for gov.nih.nci.camod.domain.Log
+Printing gov.nih.nci.camod.domain.Log
+	Id:3
+	State:null
+	Timestamp:12/03/2002 03:38:16 PM
+	Comments:null
+	Submitter:gov.nih.nci.camod.domain.Person@a6
+	ReviewNote:Author of the second publication is just listed as Guy.  It should read Guy, C T.
+
+
+	AbstractCancerModel:gov.nih.nci.camod.domain.AnimalModel@128
+Searching for gov.nih.nci.camod.domain.MicroArrayData
+Printing gov.nih.nci.camod.domain.MicroArrayData
+	Id:50056151
+	Comments:null
+	Url:test
+	ExperimentId:null
+	ExperimentName:test name 123
+Searching for gov.nih.nci.camod.domain.ModelSection
+Printing gov.nih.nci.camod.domain.ModelSection
+	Name:General Information Page
+	Id:1
+Searching for gov.nih.nci.camod.domain.ModificationType
+Printing gov.nih.nci.camod.domain.ModificationType
+	Name:Null Modification
+	Id:0
+	NameAlternEntry:null
+Searching for gov.nih.nci.camod.domain.MutationIdentifier
+Printing gov.nih.nci.camod.domain.MutationIdentifier
+	Id:50056621
+	MgiId:null
+	RgdId:null
+	ZfinId:null
+Searching for gov.nih.nci.camod.domain.Nomenclature
+Printing gov.nih.nci.camod.domain.Nomenclature
+	Name:B6;129P2-Pten<sup>tm2Mak</sup> Tg(KRT5-cre)1Tak
+	Id:50002465
+Searching for gov.nih.nci.camod.domain.Organ
+Printing gov.nih.nci.camod.domain.Organ
+	Name:testing comments size
+	Id:50057085
+	ConceptCode:000000
+Searching for gov.nih.nci.camod.domain.Organization
+Searching for gov.nih.nci.camod.domain.Party
+Printing gov.nih.nci.camod.domain.Party
+	Id:50052837
+	ContactInfoCollection:size=1
+	RoleCollection:size=0
+Searching for gov.nih.nci.camod.domain.Person
+Printing gov.nih.nci.camod.domain.Person
+	Username:kansaram
+	FirstName:Maya
+	IsPrincipalInvestigator:true
+	LastName:Kansara
+	MiddleName:null
+	Id:50052837
+	ContactInfoCollection:size=1
+	RoleCollection:size=0
+Searching for gov.nih.nci.camod.domain.Phenotype
+Printing gov.nih.nci.camod.domain.Phenotype
+	Id:28
+	Description:Livers of Ahr -/- mice are about 50% the size of normal livers and exhibit hepatic portal hypertension. Mice have enlarged hearts (cardiomyopathy). There is decreased accumulation of B lymphocytes in the lymph nodes and spleen but the thymus is normal. Ahr -/- mice are unresponsive to dioxin-induced catabolism of foreign compounds. They also have higher incidences of liver tumors and gastric polyps than do wt mice (unpublished). Although about half of the original homozygous Ahrtm1Gonzs (Ahr -/-) mice died shortly after birth the survivors reached maturity and were fertile. Breeding these survivors produces 100% survival of littermates, the neonatal phenotype apparently being lost.
+	BreedingNotes:null
+	SexDistribution:null
+Searching for gov.nih.nci.camod.domain.ProteomicsData
+Searching for gov.nih.nci.camod.domain.Publication
+Printing gov.nih.nci.camod.domain.Publication
+	Id:1547
+	Year:2000
+	Comments:null
+	Title:Astrocytes give rise to oligodendrogliomas and astrocytomas after gene transfer of polyoma virus middle T antigen in vivo
+	Authors:Holland EC
+	EndPage:1037
+	FirstTimeReported:null
+	JaxJNumber:J:64389
+	Journal:Am J Pathol 
+	Pmid:10980141
+	RgdPubId:null
+	StartPage:1031
+	Volume:157
+	ZfinPubId:null
+	PublicationStatus:gov.nih.nci.camod.domain.PublicationStatus@1
+Searching for gov.nih.nci.camod.domain.PublicationStatus
+Printing gov.nih.nci.camod.domain.PublicationStatus
+	Name:Published
+	Id:1
+Searching for gov.nih.nci.camod.domain.RegulatoryElement
+Printing gov.nih.nci.camod.domain.RegulatoryElement
+	Name:test
+	Id:50056622
+	Species:null
+	RegulatoryElementType:gov.nih.nci.camod.domain.RegulatoryElementType@1
+Searching for gov.nih.nci.camod.domain.RegulatoryElementType
+Printing gov.nih.nci.camod.domain.RegulatoryElementType
+	Name:Transcriptional 1
+	Id:1
+Searching for gov.nih.nci.camod.domain.Role
+Printing gov.nih.nci.camod.domain.Role
+	Name:MMHCC Coordinator
+	Id:1
+	PartyCollection:size=16
+Searching for gov.nih.nci.camod.domain.ScreeningResult
+Printing gov.nih.nci.camod.domain.ScreeningResult
+	Id:37
+	Treatment:gov.nih.nci.camod.domain.Treatment@2
+	Agent:gov.nih.nci.camod.domain.Agent@1018
+	Aveinh:0.79
+	Diffinh:0.1
+	Stage:1
+Searching for gov.nih.nci.camod.domain.SegmentType
+Printing gov.nih.nci.camod.domain.SegmentType
+	Name:Plasmid
+	Id:50051841
+	NameAlternEntry:null
+Searching for gov.nih.nci.camod.domain.SexDistribution
+Printing gov.nih.nci.camod.domain.SexDistribution
+	Id:1
+	Type:Both Sexes
+Searching for gov.nih.nci.camod.domain.Species
+Printing gov.nih.nci.camod.domain.Species
+	Id:10010506
+	Abbreviation:null
+	ConceptCode:null
+	CommonName:null
+	CommonNameAlternEntry:null
+	ScientificName:null
+	ScientificNameAlternEntry:Human Papilloma Virus, Type 16 
+	StrainCollection:size=0
+Searching for gov.nih.nci.camod.domain.SpontaneousMutation
+Printing gov.nih.nci.camod.domain.SpontaneousMutation
+	Name:123
+	Id:50057108
+	Comments:123
+	GeneIdentifier:gov.nih.nci.camod.domain.GeneIdentifier@2fbcf91
+	MutationIdentifier:gov.nih.nci.camod.domain.MutationIdentifier@2fbcf96
+	GeneticAlteration:gov.nih.nci.camod.domain.GeneticAlteration@2fbcf95
+Searching for gov.nih.nci.camod.domain.StainingMethod
+Printing gov.nih.nci.camod.domain.StainingMethod
+	Name:Alpha Naphthyl Esterase Staining Method
+	Id:1
+	NameAlternEntry:null
+	ConceptCode:C28441
+Searching for gov.nih.nci.camod.domain.Strain
+Printing gov.nih.nci.camod.domain.Strain
+	Name:Not specified
+	Id:50057082
+	MutationIdentifier:null
+	NameAlternEntry:null
+	Abbreviation:null
+	ConceptCode:null
+	Species:gov.nih.nci.camod.domain.Species@7
+Searching for gov.nih.nci.camod.domain.TargetedModification
+Printing gov.nih.nci.camod.domain.TargetedModification
+	BlastocystName:null
+	ConstructSequence:null
+	EsCellLineName:AB1
+	YeastModel:null
+	ModificationTypeCollection:size=1
+	Name:Pml (LocusID: 18854)
+	Id:378
+	Comments:Part of exon 2 were replaced with neomycin.
+	Image:null
+	GeneIdentifier:gov.nih.nci.camod.domain.GeneIdentifier@2fbc7ee
+	MutationIdentifier:gov.nih.nci.camod.domain.MutationIdentifier@98c3f6
+	ExpressionFeatureCollection:size=0
+	GeneFunctionCollection:size=0
+	Conditionality:gov.nih.nci.camod.domain.Conditionality@7ae
+Searching for gov.nih.nci.camod.domain.Therapy
+Printing gov.nih.nci.camod.domain.Therapy
+	Id:50056035
+	Comments:1
+	PublicationCollection:size=0
+	DevelopmentalStage:null
+	Treatment:gov.nih.nci.camod.domain.Treatment@2fbcb65
+	Experiment:1
+	Results:1
+	Agent:gov.nih.nci.camod.domain.Agent@2fbcb64
+	Biomarker:1
+	ToxicityGrade:Mild
+	TumorResponse:1
+Searching for gov.nih.nci.camod.domain.Transgene
+Printing gov.nih.nci.camod.domain.Transgene
+	ConstructSequence:null
+	Species:gov.nih.nci.camod.domain.Species@2
+	IsRandom:true
+	LocationOfIntegration:null
+	RegulatoryElementCollection:size=1
+	Name:HRASv12
+	Id:383
+	Comments:oncogene 
+	Image:null
+	GeneIdentifier:null
+	MutationIdentifier:null
+	ExpressionFeatureCollection:size=0
+	GeneFunctionCollection:size=0
+	Conditionality:null
+Searching for gov.nih.nci.camod.domain.TransientInterference
+Searching for gov.nih.nci.camod.domain.TransientInterferenceMethod
+Printing gov.nih.nci.camod.domain.TransientInterferenceMethod
+	Name:Morpholino phosphorodiamidate oligonucleotides
+	Id:1
+	ConceptCode:C60700
+Searching for gov.nih.nci.camod.domain.Transplantation
+Printing gov.nih.nci.camod.domain.Transplantation
+	Name:Colon Carcinoma 38; Protocol = Murine Tumor Employed Prior to 1986 
+	Organ:null
+	AdministrativeSite:SC (subcutaneous)
+	AdminSiteAlternEntry:null
+	AtccNumber:null
+	CellAmount:null
+	ConditioningRegimen:null
+	CondRegimenAlternEntry:null
+	GeneticManipulation:null
+	GrowthPeriod:null
+	ModificationDescription:null
+	ParentalCellLineName:null
+	SourceType:null
+	SourceTypeAlternEntry:null
+	InvivoResultCollection:size=6
+	DonorSpecies:null
+	TumorCode:gov.nih.nci.camod.domain.TumorCode@44
+	Id:698
+	State:Reviewed-approved
+	ExperimentDesign:null
+	ModelDescriptor:Colon Carcinoma 38; Protocol = Murine Tumor Employed Prior to 1986 
+	Availability:gov.nih.nci.camod.domain.Availability@27d
+	Submitter:null
+	PrincipalInvestigator:null
+	PublicationCollection:size=0
+	LogCollection:size=0
+	Strain:gov.nih.nci.camod.domain.Strain@40
+	CommentsCollection:size=0
+Searching for gov.nih.nci.camod.domain.Treatment
+Printing gov.nih.nci.camod.domain.Treatment
+	Id:311
+	SexDistribution:null
+	AdministrativeRoute:null
+	AdminRouteAlternEntry:null
+	AgeAtTreatment:null
+	AgeAtTreatmentUnit:null
+	Dosage:00000.25 mg/kg
+	DosageUnit:null
+	Regimen:Schedule-Q01DX005, Vehicle-Carboxymethylcellulose (CMC),Drug given-intraperitoneal
+Searching for gov.nih.nci.camod.domain.TumorCode
+Printing gov.nih.nci.camod.domain.TumorCode
+	Id:47
+	Description:NCI-H460 Large Cell Carcinoma of the Lung; Protocol = H460 Lung Carcinoma Xenograft Protocol 
+	Abbreviation:CL 
+Searching for gov.nih.nci.camod.domain.YeastModel
+Printing gov.nih.nci.camod.domain.YeastModel
+	TargetedModificationCollection:size=0
+	ScreeningResultCollection:size=10945
+	Id:1023
+	State:Reviewed-approved
+	ExperimentDesign:null
+	ModelDescriptor:CLN2oe
+	Availability:gov.nih.nci.camod.domain.Availability@27e
+	Submitter:null
+	PrincipalInvestigator:null
+	PublicationCollection:size=0
+	LogCollection:size=0
+	Strain:gov.nih.nci.camod.domain.Strain@95
+	CommentsCollection:size=0
+
