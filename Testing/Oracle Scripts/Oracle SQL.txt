@@ -1,3 +1,11 @@
+FOR UPDATED SCRIPTS SEE
+- KEYWORD SEARCHES.SQL
+- TOC SEARCHES.SQL
+- SCRIPTS FOR SIMPLE AND ADVANCED SEARCHES.SQL
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 --All models  no criteria entered
 select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
 where am.STATE='Edited-approved' and av.release_date < sysdate
