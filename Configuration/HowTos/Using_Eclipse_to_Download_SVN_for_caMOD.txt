@@ -1,0 +1,96 @@
+Using Eclipse to download the Subversion repository of caMOD
+
+Step 1
+Install Eclipse Subclipse plugin
+( Subclipse homepage with installation guide: http://subclipse.tigris.org/install.html )
+
+In Eclipse
+Help > Software Updates > Find and Install
+
+Depending on your version of Eclipse
+
+   Name: Subclipse 1.4.x (Eclipse 3.2+)
+   URL:  http://subclipse.tigris.org/update_1.4.x
+
+   Name: Subclipse 1.2.x (Eclipse 3.2+)
+   URL:  http://subclipse.tigris.org/update_1.2.x
+   
+   Name: Subclipse 1.0.x (Eclipse 3.0/3.1)
+   URL:  http://subclipse.tigris.org/update_1.0.x
+
+Follow steps to finish installation of subclipse
+
+Step 2
+Create a new Subversion project and retrieve files from SVN
+
+File > New > Project
+
+Select
+SVN > Checkout Projects from SVN
+
+Create a new repository location
+URL: https://gforge.nci.nih.gov/svnroot/camod
+Select the trunk then camod
+
+Note: These are all the parameters required to get the repository
+Name the project and select a workspace
+Click Finish
+
+Sync'ing and committing to the repository is almost exactly identical to how it is done in CVS.
+When committing files, subclipse will ask you for your username and password.
+
+------------------------------------
+Past converting current CVS repo to Subversion repo email trail
+
+Hi Nick,
+The migration has been completed, and the accounts have been synched. The SVN location is at https://gforge.nci.nih.gov/svnroot/camod/
+
+Since you mentioned that you and your team is not ready to move completely yet, let me know when you would like the GForge SCM tab to be pointing to the new repository.
+
+Please let me know if you have any questions.
+Regards,
+
+Wayne W.W. Wang
+Software Configuration Management Analyst
+National Cancer Institute Center for Bioinformatics
+Contractor, TerpSys
+http://www.terpsys.com
+301-443-7132 Direct Voice
+301-370-1736 Mobile
+wangway@mail.nih.gov
+
+------------------------------------
+
+Hi Nick,
+We received your request to convert your project to Subversion.  We normally schedule a time in advance to do the conversion.
+
+During that time period we ask that no one on your team make any commits or updates to the CVS repository.
+
+Does the 8-10am time frame on Wednesday or Thursday work for you and your team?
+Just let me know.
+Thanks,
+
+Garrett Longmire
+Software Configuration Management Analyst
+National Cancer Institute Center for Bioinformatics
+Contractor, TerpSys
+http://www.terpsys.com
+301-496-5352 Direct Voice
+
+------------------------------------
+My Orginal Email
+
+The caMOD team would like to request that our project be COPIED (not
+moved) from our CVS to a new subversion project with the same name (camod).
+
+IMPORTANT NOTE: It is very important that our current CVS project remain
+intact and unmodified as we will still require it for our development.
+
+caMOD CVS project location
+Host: cbiocvs2.nci.nih.gov
+Repository Path: /share/content/gforge/camod
+
+Notify us with any further details you require.
+
+Please provide us with all the necessary login and subversion location
+information when completed.

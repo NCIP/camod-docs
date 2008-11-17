@@ -1,0 +1,105 @@
+Configuring a Local Oracle DB
+
+Download Oracle 9.2 Enterprise/Standard Edition for Windows XP
+	Visit www.oracle.com/technology/software/products/oracle9i/index.html
+
+Installing Oracle
+	Extract each of the three zip files (92010NT_Disk1.zip, 92010NT_Disk2.zip,92010NT_Disk3.zip)
+	Start the installation SETUP
+	Select Oracle9i Database 9.2.0.1.0 > Next
+	Standard Edition > Next
+	Customized > Next 
+	Follow installation instructions
+	Create a DB named CAMOD or CAMODDEV
+	Set the SYS password
+
+Creating ORACLE database
+	Log in using Oracle Enterprise Manager Console, Standalone
+	Log into your CAMOD database using SYS as SYSDBA
+	
+	Need to create a CAMOD tablespace 
+		Open Oracle Enterprise Manager Console, Open database, Then Storage > Tablespaces > right click > add Tablespace CAMOD
+		Be sure to edit the Datafile (pencil icon) and under Storage click the checkbox Automatically extend datafile when full (AUTOEXTEND) and set the increment to 5 M Bytes
+
+	Create the CAMOD user
+		Go to Security/Users/CAMOD and select CAMODDEV as the tablespace.
+		Go to the Role tab and add RESOURCE to the Granted list.
+
+Exporting DB from DEV server to a .DMP file
+	First if not already present, add the following to your PATH environment variables (change your path to reflect the installation directory used)
+	C:\oracle\ora92\bin
+	
+	From the command prompt run this
+		exp camoddev22/dev!234@cadev.nci.nih.gov file=EXPDAT.DMP owner=camoddev22
+
+Importing DB to Local server
+	From the command prompt run this 
+		imp camod/camod@camod file=EXPDAT.DMP fromuser=camoddev22 touser=camod
+
+Configure JBOSS file to point to local DB
+	JBOSS - Edit oracle-ds.xml file as detailed below
+	Eclipse - Edit Hibernate.cfg.xml if using for junit tests
+	
+Connect to local DB using Toad
+	Database: CAMOD
+	User: CAMOD
+	Password: ****
+	Connect As: SYSDBA
+	
+Note: ORA-12224: TNS: no listener
+	If you recieve this error, it means the listener service for the database hasn't been started. 
+	Right Click on My Computer > Manage 
+	In Computer Management > Services and Applications > Services
+	Find OracleService92TNSListener > Start the Service
+
+Find the oracle-ds.xml file in JBOSS
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss Server Configuration                                           -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: Configuring_a_Local_Orace_DB.txt,v 1.1 2008-11-17 05:40:02 schroedn Exp $ -->
+<!-- ==================================================================== -->
+<!--  Datasource config for Oracle                                        -->
+<!-- ==================================================================== -->
+
+<datasources>
+   <local-tx-datasource>
+      <jndi-name>camod</jndi-name>
+      <connection-url>jdbc:oracle:thin:@localhost:1521:camoddev</connection-url>
+      <user-name>camod</user-name>
+      <password>SECRET_PASSWORD</password>
+      <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+      <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+
+    </local-tx-datasource>
+</datasources>
+
+
+Hibernate.cfg.xml
+
+<hibernate-configuration>
+    <session-factory>
+
+      <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+      <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:camoddev</property>
+      <property name="hibernate.connection.username">camod</property>
+      <property name="hibernate.connection.password">SECRET_PASSWORD</property>
+      <property name="hibernate.connection.pool_size">10</property>
+      <property name="show_sql">true</property>
+      <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      
+      <!-- <property name="connection.datasource">java:/camod</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="dialect">org.hibernate.dialect.OracleDialect</property> 
+        <property name="max_fetch_depth">1</property>
+        <property name="cglib.use_reflection_optimizer">false</property>
+        <property name="jdbc.batch_versioned_data">true</property>
+        <property name="jdbc.use_streams_for_binary">true</property>
+        <property name="cache.use_query_cache">false</property>
+        <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+        -->
