@@ -125,6 +125,8 @@ cd /usr/local/jboss404/server/ncicb-app/bin
 
 cp globus_lib_files.zip /usr/local/jboss404/server/ncicb-app/lib
 
+unzip globus_lib_files.zip
+
 
 
 
