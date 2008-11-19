@@ -119,7 +119,8 @@ Unzip file in current directory (/usr/local/jboss405/server/ncicb-app/deploy)
 unzip wsrf.war.zip
 
 
-cp wsrf.war.zip /usr/local/jboss404/server/ncicb-app/deploy
+cp wsrf-camod.war /usr/local/jboss404/server/ncicb-app/deploy
+cp camodSDKClient.war /usr/local/jboss404/server/ncicb-app/deploy
 
 cd /usr/local/jboss404/server/ncicb-app/bin
 
