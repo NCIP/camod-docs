@@ -121,12 +121,16 @@ unzip wsrf.war.zip
 
 cp wsrf-camod.war /usr/local/jboss404/server/ncicb-app/deploy
 cp camodSDKClient.war /usr/local/jboss404/server/ncicb-app/deploy
+cp oracle-ds.xml /usr/local/jboss404/server/ncicb-app/deploy
 
 cd /usr/local/jboss404/server/ncicb-app/bin
 
 cp globus_lib_files.zip /usr/local/jboss404/server/ncicb-app/lib
 
 unzip globus_lib_files.zip
+
+// to remove (delete) a folder add "-r"
+rm - r
 
 
 
