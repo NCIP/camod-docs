@@ -69,7 +69,7 @@ MODIFY COMMENTS VARCHAR2(2000);
 ALTER TABLE ABS_CANCER_MODEL 
 MODIFY COMMENTS VARCHAR2(2000);
 
--- Increase column size for additional text entry (not run on QA)
+-- Increase column size for additional text entry 
 ALTER TABLE SPONTANEOUS_MUTATION 
 MODIFY COMMENTS VARCHAR2(2000);
 
