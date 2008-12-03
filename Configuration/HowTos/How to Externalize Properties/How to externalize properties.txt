@@ -1,6 +1,6 @@
 How to externalize properties
 
-1.  Synch with camod_dev project
+1.  Synch with camod project
 2.  create folder stucture C:\local\content\camod\config
 2.  add the following files (located in docs\How To\External Properties):
 camod.properties
