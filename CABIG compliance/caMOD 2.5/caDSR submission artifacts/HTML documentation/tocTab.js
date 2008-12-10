@@ -1,0 +1,17 @@
+var tocTab = new Array();
+tocTab[0] = new Array ("0", "Logical View", "EARoot/contents.htm", "");
+tocTab[1] = new Array ("1", "Logical Model", "EARoot/EA1/contents.htm", "");
+tocTab[2] = new Array ("1.1", "DIAGRAMS", "EARoot/EA1/EA1/contents.htm", "");
+tocTab[3] = new Array ("1.1.1", "CAMOD", "EARoot/EA1/EA1/EA1/contents.htm", "");
+tocTab[4] = new Array ("1.2", "gov", "EARoot/EA1/EA2/contents.htm", "");
+tocTab[5] = new Array ("1.2.1", "nih", "EARoot/EA1/EA2/EA1/contents.htm", "");
+tocTab[6] = new Array ("1.2.1.1", "nci", "EARoot/EA1/EA2/EA1/EA1/contents.htm", "");
+tocTab[7] = new Array ("1.2.1.1.1", "camod", "EARoot/EA1/EA2/EA1/EA1/EA1/contents.htm", "");
+tocTab[8] = new Array ("1.2.1.1.1.1", "domain", "EARoot/EA1/EA2/EA1/EA1/EA1/EA1/contents.htm", "");
+tocTab[9] = new Array ("1.3", "java", "EARoot/EA1/EA3/contents.htm", "");
+tocTab[10] = new Array ("1.3.1", "lang", "EARoot/EA1/EA3/EA1/contents.htm", "");
+tocTab[11] = new Array ("1.3.2", "sql", "EARoot/EA1/EA3/EA2/contents.htm", "");
+tocTab[12] = new Array ("1.3.3", "util", "EARoot/EA1/EA3/EA3/contents.htm", "");
+tocTab[13] = new Array ("13", "System", "", "");
+tocTab[14] = new Array ("13.1", "Model Glossary", "glossary.htm", "true");
+var nCols = 20;
