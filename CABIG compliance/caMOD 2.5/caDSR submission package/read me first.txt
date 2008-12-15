@@ -1,1 +1,0 @@
-The EAP file was submitted with the submission package. We needed to make updates to the eap file after the submission per Claire Wolfe's request. To avoid duplication and confusion, I decided to keep the eap file in the model folder which will always contain the latest version.
