@@ -1,0 +1,10 @@
+The following Value Domains have had their datatype changed from CHARACTER to java.lang.String
+
+DiagnosticTermCode
+DiagnosticTermName
+ZebrafishDevelopmentalStageCode
+ZebrafishDevelopmentalStageName
+AnatomicalTermCode
+AnatomicalTermName
+StainingMethodCode
+StainingMethodName
