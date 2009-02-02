@@ -1,0 +1,271 @@
+Microsoft Windows 2000 [Version 5.00.2195]
+(C) Copyright 1985-2000 Microsoft Corp.
+
+C:\>cd C:\cacoresdk40
+
+C:\cacoresdk40>ant clean-all
+Buildfile: build.xml
+Overriding previous definition of reference to classpath
+Overriding previous definition of reference to basedir.path
+Overriding previous definition of reference to basedir.path
+
+clean:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Cleaning directories and files
+     [echo] *****************************************************************
+   [delete] Deleting directory C:\cacoresdk40\output
+
+clean-all:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Cleaning child projects
+     [echo] *****************************************************************
+
+prepare-clean-condition:
+     [echo] *****************************************************************
+     [echo] ***  Codegen: Checking the condition for cleaning
+     [echo] *****************************************************************
+
+clean:
+
+clean-all:
+     [echo] *****************************************************************
+     [echo] ***  Codegen: Cleaning child projects
+     [echo] *****************************************************************
+
+prepare-clean-condition:
+     [echo] *****************************************************************
+     [echo] ***  SDK Templates: Checking the condition for cleaning
+     [echo] *****************************************************************
+
+clean:
+
+prepare-clean-condition:
+     [echo] *****************************************************************
+     [echo] ***  System: Checking the condition for cleaning
+     [echo] *****************************************************************
+
+clean:
+
+BUILD FAILED
+C:\cacoresdk40\build.xml:179: The following error occurred while executing this line:
+java.io.FileNotFoundException: C:\cacoresdk40\junit\build.xml (The system cannot find the path specified)
+
+Total time: 13 seconds
+C:\cacoresdk40>ant build-system
+Buildfile: build.xml
+Overriding previous definition of reference to classpath
+Overriding previous definition of reference to basedir.path
+Overriding previous definition of reference to basedir.path
+
+clean:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Cleaning directories and files
+     [echo] *****************************************************************
+
+prepare-condition-codegen:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Checking the condition for codegen project build
+     [echo] *****************************************************************
+
+prepare-codegen:
+
+init:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Preparing directories
+     [echo] *****************************************************************
+    [mkdir] Created dir: C:\cacoresdk40\output
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\src
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\conf
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\conf\codegen
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\build
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\build\classes
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\build\jar
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\build\docs
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\remote-client
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\remote-client\lib
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\remote-client\conf
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\local-client
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\local-client\lib
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\webapp
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\ws-client
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\ws-client\lib
+    [mkdir] Created dir: C:\cacoresdk40\output\camodSDKClient\package\ws-client\conf
+     [copy] Copying 33 files to C:\cacoresdk40\output\camodSDKClient\conf
+     [copy] Copying 1 file to C:\cacoresdk40\output\camodSDKClient\src
+
+codegen:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Running the code generator
+     [echo] *****************************************************************
+     [java] 09:36:05,812  INFO Generator:168 - Initializing codegen configuration from CodegenConfig.xml
+
+     [java] 09:36:11,437  INFO Generator:172 - Configuration read from the file
+
+     [java] 09:36:11,437  INFO Generator:173 - Executing codegen
+
+     [java] 09:36:11,437  INFO Generator:82 - Executing Logical Model Validator
+     [java] 09:36:11,609  INFO Generator:82 - Executing Model Mapping Validator
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for Hibernate Mapping Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for Bean Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for EHCache Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for Hibernate Config Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for XML Mapping (Marshaller) Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for XML Mapping (Unmarshaller) Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for Schema (XSD) Transformer
+     [java] 09:36:11,687  INFO Generator:95 - Executing validator for Web Services Deployment Descriptor (WSDD) Transformer
+     [java] 09:36:11,687  INFO Generator:109 - Executing Hibernate Mapping Transformer
+     [java] 09:36:12,047  INFO Generator:109 - Executing Bean Transformer
+     [java] 09:36:12,562  INFO Generator:109 - Executing EHCache Transformer
+     [java] 09:36:12,578  INFO Generator:109 - Executing Hibernate Config Transformer
+     [java] 09:36:12,594  INFO Generator:109 - Executing XML Mapping (Marshaller) Transformer
+     [java] 09:36:12,687  INFO Generator:109 - Executing XML Mapping (Unmarshaller) Transformer
+     [java] 09:36:12,734  INFO Generator:109 - Executing Schema (XSD) Transformer
+     [java] 09:36:12,766  INFO Generator:109 - Executing Web Services Deployment Descriptor (WSDD) Transformer
+     [java] 09:36:12,781  INFO Generator:175 - Codegen execution complete
+
+
+compile-beans:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Compiling the generated beans
+     [echo] *****************************************************************
+    [javac] Compiling 65 source files to C:\cacoresdk40\output\camodSDKClient\build\classes
+
+prepare-condition-system:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Checking the condition for system project build
+     [echo] *****************************************************************
+
+prepare-system:
+
+package-codegen-artifacts:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the generated artifacts
+     [echo] *****************************************************************
+      [jar] Building jar: C:\cacoresdk40\output\camodSDKClient\build\jar\camodSDKClient-beans.jar
+      [jar] Building jar: C:\cacoresdk40\output\camodSDKClient\build\jar\camodSDKClient-orm.jar
+
+doc:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Generating javadocs for the beans
+     [echo] *****************************************************************
+  [javadoc] Generating Javadoc
+  [javadoc] Javadoc execution
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\AbstractCancerModel.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Agent.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\AgentTarget.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\AnimalAvailability.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\AnimalDistributor.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\AnimalModel.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Availability.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\BiologicalProcess.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\CarcinogenExposure.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\CellLine.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ChemicalClass.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ClinicalMarker.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Comments.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Conditionality.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ContactInfo.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\DevelopmentalStage.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Disease.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Endpoint.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\EngineeredGene.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\EnvironmentalFactor.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ExpressionFeature.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ExpressionLevelDesc.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\GeneDelivery.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\GeneFunction.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\GeneIdentifier.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\GeneticAlteration.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\GenomicSegment.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Genotype.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Histopathology.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Image.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\InducedMutation.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\InvivoResult.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Log.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\MicroArrayData.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ModelSection.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ModificationType.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\MutationIdentifier.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Nomenclature.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Organ.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Organization.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Party.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Person.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Phenotype.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ProteomicsData.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Publication.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\PublicationStatus.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\RegulatoryElement.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\RegulatoryElementType.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Role.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\ScreeningResult.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\SegmentType.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\SexDistribution.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Species.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\SpontaneousMutation.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\StainingMethod.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Strain.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\TargetedModification.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Therapy.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Transgene.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\TransientInterference.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\TransientInterferenceMethod.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Transplantation.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Treatment.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\TumorCode.java...
+  [javadoc] Loading source file C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\YeastModel.java...
+  [javadoc] Constructing Javadoc information...
+  [javadoc] Standard Doclet version 1.5.0_10
+  [javadoc] Building tree for all the packages and classes...
+  [javadoc] C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Transgene.java:57: warning - @EDIT@ is an unknown tag.
+  [javadoc] C:\cacoresdk40\output\camodSDKClient\src\gov\nih\nci\camod\domain\Transgene.java:57: warning - @EDIT@ is an unknown tag.
+  [javadoc] Building index for all the packages and classes...
+  [javadoc] Building index for all classes...
+  [javadoc] Generating C:\cacoresdk40\output\camodSDKClient\build\docs\stylesheet.css...
+  [javadoc] 2 warnings
+
+package-remote-client:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the remote client
+     [echo] *****************************************************************
+     [copy] Copying 3 files to C:\cacoresdk40\output\camodSDKClient\package\remote-client\conf
+     [copy] Copying 14 files to C:\cacoresdk40\output\camodSDKClient\package\remote-client\lib
+     [copy] Copying 7 files to C:\cacoresdk40\output\camodSDKClient\package\remote-client
+
+package-local-client:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the local client
+     [echo] *****************************************************************
+     [copy] Copying 23 files to C:\cacoresdk40\output\camodSDKClient\package\local-client\lib
+     [copy] Copying 5 files to C:\cacoresdk40\output\camodSDKClient\package\local-client
+     [copy] Copying 3 files to C:\cacoresdk40\output\camodSDKClient\package\local-client\conf
+
+package-webapp:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the webapp
+     [echo] *****************************************************************
+      [war] Building war: C:\cacoresdk40\output\camodSDKClient\package\webapp\camodSDKClient.war
+
+package-ws-client:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the Web Service client
+     [echo] *****************************************************************
+     [copy] Copying 7 files to C:\cacoresdk40\output\camodSDKClient\package\ws-client\lib
+     [copy] Copying 4 files to C:\cacoresdk40\output\camodSDKClient\package\ws-client
+
+package-system:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Packaging the system artifacts
+     [echo] *****************************************************************
+
+build-system:
+     [echo] *****************************************************************
+     [echo] ***  caCORESDK: Completed the system build
+     [echo] *****************************************************************
+
+BUILD SUCCESSFUL
+Total time: 1 minute 31 seconds
+C:\cacoresdk40>
