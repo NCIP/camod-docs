@@ -1,0 +1,43 @@
+Microsoft Windows 2000 [Version 5.00.2195]
+(C) Copyright 1985-2000 Microsoft Corp.
+
+C:\>cd C:\caGrid_1.2\caGrid\antfiles\jboss
+
+C:\caGrid_1.2\caGrid\antfiles\jboss>ant -f jboss.xml deployJBoss -Djboss.dir="C:\devtools\jboss-4.0.4"
+Buildfile: jboss.xml
+
+deployJBoss:
+
+_baseDeploy:
+     [copy] Copying 111 files to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war
+     [copy] Copying 39 files to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF
+    [mkdir] Created dir: C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\classes
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\classes
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\classes
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF
+
+_setDefaults:
+     [echo] Setting default protocol/port to: http/8080
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF
+     [xslt] Processing C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml.bak to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml.tmp
+     [xslt] Loading stylesheet C:\caGrid_1.2\caGrid\antfiles\jboss\set-param.xsl
+     [xslt] Processing C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml.tmp to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml
+     [xslt] Loading stylesheet C:\caGrid_1.2\caGrid\antfiles\jboss\set-param.xsl
+
+_baseLibDeploy:
+     [copy] Copying 56 files to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\lib
+     [copy] Copying 2 files to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\lib
+     [copy] Copying 8 files to C:\devtools\jboss-4.0.4\server\default\lib
+
+_baseEndorsedLibDeploy:
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF
+     [xslt] Processing C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml.bak to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF\web.xml
+     [xslt] Loading stylesheet C:\caGrid_1.2\caGrid\antfiles\jboss\set-param.xsl
+     [copy] Copying 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\WEB-INF
+
+fixResourceServicePortType:
+     [move] Moving 1 file to C:\devtools\jboss-4.0.4\server\default\deploy\wsrf.war\share\schema\resolutionService
+
+BUILD SUCCESSFUL
+Total time: 14 seconds
+C:\caGrid_1.2\caGrid\antfiles\jboss>
