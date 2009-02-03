@@ -110,6 +110,9 @@ cd /usr/local/jboss405/server/ncicb-app/deploy
 cp camod.war /usr/local/jboss405/server/ncicb-app/deploy
 cp EVSTree.war /usr/local/jboss405/server/ncicb-app/deploy
 cp camodSDKClient.war /usr/local/jboss405/server/ncicb-app/deploy
+cp oracle-ds.xml /usr/local/jboss405/server/ncicb-app/deploy
+
+cp tmp10063oracle-ds.xml /usr/local/jboss-4.0.5.GA/server/ncicb-app/tmp/deploy
 
 cd /usr/local/jboss405/server/ncicb-app/bin
  
