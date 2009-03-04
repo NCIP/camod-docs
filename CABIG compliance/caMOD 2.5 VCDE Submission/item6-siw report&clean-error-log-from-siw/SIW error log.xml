@@ -1,4 +1,19 @@
-<File name="Approved_Annotated_caMOD_v2_5_rv9.xmi">
+<File name="caMOD_v2_5_rv12.xmi">
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
   <Package name="Value Domains">
     <ValueDomain name="DiagnosticTermCode">
       <ValidationWarning>Value Domain DiagnosticTermCode has no concept</ValidationWarning>
