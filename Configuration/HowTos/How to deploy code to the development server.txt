@@ -105,7 +105,7 @@ Tip 3.  You can change the overall permissions for the group file by executing t
  You can change the file name to get access to other files.
  
  
- *****************************
+ *****************************JBoss 4.0.5 Instance*****************
 cd /usr/local/jboss405/server/ncicb-app/deploy
 cp camod.war /usr/local/jboss405/server/ncicb-app/deploy
 cp EVSTree.war /usr/local/jboss405/server/ncicb-app/deploy
@@ -121,7 +121,7 @@ cd /tmp
 Unzip file in current directory (/usr/local/jboss405/server/ncicb-app/deploy)
 unzip wsrf.war.zip
 
-
+ *****************************JBoss 4.0.4 Instance*****************
 cp wsrf-camod.war /usr/local/jboss404/server/ncicb-app/deploy
 cp camodSDKClient.war /usr/local/jboss404/server/ncicb-app/deploy
 cp oracle-ds.xml /usr/local/jboss404/server/ncicb-app/deploy
