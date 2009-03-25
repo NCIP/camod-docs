@@ -26,6 +26,9 @@ drop table STRAIN_STG;
 drop table TAXON_MAPPING_STG;
 drop table XENOGRAFT_INVIVO_RESULT_BKP;
 
+alter table TRANSPLANT_INVIVO_RESULT
+rename to TRANSPLANTATION_INVIVO_RESULT;
+
 commit;
 
 
