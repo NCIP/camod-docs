@@ -1,0 +1,1 @@
+select count (h.histopathology_id) from histopathology h where h.abs_cancer_model_id in (select abs_cancer_model_id from abs_cancer_model where external_source = 'Jax MTB' and state = 'Edited-approved')
