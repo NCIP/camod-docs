@@ -1,0 +1,120 @@
+From:	Viswanath, Lalitha (NIH/NCI) [C]
+Sent:	Friday, April 03, 2009 12:57 PM
+To:	Wagner, Ulrike (NIH/NCI) [C]
+Subject:	RE: caMOD data load
+
+Uli
+Here are the queries
+1. I create jackson lab tmp2 and work off that to generate the abs cancer model
+
+2. Here is the query for jacksonlabtmp2
+
+select DISTINCT a.TUMORKEY, a.TUMORNAME, TO_CHAR(a.TUMORSYNONYMS), a.STRAINKEY, 
+a.STRAINNAME, a.STRAINTYPES, a.STRAINGENERALNOTE, d.AGENTTYPE, d.AGENTNAME, a 
+.ORGANKEY, a.ORGANAFFECTED, c.METASTASISORGAN, c.METASTASISKEY, a.SEX, 
+a.REPRODUCTIVESTATUS, a.TUMORFREQUENCY, a.AGEOFONSET, a.AGEOFDETECTION, 
+e.JNUM_COMBINED,
+to_char(a.STRAINSYNONYMS) from ZSTG_TUMOR a, ZSTG_TUMOR_REFERENCE_COMBINED b, 
+ZSTG_METASTASES_COMBINED c, ZSTG_TUMOR_AGENTNAME_COMBINED d, 
+ZSTG_TUMOR_REFERENCE_COMBINED e where a.TUMORKEY = d.TUMORKEY(+) and a.TUMORKEY 
+= c.TUMORKEY(+) and a.TUMORKEY = b.TUMORKEY(+) and a.TUMORKEY = e.TUMORKEY(+);
+
+
+3. Here's the query for abscancermodel. 
+
+(select nvl(X.STRAIN_NAME,' ') as strain, 'Strain Type: '||nvl(to_char(
+replace(x.STRAIN_TYPES, '|', ' & '))||'<br>Notes: '||to_char(X.STRAIN_GENERAL_NO
+TE)||'<br>Strain Synonyms: '||to_char(replace(to_char(X.STRAIN_SYNONYMS), '|', '
+&nbsp;•&nbsp;')),' ') as experimentdesign,
+X.smallestTumorKey, nvl(X.strainkey,' '), nvl(to_char(X.strain_synonyms),' ') as
+ strainynonyms, nvl(X.strain_types,' '), nvl(to_char(X.strain_general_note),' ')
+, nvl(X.treatment_type,' '), nvl(X.treatment_agents,' ') 
+from
+(
+ select DISTINCT a.STRAIN_KEY as strainkey,
+ a.STRAIN_NAME, a.STRAIN_TYPES, a.STRAIN_GENERAL_NOTE,
+ a.TREATMENT_TYPE, a.TREATMENT_AGENTS,
+ to_char(a.STRAIN_SYNONYMS) as STRAIN_SYNONYMS,
+ min(a.MTB_ID) as smallestTumorKey
+ from
+ JACKSON_LAB_TMP2 a
+ group by a.STRAIN_NAME, a.STRAIN_KEY,
+ a.STRAIN_TYPES, a.STRAIN_GENERAL_NOTE,to_char(a.STRAIN_SYNONYMS), a.TREATMENT_TYPE, 
+a.TREATMENT_AGENTS) X); 
+
+
+Before the abscancermodels are extracted, the following is done
+1. Env Factor is loaded with data from zstg_agent (Note that due to trailing whitespace issues, a new 
+column agentnametrimmed has been added to zstg_agent with *agentnametrimmed* being loaded into 
+EnvFactor)
+2. Once the above query runs, the treatmentagent and treatmenttypes are looked up in EnvFactor to 
+create an entry in CarcinogenExposure for most agent types. (Agents of type "None Spontaneous" are 
+not included in CarcinogenExposure)
+3. Entries are created in Nomenclature unique on strain and abscancermodelid
+
+Let me know if you need anything else.
+Thanks
+Lalitha
+
+-----Original Message-----
+From: Wagner, Ulrike (NIH/NCI) [C]
+Sent: Fri 03-Apr-09 12:40 PM
+To: Viswanath, Lalitha (NIH/NCI) [C]
+Subject: RE: caMOD data load
+ 
+Hi Lalitha,
+
+I did a quick check on the number of models created by the MTB data load. There are now 5189 MTB 
+models instead of the 5010 that we had so far.  
+
+ 
+
+select count (abs_cancer_model_id) from abs_cancer_model where external_source = 'Jax MTB' and 
+state = 'Edited-approved'
+
+ 
+
+Can you please send me the SQL that you use to determine how many entries go in the 
+abs_cancer_model table (distinct combination of strainkey, strainname, straingeneralnote, straintypes, 
+agenttype, agentname taking into consideration that some tumorkeys are associated with agents and 
+others are not). I would like to find out if 5010 or 5189 is the correct number of abs_cancer_models.
+
+ 
+
+Thanks,
+
+ 
+
+Ulli
+
+Ulli Wagner
+Internet Developer (Contractor)
+SAIC-Frederick, Inc.
+NCI Center for Bioinformatics
+Phone and Fax: (402) 502-9380
+
+ 
+
+From: Viswanath, Lalitha (NIH/NCI) [C] 
+Sent: Thursday, April 02, 2009 3:17 PM
+To: Wagner, Ulrike (NIH/NCI) [C]
+Cc: Pandya, Sima (NIH/NCI) [C]; Klemm, Juli (NIH/NCI) [E]
+Subject: caMOD data load
+
+ 
+
+Uli
+
+I reran the load and the test scripts you provided, successfully. 
+
+ 
+
+Let me know if you find anything unusual.
+
+ 
+
+Thanks
+
+Lalitha
+
+
