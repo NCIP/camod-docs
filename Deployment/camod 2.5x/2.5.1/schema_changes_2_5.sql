@@ -25,9 +25,15 @@ drop table STRAIN_RATTUS_STG;
 drop table STRAIN_STG;
 drop table TAXON_MAPPING_STG;
 drop table XENOGRAFT_INVIVO_RESULT_BKP;
+drop table JACKSON_LAB_TMP2;
 
 alter table TRANSPLANT_INVIVO_RESULT
 rename to TRANSPLANTATION_INVIVO_RESULT;
+
+-- Add rabbit to database
+  INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
+   VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'rabbit', 'C14264');
+
 
 commit;
 
