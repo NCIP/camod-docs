@@ -31,8 +31,8 @@ alter table TRANSPLANT_INVIVO_RESULT
 rename to TRANSPLANTATION_INVIVO_RESULT;
 
 -- Add rabbit to database
-  INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
-   VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'rabbit', 'C14264');
+INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
+VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
 
 
 commit;
