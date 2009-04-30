@@ -23,6 +23,10 @@ ALTER TABLE publication drop column Start_PAGE;
 -- 4. Alter table column name (removed tmp)
 ALTER TABLE publication RENAME COLUMN Start_PAGE_tmp to Start_PAGE;
 
+-- Insert row into table
+INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
+VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
+
 
 
 
