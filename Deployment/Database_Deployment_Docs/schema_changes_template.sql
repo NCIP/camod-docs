@@ -75,6 +75,17 @@ OTHER_LOCATION_URL, ABS_CANCER_MODEL_ID ) VALUES (
 6, 'Identification of large-scale embryonic and oncogenic transcriptional modules in human colon cancer using mouse models comparisons'
 , 1015897590913471, NULL, 50050295);
 
+-- Add rabbit to database
+INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
+VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
+ 
+ -- NOT TESTED - Add Not Specified for each new species  (adds two rows instead of one - fix)
+insert into STRAIN
+ select hibernate_sequence.nextval, 'Not specified', SPECIES_ID
+   from species sp
+   where sp.COMMON_NAME =  'Rabbit'; 
+   
+
 commit;
 
 
