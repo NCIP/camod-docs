@@ -30,15 +30,7 @@ drop table JACKSON_LAB_TMP2;
 alter table TRANSPLANT_INVIVO_RESULT
 rename to TRANSPLANTATION_INVIVO_RESULT;
 
--- Add rabbit to database
-INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
-VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
- 
- -- NOT TESTED - Add Not Specified for each new species
-insert into STRAIN
- select hibernate_sequence.nextval, 'Not specified', SPECIES_ID
-   from species sp
-   where sp.COMMON_NAME =  'Rabbit'; 
+
 
    
    
