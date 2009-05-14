@@ -95,6 +95,7 @@ Tip 2.  NOTE: Occasionally there are issues w/ changes to JSP pages not being up
 ~work/jboss.web/localhost.  I.e.
 
 	cd ~/work/jboss.web/localhost
+	cd /usr/local/jboss-4.0.5.GA/server/ncicb-app/work/jboss.web/localhost/
 	rm –Rf camod
 
 	And then redeploy the application 
@@ -134,6 +135,10 @@ unzip globus_lib_files.zip
 
 // to remove (delete) a folder add "-r"
 rm - r
+
+// run server.log
+cd /usr/local/jboss405/server/ncicb-app/log/
+tail -f server.log
 
 
 
