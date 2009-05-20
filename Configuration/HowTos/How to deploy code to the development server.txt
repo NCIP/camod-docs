@@ -112,6 +112,7 @@ cp camod.war /usr/local/jboss405/server/ncicb-app/deploy
 cp EVSTree.war /usr/local/jboss405/server/ncicb-app/deploy
 cp camodSDKClient.war /usr/local/jboss405/server/ncicb-app/deploy
 cp oracle-ds.xml /usr/local/jboss405/server/ncicb-app/deploy
+cp properties-service.xml /usr/local/jboss405/server/ncicb-app/deploy
 
 cp tmp10063oracle-ds.xml /usr/local/jboss-4.0.5.GA/server/ncicb-app/tmp/deploy
 
@@ -134,7 +135,7 @@ cp globus_lib_files.zip /usr/local/jboss404/server/ncicb-app/lib
 unzip globus_lib_files.zip
 
 // to remove (delete) a folder add "-r"
-rm - r
+rm -r
 
 // run server.log
 cd /usr/local/jboss405/server/ncicb-app/log/
