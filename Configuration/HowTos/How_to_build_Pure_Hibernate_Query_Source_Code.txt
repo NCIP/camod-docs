@@ -26,16 +26,16 @@
             
         //Search.query(theHQLQuery, theParams);
 
-		//log.info("Found matching items: " + theList.size());
+		//log.debug("Found matching items: " + theList.size());
 
-	log.info("Exiting QueryManagerImpl.getAdministrativeRoutes");
+	log.debug("Exiting QueryManagerImpl.getAdministrativeRoutes");
 	return theList;
 	}
 
 ********************************BEFORE**************************************
 	public List getEnvironmentalFactors(String inType) throws PersistenceException {
 
-		log.info("Entering QueryManagerImpl.getEnvironmentalFactors");
+		log.debug("Entering QueryManagerImpl.getEnvironmentalFactors");
 
 		// Format the query
 		HQLParameter[] theParams = new HQLParameter[1];
@@ -53,8 +53,8 @@
         
 		List theList = Search.query(theHQLQuery, theParams);
 
-		log.info("Found matching items: " + theList.size());
+		log.debug("Found matching items: " + theList.size());
 
-		log.info("Exiting QueryManagerImpl.getAdministrativeRoutes");
+		log.debug("Exiting QueryManagerImpl.getAdministrativeRoutes");
 		return theList;
 	}	
