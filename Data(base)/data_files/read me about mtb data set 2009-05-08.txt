@@ -1,0 +1,6 @@
+This is a modified version of the data set MTB.2009.05.08.zip. While loading the data we noticed that tumorids MTB:37339 and MTB:37346 contained a paragraph sign in the strain general notes field which resulted in the start of a new record in the tumor table.
+
+I removed the 2 paragraph signs and created a new zip file called MTB 2009.05.08 fixed.zip
+
+June 1, 2009
+Ulli Wagner
