@@ -3,7 +3,7 @@
 *****************************AFTER******************************************
 	public List getEnvironmentalFactors(String inType) throws PersistenceException {
 
-		log.info("Entering QueryManagerImpl.getEnvironmentalFactors");
+		log.debug("Entering QueryManagerImpl.getEnvironmentalFactors");
 
 		// Format the query
 		HQLParameter[] theParams = new HQLParameter[1];
