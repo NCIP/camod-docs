@@ -31,6 +31,39 @@ alter table TRANSPLANT_INVIVO_RESULT
 rename to TRANSPLANTATION_INVIVO_RESULT;
 
 
+-- Alter data type for column START_PAGE n table
+-- 1. Create new column with different name and data type
+ALTER TABLE PUBLICATION
+ADD START_PAGE_tmp VARCHAR2(4000);
+
+-- 2. Copy data to new column (with new data type)
+update publication p
+set p.START_PAGE_TMP = p.START_PAGE;
+
+-- 3. Drop old column with old data type
+ALTER TABLE publication drop column START_PAGE;
+
+-- 4. Alter table column name (removed tmp)
+ALTER TABLE publication RENAME COLUMN START_PAGE_tmp to START_PAGE;
+
+
+-- Alter data type for column END_PAGE n table
+-- 1. Create new column with different name and data type
+ALTER TABLE PUBLICATION
+ADD END_PAGE_tmp VARCHAR2(4000);
+
+-- 2. Copy data to new column (with new data type)
+update publication p
+set p.END_PAGE_TMP = p.END_PAGE;
+
+-- 3. Drop old column with old data type
+ALTER TABLE publication drop column END_PAGE;
+
+-- 4. Alter table column name (removed tmp)
+ALTER TABLE publication RENAME COLUMN END_PAGE_tmp to END_PAGE;
+
+
+
 -- Change : to _ for Zebrafish anatomy vocabulary tree
 Update 	Organ
 Set	concept_code = replace(CONCEPT_CODE, 'ZFA:0', 'ZFA_0');
