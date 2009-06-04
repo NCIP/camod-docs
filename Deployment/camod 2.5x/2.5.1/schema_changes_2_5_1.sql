@@ -31,8 +31,13 @@ alter table TRANSPLANT_INVIVO_RESULT
 rename to TRANSPLANTATION_INVIVO_RESULT;
 
 
+-- Change : to _ for Zebrafish anatomy vocabulary tree
+Update 	Organ
+Set	concept_code = replace(CONCEPT_CODE, 'ZFA:0', 'ZFA_0');
 
-   
+-- Change : to _ for Zebrafish stage vocabulary tree
+Update 	DEVELOPMENTAL_STAGE
+Set	concept_code = replace(CONCEPT_CODE, 'ZFS:0', 'ZFS_0');  
    
 
 
