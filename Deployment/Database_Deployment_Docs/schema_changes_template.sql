@@ -11,7 +11,7 @@ ALTER TABLE publication RENAME COLUMN Start_PAGE_tmp to Start_PAGE;
 -- Alter data type for column in table
 -- 1. Create new column with different name and data type
 ALTER TABLE PUBLICATION
-ADD END_PAGE_tmp VARCHAR2(255);
+ADD END_PAGE_tmp VARCHAR2(4000);
 
 -- 2. Copy data to new column (with new data type)
 update publication p
@@ -26,8 +26,6 @@ ALTER TABLE publication RENAME COLUMN Start_PAGE_tmp to Start_PAGE;
 -- Insert row into table
 INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
 VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
-
-
 
 
 -- Modify Endpoint_Code object name to EndPoint
@@ -79,11 +77,12 @@ OTHER_LOCATION_URL, ABS_CANCER_MODEL_ID ) VALUES (
 INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME,COMMON_NAME, CONCEPT_CODE)  
 VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
  
- -- NOT TESTED - Add Not Specified for each new species  (adds two rows instead of one - fix)
-insert into STRAIN
- select hibernate_sequence.nextval, 'Not specified', SPECIES_ID
-   from species sp
-   where sp.COMMON_NAME =  'Rabbit'; 
+ -- Add Not Specified for each new species  
+INSERT INTO STRAIN(STRAIN_ID, NAME, SPECIES_ID )
+Select hibernate_sequence.NEXTVAL, 'Not specified', 
+sp.SPECIES_ID 
+from species sp 
+where sp.SCIENTIFIC_NAME = 'Oryctolagus cuniculus';
    
 
 commit;
