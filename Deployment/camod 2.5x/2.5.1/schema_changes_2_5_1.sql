@@ -62,17 +62,23 @@ ALTER TABLE publication drop column END_PAGE;
 -- 4. Alter table column name (removed tmp)
 ALTER TABLE publication RENAME COLUMN END_PAGE_tmp to END_PAGE;
 
-
-
 -- Change : to _ for Zebrafish anatomy vocabulary tree
 Update 	Organ
 Set	concept_code = replace(CONCEPT_CODE, 'ZFA:0', 'ZFA_0');
 
 -- Change : to _ for Zebrafish stage vocabulary tree
-Update 	DEVELOPMENTAL_STAGE
+Update DEVELOPMENTAL_STAGE
 Set	concept_code = replace(CONCEPT_CODE, 'ZFS:0', 'ZFS_0');  
    
+-- Add Rabbit species (and Not Specified) entry into DB
+INSERT INTO SPECIES(SPECIES_ID, SCIENTIFIC_NAME, COMMON_NAME, CONCEPT_CODE)  
+VALUES (hibernate_sequence.NEXTVAL, 'Oryctolagus cuniculus', 'Rabbit', 'C14264');
 
+INSERT INTO STRAIN (STRAIN_ID, NAME, SPECIES_ID)
+Select hibernate_sequence.NEXTVAL, 'Not specified', 
+sp.SPECIES_ID 
+from species sp 
+where sp.SCIENTIFIC_NAME = 'Oryctolagus cuniculus';
 
 commit;
 

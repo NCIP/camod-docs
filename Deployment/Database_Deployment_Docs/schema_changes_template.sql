@@ -83,6 +83,13 @@ Select hibernate_sequence.NEXTVAL, 'Not specified',
 sp.SPECIES_ID 
 from species sp 
 where sp.SCIENTIFIC_NAME = 'Oryctolagus cuniculus';
+
+-- From internet
+  INSERT INTO suppliers
+(supplier_id, supplier_name)
+SELECT account_no, name
+FROM customers
+WHERE city = 'Newark'; 
    
 
 commit;
