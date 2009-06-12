@@ -80,6 +80,34 @@ sp.SPECIES_ID
 from species sp 
 where sp.SCIENTIFIC_NAME = 'Oryctolagus cuniculus';
 
+-- Fill in strain_id for old Transplantation models with Mouse as species (required field)
+update abs_cancer_model ac
+set ac.STRAIN_ID = '292'
+where ac.ABS_CANCER_MODEL_TYPE = 'X'
+and ac.DONOR_SPECIES_ID = '1'
+and ac.STRAIN_ID is null;
+
+-- Fill in strain_id for old Transplantation models with Human as species (required field)
+update abs_cancer_model ac
+set ac.STRAIN_ID = '293'
+where ac.ABS_CANCER_MODEL_TYPE = 'X'
+and ac.DONOR_SPECIES_ID = '2'
+and ac.STRAIN_ID is null;
+
+-- Update source_altern_entry for old Transplantation models with Mouse as species (required field) 
+update abs_cancer_model ac
+set ac.SOURCE_TYPE_ALTERN_ENTRY = 'Unknown'
+where ac.ABS_CANCER_MODEL_TYPE = 'X'
+and ac.DONOR_SPECIES_ID = '1'
+and ac.STRAIN_ID = '292';
+
+-- Update source_altern_entry for old Transplantation models with Human as species (required field) 
+update abs_cancer_model ac
+set ac.SOURCE_TYPE_ALTERN_ENTRY = 'Unknown'
+where ac.ABS_CANCER_MODEL_TYPE = 'X'
+and ac.DONOR_SPECIES_ID = '2'
+and ac.STRAIN_ID = '293';
+
 commit;
 
 
