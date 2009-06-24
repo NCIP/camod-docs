@@ -102,17 +102,16 @@
             caMOD will upgrade to use the caBIO 4.0 API (jars match EVS 4.2) to get additional data from caBIO.
 
 
-
-GForge entry #4763	Add link to additional info about clinical trials such as types of cancer the trial is conducted for
-GForge entry #17040	Make PMID field on advanced search screen user-friendly by adding a link to PubMed and trim functions
-GForge entry #18338	Add rabbit to species list
-GForge entry #19205	Sort therapies in the order they are entered
-GForge entry #20997	Change data type of start_page and end_page in publication pages
-GForge entry #21177	Upgrade validation for CE and IM in searchForm - flag added in last release
-GForge entry #21552	Change link to NIH privacy notice
-GForge entry #21553	Delete "Privacy Notice" (title only) from Use Guideline page
-GForge entry #21634	Change root node for rat disease vocabulary
-GForge entry #21727	Delete "Data not stored in caArray" from the microarray search page
+- Add link to additional info about clinical trials such as types of cancer the trial is conducted for (GForge entry #4763)
+- Make PMID field on advanced search screen user-friendly by adding a link to PubMed and trim functions (GForge entry #17040)
+- Add rabbit to species list (GForge entry #18338)
+- Sort therapies in the order they are entered (GForge entry #19205)
+- Change data type of start_page and end_page in publication pages (GForge entry #20997)
+- Upgrade validation for CE and IM in searchForm - flag added in last release (GForge entry #21177)
+- Change link to NIH privacy notice (GForge entry #21552)
+- Delete "Privacy Notice" (title only) from Use Guideline page (GForge entry #21553)
+- Change root node for rat disease vocabulary (GForge entry #21634)
+- Delete "Data not stored in caArray" from the microarray search page (GForge entry #21727)
 
 
 
@@ -123,22 +122,22 @@ The caMOD 2.5 Common Data Elements (CDEs) are available via caDSR
     4.0 Defects Fixed Since Last Release
 ================================================================
 
-GForge entry #5172	Do not delete EnvironmentalFactor objects - instead reuse and leave in DB
-GForge entry #5235	Amount of cells on the transplantation submisson screen needs to accept 10^6 instead of a number (validation)
-GForge entry #11623	Construct sequence field on genetic description screens are independent of image submission
-GForge entry #12483	Why does unpublished entry not show up on publication, cell lines, or therapeutic approaches search screen
-GForge entry #17320	Make sure all field sizes in database are validated correctly in validation.xml
-GForge entry #17833	Make sure all references to Transplantation are properly named
-GForge entry #18267	No other zebrafish diagnosis shown on search screen
-GForge entry #18754	MTB data not displayed - causing crash
-GForge entry #19459	Gene Ontology information coming from caBIO not displayed
-GForge entry #20033	Blank therapy search page when NSC number is entered
-GForge entry #20715	Customized search for Transplantation Donor Species not working
-GForge entry #21635	Zebrafish organs are not displayed when opening up existing models in submit - edit mode
-GForge entry #21636	Validation too stringent on image page for existing models
-GForge entry #21637	Transplant search and submission pages do not display human organs 
-GForge entry #21639	Manually submitted diagnoses disappear in submit / edit model mode
-GForge entry #21726	Transplantation page for old models does not open in Edit Mode
+- Do not delete EnvironmentalFactor objects - instead reuse and leave in DB (GForge entry #5172)
+- Amount of cells on the transplantation submisson screen needs to accept 10^6 instead of a number (validation) (GForge entry #5235)
+- Construct sequence field on genetic description screens are independent of image submission (GForge entry #11623)
+- Why does unpublished entry not show up on publication, cell lines, or therapeutic approaches search screen (GForge entry #12483)
+- Make sure all field sizes in database are validated correctly in validation.xml (GForge entry #17320)
+- Make sure all references to Transplantation are properly named (GForge entry #17833)
+- No other zebrafish diagnosis shown on search screen (GForge entry #18267)
+- MTB data not displayed - causing crash (GForge entry #18754)
+- Gene Ontology information coming from caBIO not displayed (GForge entry #19459)
+- Blank therapy search page when NSC number is entered (GForge entry #20033)
+- Customized search for Transplantation Donor Species not working (GForge entry #20715)
+- Zebrafish organs are not displayed when opening up existing models in submit - edit mode (GForge entry #21635)
+- Validation too stringent on image page for existing models (GForge entry #21636)
+- Transplant search and submission pages do not display human organs (GForge entry #21637)
+- Manually submitted diagnoses disappear in submit / edit model mode (GForge entry #21639)
+- Transplantation page for old models does not open in Edit Mode (GForge entry #21726)
 
 
 ================================================================
