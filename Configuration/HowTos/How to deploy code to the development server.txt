@@ -142,5 +142,51 @@ cd /usr/local/jboss405/server/ncicb-app/log/
 tail -f server.log
 
 
+-------------------------------------------
+// to kill a process
+ps -ux  // from anywhere
+kill -9 [id_number_for_jboss_instance]
+
+For example:
+-bash-3.00$ ps -ux
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+jboss45a  9640  0.9 30.7 1012272 315224 ?    Sl   11:53   1:47 /usr/jdk1.5.0_10/
+jboss45a 15768  0.0  0.1 53980 1472 pts/0    S    14:50   0:00 -bash
+jboss45a 15823  0.0  0.0  5448  792 pts/0    R+   14:51   0:00 ps -ux
+-bash-3.00$ kill -9 9640
+-bash-3.00$ ps -ux
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+jboss45a 15768  0.0  0.1 53984 1480 pts/0    S    14:50   0:00 -bash
+jboss45a 15852  0.0  0.0  5448  792 pts/0    R+   14:52   0:00 ps -ux
+-bash-3.00$ kill -9 15768
+-bash-3.00$ ps -ux
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+pandyas   6325  0.0  0.1 25556 1456 ?        S    10:05   0:00 sshd: pandyas@notty
+pandyas   6326  0.0  0.1 18472 1472 ?        Ss   10:05   0:00 /usr/libexec/openssh/sftp-server
+pandyas  15743  0.0  0.1 25556 1428 ?        S    14:50   0:00 sshd: pandyas@pts/0
+pandyas  15744  0.0  0.1 53984 1508 pts/0    Ss   14:50   0:00 -bash
+pandyas  15866  0.0  0.0  5448  792 pts/0    R+   14:53   0:00 ps -ux
+-bash-3.00$ cd /usr/local/jboss405/server/ncicb-app/bin
+-bash-3.00$ . start_jboss
+is (pid ) not running. Startup can proceed.
+starting jboss405 from ncicb-app
+Please wait for the startup process to complete. It takes about 2 minutes approx.
+Please verify the below log for details - /usr/local/jboss-4.0.5.GA/server/ncicb-app/log/server.log
+-bash-3.00$
+
+
+** NOTE **  look for the one with jdk
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+jboss45a 16122  0.0  0.1 53988 1488 pts/1    S    14:58   0:00 -bash
+jboss45a 16271 29.5 26.5 1034212 272464 pts/1 Sl  15:02   0:52 /usr/jdk1.5.0_10/bin/java -Djava
+jboss45a 16409  0.0  0.0  5448  792 pts/1    R+   15:05   0:00 ps -ux
+-bash-3.00$
+
+
+
 
 
