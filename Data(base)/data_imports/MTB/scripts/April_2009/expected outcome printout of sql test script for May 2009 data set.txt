@@ -1,0 +1,48 @@
+
+EDITED_APPROVED_MTB_MODELS
+--------------------------
+                      5124
+
+1 row selected.
+no rows selected
+no rows selected
+no rows selected
+
+MTB_HISTOLOGY_RECORDS
+---------------------
+                    0
+
+1 row selected.
+no rows selected
+no rows selected
+no rows selected
+
+MTB_PUBLICATION_RECORDS
+-----------------------
+                      1
+
+1 row selected.
+
+MTB_IMAGE_RECORDS
+-----------------
+                0
+
+1 row selected.
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+no rows selected
+
+   NEXTVAL
+----------
+ 150062035
+
+1 row selected.
