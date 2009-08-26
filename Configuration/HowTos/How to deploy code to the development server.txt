@@ -155,12 +155,14 @@ jboss45a  9640  0.9 30.7 1012272 315224 ?    Sl   11:53   1:47 /usr/jdk1.5.0_10/
 jboss45a 15768  0.0  0.1 53980 1472 pts/0    S    14:50   0:00 -bash
 jboss45a 15823  0.0  0.0  5448  792 pts/0    R+   14:51   0:00 ps -ux
 -bash-3.00$ kill -9 9640
+
 -bash-3.00$ ps -ux
 Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
 USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
 jboss45a 15768  0.0  0.1 53984 1480 pts/0    S    14:50   0:00 -bash
 jboss45a 15852  0.0  0.0  5448  792 pts/0    R+   14:52   0:00 ps -ux
 -bash-3.00$ kill -9 15768
+
 -bash-3.00$ ps -ux
 Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.3/FAQ
 USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
