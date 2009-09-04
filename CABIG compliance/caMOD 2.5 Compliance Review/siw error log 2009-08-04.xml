@@ -1,0 +1,51 @@
+<File name="caMOD_v2_5_rv13.xmi">
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Classes">
+    <ValidationWarning>GME Namespace is missing</ValidationWarning>
+  </Package>
+  <Package name="Value Domains">
+    <ValueDomain name="DiagnosticTermCode">
+      <ValidationWarning>Value Domain DiagnosticTermCode has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="DiagnosticTermName">
+      <ValidationWarning>Value Domain DiagnosticTermName has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="ZebrafishDevelopmentalStageName">
+      <ValidationWarning>Value Domain ZebrafishDevelopmentalStageName has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="AnatomicalTermName">
+      <ValidationWarning>Value Domain AnatomicalTermName has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="ZebrafishDevelopmentalStageCode">
+      <ValidationWarning>Value Domain ZebrafishDevelopmentalStageCode has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="AnatomicalTermCode">
+      <ValidationWarning>Value Domain AnatomicalTermCode has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="StainingMethodCode">
+      <ValidationWarning>Value Domain StainingMethodCode has no concept</ValidationWarning>
+    </ValueDomain>
+    <ValueDomain name="StainingMethodName">
+      <ValidationWarning>Value Domain StainingMethodName has no concept</ValidationWarning>
+    </ValueDomain>
+  </Package>
+  <Package name="Associations">
+    <Association name="principalInvestigator(1)">
+      <ValidationWarning>Class Cancer Model has more than one association with Class Person. Please consider adding semantics to these associations.</ValidationWarning>
+    </Association>
+    <Association name="submitter(1)">
+      <ValidationWarning>Class Cancer Model has more than one association with Class Person. Please consider adding semantics to these associations.</ValidationWarning>
+    </Association>
+  </Package>
+</File>
