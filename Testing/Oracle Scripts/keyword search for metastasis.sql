@@ -1,4 +1,9 @@
 
+
+
+
+
+
 --for the term 'metastasis' 
 (select am.abs_cancer_model_id from abs_cancer_model am Inner join availability av on am.AVAILABILITY_ID=av.availability_id 
 where am.STATE='Edited-approved' and av.release_date < sysdate
