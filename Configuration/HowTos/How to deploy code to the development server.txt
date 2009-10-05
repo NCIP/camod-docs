@@ -79,8 +79,9 @@ ls -l
 vi build.sh   
 move only with arrows
 using the "x" characters deletes the char under the cursor
-// save edits:
+// save edits (hit escape key first):
 ":wq"  needs colon
+":wq!"  needs colon - over rights read only files
 
 //Show overview on the "rm" command - use any of the commands 
 man rm 
