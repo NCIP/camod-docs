@@ -42,4 +42,4 @@ select ef.ENVIRONMENTAL_FACTOR_ID
 From environmental_factor ef, abs_cancer_model ac, carcinogen_exposure ce 
 where ef.ENVIRONMENTAL_FACTOR_ID = ce.ENVIRONMENTAL_FACTOR_ID
 and ce.ABS_CANCER_MODEL_ID = ac.ABS_CANCER_MODEL_ID
-and ac.EXTERNAL_SOURCE = 'Jax MTB');
+and ac.EXTERNAL_SOURCE = 'Jax MTB'); 
