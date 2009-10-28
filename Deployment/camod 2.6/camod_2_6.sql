@@ -43,3 +43,14 @@ From environmental_factor ef, abs_cancer_model ac, carcinogen_exposure ce
 where ef.ENVIRONMENTAL_FACTOR_ID = ce.ENVIRONMENTAL_FACTOR_ID
 and ce.ABS_CANCER_MODEL_ID = ac.ABS_CANCER_MODEL_ID
 and ac.EXTERNAL_SOURCE = 'Jax MTB'); 
+
+-- Delete duplicate (old) entries from micro_array_data table (re-entered from GUI)
+DELETE FROM micro_array_data
+WHERE experiment_id is not null;
+
+-- Delete disease entries without parent record in histopathology
+Delete from disease d 
+where d.NAME is null
+and d.NAME_ALTERN_ENTRY is null
+and d.DISEASE_ID NOT IN
+(select disease_id from histopathology h);
