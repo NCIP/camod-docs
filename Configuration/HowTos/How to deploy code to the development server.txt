@@ -140,6 +140,7 @@ rm -r
 
 // run server.log
 cd /usr/local/jboss405/server/ncicb-app/log/
+cd /usr/local/jboss405/server/ncicb-core/log/
 tail -f server.log
 
 
