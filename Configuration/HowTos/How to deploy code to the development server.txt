@@ -189,6 +189,16 @@ jboss45a 16409  0.0  0.0  5448  792 pts/1    R+   15:05   0:00 ps -ux
 -bash-3.00$
 
 
+*********** set java.io.tmpdir  *********
 
+	
+[Post New]posted Monday, February 02, 2009 8:17:51 AM private message
+Quote [Up]
+Thanks for fixing your display name Bisanthe, and welcome to the JavaRanch.
+
+If Ant is invoking a shell script we need some details such as the part of the build.xml file that does the script invoking.
+I normally use bash shell and the form:
+
+_JAVA_OPTIONS=-Djava.io.tmpdir=$HOME/temp
 
 
