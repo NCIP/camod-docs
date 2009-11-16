@@ -118,18 +118,16 @@ cp properties-service.xml /usr/local/jboss405/server/ncicb-app/deploy
 cp tmp10063oracle-ds.xml /usr/local/jboss-4.0.5.GA/server/ncicb-app/tmp/deploy
 
 cd /usr/local/jboss405/server/ncicb-app/bin
- 
+cd /usr/local/jboss405/server/ncicb-core/bin 
+
+cd /usr/local/jboss405/server/ncicb-app/log
+cd /usr/local/jboss405/server/ncicb-core/log
+
 cd /tmp
 
 Unzip file in current directory (/usr/local/jboss405/server/ncicb-app/deploy)
 unzip wsrf.war.zip
 
- *****************************JBoss 4.0.4 Instance*****************
-cp wsrf-camod.war /usr/local/jboss404/server/ncicb-app/deploy
-cp camodSDKClient.war /usr/local/jboss404/server/ncicb-app/deploy
-cp oracle-ds.xml /usr/local/jboss404/server/ncicb-app/deploy
-
-cd /usr/local/jboss404/server/ncicb-app/bin
 
 cp globus_lib_files.zip /usr/local/jboss404/server/ncicb-app/lib
 
