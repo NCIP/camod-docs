@@ -145,6 +145,7 @@ tail -f server.log
 -------------------------------------------
 // to kill a process
 ps -ux  // from anywhere
+ ps auwwx | grep ncicb-core   ///for specific instance
 kill -9 [id_number_for_jboss_instance]
 
 For example:
