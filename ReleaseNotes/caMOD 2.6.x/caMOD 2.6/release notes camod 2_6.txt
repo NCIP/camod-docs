@@ -77,16 +77,13 @@
     3.0 New Features and Updates 
 ================================================================ 
 BDA
-Add some text here
-
-
-JBoss update
-Add some text here
+The goal of the build and deployment automation (BDA) effort was to create a consistent and repeatable build and deployment process allowing each team to create production-ready software every day.  
+Development teams spend time communicating, verifying and fixing various deployment environments. The environment creation process is manual, non-repeatable and slow. Automation will make it fast and cheap, 
+therefore it will become part of their daily tasks. This will reduce time spent on non-development tasks and the DEV teams can better concentrate on creative development tasks.
 
 Carcinogenic Interventions part expanded
 New categories for Antibodies, Bacteria, Plasmid, Transposon, and Signaling Molecule were added to the carcinogenic interventions part. Users can now report exposure to bacteria and the utilization of the Sleeping Beauty system in caMOD. (GForge entry #23552)
 
- 
 The caMOD 2.5 Common Data Elements (CDEs) are available via caDSR  
    
    
@@ -105,7 +102,7 @@ The caMOD 2.5 Common Data Elements (CDEs) are available via caDSR
     5.0 Known Issues/Defects 
 ================================================================ 
      
-    1. Organ-specific preselection of diagnoses in the vocabulary trees is 
+    1. Organ-specific pre-selection of diagnoses in the vocabulary trees is 
        not available
     
     2. Genetic Description view screen does not include data for the following 
