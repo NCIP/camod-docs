@@ -2257,3 +2257,13 @@ truncate table arraydesignprovider;
 truncate table arraydesign;
 @enable_cons.sql
 
+-- compare data in two tables
+ (select * from image_test1 
+ minus
+ select * from image_test) -- Rows in A that are not in B
+union all
+( 
+ select * from image_test 
+ minus
+ select * from image_test1
+) -- rows in B that are not in A
