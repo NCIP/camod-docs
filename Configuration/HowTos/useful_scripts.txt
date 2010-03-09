@@ -2267,3 +2267,6 @@ union all
  minus
  select * from image_test1
 ) -- rows in B that are not in A
+
+-- create backup table with data
+create table image_test as select * from image;
