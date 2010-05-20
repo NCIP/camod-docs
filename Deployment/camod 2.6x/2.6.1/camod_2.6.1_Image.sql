@@ -42,7 +42,7 @@ where i.url LIKE '%.tif%';
 Update IMAGE i set i.THUMB_URL=replace (i.THUMB_URL,'viewer.html?','resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&')  
 where i.url LIKE '%.tif'; 
 
--- update url and thumb_url on QA to point to caIMAGE stage tier
+-- update url and thumb_url on QA and stage to point to caIMAGE stage tier
 Update IMAGE i set i.URL=replace (i.URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
 where i.url NOT NULL;
 
