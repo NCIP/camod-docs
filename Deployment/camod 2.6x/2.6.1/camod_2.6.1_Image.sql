@@ -61,6 +61,9 @@ where i.url LIKE '%.jpeg';
 Update IMAGE i set i.URL=replace (i.URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
 where i.url LIKE '%.tif';
 
+Update IMAGE i set i.URL=replace (i.URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
+where i.url LIKE '%.tif%';
+
 -- update thumb_url on QA and stage to point to caIMAGE stage tier
 Update IMAGE i set i.THUMB_URL=replace (i.THUMB_URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
 where i.THUMB_URL LIKE '%.JPG';
@@ -79,6 +82,9 @@ where i.THUMB_URL LIKE '%.jpeg';
 
 Update IMAGE i set i.THUMB_URL=replace (i.THUMB_URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
 where i.THUMB_URL LIKE '%.tif';
+
+Update IMAGE i set i.THUMB_URL=replace (i.THUMB_URL,'http://imageserver-dev.nci.nih.gov','http://imageserver-stage.nci.nih.gov')  
+where i.THUMB_URL LIKE '%.tif%';
 
 
 commit;
