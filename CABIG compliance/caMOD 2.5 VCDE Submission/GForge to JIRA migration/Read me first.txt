@@ -1,0 +1,5 @@
+The caMOD GForge tracker was migrated to JIRA during the week of August 16-21, 2010
+The following decisions regarding each tracker were made:
+
+- Silver compliance Submission caMOD 2.5 -  - do not migrate to JIRA, archive in caMOD project docs
+
