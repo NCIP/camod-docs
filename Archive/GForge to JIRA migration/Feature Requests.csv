@@ -1,0 +1,369 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date,"Testing_State","Resolution","Reproduced","Disposition","Assigned_Release","Found_in_Version","Type_of_Error","Detail_Page","Application_Part","Severity","Component","Product","Hardware","Time","Date","Other_Hardware_Software","Tag_found_on","Tag_fixed_on","URL","Steps_to_Reproduce"
+4750,"Libraries and Tissues (from EST data) field on search detail page not populated","2005-11-14 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:45","None","","","Open - Reviewed","","2.0","Feature Request","Gen Des - Targ Mod","Search","No Workaround","HTTP interface","caMOD","","None","None","PC, IE","None","None","","query for Apc
+open Apc1638N +/- model
+compare it side by side with the 2-tier app"
+4751,"Allow a user to &quot;request&quot; a model to be frozen (pdf option investigated)","2005-11-29 23:00","Open",1,"Nobody","Ulli Wagner","2008-02-19 09:21","None","None","Could Not","None","requires investigation","None","Feature Request","Other","Submission","No Workaround","Database","caMOD","None","None","None","","None","None","","1) How do know that a model is referenced?
+2) How does the submitter know if somebody else references his/her model?
+3) Should we provide a capability to &quot;freeze&quot; a cancer model? (process to unfeeze it?)"
+4752,"Make comments that are submitted in the retrieval page searchable","2005-11-29 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-21 14:28","None","None","None","None","None","None","Feature Request","Other","Search","No Workaround","Database","caMOD","None","None","None","","None","None","","Add check box to advanced search page to query for models that have comments."
+4753,"Rank the search results by a ","2005-11-29 23:00","Open",1,"Nobody","Ulli Wagner","2007-09-28 11:38","None","None","None","Open - Reviewed","requires investigation","None","Feature Request","Search - Results List","Search","No Workaround","Database","caMOD","None","None","None","","None","None","","Or any other objective index: e.g.,
+
+no. of publications, no of citations"
+4755,"Histopathology: Yields a fairly uninformative description","2005-12-08 23:00","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:49","None","None","None","Need More Input","requires investigation","2.0","Feature Request","Histopathology","Search","No Workaround","Data source","caMOD","None","None","None","","None","None","","1. Click Submit Models
+2. Click Histopathology"
+4756,"EVS Tree - restore the association between organ and diagnosis","2005-12-19 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-21 14:33","None","None","None","None","None","2.0","Feature Request","Multiple","General Issues","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","n/a
+For information about the mouse vocabularies used go to http://nciterms.nci.nih.gov
+Hit the connect button
+
+Path to mouse anatomy: 
+Experimental Organism Anatomical Concept --&gt; Murine Tissue Type 
+
+Path to mouse diseases: 
+Experimental Organism Diagnosis --&gt; Mouse Pathologic Diagnoses --&gt; Mouse Disorder by Site 
+
+Path to human anatomy:
+Anatomic Structure, System, or Substance --&gt; use organ and association with organ system (Anatomic_Structure_is_Physical_Part_of )
+
+Path to human diagnoses:
+Disease, Disorder or Finding --&gt; Diseases and Disorders --&gt; Disorder by Site (Disease_Has_Associated_Anatomic_Site )"
+4757,"Develop procedure to inform EVS team about newly entered diagnostic terms","2005-12-19 23:00","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:35","None","None","None","None","future release","2.0","Feature Request","Multiple","General Issues","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","For information about the mouse vocabularies used go to http://nciterms.nci.nih.gov
+Hit the connect button
+
+Path to mouse anatomy: 
+Experimental Organism Anatomical Concept --&amp;gt; Murine Tissue Type 
+
+Path to mouse diseases: 
+Experimental Organism Diagnosis --&amp;gt; Mouse Pathologic Diagnoses --&amp;gt; Mouse Disorder by Site 
+
+Path to human anatomy:
+Anatomic Structure, System, or Substance --&amp;gt; use organ and association with organ system (Anatomic_Structure_is_Physical_Part_of )
+
+Path to human diagnoses:
+Disease, Disorder or Finding --&amp;gt; Diseases and Disorders --&amp;gt; Disorder by Site (Disease_Has_Associated_Anatomic_Site )"
+4758,"EVS Tree - show species specific anatomy vocabularies","2005-12-19 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 10:19","Verified by QA","None","None","None","2.3 - iteration 1","2.0","Feature Request","Graft","Submission","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","For information about the mouse vocabularies used go to http://nciterms.nci.nih.gov
+Hit the connect button
+
+Path to mouse anatomy: 
+Experimental Organism Anatomical Concept --&amp;gt; Murine Tissue Type 
+
+Path to mouse diseases: 
+Experimental Organism Diagnosis --&amp;gt; Mouse Pathologic Diagnoses --&amp;gt; Mouse Disorder by Site 
+
+Path to human anatomy:
+Anatomic Structure, System, or Substance --&amp;gt; use organ and association with organ system (Anatomic_Structure_is_Physical_Part_of )
+
+Path to human diagnoses:
+Disease, Disorder or Finding --&amp;gt; Diseases and Disorders --&amp;gt; Disorder by Site (Disease_Has_Associated_Anatomic_Site )"
+4759,"EVS Tree code added to Image section - utilize the staining vocabulary","2005-12-19 23:00","Closed",3,"Nobody","Ulli Wagner","2007-09-25 10:21","Verified by QA","None","None","None","2.3 - iteration 1","2.0","Feature Request","Images","Submission","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","For information about the mouse vocabularies used go to http://nciterms.nci.nih.gov
+Hit the connect button
+
+Path to mouse anatomy: 
+Experimental Organism Anatomical Concept --&amp;gt; Murine Tissue Type 
+
+Path to mouse diseases: 
+Experimental Organism Diagnosis --&amp;gt; Mouse Pathologic Diagnoses --&amp;gt; Mouse Disorder by Site 
+
+Path to human anatomy:
+Anatomic Structure, System, or Substance --&amp;gt; use organ and association with organ system (Anatomic_Structure_is_Physical_Part_of )
+
+Path to human diagnoses:
+Disease, Disorder or Finding --&amp;gt; Diseases and Disorders --&amp;gt; Disorder by Site (Disease_Has_Associated_Anatomic_Site )"
+4760,"EVS Tree - what happens when a concept gets retired","2005-12-19 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-21 14:24","None","None","None","Open - Reviewed","None","2.0","Feature Request","Other","General Issues","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","n/a"
+4761,"search the Age of Tumor Onset","2005-08-24 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:45","None","","","Open - Reviewed","","","Feature Request","Search - Advanced","Search","No Workaround","Multiple components","caMOD","","None","None","","None","None","","n/a"
+4762,"Link between different models that are in caMOD","2003-03-13 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:45","None","None","None","Open - Revisit with CCMG","future release","None","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","None","None","na","None","None","","na"
+4763,"Add link to additional info about clinical trials such as types of cancer the trial is conducted for","2003-06-10 23:00","Closed",5,"Nobody","Ulli Wagner","2010-06-25 11:27","Assigned to QA","None","None","None","2.5.1","None","Feature Request","Multiple","Search","Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a/"
+4764,"search model by gene name or Alternate Symbols","2004-04-21 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:45","None","None","None","Need More Input","future release","None","Feature Request","Search - Advanced","Search","No Workaround","UI","caMOD","None","None","None","","None","None","","tt"
+4765,"Require submitters to annually update models","2004-05-18 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:45","None","","User","Open - Reviewed","","","Feature Request","Multiple","General Issues","No Workaround","Data source","caMOD","","None","None","","None","None","","tt"
+4767,"make comments fields on all pages searchable","2004-12-15 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","None","future release","None","Feature Request","Multiple","Search","No Workaround","Multiple components","caMOD","None","None","None","","None","None","","make comments fields on all pages searchable"
+4768,"Log updates to ","2005-12-21 23:00","Open",1,"Nobody","Ulli Wagner","2007-09-28 11:36","None","None","None","None","requires investigation","2.0","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","None","None","","None","None","","n/a"
+4769,"Provide additional data from MGI - Parsing MGI data","2005-12-21 23:00","Open",5,"Nobody","Ulli Wagner","2008-10-27 11:37","None","None","None","Need More Input","2.8","None","Feature Request","Multiple","General Issues","Workaround","Supporting software","caMOD","None","None","None","","None","None","","n/a"
+4770,"Display the DTP in vivo and yeast models as animal models","2005-12-22 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","None","future release","None","Feature Request","Multiple","Search","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4772,"Make caMod available on the grid using the newest technology","2005-12-27 23:00","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","None","None","None","None","2.5.1","None","Feature Request","Other","General Issues","Workaround","Data source","caMOD","None","None","None","","None","None","","Na"
+4773,"Work with CSM to provide update LDAP API","2005-12-27 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-25 13:53","None","Code Change","None","Open - Reviewed","None","None","Feature Request","Other","General Issues","Workaround","Data source","caMOD","None","None","None","","None","None","","NA"
+4774,"IDEA - expand caMOD to accomodate other model organisms","2005-12-27 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-17 11:06","None","None","None","Need More Input","None","None","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","None","None","","None","None","","n/a"
+4775,"Link image annotation provided by Zoomify with EVS concept name","2006-01-12 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-21 14:23","None","None","None","Open - Not Reviewed","requires investigation","None","Feature Request","Search - Results List","Search","No Workaround","Multiple components","caMOD","None","None","None","","None","None","","see above"
+4776,"Feature request - show if the number of records for saved queries had increased","2006-04-05 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","Open - Not Reviewed","requires investigation","2.0","Feature Request","Other","Search","No Workaround","Supporting software","caMOD","None","None","None","n/a","None","None","","n/a"
+4777,"IDEA - NEEDS TO BE DISCUSSED - using the GO vocabulary / browser to populate the gene function field","2006-04-20 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","","","Open - Not Reviewed","","2.0","Feature Request","Multiple","General Issues","Workaround","Multiple components","caMOD","","None","None","n/a","None","None","","n/a"
+4778,"Develop process to retrieve and update publication data from Jax","2006-06-07 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","","","Open - Not Reviewed","","2.1","Feature Request","Publication","Search","Workaround","Multiple components","caMOD","","None","None","","None","None","","n/a"
+4779,"EVS - switch to Jax adult mouse anatomy vocabulary","2006-07-16 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","Open - Not Reviewed","requires investigation","2.0","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","None","None","","None","None","","n/a"
+4780,"EVS - use mouse and rat strains from NCI Thesaurus","2006-07-16 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","","","Open - Not Reviewed","","2.0","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","","None","None","","None","None","","n/a"
+4781,"ZEBRAFISH - anatomy vocabulary for histopathology page","2006-10-25 23:00","Closed",4,"Nobody","Ulli Wagner","2007-09-25 09:38","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.1.1","Feature Request","Histopathology","General Issues","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a
+
+We talked about using the &amp;quot;age / stage of development&amp;quot; to populate the disease vocab list by age.  Age or Stage of development can be displayed on the histopathology page just above the disease tree by adding it to a constant (similar to how the donor and host species are already done for Xenograft)."
+4783,"sitekey verification","2006-11-26 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","Open - Not Reviewed","requires investigation","2.2","Feature Request","Other","Registration","Workaround","Multiple components","caMOD","None","None","None","PC","None","None","","n/a"
+4784,"Admin pages need additional filters","2006-12-07 23:00","Closed",1,"Ulli Wagner","Ulli Wagner","2008-02-04 11:12","Assigned to Tester","None","None","Open - Not Reviewed","2.3","2.2","Feature Request","Other","Admin","Workaround","HTTP interface","caMOD","None","None","None","n/a","None","None","","n/a"
+4785,"Move or link data and images from caIMAGE with caMOD records","2006-12-10 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","Open - Not Reviewed","requires investigation","2.2","Feature Request","Images","General Issues","Workaround","Data source","caMOD","None","None","None","n/a","None","None","","n/a"
+4786,"Building prototype of connection between NCIA, caELMIR and caMOD","2006-12-10 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-25 13:56","None","Code Change","None","Open - Not Reviewed","3.0","2.2","Feature Request","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4788,"IDEA - redo genetic description page to retrieve data from external source similar to what publication page does with PubMed","2006-12-11 23:00","Open",5,"Nobody","Ulli Wagner","2008-10-27 11:40","None","None","None","Open - Not Reviewed","2.8","2.2","Feature Request","Genetic Description","Submission","Workaround","Multiple components","caMOD","None","None","None","","None","None","","n/a"
+4789,"Continue integration of MTB data by linking to specific records in MTB, indicating if images are available and adding strain syonyms","2006-12-11 23:00","Closed",1,"Nobody","Ulli Wagner","2009-12-07 12:10","None","None","None","Open - Not Reviewed","requires investigation","2.2","Feature Request","Multiple","Search","No Workaround","Database","caMOD","None","None","None","","None","None","","n/a"
+4790,"ZEBRAFISH - add Developmental Stage down list to model characteristics submission and search page","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 10:20","Verified by QA","None","None","Open - Not Reviewed","None","2.2","Feature Request","Model Characteristics","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a
+
+Can be named &quot;age&quot; or &quot;stage&quot; or &quot;Developmental Stage&quot; or something similar
+
+Check on ranges - mentioned twice with different ranges
+embryo (0-7 days)
+larve (7 days - 14 weeks)
+adult (over 3 mos)"
+4791,"ZEBRAFISH - add drop down list for Target Site to morpholino submission and search page","2007-01-08 23:00","Closed",3,"Nobody","Ulli Wagner","2007-09-25 10:20","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Other","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4792,"ZEBRAFISH - add drop down list for delivery method to morpholino submission and search page","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 10:19","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Other","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4793,"ZEBRAFISH - histopathology page - make diagnosis field free text or used Hatem's list","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 09:16","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Other","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a
+
+1) We talked about making the tumor type a free text with a dropdown component ???  OR 2) Keep the Diagnosis required and make it free text with Not Specified and Other??"
+4794,"ZEBRAFISH - availability pages - add page for zfin, keep investigator page","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 09:14","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Model Availability","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4795,"Add small molecules to chemical class list on therapy submission page","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2008-02-21 10:45","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Therapy","Submission","No Workaround","HTTP interface","caMOD","None","None","None","n/a","None","None","","n/a"
+4796,"ZEBRAFISH - therapy page - add drop down list for developmental stage","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 10:09","Verified by QA","None","None","Open - Not Reviewed","2.3 - iteration 1","2.2","Feature Request","Therapy","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a
+
+1) Talked about replacing the Age of Treatment with a Stage dropdown
+2)  Add &amp;amp;quot;small molecules&amp;amp;quot; to the Chemical Class selection"
+4797,"Add conditioning regimen dropdown to xenograft page","2007-01-08 23:00","Closed",1,"Nobody","Ulli Wagner","2007-09-25 09:08","Verified by QA","None","None","None","2.3 - iteration 1","2.2","Feature Request","Graft","Submission","No Workaround","Multiple components","caMOD","None","None","None","n/a","None","None","","n/a"
+4798,"Admin - comments made by admin people need to be shown","2007-01-16 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","","","Open - Not Reviewed","","2.2","Feature Request","Multiple","Admin","No Workaround","HTTP interface","caMOD","","None","None","n/a","None","None","","n/a"
+4799,"Admin - Coordinator needs to see what models have been assigned to what editor or screener","2007-01-16 23:00","Closed",1,"Nobody","Ulli Wagner","2008-10-27 11:43","None","None","None","Open - Not Reviewed","None","2.2","Feature Request","Multiple","Admin","No Workaround","HTTP interface","caMOD","None","None","None","n/a","None","None","","n/a"
+4800,"Add microarray experiments to caMOD records","2007-02-08 23:00","Closed",1,"Sima Pandya","Ulli Wagner","2007-05-17 10:41","None","Database reload","None","Open - Not Reviewed","None","2.3","Feature Request","Microarray","Submission","No Workaround","Database","caMOD","None","None","None","","None","None","","n/a"
+4801,"find and add list of drugs used by the drug dictionary on the cancer.gov website","2007-02-28 23:00","Open",1,"Nobody","Ulli Wagner","2007-03-27 16:46","None","None","None","Open - Not Reviewed","None","2.2","Feature Request","Therapy","Submission","Workaround","Data source","caMOD","None","None","None","","None","None","","n/a"
+5261,"Implement caMOD GRID simple search","2006-12-11 23:00","Closed",1,"Nobody","Ulli Wagner","2008-10-27 14:51","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+5876,"include search for model availability in advanced search page","2007-04-11 11:10","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","Model Availability","Search","Workaround","Multiple components","caMOD","PC","None","None","","None","None","","n/a"
+5897,"pages that use anatomy vocabulary trees need to show vocabularies depending on selected species","2007-04-12 14:50","Closed",3,"Ulli Wagner","Ulli Wagner","2007-09-25 11:22","Assigned to Tester","None","None","None","2.3 - iteration 1","2.2","Feature Request","Multiple","Submission","No Workaround","None","caMOD","None","None","None","","None","None","",""
+6773,"Upgrade to a new version of struts","2007-05-17 10:54","Open",1,"Nobody","Sima Pandya","2008-10-27 11:33","None","None","None","None","future release","None","None","None","None","None","None","None","None","None","None","","None","None","",""
+6774,"ZEBRAFISH - publication search page - need to link to zfin.org","2007-05-17 10:55","Closed",3,"Nobody","Sima Pandya","2007-09-24 14:26","Verified by QA","None","None","None","2.3 - iteration 1","None","None","None","None","None","None","None","None","None","None","","None","None","",""
+6776,"ZEBRAFISH - genetic description pages - link to zfin.org for allele details or to Rat Genome Database","2007-05-17 10:56","Closed",3,"Ulli Wagner","Sima Pandya","2007-09-25 11:22","Assigned to Tester","None","None","None","2.3 - iteration 1","None","None","None","None","None","None","None","None","None","None","","None","None","",""
+6779,"Upgrade to Jboss 4.0.5 from 4.0.2 (tech stack requirement)","2007-05-17 11:01","Closed",3,"Nobody","Sima Pandya","2007-09-17 10:16","Verified by QA","None","None","None","2.3","None","Technical requirement","None","None","Workaround","Supporting software","None","None","None","None","","None","None","",""
+6845,"Add Mus spretus as species","2007-05-22 10:27","Closed",5,"Nobody","Ulli Wagner","2008-10-27 11:55","None","None","None","None","None","None","None","Multiple","General Issues","enhancement","Multiple components","caMOD","None","","","","","","","n/a"
+6846,"Expand table of contents search by adding searches for specific organ sites across species","2007-05-22 10:30","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","Feature Request","Search - TOC","Search","None","Multiple components","caMOD","None","","","","","","","n/a"
+6847,"Customize caMOD for dogs","2007-05-22 10:52","Open",1,"Ulli Wagner","Ulli Wagner","2009-08-25 10:23","None","None","None","None","requires investigation","None","Feature Request","Multiple","General Issues","None","None","caMOD","None","","","","","","","n/a"
+6848,"Letting a user add and view staining methods that are not part of the vocabulary; affects old and new entries","2007-05-22 10:59","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","2.8","None","Feature Request","Images","Submission","None","Multiple components","caMOD","None","","","","","","","n/a"
+7028,"Add link to pdf users guide to Quick Links menu","2007-06-04 10:22","Closed",5,"Kavitha Thulasiraman","Ulli Wagner","2008-11-19 16:07","Assigned to QA","Code Change","None","None","2.5","2.2","Feature Request","Other","General Issues","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+7029,"Add link to MTB warranty and copyright disclaimer to release notes ","2007-06-04 10:27","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","2.2","Feature Request","Other","General Issues","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+7079,"Upgrade to newer version of ANT for project (see current tech stack requirements)","2007-06-06 12:57","Closed",3,"Nobody","Sima Pandya","2007-09-24 14:20","Verified by QA","None","None","None","2.3","None","Technical requirement","None","None","Workaround","Server configuration","caMOD","None","","","","","","","Current tech stack is found in gforge"
+7115,"Automate nightly build using CruiseControl","2007-06-08 09:16","Closed",5,"Nobody","Sima Pandya","2010-06-25 11:34","None","None","None","None","2.6","None","None","None","None","None","Supporting software","None","None","","","","","","","na"
+7142,"Test cases that need to be added to the  QA test scripts","2007-06-11 14:28","Open",2,"Nobody","Ulli Wagner","2008-10-27 11:51","None","None","None","None","None","None","None","Multiple","General Issues","None","Multiple components","caMOD","None","","","","","","",""
+7434,"Upgrade to use CSM 3.2","2007-06-21 11:40","Closed",3,"Nobody","Sima Pandya","2008-02-15 11:00","Verified by QA","None","None","None","2.3","None","Technical requirement","None","General Issues","None","Supporting software","caMOD","None","","","","","","","na"
+7435,"Configure caMOD app to use a JNDI data source","2007-06-21 11:41","Closed",3,"Nobody","Sima Pandya","2008-02-15 10:59","Verified by QA","None","None","None","2.4","None","Technical requirement","None","None","None","Server configuration","None","None","","","","","","","na"
+7472,"Customize publication submission and search page to include RGD references for rat models","2007-06-21 15:14","Closed",3,"Nobody","Ulli Wagner","2008-02-01 11:52","None","None","None","None","None","2.3","None","Publication","Submission","None","Multiple components","caMOD","None","","","","","","",""
+7474,"Give fields in &quot;Customize Search&quot; feature meaningful names","2007-06-21 15:20","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-19 17:29","Fixed","None","None","None","2.5","2.3","Cosmetic","Search - Results List","Search","Cosmetic","Multiple components","caMOD","None","","","","camod_2_5_qa_build_1","","",""
+7561,"Drug Screening Search page - mark checkboxes by default as selected","2007-06-25 14:30","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","2.2","Cosmetic","Search - Drug Screen","Search","minor","HTTP interface","caMOD","None","","","","","","",""
+7770,"Add the model id to the search results list and to the model characteristics page","2007-07-09 14:47","Closed",3,"Nobody","Ulli Wagner","2007-09-24 14:17","Verified by QA","None","None","None","None","2.3","Feature Request","Search - Results List","Search","enhancement","Multiple components","caMOD","None","3:17pm","","","","camod_dev_2_3-qa_deploy_build8","",""
+7850,"Place a URL field on the image page","2007-07-16 09:46","Closed",5,"Kavitha Thulasiraman","Ulli Wagner","2008-11-19 17:34","Fixed","Code Change","None","None","2.5","2.3","Feature Request","Images","Submission","None","Multiple components","caMOD","None","","","","camod_2_5_qa_build_1","","",""
+7914,"update release notes, release notes text, and what's new page","2007-07-20 08:42","Closed",3,"Sima Pandya","Sima Pandya","2007-08-06 10:17","None","None","None","None","future release","None","Feature Request","None","General Issues","None","None","None","None","","","","","","",""
+8202,"Add search option for model with links to caELMIR","2007-08-03 14:25","Closed",3,"Nobody","Ulli Wagner","2007-10-15 13:14","None","None","None","None","None","2.3","None","Search - Advanced","Search","None","Multiple components","caMOD","None","","","","","","",""
+8814,"Add “No matching results found” message to the admin search feature","2007-09-07 10:18","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","2.3","None","Other","Admin","Workaround","HTTP interface","caMOD","None","","","","","","",""
+8816,"Connection to caELMIR - retrieve data for therapy search page","2007-09-07 10:27","Closed",3,"Nobody","Ulli Wagner","2008-02-15 08:59","Verified by QA","None","None","None","2.4","None","None","Therapy","General Issues","None","None","caMOD","None","","","","","","",""
+8819,"Remove &quot;Duplicate&quot; from Admin search feature result screen","2007-09-07 11:23","Closed",3,"Nobody","Ulli Wagner","2007-09-28 11:10","Verified by QA","None","None","None","None","None","None","Other","Admin","None","None","caMOD","None","3:15pm","","","","camod_dev_2_3-qa_deploy_build8","",""
+9127,"customize publication pages for rat to allow submission &amp; display of RGD references","2007-09-24 13:59","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-21 18:20","Assigned to QA","Code Change","None","None","2.4","2.3","None","Publication","Submission","No Workaround","Multiple components","caMOD","None","","","","","","",""
+9178,"Add feature to link model with protein data","2007-09-28 12:08","Open",3,"Nobody","Ulli Wagner","2008-10-27 11:53","None","None","None","None","None","2.3","None","Protein","General Issues","None","Multiple components","caMOD","None","","","","","","",""
+9202,"Display different left menu for viewInvivoDetails.jsp ","2007-10-01 12:36","Closed",3,"Nobody","Sima Pandya","2008-02-15 10:58","Verified by QA","None","None","None","2.4","2.3","Incorrect Functionality","Search - Drug Screen","Search","minor","None","caMOD","None","","","","","","",""
+9533,"modify advanced search dropdown for Carcinogenic Agent Type","2007-10-17 13:06","Closed",1,"Kavitha Thulasiraman","Sima Pandya","2008-11-21 19:43","Assigned to QA","None","None","None","2.5","2.3","Design requirement","Multiple","Search","Workaround","None","caMOD","None","","","","","","","go to adv search
+look at options for carcinogen exposure
+includes other field so anything entered will also show up"
+9756,"geneID has been replaced with entrezGeneID - existing values need to be moved to new place","2007-10-26 14:55","Closed",3,"Nobody","Ulli Wagner","2008-02-07 21:29","Assigned to QA","None","None","None","2.4","2.4","Design requirement","Multiple","General Issues","No Workaround","Multiple components","caMOD","None","","","","","","",""
+10654,"Data clean up - delete email addresses in contact_info table","2007-12-03 14:25","Closed",3,"Nobody","Ulli Wagner","2009-12-07 12:08","Fixed - Failed","None","None","None","2.6","2.4.1","Incorrect Functionality","None","Search","None","None","caMOD","None","","","","","","","n/a"
+10679,"Add summary table to newly designed publication search page","2007-12-04 10:39","Closed",3,"Nobody","Ulli Wagner","2008-02-07 21:47","Verified by QA","None","None","None","2.4","None","Cosmetic","Publication","Search","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+10683,"change  publication table on cell line and therapy search pages","2007-12-04 11:13","Closed",3,"Nobody","Ulli Wagner","2008-02-08 12:45","Verified by QA","None","None","None","2.4","None","None","Multiple","Search","None","HTTP interface","caMOD","None","","","","","","",""
+10684,"Annoyances with Admin Part Functionality","2007-12-04 11:30","Closed",3,"Nobody","Ulli Wagner","2008-02-21 14:22","None","None","None","None","None","2.3","Incorrect Functionality","Multiple","Admin","Workaround","Multiple components","caMOD","None","","","","","","",""
+10958,"Take existing test scripts and run them in Selenium","2007-12-14 09:47","Closed",3,"Nobody","Ulli Wagner","2009-12-07 12:08","None","None","None","None","2.6","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+11007,"Add search for PMID to advanced search page","2007-12-17 12:00","Closed",5,"Kavitha Thulasiraman","Ulli Wagner","2008-11-19 17:55","Fixed","Code Change","None","None","2.5","2.3","None","Search - Advanced","Search","None","Multiple components","caMOD","None","","","","","","",""
+11013,"Use improved PubMed fetch script on publication submission page","2007-12-17 14:54","Open",3,"Nobody","Ulli Wagner","2008-11-21 09:39","Investigate","Code Change","None","None","2.6","None","None","Publication","Submission","None","None","caMOD","None","","","","","","","go to publication submission page
+enter PMID 16086016 
+hit the fill in the fields button
+see what you get as title of the publication"
+11500,"Create a build.sh script for the new instance for BOTH camod.war and EVSTree.war (cbiovdev5058.nci.nih.gov)","2008-01-10 11:02","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:34","None","None","None","None","2.6","None","Feature Request","None","General Issues","Workaround","Server configuration","caMOD","None","","","","","","",""
+11501,"Add mouse subspecies to caMOD","2008-01-10 11:20","Open",5,"Nobody","Ulli Wagner","2008-10-27 11:54","None","None","None","None","2.8","None","None","Multiple","General Issues","None","None","caMOD","None","","","","","","",""
+11502,"How are we going to represent crossed between different mouse subspecies?","2008-01-10 11:27","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+11504,"Add &quot;Back to the Top of the page&quot; links to therapy search page","2008-01-10 11:48","Closed",3,"Nobody","Ulli Wagner","2008-02-15 08:59","Verified by QA","None","None","None","2.4","2.3","None","Therapy","Search","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+11525,"Retrieve MTB data via webservices","2008-01-10 15:09","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+11873,"Make MutationIdentifier object a look up table","2008-01-24 12:28","Open",1,"Ulli Wagner","Sima Pandya","2008-10-27 11:57","Investigate","None","None","None","requires investigation","2.4","Feature Request","Multiple","Submission","Workaround","None","caMOD","None","","","","","","",""
+11878,"Make new GeneIdentifier object a lookup table","2008-01-24 12:54","Closed",3,"Nobody","Sima Pandya","2008-02-11 10:57","Assigned to QA","None","None","None","2.4","2.4","Crash","Multiple","Submission","None","None","caMOD","None","","","","","","",""
+11880,"Upgrade applications to use caCORE32","2008-01-24 13:07","Closed",3,"Nobody","Sima Pandya","2008-02-15 08:59","Verified by QA","None","None","None","2.4","2.4","Technical requirement","None","General Issues","None","Supporting software","caMOD","None","","","","","","",""
+12089,"improve labeling and sorting of promoter, poly A and intro entries on search page","2008-02-01 10:50","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","2.8","None","None","Gen Des - Eng Transgene","Search","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+12453,"Check for MGI/MTB publication before displaying link on publication and the cell line or therapy pub screens","2008-02-14 12:21","Open",1,"Nobody","Sima Pandya","2008-10-27 11:33","None","None","None","None","None","2.4","Feature Request","Cell Lines - Publication","Search","minor","None","caMOD","None","","","","","","","NA"
+12480,"Retrieve additional data from caBIO for induced and spontaneous mutations","2008-02-15 10:33","Open",5,"Nobody","Ulli Wagner","2008-10-27 12:00","None","None","None","None","None","2.4","None","Genetic Description","Search","None","None","caMOD","None","","","","","","",""
+12481,"Create automated deployment for caMOD to each tier","2008-02-15 11:10","Closed",1,"Nobody","Sima Pandya","2009-12-07 12:09","None","None","None","None","None","None","Technical requirement","None","None","None","Server configuration","caMOD","None","","","","","","","na"
+12619,"Improve the keyword search feature","2008-02-21 14:31","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","Multiple","Search","None","None","caMOD","None","","","","","","",""
+12824,"Delete Sequence ID field from genetic description search page, targeted modification table","2008-02-29 11:42","Closed",5,"Kavitha Thulasiraman","Ulli Wagner","2008-11-19 18:04","Fixed","None","None","None","2.5","2.4","None","Genetic Description","Search","None","Multiple components","caMOD","None","","","","camod_2_5_qa_build_1","","",""
+12825,"induced mutation entries need to be flagged (requires OM change) and searches for induced mutation and carcinogenic interventions need to be fixed","2008-02-29 12:07","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-21 19:57","Assigned to QA","Code Change","None","None","2.5","2.4","None","Multiple","General Issues","None","None","caMOD","None","","","","","","",""
+14323,"Allow users to enter  OTHER dosage units","2008-05-19 11:53","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","2.4","Feature Request","Multiple","Submission","No Workaround","HTTP interface","caMOD","None","","","","","","",""
+14324,"Make dosage units less mouse centric","2008-05-19 11:56","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-12-02 11:36","Assigned to QA","None","None","None","2.5","None","Data Corruption","Multiple","Submission","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+14325,"Add mg/kg to dosage unit list for treatment ","2008-05-19 12:08","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-24 11:39","Assigned to QA","None","None","None","2.5","2.4","None","Multiple","General Issues","No Workaround","HTTP interface","caMOD","None","","","","","","",""
+14352,"Add search for models with cell lines to the TOC","2008-05-20 11:52","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","2.8","None","Feature Request","Search - TOC","Search","None","None","caMOD","None","","","","","","",""
+14354,"Add check box to advanced search page that lets users search for all models with assosciated cell line data","2008-05-20 11:53","Open",3,"Nobody","Ulli Wagner","2008-11-05 13:51","None","None","None","None","None","2.4","Feature Request","Search - Advanced","Search","None","None","caMOD","None","","","","","","",""
+14379,"Make sorting meaningful for humans and not for computers","2008-05-21 11:30","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","2.4","Cosmetic","Multiple","General Issues","Cosmetic","HTTP interface","caMOD","None","","","","","","","1. compare list of sorted drop downs on prod vs tier
+2.  list is in updated file attached to this item
+3.  see comments by developer"
+14560,"Separation between keyword search and simple/advanced search is not obvious to user","2008-05-30 13:39","Closed",1,"Nobody","Ulli Wagner","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","2.4","None","Multiple","Search","None","HTTP interface","caMOD","None","","","","","","","1. go to simple and adv search
+2. compare format and spacing of tables with production
+3. keyword search button renamed"
+15155,"Add curator account to super user list","2008-07-08 11:20","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-21 20:21","Assigned to QA","None","None","None","2.4.1","2.4","None","None","Admin","None","None","caMOD","None","","","","","","",""
+16250,"MTB data and isInducedMutationTrigger field in environmental factor table","2008-08-22 14:05","Closed",3,"Nobody","Ulli Wagner","2009-12-07 12:06","None","None","None","None","2.7","None","None","None","General Issues","None","Database","caMOD","None","","","","","","",""
+16297,"Move the e-mail code to its own utility - Consolidate","2008-08-27 11:26","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+16298,"Add the ability to remove an image from Eng. Trans, Gen. Seg or Targ. Mod.","2008-08-27 11:28","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:33","None","None","None","None","None","None","None","Genetic Description","None","None","None","None","None","","","","","","",""
+16299,"Admin part - display messages when no search results returned","2008-08-27 11:29","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:50","None","None","None","None","None","None","None","None","Admin","None","None","caMOD","None","","","","","","",""
+16301,"Change script so that when PI or submitter &quot;delete&quot; model it is moved to &quot;inactive&quot; ","2008-08-27 11:30","Open",1,"Nobody","Ulli Wagner","2008-10-27 11:50","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+16397,"Increase size of comments field in histopathology, Therapy, Animal Model, and Genetic Description table","2008-09-04 10:27","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2008-11-24 14:04","Assigned to QA","None","None","None","2.5","None","None","None","None","None","None","caMOD","None","","","","","","",""
+16404,"populate &quot;Application Support&quot; page","2008-09-04 14:05","Closed",4,"Kavitha Thulasiraman","Ulli Wagner","2008-11-21 21:07","Assigned to QA","None","None","None","2.5","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+16675,"Add genetic description data to MTB records","2008-09-24 09:59","Open",4,"Nobody","Ulli Wagner","2008-10-27 11:28","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+17039,"Add Ajax to the PMID search field on the advanced search page","2008-10-10 10:04","Open",3,"Nobody","Ulli Wagner","2008-10-10 10:04","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+17040,"Make PMID field on advanced search screen user-friendly by adding a link to PubMed and trim functions","2008-10-10 10:07","Closed",4,"Nobody","Ulli Wagner","2010-06-25 11:27","Assigned to QA","None","None","None","2.5.1","None","None","None","None","None","None","None","None","","","","","","",""
+17041,"Add search for model id to simple and advanced search page","2008-10-10 10:10","Open",2,"Nobody","Ulli Wagner","2010-03-29 13:07","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+17321,"Configure LOCAL caMOD to run two instances of JBoss 4.0.5","2008-10-23 11:49","Open",5,"Sima Pandya","Sima Pandya","2009-10-28 15:00","None","None","None","None","2.8","None","Technical requirement","None","None","None","Supporting software","caMOD","None","","","","","","","none - technical requirement"
+17325,"Upgrade caMOD to use caBIO 4.0 and EVS 4.2 to get data","2008-10-23 12:14","Closed",5,"Nobody","Sima Pandya","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","Technical requirement","None","None","Workaround","Supporting software","caMOD","None","","","","","","","none- tech stack requirement"
+17425,"Update the help files for caMOD2.5","2008-10-28 11:06","Closed",3,"Nobody","Sima Pandya","2009-01-12 12:29","Verified by QA","None","None","None","2.5","None","None","None","None","None","Supporting software","caMOD","None","","","","","","","Task to remind us to test the help files"
+17549,"Add email address field to Manage user account screen","2008-11-03 12:48","Closed",1,"Nobody","Ulli Wagner","2009-12-07 12:03","None","None","None","None","None","None","None","None","Admin","None","None","caMOD","None","","","","","","",""
+17673,"Add values to Unit, Administrative Route drop-down menus","2008-11-07 13:49","Closed",3,"Kavitha Thulasiraman","Maureen Colbert","2008-11-22 12:02","Assigned to QA","None","None","None","2.5","None","Feature Request","None","General Issues","enhancement","None","caMOD","None","","","","","","",""
+17674,"Create pages for time-response and dose-response experiments","2008-11-07 13:54","Open",3,"Nobody","Maureen Colbert","2008-11-10 10:54","None","None","None","None","future release","None","None","Multiple","General Issues","enhancement","None","caMOD","None","","","","","","",""
+17770,"convert Carcinogen Exposure validation in SearchForm to validate from DB","2008-11-14 12:44","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:38","Verified by QA","None","None","None","2.6","None","Technical requirement","None","Search","Workaround","None","caMOD","None","","","","","","","not seen by user"
+17830,"Increase size of comments field on all submission pages","2008-11-19 11:10","Closed",3,"Kavitha Thulasiraman","Sima Pandya","2008-11-24 14:13","Assigned to QA","None","None","None","2.5","2.5","Feature Request","None","Submission","Workaround","None","caMOD","None","","","","","","","enter text in each of the comments fields (greater than 255 characters)"
+17839,"Filter Advanced Search for CE to show only agent types with models which are Editied - approved","2008-11-19 13:08","Closed",3,"Nobody","Sima Pandya","2009-12-07 12:01","None","None","None","None","2.6","2.5","Feature Request","None","Search","None","None","caMOD","None","","","","","","","search for CE agent = Environment
+Notice no EF.name is listed
+Filter this agent type out of the initial list"
+17899,"View saved query page is not ordered (ascending/descending)","2008-11-21 10:15","Open",3,"Nobody","Sima Pandya","2008-11-21 10:15","None","None","None","None","None","2.5","Feature Request","None","None","Cosmetic","None","caMOD","None","","","","","","","1.Log in to caMOD.
+2.Do a search and save the query.
+3.Make sure you have queries older than one day today.
+4.View saved query page."
+17915,"Upgrade FTP file upload client jar (rt.jar) if a new version exists","2008-11-21 13:30","Closed",3,"Nobody","Sima Pandya","2009-12-07 12:01","None","None","None","None","None","None","Technical requirement","Gen Des - Eng Transgene","Submission","enhancement","None","caMOD","None","","","","","","","upgrade FTP client (rt.jar) if better version exists"
+17956,"Rewrite and data clean up for induced mutation data","2008-11-25 11:39","Open",3,"Nobody","Ulli Wagner","2008-11-25 11:39","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+17970,"Add state to drop down for therapeutic approaches on the adv search screen","2008-11-25 14:20","Closed",4,"Nobody","Sima Pandya","2009-12-07 12:02","None","None","None","None","2.6","2.5","Feature Request","Search - Advanced","Search","None","None","caMOD","None","","","","","","","go to adv search
+choose therapy
+select 1st option on drop down and submit
+no data matches"
+18056,"Validate URL field on microarray page ","2008-12-01 13:40","Closed",3,"Kavitha Thulasiraman","Sima Pandya","2008-12-02 08:43","Assigned to QA","None","None","None","2.5","2.5","Feature Request","Microarray","Submission","enhancement","None","caMOD","None","","","","","","","go to microarraydata submission
+submit page without adding required fields"
+18058,"Rename submitMicroarrayData.jsp to match all other formats","2008-12-01 13:45","Open",3,"Nobody","Sima Pandya","2008-12-01 13:45","None","None","None","None","2.8","2.5","Cosmetic","Microarray","Submission","None","None","caMOD","None","","","","","","","not visible to user"
+18338,"Add rabbit to species list","2008-12-11 11:05","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","None","Model Characteristics","Submission","None","None","caMOD","None","","","","","","",""
+18439,"Validation script for external links needed","2008-12-15 14:25","Open",3,"Nobody","Ulli Wagner","2008-12-15 14:25","None","None","None","None","2.8","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+18684,"Add email address to the Admin - User Management - Add User page","2009-01-08 09:52","Open",3,"Nobody","Ulli Wagner","2009-01-08 09:52","None","None","None","None","2.8","2.5","None","None","Admin","None","None","caMOD","None","","","","","","",""
+18685,"Assign various records to curator - data cleanup","2009-01-08 10:09","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","None","None","None","None","None","Database","caMOD","None","","","","","","","1. go to Db and search for all models assigned to these party-id
+
+select * 
+from abs_cancer_model abs 
+where  abs.submitter_id=50057228 or abs.submitter_id=50056983
+or abs.submitter_id=237 or abs.submitter_id=56;
+
+2. no models should be assigned to any user except curatorcamod (abs.submitter_id=150063906)"
+18829,"Add zebrafish strains to strain table","2009-01-16 10:31","Open",3,"Nobody","Ulli Wagner","2009-01-16 10:31","None","None","None","None","2.8","None","None","Model Characteristics","General Issues","None","Database","caMOD","None","","","","","","",""
+18889,"Accomodate multi-part treatments on therapy page","2009-01-22 13:19","Open",3,"Nobody","Maureen Colbert","2009-01-22 13:19","None","None","None","None","future release","None","Feature Request","Therapy","None","None","None","caMOD","None","","","","","","",""
+19107,"Clean up unused tables in database - backup and tmp tables","2009-02-03 12:27","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:27","Assigned to QA","None","None","None","2.5.1","2.5","Cosmetic","None","None","None","Database","caMOD","None","","","","","","","Drop all tmp and bkp tables from database - clean up each tier"
+19205,"Sort therapies in the order they are entered","2009-02-06 13:13","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:27","None","None","Always","None","2.5.1","2.5","Cosmetic","Therapy","Search","Cosmetic","None","caMOD","None","","","","","","",""
+19723,"Increase width of paragraph text boxes on various submission screens","2009-03-03 10:27","Closed",3,"Nobody","Maureen Colbert","2009-06-10 12:22","Verified by QA","None","None","None","2.5","2.5","Feature Request","Multiple","Submission","Workaround","None","caMOD","None","","","","","","",""
+19758,"Remove the filter from the PI drop-down list on admin (Edit Models) search criteria screen","2009-03-04 15:35","Closed",3,"Nobody","Maureen Colbert","2009-06-08 14:14","Assigned to QA","None","None","None","suggested for 2.5","2.5","Feature Request","Multiple","Search","None","None","caMOD","None","","","","","","",""
+19876,"Therapy search results page is getting too long","2009-03-11 11:47","Open",3,"Nobody","Ulli Wagner","2009-03-11 11:47","None","None","None","None","2.8","2.5","Feature Request","Therapy","Search","Cosmetic","HTTP interface","caMOD","None","","","","","","",""
+19877,"Add function to drug screen search that allows users to select the species in which a preclinical trial was conducted","2009-03-11 11:49","Open",3,"Nobody","Ulli Wagner","2009-03-11 11:49","None","None","None","None","None","None","Feature Request","Search - Drug Screen","Search","None","Multiple components","caMOD","None","","","","","","",""
+19878,"Investigate possibility to link / import NCI-60 cell line data","2009-03-11 11:51","Open",3,"Ulli Wagner","Ulli Wagner","2009-03-11 11:51","None","None","None","None","None","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+19879,"Display PMID number on search results detail page","2009-03-11 12:37","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","None","None","Publication","Search","None","None","caMOD","None","","","","","","","1. search for model by pmid (11323676)
+2. go to publication page and see pmid listed as link
+3. compare to prod for changes"
+20576,"Add warning to all pages with subpages that request the user to delete the subpages first before deleting the main entry","2009-04-08 14:11","Open",3,"Nobody","Ulli Wagner","2009-04-08 14:11","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+20997,"change data type of start_page and end_page in publication pages","2009-04-28 12:29","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Assigned to QA","None","None","None","2.5.1","2.5.1","None","Publication","General Issues","None","Multiple components","caMOD","None","","","","","","",""
+21177,"Upgrade validation for CE and IM in searchForm - flag added in last release","2009-05-06 10:27","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","2.5.1","Technical requirement","None","Search","None","None","caMOD","None","","","","","","","1. modify the validation for CE and IM now that the flag is set in the database.
+2.  Get both drop down lists from the DB instead of the NameValue.java class"
+21552,"change link to NIH privacy notice","2009-06-02 11:48","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","None","None","None","None","None","None","None","","","","","","","1) go to the Legal Rules of the Road page (http://cancermodels.nci.nih.gov/)
+2) Mouse over the link for &amp;amp;quot;Privacy Notice&amp;amp;quot; and see that it will link to:
+http:www.hhs.govPrivacy.html
+3) Do the same on the lower tiers and verify that it links to:
+http://www.nih.gov/about/privacy.htm"
+21553,"Delete &amp;amp;quot;Privacy Notice&amp;amp;quot; (title only) from Use Guideline page","2009-06-02 11:50","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","None","None","None","None","None","None","None","","","","","","","1) go to the Legal Rules of the Road page and select the link for &amp;amp;quot;USE GUIDELINES&amp;amp;quot;.
+from production (http://cancermodels.nci.nih.gov)
+2) verify that the title of the screen is &amp;amp;quot;Privacy Notice&amp;amp;quot;.
+3) go to the lower tier and select the same link.
+4) Verify that the title is removed.
+(Note: the Privacy Notice section should still exist)"
+21634,"Change root node for rat disease vocabulary","2009-06-09 10:32","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","None","None","None","None","None","None","None","","","","","","",""
+21694,"DB - Clean up strain entries with 'Not Specified'. ","2009-06-11 09:35","Open",3,"Nobody","Sima Pandya","2010-03-29 10:28","None","None","None","None","2.8","None","None","None","None","None","None","caMOD","None","","","","","","","clean up strain entries with 'Not Specified'.  There only needs to be one for each strain and then they are reused."
+21727,"Delete &amp;amp;quot;Data not stored in caArray&amp;amp;quot; from the microarray search page","2009-06-12 10:21","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:27","Verified by QA","None","None","None","2.5.1","None","None","None","None","None","None","None","None","","","","","","","Submit Model
+add information to URL field
+look at data on search page
+verify that it does not say &amp;amp;quot;Data not stored in caArray&amp;amp;quot;
+
+1) Search for PI = Strieter, Robert in simple search
+2) select the model with the image for microarray in the title (first one)
+3) go to microarray view page"
+21809,"Add Tumor Site back into the default if LexEvs returns properties quicker","2009-06-17 10:59","Open",4,"Nobody","Sima Pandya","2009-06-17 10:59","None","None","None","None","2.8","2.5.1","Performance","Search - Results List","None","None","Supporting software","caMOD","None","","","","","","","1. go to customized serach
+2. add Tumor Sites as a choice
+3. run a query with a species and organ or TOC and see how long it takes to return the organs from EVS API"
+22674,"adding the option to display database-stored information when no data are retrievable from vocabulary browser","2009-07-31 11:53","Closed",3,"Nobody","Ulli Wagner","2009-12-07 12:00","None","None","None","None","None","2.5.1","None","None","None","None","None","caMOD","None","","","","","","",""
+22677,"Handling of concept codes for manually submitted entries needs to be uinfied","2009-07-31 12:07","Open",3,"Nobody","Ulli Wagner","2009-07-31 12:07","None","None","None","None","None","2.5.1","Design requirement","Multiple","None","None","None","caMOD","None","","","","","","",""
+23452,"Wrap First Author field for MTB pages","2009-09-22 10:33","Closed",4,"Nobody","Maureen Colbert","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","None","Cosmetic","Publication","None","Cosmetic","None","caMOD","None","","","","","","","1. search for these models listed below and compare the publication search results page to production
+2. search for any model by pmid and make sure list of authors is wrapped (not one long text field)"
+23551,"Delete records from micro_array_data table","2009-09-25 14:27","Closed",3,"Nobody","Ulli Wagner","2010-03-30 15:17","Fixed","None","None","None","2.6","None","Feature Request","Microarray","None","None","None","caMOD","None","","","","","","","How to test: run this SQL select * from micro_array_data  where experiment_id is not null
+
+If no records returned then test is successful."
+23552,"Add carcinogenic intervention pages for agent_types specific to MTB data set","2009-09-25 14:36","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2010-03-30 15:15","Fixed","None","None","None","2.6","None","None","None","None","None","None","caMOD","None","","","","","","","read all the comments, attached is an xls file with testing instructions
+Call me if you have questions.
+Ulli"
+23750,"Links to sid, gif, jpeg, jpg, tif images needs to be modified for caIMAGE upgrade","2009-10-09 14:21","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","None","None","None","None","None","None","None","None","","","","","","","1. test upload of jpg, gif, png, and jped files in submission side
+2.  search for all models with images (adv search) and look at the image page for each model to see if the small image (thumbnail) displays
+3. you can also move the submitted model to edited-approved and make sure your new model images all show up"
+23751,"pulling information when EVS returns  a null value","2009-10-09 14:32","Closed",3,"Kavitha Thulasiraman","Ulli Wagner","2010-03-30 15:13","Assigned to QA","None","None","None","2.6","None","None","None","None","None","None","None","None","","","","","","","almost impossible to reproduce
+see comments for testing steps"
+23752,"connecting to caNanoLab","2009-10-09 14:54","Open",3,"Nobody","Ulli Wagner","2009-10-09 14:54","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+23904,"Delete disease records that do not link to a histopathology record","2009-10-21 15:30","Closed",2,"Kavitha Thulasiraman","Sima Pandya","2010-03-30 15:12","Assigned to QA","None","None","Open - Reviewed","2.6","2.5","Data Corruption","None","Search","None","None","caMOD","None","","","","","","","SQL script clean up only"
+24472,"bring search for induced mutations back ","2009-11-24 13:48","Open",3,"Nobody","Ulli Wagner","2009-11-24 13:48","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+24784,"Upgrade all products from ehcache-1.2.2 or 1.2.4 to the 1.7 version","2009-12-09 10:07","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:34","Fixed","None","None","None","2.6","2.5","Technical requirement","None","General Issues","None","None","caMOD","None","","","","","","","none - technical requirement"
+24816,"GeneIdentifier class was renamed to Gene to comply with Standard CDE","2009-12-09 14:26","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:26","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24817,"jaxJNumber attribute in Publication class was renamed to jaxPubId","2009-12-09 14:28","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:28","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24818,"Attribute expressionLevel in ExpressionLevelDescription  changed to &quot;name&quot; ","2009-12-09 14:31","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:31","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24819,"Added concept code to environmental factor class","2009-12-09 14:34","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:34","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+24820,"Changed data type for endPage and startPage from long to string","2009-12-09 14:46","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:46","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24821,"Move the comments attribute from sub class AnimalModel to superclass AbstractCancerModel","2009-12-09 14:49","Open",3,"Nobody","Ulli Wagner","2009-12-09 14:49","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+24843,"Add drug vocabulary to therapy page","2009-12-10 10:32","Open",3,"Nobody","Ulli Wagner","2009-12-10 10:32","None","None","None","None","2.8","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24844,"Add mouse strain vocabulary to model characteristics page ","2009-12-10 10:34","Open",3,"Nobody","Ulli Wagner","2009-12-10 10:34","None","None","None","None","2.8","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24845,"Add rat strain vocabulary to model characteristics page ","2009-12-10 10:34","Open",3,"Nobody","Ulli Wagner","2009-12-10 10:34","None","None","None","None","2.8","None","None","None","None","None","None","caMOD","None","","","","","","",""
+24934,"SuperUser should be allowed to duplicate a model from the administration section","2009-12-14 13:43","Open",1,"Nobody","Ulli Wagner","2010-03-29 10:08","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+25081,"Displaying information about related models based on PMID number","2009-12-18 14:24","Open",3,"Nobody","Ulli Wagner","2009-12-18 14:24","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+25082,"Displaying information about related models based on allele identifier","2009-12-18 14:37","Open",3,"Nobody","Ulli Wagner","2009-12-18 14:37","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+25083,"Displaying information about related models based on Entez Gene ID","2009-12-18 14:42","Open",3,"Nobody","Ulli Wagner","2009-12-18 14:42","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+25294,"BDA - automate changes to external properties for caIMAGE upgrade","2009-12-30 08:39","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:34","Verified by QA","None","None","None","2.6.1","None","None","None","None","None","None","caMOD","None","","","","","","","BDA
+1.  go to qa_upgrade.properties and see which 3 properties have been changed and what the value is.
+2. look in /local/content/camod/config/camod.properties file to verify the properties have been modified"
+25300,"Displaying information about related models based on common microarray experiment data","2009-12-30 10:09","Open",3,"Nobody","Ulli Wagner","2009-12-30 10:09","None","None","None","None","None","None","None","None","None","None","None","caMOD","None","","","","","","",""
+25302,"Displaying information about related models based on NSC number","2009-12-30 10:24","Open",3,"Nobody","Ulli Wagner","2009-12-30 10:24","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+25918,"Upgrade caMOD to use caBIO 4.x to get data","2010-01-19 18:14","Open",3,"Sima Pandya","Sima Pandya","2010-06-29 14:03","None","None","None","None","2.7","None","Technical requirement","None","General Issues","enhancement","Supporting software","caMOD","None","","","","","","",""
+25919,"Upgrade caMOD to use LexEVS 5.x to get data","2010-01-19 18:15","Open",3,"Sima Pandya","Sima Pandya","2010-06-29 14:03","None","None","None","None","2.7","None","Technical requirement","None","General Issues","enhancement","None","caMOD","None","","","","","","",""
+26349,"Add caMOD curatorcaMOD account to super user list","2010-02-04 11:29","Closed",3,"Nobody","Ulli Wagner","2010-03-29 13:06","Fixed","None","None","None","2.6","None","None","None","None","None","None","None","None","","","","","","",""
+26727,"Modify UserManagerImpl to use the optional user lockout feature provided by CSM’s default JAAS implementation of Authentication Manager.","2010-02-25 11:34","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:34","Fixed","None","None","None","2.6","2.6","None","None","None","None","None","caMOD","None","","","","","","","1.  lock yourself out (75 tries)
+2. wait 3 mintues
+3. login again"
+27524,"Java upgrade (in order to make the Java BeanUtil work)","2010-03-26 10:35","Open",3,"Nobody","Ulli Wagner","2010-03-26 10:35","None","None","None","None","2.8","None","None","None","None","None","None","caMOD","None","","","","","","",""
+27533,"Change zebrafish concept codes to accomodate new NCI Thesaurus release with improved zebrafish vocabularies","2010-03-26 15:18","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:35","Verified by QA","None","None","None","2.6.1","None","None","None","None","None","None","None","None","","","","","","","added to DB in BDA - run SQL in DB
+
+select * from organ o
+where o.concept_code LIKE 'ZF%';
+
+select * from developmental_stage ds
+where ds.concept_code LIKE 'ZF%';"
+27617,"Add rabbit strain vocabulary to model characteristics page ","2010-03-29 10:47","Open",3,"Nobody","Ulli Wagner","2010-03-29 10:47","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+27621,"Add zebrafish strain vocabulary to model characteristics page","2010-03-29 10:50","Open",3,"Nobody","Ulli Wagner","2010-03-29 10:51","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+27624,"Add pig strain vocabulary to model characteristics page ","2010-03-29 10:53","Open",3,"Nobody","Ulli Wagner","2010-03-29 10:53","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+27626,"Add guinea pig strain vocabulary to model characteristics page","2010-03-29 10:54","Open",3,"Nobody","Ulli Wagner","2010-03-29 10:54","None","None","None","None","2.8","None","None","None","None","None","None","None","None","","","","","","",""
+27836,"Retrieve developmental stage from DB when EVS does not return value","2010-04-05 11:55","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:30","Verified by QA","None","None","None","2.6.1","2.6","None","None","Search","None","None","caMOD","None","","","","","","","This can not be tested unless EVS goes down (or vocabulary is not retrieved)"
+28329,"Re-establish the connection to caELMIR on the tiers","2010-04-23 10:56","Open",3,"Sima Pandya","Sima Pandya","2010-04-23 10:56","None","None","None","None","2.8","None","None","None","General Issues","None","None","caMOD","None","","","","","","",""
+28488,"A separate blank browser window is opened before sending image to viewer window - try to remove","2010-05-10 11:02","Closed",3,"Nobody","Sima Pandya","2010-06-25 11:30","None","None","None","None","2.6.1","2.6.1","Cosmetic","Images","Search","None","None","caMOD","None","","","","","","","1. search for all models with images
+2. select one model
+3. click on image thumbnail
+4. verify that a browser window is opened in background before image is opened in viewer"
+28489,"Add the jump (link) back to the publication page, if possible","2010-05-10 11:07","Closed",2,"Nobody","Sima Pandya","2010-06-25 11:30","Assigned to QA","None","None","None","2.6.1","2.6.1","None","Publication","Search","None","None","caMOD","None","","","","","","","1. search for model with PMID (publication data)
+2. look at publication search results page
+3. The list of authors used to be hyper linked to jump to the start of the sub-table
+4.  This was removed to make the author field wrap and the two sets of code do not work together well"
+28635,"Add universal CLEAR button to Advanced Search page","2010-05-21 10:28","Open",3,"Nobody","Ulli Wagner","2010-05-21 10:28","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+28688,"Advanced Search appears to incorporate Keyword in Search Criteria and results","2010-05-25 14:45","Closed",3,"Nobody","Maureen Colbert","2010-06-25 11:29","Verified by QA","None","None","None","2.6.1","None","Incorrect Functionality","None","Search","None","None","caMOD","None","","","","","","","On current stage build (2.6.1)
+1. Go to Search-&gt;Advanced Search
+2. Type in 'doxorubicin' for a Keyword Search.  Hit Keyword Search button.  See the 10 records found.
+3. Go to Advanced Search again. Keep doxorubicin in Keyword field, but also search for a PI. Try Cory Abate-Shen, because I know we only have 2 models for her. Hit the Search button that belongs to Advanced Search, at the top of Advanced Search section.
+4. Results appear to show a compound search, for doxorubicin and Cory Abate-Shen, but the 10 records returned are all the doxorubicin records."
+28788,"Link to ATCC on transplantation search page was modified by atcc.org","2010-06-04 10:42","Closed",3,"Nobody","Ulli Wagner","2010-06-25 11:29","Verified by QA","None","None","None","2.6.1","None","None","None","None","None","None","None","None","","","","","","","1. search for model with transplantation data including atcc
+2. verify that the link to atcc redirects to new url"
+28791,"clean up unused code in caMOD","2010-06-04 13:30","Open",3,"Sima Pandya","Sima Pandya","2010-06-04 13:30","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""
+28822,"Add Submitted By to Admin-&gt;Edit Models search fields","2010-06-08 14:32","Open",3,"Nobody","Maureen Colbert","2010-06-08 14:32","None","None","None","None","None","None","None","Other","Admin","None","None","caMOD","None","","","","","","","1. Log in as curatorcamod
+2. Go to Admin-&gt; Edit Models
+3. Make sure Submitted By has been added as a search field.
+4. Use the Submitted By field to search."
+28841,"Change link to open in new window","2010-06-10 08:35","Open",3,"Nobody","Sima Pandya","2010-06-10 08:35","None","None","None","None","None","2.6.1","Feature Request","None","Search","Workaround","None","caMOD","None","","","","","","","1. search for all models with images from adv search
+2. select first entry on results list (model id = 2)
+3.  go to the Genetic Description section
+4.  select the &quot;PubMed Link&quot; in the comment at the bottom of the page.
+Comment:
+For more information on this mouse model, refer to the PubMed Link 
+5.  it would be nice to have a new window pop up instead of redirect the current caMOD search window"
+28967,"Clean up database (Entered Date)","2010-06-23 12:32","Open",3,"Sima Pandya","Sima Pandya","2010-06-23 12:32","None","None","None","None","2.7","2.6.1","None","None","Submission","None","Database","caMOD","None","","","","","","","1. enter model
+2. check entered date in DB"
+29007,"Upgrade caMOD TOC to use new performance enhancements from LexEVS 5.1","2010-06-29 14:06","Open",3,"Sima Pandya","Sima Pandya","2010-06-29 14:06","None","None","None","None","2.7","None","Feature Request","None","Search","None","None","caMOD","None","","","","","","","1. test TOC to see if all canned queries run from new code"
+29197,"Add query for transplantation models to Advanced Search Page","2010-07-26 10:27","Open",3,"Nobody","Ulli Wagner","2010-07-26 10:27","None","None","None","None","None","None","None","None","None","None","None","None","None","","","","","","",""

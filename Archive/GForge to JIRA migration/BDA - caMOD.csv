@@ -1,0 +1,42 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date
+22118,Item #2: Add project team leads to the BDA Listserv,7/6/2009 11:41,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:49
+22119,Item #4: Copy development checklist and recreate for project and submit to BDA team. ,7/6/2009 11:41,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:49
+22121,Item #5: Create a gap analysis based on BDA Checklist and submit to the BDA team. ,7/6/2009 11:44,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22122,Item #6: Attend BDA Overview Session (Session 1) ,7/6/2009 11:44,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:49
+22123,Item #7: Implement BDA on Java Petstore (to get familiar with scripts/features) ,7/6/2009 11:45,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:49
+22124,Item #8: Complete and submit a draft copy of this project plan to the BDA team prior to session 2. ,7/6/2009 11:45,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:49
+22125,Item #9: Attend BDA Implementation Session (Session 2) ,7/6/2009 11:46,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:48
+22126,Item #10: View BDA screencasts (as necessary) ,7/6/2009 11:47,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22127,Item #11: Create or update your Architecture Review Checklist (ARC) (See example) ,7/6/2009 11:47,Closed,3,Sima Pandya,Sima Pandya,7/15/2009 15:50
+22128,"Item #12: Submit your wiki based BDA Project Plan to Systems, BDA, and the Government Sponsor. ",7/6/2009 11:48,Closed,3,Nobody,Sima Pandya,7/15/2009 15:50
+22129,Item #13: Create Systems request (see &amp;amp;quot;Requesting CI Server; section) for provisioning CI VM.  ,7/6/2009 11:49,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22130,"Item #14: Attend a Project Plan Review Meeting with, Development, Systems, BDA, and the Government Sponsor to come up with agreed upon due dates of tasks. ",7/6/2009 11:50,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:48
+22131,Item #15: Submit ARC request to Systems and Attend ARC meeting (See example) and get approval. ,7/6/2009 11:50,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22132,"Item #16: Create Systems request (see Requesting a Tier  section) for provisioning DEV environment, AHP Track, access to scm-private svn repository ",7/6/2009 11:51,Closed,3,Sima Pandya,Sima Pandya,10/28/2009 15:01
+22133,Item #17: Meet with BDA to review your installation instructions and do gap analysis against BDA templates and Macros ,7/6/2009 11:52,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22134,Item #18: Modify directory structure,7/6/2009 11:57,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22135,Item #19: Identify and externalize per-environment properties into .properties files. See BDA Template-Properties for an explanation ,7/6/2009 11:58,Closed,3,Sima Pandya,Sima Pandya,11/24/2009 21:46
+22136,Item #20: Implement BDA templates and macros for your project (See BDA Template Scripts - How to implement) ,7/6/2009 11:58,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22137,Item #21: Eliminate build script duality (duplication between master build scripts and subproject build scripts. See BDA Build Script Standards) ,7/6/2009 11:59,Closed,3,Sima Pandya,Sima Pandya,11/24/2009 21:46
+22138,Item #22: Verify build/deployment is JADS compatible (Install must be JAD compatible) ,7/6/2009 11:59,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22139,Item #23: Setup CI Server (How to Install and Configure Hudson,7/6/2009 12:00,Closed,3,Sima Pandya,Sima Pandya,10/13/2009 13:49
+22140,Item #24: First Build to Dev - Test the Command Line Deployment in DEV environment ,7/6/2009 12:00,Closed,3,Sima Pandya,Sima Pandya,10/28/2009 15:03
+22141,Item #25: Build Management implementation in DEV target environment (AntHill Pro Setup) ,7/6/2009 12:01,Closed,3,Sima Pandya,Sima Pandya,10/28/2009 15:03
+22142,"Item #26: Create Systems request for provisioning QA environment, AHP Track, access to scm-private svn repository ",7/6/2009 12:01,Closed,3,Sima Pandya,Sima Pandya,10/28/2009 15:04
+22143,Item #28: Testing/Static Analysis Customization ,7/6/2009 12:02,Open,3,Sima Pandya,Sima Pandya,7/6/2009 14:29
+22144,Item #30: Create wiki-based deployment instructions (based on template ) ,7/6/2009 12:03,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22145,Item #31: First Deploy to QA -Test the Command Line Deployment in QA environment ,7/6/2009 12:03,Closed,3,Sima Pandya,Sima Pandya,11/16/2009 9:28
+22146,Item #32: Build Management implementation in QA (AntHill Pro Setup) ,7/6/2009 12:04,Closed,3,Sima Pandya,Sima Pandya,11/16/2009 9:28
+22147,"Item #33: Create Systems request for provisioning STAGE environment, AHP Track, access to scm-private svn repository ",7/6/2009 12:04,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22148,Item #34: Configure nightly AntHill Pro track DEV ,7/6/2009 12:05,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22149,Item #35: Ask BDA team to add your project to BDA Certification Dashboard,7/6/2009 12:05,Closed,3,Sima Pandya,Sima Pandya,11/16/2009 9:29
+22155,item #36: Request Systems team to configure STAGE  deployment in AntHill Pro,7/6/2009 14:19,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22157,Item #40: Request deployment to PROD target environment,7/6/2009 14:19,Closed,3,Sima Pandya,Sima Pandya,3/30/2010 15:04
+22158,Item #3: Request a new NCI Wiki space,7/6/2009 14:21,Closed,3,Nobody,Sima Pandya,11/16/2009 9:28
+22159,Item #37: Request Systems to perform dry-run deployment in STAGE target environment by following Build Promotion Checklist,7/6/2009 14:27,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22160,Item #38: Schedule App Scan of Staging Tier ,7/6/2009 14:28,Closed,3,Sima Pandya,Sima Pandya,1/19/2010 18:19
+22161,Item #39: Request Systems team to configure PROD deployment in AntHill Pro by following Build Promotion Checklist,7/6/2009 14:28,Closed,3,Sima Pandya,Sima Pandya,3/30/2010 15:04
+26275,automate external properties (camod.properties and mail.properties),1/31/2010 18:01,Closed,3,Sima Pandya,Sima Pandya,3/30/2010 15:04
+26276,Automate login-config.xml for caMOD JBoss instance,1/31/2010 18:05,Closed,3,Nobody,Sima Pandya,3/30/2010 15:04
+26284,Verify that properties-service.xml is being modified in BDA for caMOD,2/1/2010 10:22,Closed,3,Nobody,Sima Pandya,3/30/2010 15:04
+26350,Upgrade to newer BDA Utils - 1.2.17 current (1.5.x available),2/4/2010 11:54,Open,3,Nobody,Sima Pandya,2/4/2010 11:54

@@ -1,0 +1,13 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date
+17397,"Update design docs and use case docs for 2.5","2008-10-27 11:12","Closed",4,"Nicholas Schroedl","Ulli Wagner","2009-06-09 14:51"
+17456,"Create detailed design doc for 2.7  (LexEVS upgrade)","2008-10-29 10:56","Open",4,"Sima Pandya","Sima Pandya","2010-04-05 13:11"
+17457,"Create detailed document on steps to configure a local database in Oracle","2008-10-29 10:57","Closed",4,"Nicholas Schroedl","Sima Pandya","2009-06-09 14:51"
+17458,"Create a detailed document for running JUnit tests in Cruise Control","2008-10-29 10:58","Closed",4,"Nicholas Schroedl","Sima Pandya","2009-06-09 14:51"
+17465,"Update UC and Design doc for caMOD Grid Service","2008-10-29 12:29","Open",4,"Sima Pandya","Sima Pandya","2009-06-11 13:56"
+17606,"Create short how to for connecting to current SVN repository for caMOD project","2008-11-05 10:00","Closed",4,"Nicholas Schroedl","Sima Pandya","2009-06-09 14:51"
+21658,"Update UC and Design doc for caMOD 2.5.1","2009-06-09 14:53","Closed",3,"Sima Pandya","Sima Pandya","2010-04-05 13:08"
+25311,"Create UC doc for caMOD 2.6.1 (caIMAGE upgrade)","2009-12-30 11:04","Closed",3,"Sima Pandya","Sima Pandya","2010-04-06 15:15"
+25312,"Create UC doc for caMOD 2.7","2009-12-30 11:04","Open",3,"Sima Pandya","Sima Pandya","2010-04-05 13:09"
+25313,"Create detailed design doc for 2.6.1 (caIMAGE upgrade)","2009-12-30 11:05","Open",3,"Sima Pandya","Sima Pandya","2010-04-05 13:11"
+25314,"Create detailed design doc for 2.8","2009-12-30 11:05","Open",3,"Sima Pandya","Sima Pandya","2010-04-05 13:11"
+25920,"Create use case doc for 2.8","2010-01-19 18:18","Open",3,"Sima Pandya","Sima Pandya","2010-04-05 13:11"

@@ -1,0 +1,19 @@
+The caMOD GForge tracker was migrated to JIRA during the week of August 16-21, 2010
+The following decisions regarding each tracker were made:
+- BDA - caMOD - do not migrate to JIRA, do not archive, delete
+- Bugs - migrate to JIRA as BUGS
+- Data and Review - migrate to JIRA as BUGS
+- Database Scripts -  - do not migrate to JIRA, do not archive, delete, create entry for GForge#19966 before closing down
+- Documentation -  - do not migrate to JIRA, do not archive, delete
+- Help file changes for 2.7 - migrate to Jira as feature requests
+- OM changes for 2.4 -  - do not migrate to JIRA, archive in caMOD project docs
+- OM changes for 2.5 -  - do not migrate to JIRA, archive in caMOD project docs
+- OM changes for 2.6 -  - do not migrate to JIRA, archive in caMOD project docs
+- Silver compliance Submission caMOD 2.5 -  - do not migrate to JIRA, archive in caMOD project docs
+- Test Cases - migrate to JIRA as TASKS
+- Tests before earch release  - migrate to JIRA as TASKS
+- to-do list for each release - migrate to JIRA as TASKS
+- Transitional work 2.5.1 to 2.6 - do not migrate to JIRA, do not archive, delete
+
+
+

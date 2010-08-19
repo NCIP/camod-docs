@@ -1,0 +1,6 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date
+8182,"Verify that links to microarray experiments work","2007-08-03 10:12","Open",3,"Nobody","Ulli Wagner","2007-08-03 10:12"
+8183,"Verify that image submission on image page and on genetic description pages works","2007-08-03 10:13","Open",3,"Nobody","Ulli Wagner","2007-08-03 10:13"
+8184,"Verify that data from caBIO can be retrieved on the therapy page and on the genetic description pages","2007-08-03 10:14","Open",3,"Nobody","Ulli Wagner","2007-08-03 10:14"
+11876,"Verify  that connection to caELMIR works","2008-01-24 12:37","Open",3,"Nobody","Ulli Wagner","2008-01-24 12:37"
+14033,"Add test scripts for all new features and bugs","2008-05-06 11:23","Open",3,"Nobody","Ulli Wagner","2008-05-06 11:23"

@@ -1,0 +1,3 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date,"Assigned Release"
+19966,"Insert concept codes and names in agent table based on NSC number","2009-03-17 15:02","Open",3,"Nobody","Ulli Wagner","2009-03-17 15:02","None"
+26348,"reassign caMOD curator models to curatorcamod account","2010-02-04 11:25","Open",3,"Ulli Wagner","Ulli Wagner","2010-04-05 13:12","2.6.1"

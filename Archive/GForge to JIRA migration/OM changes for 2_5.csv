@@ -1,0 +1,4 @@
+artifact_id,summary,open_date,status_name,priority,assigned_to_name,submitter_name,last_modified_date
+12670,"Add Flag for induced mutation entries in environmental factor object","2008-02-26 09:16","Closed",3,"Ulli Wagner","Ulli Wagner","2008-08-27 11:40"
+13897,"Add urlAlternEntry to image object","2008-04-29 14:01","Closed",3,"Ulli Wagner","Ulli Wagner","2008-08-27 11:41"
+13898,"Renamed OtherLocationURL in microarray object to url","2008-04-29 14:12","Closed",3,"Ulli Wagner","Ulli Wagner","2008-08-27 11:41"
