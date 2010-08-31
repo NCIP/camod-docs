@@ -105,7 +105,7 @@ The caMOD 2.1 Common Data Elements (CDEs) are available via caDSR
 - ATCC link not working on transplant search page (GForge entry #11878) 
 - The left menu list needs to be changed for the viewInvivoDetails.jsp (GForge entry #11837, #9206) 
 - Comments for associated expression are not shown for targeted modification and genomic segment (GForge entry #11833) 
-- Maximize buttion in pop-up windows disabled which prevents user to see full page (GForge entry #11831)
+- Maximize button in pop-up windows disabled which prevents user to see full page (GForge entry #11831)
 - Fixed LDAP search function (GForge entry #7992, #8963, #11499)
 - Data in construct description and construct title are not kept (GForge entry #11619)
 - Fixed search function for rat anatomy, rat diseases, zebrafish anatomy, zebrafish developmental stages, and staining method vocabularies displayed in EVS tree (GForge entry #6389, 7387, 7451, 7790, 9274, 9277, 9425, 10818, 11022)
