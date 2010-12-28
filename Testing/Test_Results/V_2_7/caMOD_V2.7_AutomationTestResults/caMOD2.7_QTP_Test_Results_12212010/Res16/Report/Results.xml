@@ -1,0 +1,880 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[H:\KambampatiM\Automation\caMOD\External Links Test1]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[External Links Test1]]></DName>
+<Res><![CDATA[Res16]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[Setup]]></AName>
+<Summary sTime="12/22/2010 - 11:37:10" eTime="12/22/2010 - 11:37:11" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" MovieMarker="MARK41" >
+<Disp><![CDATA[Setup Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T4">
+<AName><![CDATA[FooterLinks]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:11]]></Time>
+<TimeTick>1293035831</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:11]]></Time>
+<TimeTick>1293035831</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:11]]></Time>
+<TimeTick>1293035831</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="12" MovieMarker="MARK43" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[caMOD Home Page]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:11]]></Time>
+<TimeTick>1293035831</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="13" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home Page]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Image<br>image type=Image Link<br>html tag=IMG<br>alt=National Cancer Institute<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Image<br>html tag=IMG<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+alt=National Cancer Institute<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>image type=Image Link<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>name=Image<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>file name=footer_nci.gif<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>class=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>width=63<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>height=31<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:13]]></Time>
+<TimeTick>1293035833</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="16" MovieMarker="MARK44" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:13]]></Time>
+<TimeTick>1293035833</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="17" MovieMarker="MARK45" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="11" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:14]]></Time>
+<TimeTick>1293035834</TimeTick>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (3 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Image<br>image type=Image Link<br>html tag=IMG<br>alt=National Cancer Institute<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (122 objects found)&nbsp;</FONT></u><br>
+micclass=Image<br>html tag=IMG<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+alt=National Cancer Institute<SPAN class=passed> (Used</SPAN>, 3 matches)</SPAN><br>image type=Image Link<SPAN class=passed> (Used</SPAN>, 3 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 3 matches)</SPAN><br>name=Image<SPAN class=passed> (Used</SPAN>, 3 matches)</SPAN><br>file name=banner_nci_logo_1.gif<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>class=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>width=118<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>height=81<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:14]]></Time>
+<TimeTick>1293035834</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="21" MovieMarker="MARK46" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:14]]></Time>
+<TimeTick>1293035834</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="22" MovieMarker="MARK47" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj ><![CDATA[NCI Web Page]]></Obj>
+<Details ><![CDATA[NCI Web page http://www.cancer.gov opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:14]]></Time>
+<TimeTick>1293035834</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="23" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[NCI Web Page]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="20" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://cancermodels-qa.nci.nih.gov/camod/<br>Target Frame: _top<br>Post Data: <br>HTTP Headers: ]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:16]]></Time>
+<TimeTick>1293035836</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="25" nType="Navigate to http://cancermodels-qa.nci.nih.gov/camod/" MovieMarker="MARK48" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:19]]></Time>
+<TimeTick>1293035839</TimeTick>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Department of Health and.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:19]]></Time>
+<TimeTick>1293035839</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="29" MovieMarker="MARK49" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[Department of Health and.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="28" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[United States Department]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:20]]></Time>
+<TimeTick>1293035840</TimeTick>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[www.hhs.gov.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:20]]></Time>
+<TimeTick>1293035840</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="33" MovieMarker="MARK50" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[www.hhs.gov.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj ><![CDATA[DHHS Web Page]]></Obj>
+<Details ><![CDATA[DHHS Web page http://www.dhhs.gov opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:20]]></Time>
+<TimeTick>1293035840</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="34" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[DHHS Web Page]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="32" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[United States Department]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://cancermodels-qa.nci.nih.gov/camod/<br>Target Frame: _top<br>Post Data: <br>HTTP Headers: ]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:22]]></Time>
+<TimeTick>1293035842</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="36" nType="Navigate to http://cancermodels-qa.nci.nih.gov/camod/" MovieMarker="MARK51" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:24]]></Time>
+<TimeTick>1293035844</TimeTick>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[National Institutes of.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:24]]></Time>
+<TimeTick>1293035844</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="40" MovieMarker="MARK52" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Institutes of.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="39" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[National Institutes of Health]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:47]]></Time>
+<TimeTick>1293035867</TimeTick>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA["National Institutes of"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:47]]></Time>
+<TimeTick>1293035867</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="209" status="Warning" MovieMarker="MARK53" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA["National Institutes of"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA["National Institutes of"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Image<br>image type=Client Side ImageMap<br>html tag=IMG<br>alt=National Institutes of Health - The Nation's Medical Research Agency<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (44 objects found)&nbsp;</FONT></u><br>
+micclass=Image<br>html tag=IMG<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+alt=National Institutes of Health - The Nation's Medical Research Agency<SPAN class=Failed> (Skipped)</SPAN><br>image type=Client Side ImageMap<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>name=Image<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>file name=head_main_logo.gif<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>class=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>width=506<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>height=65<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:47]]></Time>
+<TimeTick>1293035867</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="210" MovieMarker="MARK54" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA["National Institutes of"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[National Institutes of.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:47]]></Time>
+<TimeTick>1293035867</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="211" MovieMarker="MARK55" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Institutes of.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj ><![CDATA[NIH Web Page]]></Obj>
+<Details ><![CDATA[NIH Web page http://www.nih.gov opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:47]]></Time>
+<TimeTick>1293035867</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="212" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[NIH Web Page]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="208" status="Warning" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[National Institutes of Health]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf2.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("National Institutes of Health")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://cancermodels-qa.nci.nih.gov/camod/<br>Target Frame: _top<br>Post Data: <br>HTTP Headers: ]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:49]]></Time>
+<TimeTick>1293035869</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="214" nType="Navigate to http://cancermodels-qa.nci.nih.gov/camod/" MovieMarker="MARK56" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:51]]></Time>
+<TimeTick>1293035871</TimeTick>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[FirstGov.gov.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:37:51]]></Time>
+<TimeTick>1293035871</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="218" MovieMarker="MARK57" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[FirstGov.gov.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="217" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[USA.gov: The U.S. Government's]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:09]]></Time>
+<TimeTick>1293035889</TimeTick>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[USA.gov: Government Made.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:09]]></Time>
+<TimeTick>1293035889</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="222" MovieMarker="MARK58" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[USA.gov: Government Made.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj ><![CDATA[US Gov Page]]></Obj>
+<Details ><![CDATA[US Gov page http://www.usa.gov opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:09]]></Time>
+<TimeTick>1293035889</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="223" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[US Gov Page]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="221" status="Passed" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[USA.gov: The U.S. Government's]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to http://cancermodels-qa.nci.nih.gov/camod/<br>Target Frame: _top<br>Post Data: <br>HTTP Headers: ]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:11]]></Time>
+<TimeTick>1293035891</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="225" nType="Navigate to http://cancermodels-qa.nci.nih.gov/camod/" MovieMarker="MARK59" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="10" status="Warning" Source="FooterLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/22/2010 - 11:37:11" eTime="12/22/2010 - 11:38:13" passed="5" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="8" status="Warning" MovieMarker="MARK42" >
+<Disp><![CDATA[FooterLinks Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T36">
+<AName><![CDATA[LeftSideLinks]]></AName>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:13]]></Time>
+<TimeTick>1293035893</TimeTick>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:13]]></Time>
+<TimeTick>1293035893</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:13]]></Time>
+<TimeTick>1293035893</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="231" MovieMarker="MARK61" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj ><![CDATA[caMOD Home Page]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:13]]></Time>
+<TimeTick>1293035893</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="232" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home Page]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="230" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:15]]></Time>
+<TimeTick>1293035895</TimeTick>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[NCI HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:15]]></Time>
+<TimeTick>1293035895</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="236" MovieMarker="MARK62" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCI HOME.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="235" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="229" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:19]]></Time>
+<TimeTick>1293035899</TimeTick>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>title=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>openurl=http://www.cancer.gov<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=National Cancer Institute - Comprehensive Cancer Information<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:19]]></Time>
+<TimeTick>1293035899</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="238" MovieMarker="MARK63" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:19]]></Time>
+<TimeTick>1293035899</TimeTick>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:19]]></Time>
+<TimeTick>1293035899</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="242" MovieMarker="MARK64" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj ><![CDATA[NCI Home]]></Obj>
+<Details ><![CDATA[NCI Home hyperlink opened with http://www.cancer.gov.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:19]]></Time>
+<TimeTick>1293035899</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="243" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCI Home]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="241" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:21]]></Time>
+<TimeTick>1293035901</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="244" MovieMarker="MARK65" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="237" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:24]]></Time>
+<TimeTick>1293035904</TimeTick>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:24]]></Time>
+<TimeTick>1293035904</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[NCICB HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:24]]></Time>
+<TimeTick>1293035904</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="249" MovieMarker="MARK66" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB HOME.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="248" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="247" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:30]]></Time>
+<TimeTick>1293035910</TimeTick>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>title=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>openurl=http://www.cancer.gov<SPAN class=Failed> (Skipped)</SPAN><br>opentitle=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>hasstatusbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hasmenubar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hastoolbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>openedbytestingtool=0<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:30]]></Time>
+<TimeTick>1293035910</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="251" MovieMarker="MARK67" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[NCICB: Home]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:30]]></Time>
+<TimeTick>1293035910</TimeTick>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[NCICB: Home.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:30]]></Time>
+<TimeTick>1293035910</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="255" MovieMarker="MARK68" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB: Home.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj ><![CDATA[NCICB Home]]></Obj>
+<Details ><![CDATA[NCICB Home hyperlink opened with http://ncicb.nci.nih.gov.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:30]]></Time>
+<TimeTick>1293035910</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="256" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB Home]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="254" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB: Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:32]]></Time>
+<TimeTick>1293035912</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="257" MovieMarker="MARK69" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="250" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:34]]></Time>
+<TimeTick>1293035914</TimeTick>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:34]]></Time>
+<TimeTick>1293035914</TimeTick>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[EMICE WEBSITE.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:34]]></Time>
+<TimeTick>1293035914</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="262" MovieMarker="MARK70" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[EMICE WEBSITE.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="261" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="260" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:36]]></Time>
+<TimeTick>1293035916</TimeTick>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>title=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>openurl=http://www.cancer.gov<SPAN class=Failed> (Skipped)</SPAN><br>opentitle=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>hasstatusbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hasmenubar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hastoolbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>openedbytestingtool=0<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:36]]></Time>
+<TimeTick>1293035916</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="264" MovieMarker="MARK71" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[Emice]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:36]]></Time>
+<TimeTick>1293035916</TimeTick>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[Emice.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:36]]></Time>
+<TimeTick>1293035916</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="268" MovieMarker="MARK72" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[Emice.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj ><![CDATA[EMICE Home]]></Obj>
+<Details ><![CDATA[EMICE Home page opened with http://emice.nci.nih.gov.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:36]]></Time>
+<TimeTick>1293035916</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="269" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[EMICE Home]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="267" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[Emice]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:38]]></Time>
+<TimeTick>1293035918</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="270" MovieMarker="MARK73" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="263" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:41]]></Time>
+<TimeTick>1293035921</TimeTick>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:41]]></Time>
+<TimeTick>1293035921</TimeTick>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[CANCER IMAGES DATABASE.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:41]]></Time>
+<TimeTick>1293035921</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="275" MovieMarker="MARK74" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[CANCER IMAGES DATABASE.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="274" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="273" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:44]]></Time>
+<TimeTick>1293035924</TimeTick>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA["National Cancer Institute"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>title=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>openurl=http://www.cancer.gov<SPAN class=Failed> (Skipped)</SPAN><br>opentitle=National Cancer Institute - Comprehensive Cancer Information<SPAN class=Failed> (Skipped)</SPAN><br>hasstatusbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hasmenubar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>hastoolbar=-1<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>openedbytestingtool=0<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:44]]></Time>
+<TimeTick>1293035924</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="277" MovieMarker="MARK75" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA["National Cancer Institute"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[caIMAGE Server]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:44]]></Time>
+<TimeTick>1293035924</TimeTick>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[caIMAGE Server.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:44]]></Time>
+<TimeTick>1293035924</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="281" MovieMarker="MARK76" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caIMAGE Server.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj ><![CDATA[caIMAGE Home]]></Obj>
+<Details ><![CDATA[caIMAGE Home page opened with http://cancerimages.nci.nih.gov/caIMAGE/index.jsp.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:44]]></Time>
+<TimeTick>1293035924</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="282" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caIMAGE Home]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="280" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caIMAGE Server]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[National Cancer Institute.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:46]]></Time>
+<TimeTick>1293035926</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="283" MovieMarker="MARK77" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="276" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[National Cancer Institute]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:49]]></Time>
+<TimeTick>1293035929</TimeTick>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:49]]></Time>
+<TimeTick>1293035929</TimeTick>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[NCICB SUPPORT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:49]]></Time>
+<TimeTick>1293035929</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="288" MovieMarker="MARK78" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB SUPPORT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="287" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:50]]></Time>
+<TimeTick>1293035930</TimeTick>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:50]]></Time>
+<TimeTick>1293035930</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="292" MovieMarker="MARK79" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj ><![CDATA[NCICB Support]]></Obj>
+<Details ><![CDATA[NCICB Support page opened with http://cancermodels-qa.nci.nih.gov/camod/infoApplicationSupport.do.]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:50]]></Time>
+<TimeTick>1293035930</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="293" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[NCICB Support]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:53]]></Time>
+<TimeTick>1293035933</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="296" MovieMarker="MARK80" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="291" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 11:38:53]]></Time>
+<TimeTick>1293035933</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="297" MovieMarker="MARK81" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="286" status="Passed" Source="LeftSideLinks" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/22/2010 - 11:38:13" eTime="12/22/2010 - 11:38:55" passed="6" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="227" status="Passed" MovieMarker="MARK60" >
+<Disp><![CDATA[LeftSideLinks Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="12/22/2010 - 11:37:06" eTime="12/22/2010 - 11:38:55" passed="11" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Warning" >
+<Disp><![CDATA[Test External Links Test1 Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

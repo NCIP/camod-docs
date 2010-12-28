@@ -1,0 +1,1157 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[H:\KambampatiM\Automation\caMOD\Admin Modify Model Characteristics]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[Admin Modify Model Characteristics]]></DName>
+<Res><![CDATA[Res1]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[ModelCharacteristics]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:02]]></Time>
+<TimeTick>1293047282</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:02]]></Time>
+<TimeTick>1293047282</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:02]]></Time>
+<TimeTick>1293047282</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="11" MovieMarker="MARK16" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[caMOD application page opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:02]]></Time>
+<TimeTick>1293047282</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="12" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="10" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:03]]></Time>
+<TimeTick>1293047283</TimeTick>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[ADMINISTRATION.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:03]]></Time>
+<TimeTick>1293047283</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="15" MovieMarker="MARK17" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMINISTRATION.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:03]]></Time>
+<TimeTick>1293047283</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="18" MovieMarker="MARK18" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[RowCount]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:03]]></Time>
+<TimeTick>1293047283</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="20" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="22" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="24" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="26" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="28" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="30" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="32" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="34" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="36" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="38" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[User logged into caMOD with SuperUser role.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="39" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="14" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:04]]></Time>
+<TimeTick>1293047284</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="43" MovieMarker="MARK19" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="42" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:05]]></Time>
+<TimeTick>1293047285</TimeTick>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[EDIT MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:05]]></Time>
+<TimeTick>1293047285</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="47" MovieMarker="MARK20" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[EDIT MODELS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="46" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:05]]></Time>
+<TimeTick>1293047285</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:05]]></Time>
+<TimeTick>1293047285</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="51" MovieMarker="MARK21" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[modelId.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["150067374"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:06]]></Time>
+<TimeTick>1293047286</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="54" MovieMarker="MARK22" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[modelId.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[Search by Model Id.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:06]]></Time>
+<TimeTick>1293047286</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="57" MovieMarker="MARK23" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Search by Model Id.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:06]]></Time>
+<TimeTick>1293047286</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="59" MovieMarker="MARK24" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:06]]></Time>
+<TimeTick>1293047286</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="60" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[[ A1A1A1A1 Test Model  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:07]]></Time>
+<TimeTick>1293047287</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="63" MovieMarker="MARK25" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[[ A1A1A1A1 Test Model  ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="50" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:07]]></Time>
+<TimeTick>1293047287</TimeTick>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[MODEL CHARACTERISTICS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:07]]></Time>
+<TimeTick>1293047287</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="67" MovieMarker="MARK26" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[MODEL CHARACTERISTICS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[[ A1A1A1A1 Test Model ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:08]]></Time>
+<TimeTick>1293047288</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="70" MovieMarker="MARK27" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[[ A1A1A1A1 Test Model ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="66" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:08]]></Time>
+<TimeTick>1293047288</TimeTick>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Model_10082010 Modified"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:08]]></Time>
+<TimeTick>1293047288</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="74" MovieMarker="MARK28" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[principalInvestigator.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Wagner, Ulli"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:08]]></Time>
+<TimeTick>1293047288</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="77" MovieMarker="MARK29" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[principalInvestigator.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[isToolStrain.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["no"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:08]]></Time>
+<TimeTick>1293047288</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="80" MovieMarker="MARK30" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[isToolStrain.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[scientificName.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Cattle (Bos taurus)"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="83" MovieMarker="MARK31" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[scientificName.Select]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="73" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_8]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Not specified"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="87" MovieMarker="MARK32" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="90" MovieMarker="MARK33" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="93" MovieMarker="MARK34" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[genotype.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Genotype"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:09]]></Time>
+<TimeTick>1293047289</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="96" MovieMarker="MARK35" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[genotype.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[nomenclature.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Nomenclature"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="99" MovieMarker="MARK36" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[nomenclature.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[experimentDesign.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test comments on Experimental Design"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="102" MovieMarker="MARK37" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[experimentDesign.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[description.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Comments on Phenotype - modified"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="105" MovieMarker="MARK38" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[description.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[type.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Male Only"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="108" MovieMarker="MARK39" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[type.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[breedingNotes.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test notes on Breeding"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="111" MovieMarker="MARK40" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[breedingNotes.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[url.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["www.test.com"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="114" MovieMarker="MARK41" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[url.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[releaseDate.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["immediately"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="117" MovieMarker="MARK42" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[releaseDate.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[comments.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test comments on Comment section."]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="120" MovieMarker="MARK43" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[comments.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:10]]></Time>
+<TimeTick>1293047290</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="123" MovieMarker="MARK44" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="86" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_8]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_9]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:11]]></Time>
+<TimeTick>1293047291</TimeTick>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[You have successfully.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:11]]></Time>
+<TimeTick>1293047291</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="126" MovieMarker="MARK45" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[You have successfully.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[Model '150067374' model characteristics modified and system displayed a message 'You have successfully edited the Model Characteristics. '.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:11]]></Time>
+<TimeTick>1293047291</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="128" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="125" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_9]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="9" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/22/2010 - 14:48:02" eTime="12/22/2010 - 14:48:11" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Passed" MovieMarker="MARK15" >
+<Disp><![CDATA[ModelCharacteristics Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Passed" >
+<Disp><![CDATA[Admin Modify Model Characteristics Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T59" iterID="2" >
+<Action rID="T60">
+<AName><![CDATA[ModelCharacteristics]]></AName>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="136" MovieMarker="MARK47" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[caMOD application page opened.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="137" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="135" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[ADMINISTRATION.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="140" MovieMarker="MARK48" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMINISTRATION.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:12]]></Time>
+<TimeTick>1293047292</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="143" MovieMarker="MARK49" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[RowCount]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="145" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="147" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="149" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="151" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="153" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="155" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="157" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="159" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="161" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA["ADMINISTRATION":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="163" >
+<Disp><![CDATA["ADMINISTRATION":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[User logged into caMOD with SuperUser role.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="164" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="139" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:13]]></Time>
+<TimeTick>1293047293</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="168" MovieMarker="MARK50" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="167" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:14]]></Time>
+<TimeTick>1293047294</TimeTick>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[EDIT MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:14]]></Time>
+<TimeTick>1293047294</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="172" MovieMarker="MARK51" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[EDIT MODELS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="171" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:14]]></Time>
+<TimeTick>1293047294</TimeTick>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:14]]></Time>
+<TimeTick>1293047294</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="176" MovieMarker="MARK52" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[modelId.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["150067374"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:15]]></Time>
+<TimeTick>1293047295</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="179" MovieMarker="MARK53" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[modelId.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[Search by Model Id.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:15]]></Time>
+<TimeTick>1293047295</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="182" MovieMarker="MARK54" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Search by Model Id.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:16]]></Time>
+<TimeTick>1293047296</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="184" MovieMarker="MARK55" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:16]]></Time>
+<TimeTick>1293047296</TimeTick>
+<NodeArgs eType="General" icon="8" nRep="185" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj plainTxt="False" ><![CDATA[[ Model_10082010 Modified  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:16]]></Time>
+<TimeTick>1293047296</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="188" MovieMarker="MARK56" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[[ Model_10082010 Modified  ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="175" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[MODEL CHARACTERISTICS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="192" MovieMarker="MARK57" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[MODEL CHARACTERISTICS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[[ Model_10082010 Modified ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="195" MovieMarker="MARK58" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[[ Model_10082010 Modified ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="191" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[""]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="199" MovieMarker="MARK59" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[principalInvestigator.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Wagner, Ulli"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:17]]></Time>
+<TimeTick>1293047297</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="202" MovieMarker="MARK60" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[principalInvestigator.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[isToolStrain.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["no"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="205" MovieMarker="MARK61" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[isToolStrain.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[scientificName.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Cattle (Bos taurus)"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="208" MovieMarker="MARK62" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[scientificName.Select]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="198" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_8]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Not specified"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="212" MovieMarker="MARK63" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="215" MovieMarker="MARK64" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[ethinicityStrain.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:18]]></Time>
+<TimeTick>1293047298</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="218" MovieMarker="MARK65" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ethinicityStrain.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[genotype.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Genotype"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="221" MovieMarker="MARK66" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[genotype.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj plainTxt="False" ><![CDATA[nomenclature.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Nomenclature"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="224" MovieMarker="MARK67" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[nomenclature.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[experimentDesign.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test comments on Experimental Design"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="227" MovieMarker="MARK68" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[experimentDesign.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[description.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test Comments on Phenotype - modified"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="230" MovieMarker="MARK69" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[description.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj plainTxt="False" ><![CDATA[type.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Male Only"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="233" MovieMarker="MARK70" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[type.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[breedingNotes.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test notes on Breeding"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="236" MovieMarker="MARK71" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[breedingNotes.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[url.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["www.test.com"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="239" MovieMarker="MARK72" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[url.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[releaseDate.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["immediately"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="242" MovieMarker="MARK73" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[releaseDate.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[comments.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test comments on Comment section."]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="245" MovieMarker="MARK74" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[comments.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:19]]></Time>
+<TimeTick>1293047299</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="248" MovieMarker="MARK75" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="211" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_8]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T112">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_9]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:40]]></Time>
+<TimeTick>1293047320</TimeTick>
+<Step rID="T113">
+<Obj plainTxt="False" ><![CDATA[You have successfully.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object does not exist"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:40]]></Time>
+<TimeTick>1293047320</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="440" MovieMarker="MARK76" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[You have successfully.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="439" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_9]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_10]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:41]]></Time>
+<TimeTick>1293047321</TimeTick>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[Error: Bad or missing_2.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:41]]></Time>
+<TimeTick>1293047321</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="443" MovieMarker="MARK77" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[Error: Bad or missing_2.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj ><![CDATA[ModelCharacteristics]]></Obj>
+<Details ><![CDATA[Model '150067374' model characteristics COULD NOT modified and system displayed a message 'Error: Bad or missing dataThe record could not be saved because of problems with the following fields:'Model Descriptor' is a required field. '.]]></Details>
+<Time><![CDATA[12/22/2010 - 14:48:43]]></Time>
+<TimeTick>1293047323</TimeTick>
+<NodeArgs eType="User" icon="7" nRep="445" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[ModelCharacteristics]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="442" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_10]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="134" status="Passed" Source="ModelCharacteristics" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/22/2010 - 14:48:11" eTime="12/22/2010 - 14:48:43" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="132" status="Passed" MovieMarker="MARK46" >
+<Disp><![CDATA[ModelCharacteristics Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="131" status="Passed" >
+<Disp><![CDATA[Admin Modify Model Characteristics Iteration 2 (Row 2)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="12/22/2010 - 14:48:00" eTime="12/22/2010 - 14:48:43" passed="6" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Passed" >
+<Disp><![CDATA[Test Admin Modify Model Characteristics Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

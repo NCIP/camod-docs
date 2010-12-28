@@ -1,0 +1,236 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[H:\KambampatiM\Automation\caMOD\Role Management]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[Role Management]]></DName>
+<Res><![CDATA[Res23]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[UserRoleSelection]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:16]]></Time>
+<TimeTick>1293039616</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:16]]></Time>
+<TimeTick>1293039616</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:16]]></Time>
+<TimeTick>1293039616</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="11" MovieMarker="MARK1" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User logged into caMOD application with Administrator account.]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:16]]></Time>
+<TimeTick>1293039616</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="12" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:16]]></Time>
+<TimeTick>1293039616</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="15" MovieMarker="MARK2" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object "ROLE MANAGEMENT" (of class Link). Verify that this object's properties match an object currently displayed in your application.]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:37]]></Time>
+<TimeTick>1293039637</TimeTick>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Mercury Class = Link<br>Html Tag = A<br>|Visible = -1<br>Text = ROLE MANAGEMENT<br>Name = ROLE MANAGEMENT<br>Html Id = <br>Href = http://cancermodels-qa.nci.nih.gov/camod/AdminRolesAssignmentPopulateAction.do<br>DHTML Class = subMenuPrimary<br>]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:37]]></Time>
+<TimeTick>1293039637</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="60" status="Warning" nType="Description" MovieMarker="MARK4" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf1.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="7" nRep="59" status="Failed" nType="Run Error" MovieMarker="MARK3" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="10" status="Failed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="9" status="Failed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object &quot;ROLE MANAGEMENT&quot; (of class Link). Verify that this object's properties match an object currently displayed in your application.<BR>Line (10): &quot;Browser(&quot;caMOD - Cancer Models&quot;).Page(&quot;caMOD - Cancer Models&quot;).Link(&quot;ROLE MANAGEMENT&quot;).Click&quot;. ]]></Details>
+<Time><![CDATA[12/22/2010 - 12:40:37]]></Time>
+<TimeTick>1293039637</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="61" status="Failed" MovieMarker="MARK5" Source="UserRoleSelection" SourceLine="9" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[12/22/2010 - 12:41:50]]></Time>
+<TimeTick>1293039710</TimeTick>
+<NodeArgs eType="General" icon="10" nRep="62" >
+<Disp><![CDATA[Stop Run]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/22/2010 - 12:40:16" eTime="12/22/2010 - 12:41:50" passed="1" failed="2" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" MovieMarker="MARK0" >
+<Disp><![CDATA[UserRoleSelection Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[Role Management Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="12/22/2010 - 12:40:14" eTime="12/22/2010 - 12:41:50" passed="1" failed="2" warnings="1" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test Role Management Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
