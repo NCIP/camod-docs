@@ -1,0 +1,304 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[C:\SVNatNCI_old\PEDAL_QTP\tst\ST_Driver]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[ST_Driver]]></DName>
+<Res><![CDATA[Res15]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:42]]></Time>
+<TimeTick>1292968242</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:42]]></Time>
+<TimeTick>1292968242</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do;jsessionid=CFD9108AFB6E44A45FFEB640C665879D?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:42]]></Time>
+<TimeTick>1292968242</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="11" MovieMarker="MARK289" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:42]]></Time>
+<TimeTick>1292968242</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="12" MovieMarker="MARK290" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="10" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:44]]></Time>
+<TimeTick>1292968244</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[ADVANCED SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:44]]></Time>
+<TimeTick>1292968244</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="16" MovieMarker="MARK291" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[ADVANCED SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="15" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:46]]></Time>
+<TimeTick>1292968246</TimeTick>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:46]]></Time>
+<TimeTick>1292968246</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="20" MovieMarker="MARK292" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[externalSource.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Jax MTB"]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:48]]></Time>
+<TimeTick>1292968248</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="23" MovieMarker="MARK293" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[externalSource.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/21/2010 - 16:50:48]]></Time>
+<TimeTick>1292968248</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="26" MovieMarker="MARK294" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="19" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Unique Model Identifier_40.GetROProperty "innertext"]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="31" status="Warning" MovieMarker="MARK295" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Unique Model Identifier_40.GetROProperty "innertext"]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf5.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").WebElement("Unique Model Identifier 40")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[Unique Model Identifier_40]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object "Unique Model Identifier_40" (of class WebElement). Verify that this object's properties match an object currently displayed in your application.]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Unique Model Identifier_40]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Mercury Class = WebElement<br>Html Tag = TD<br>|Visible = -1<br>innertext = 50062252<br>Html Id = <br>DHTML Class = <br>]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="33" status="Warning" nType="Description" MovieMarker="MARK297" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Unique Model Identifier_40]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf6.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").WebElement("Unique Model Identifier 40")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="10" nRep="32" status="Failed" nType="Run Error" MovieMarker="MARK296" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Unique Model Identifier_40]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj ><![CDATA[Test Case elapsed Time]]></Obj>
+<Details ><![CDATA[TestCaseElapsedTime: 250.556seconds]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<NodeArgs eType="User" icon="12" nRep="34" status="Information" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[Test Case elapsed Time]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19" retval=" ">
+<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[12/21/2010 - 16:54:49]]></Time>
+<TimeTick>1292968489</TimeTick>
+<NodeArgs eType="General" icon="13" nRep="35" >
+<Disp><![CDATA[Stop Run]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="30" status="Failed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf4.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="9" status="Failed" Source="Action1" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="12/21/2010 - 16:50:05" eTime="12/21/2010 - 16:54:49" passed="0" failed="1" warnings="2" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" status="Failed" MovieMarker="MARK288" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="12/21/2010 - 16:50:04" eTime="12/21/2010 - 16:54:49" passed="0" failed="1" warnings="2" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test ST_Driver Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
