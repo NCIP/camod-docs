@@ -1,0 +1,2421 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[H:\KambampatiM\Automation\caMOD\Role Management]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[Role Management]]></DName>
+<Res><![CDATA[Res24]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[UserRoleSelection]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="11" MovieMarker="MARK1" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf2.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User logged into caMOD application with Administrator account.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="12" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="15" MovieMarker="MARK2" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf3.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:58]]></Time>
+<TimeTick>1294165918</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="18" MovieMarker="MARK3" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf4.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="10" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf1.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:59]]></Time>
+<TimeTick>1294165919</TimeTick>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["All"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:59]]></Time>
+<TimeTick>1294165919</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="25" MovieMarker="MARK4" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf6.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:31:59]]></Time>
+<TimeTick>1294165919</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="28" MovieMarker="MARK5" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf7.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:06]]></Time>
+<TimeTick>1294165926</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="30" MovieMarker="MARK6" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf8.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[userName.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:06]]></Time>
+<TimeTick>1294165926</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="32" MovieMarker="MARK7" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[userName.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf9.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("userName")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA["Your search returned":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:06]]></Time>
+<TimeTick>1294165926</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="34" >
+<Disp><![CDATA["Your search returned":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf10.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User queried for role 'All'.
+Returned results are 'Your search returned 1,102 records'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:11]]></Time>
+<TimeTick>1294165931</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="35" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="24" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf5.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:11]]></Time>
+<TimeTick>1294165931</TimeTick>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:11]]></Time>
+<TimeTick>1294165931</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="39" MovieMarker="MARK8" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf12.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="38" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf11.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:12]]></Time>
+<TimeTick>1294165932</TimeTick>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Coordinator"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:12]]></Time>
+<TimeTick>1294165932</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="45" MovieMarker="MARK9" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf14.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:12]]></Time>
+<TimeTick>1294165932</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="48" MovieMarker="MARK10" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf15.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:18]]></Time>
+<TimeTick>1294165938</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="50" MovieMarker="MARK11" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf16.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[userName.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:18]]></Time>
+<TimeTick>1294165938</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="52" MovieMarker="MARK12" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[userName.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf17.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("userName")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA["Your search returned":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:18]]></Time>
+<TimeTick>1294165938</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="54" >
+<Disp><![CDATA["Your search returned":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf18.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User queried for role 'MMHCC Coordinator'.
+Returned results are 'Your search returned 24 records'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:20]]></Time>
+<TimeTick>1294165940</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="55" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="44" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf13.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:20]]></Time>
+<TimeTick>1294165940</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:20]]></Time>
+<TimeTick>1294165940</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="59" MovieMarker="MARK13" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf20.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="58" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf19.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:21]]></Time>
+<TimeTick>1294165941</TimeTick>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Editor"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:21]]></Time>
+<TimeTick>1294165941</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="65" MovieMarker="MARK14" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf22.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:21]]></Time>
+<TimeTick>1294165941</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="68" MovieMarker="MARK15" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf23.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:25]]></Time>
+<TimeTick>1294165945</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="70" MovieMarker="MARK16" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf24.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[userName.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:25]]></Time>
+<TimeTick>1294165945</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="72" MovieMarker="MARK17" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[userName.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf25.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("userName")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA["Your search returned":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:25]]></Time>
+<TimeTick>1294165945</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="74" >
+<Disp><![CDATA["Your search returned":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf26.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User queried for role 'MMHCC Editor'.
+Returned results are 'Your search returned 12 records'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:27]]></Time>
+<TimeTick>1294165947</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="75" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="64" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf21.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:27]]></Time>
+<TimeTick>1294165947</TimeTick>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:27]]></Time>
+<TimeTick>1294165947</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="79" MovieMarker="MARK18" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf28.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="78" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf27.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:28]]></Time>
+<TimeTick>1294165948</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Screener"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:28]]></Time>
+<TimeTick>1294165948</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="85" MovieMarker="MARK19" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf30.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:28]]></Time>
+<TimeTick>1294165948</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="88" MovieMarker="MARK20" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf31.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:31]]></Time>
+<TimeTick>1294165951</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="90" MovieMarker="MARK21" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf32.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[userName.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:31]]></Time>
+<TimeTick>1294165951</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="92" MovieMarker="MARK22" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[userName.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf33.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("userName")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA["Your search returned":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:31]]></Time>
+<TimeTick>1294165951</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="94" >
+<Disp><![CDATA["Your search returned":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf34.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj ><![CDATA[UserRoleSelection]]></Obj>
+<Details ><![CDATA[User queried for role 'MMHCC Screener'.
+Returned results are 'Your search returned 5 records'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:32]]></Time>
+<TimeTick>1294165952</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="95" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[UserRoleSelection]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="84" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf29.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:32]]></Time>
+<TimeTick>1294165952</TimeTick>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:32]]></Time>
+<TimeTick>1294165952</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="99" MovieMarker="MARK23" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf36.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="98" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf35.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:33]]></Time>
+<TimeTick>1294165953</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:33]]></Time>
+<TimeTick>1294165953</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="103" MovieMarker="MARK24" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf38.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="102" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf37.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="9" status="Passed" Source="UserRoleSelection" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/4/2011 - 13:31:57" eTime="1/4/2011 - 13:32:33" passed="5" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Passed" MovieMarker="MARK0" >
+<Disp><![CDATA[UserRoleSelection Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T49">
+<AName><![CDATA[ViewUser]]></AName>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="109" MovieMarker="MARK26" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf40.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj ><![CDATA[ViewUser]]></Obj>
+<Details ><![CDATA[User logged into caMOD application with Administrator account.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="110" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ViewUser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="113" MovieMarker="MARK27" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf41.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="108" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf39.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:34]]></Time>
+<TimeTick>1294165954</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="117" MovieMarker="MARK28" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf43.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="116" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf42.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:35]]></Time>
+<TimeTick>1294165955</TimeTick>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["All"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:35]]></Time>
+<TimeTick>1294165955</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="124" MovieMarker="MARK29" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf45.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:35]]></Time>
+<TimeTick>1294165955</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="127" MovieMarker="MARK30" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf46.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:41]]></Time>
+<TimeTick>1294165961</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="129" MovieMarker="MARK31" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf47.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:41]]></Time>
+<TimeTick>1294165961</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="131" MovieMarker="MARK32" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf48.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:41]]></Time>
+<TimeTick>1294165961</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="133" MovieMarker="MARK33" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:41]]></Time>
+<TimeTick>1294165961</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="134" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf49.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="123" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf44.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:42]]></Time>
+<TimeTick>1294165962</TimeTick>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[[ Abate-Shen, Cory  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:42]]></Time>
+<TimeTick>1294165962</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="138" MovieMarker="MARK34" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[[ Abate-Shen, Cory  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf51.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="137" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf50.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="141" MovieMarker="MARK35" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf53.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj ><![CDATA[ViewUser]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'All'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="142" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ViewUser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="145" MovieMarker="MARK36" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf54.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="140" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf52.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Coordinator"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="151" MovieMarker="MARK37" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf56.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:43]]></Time>
+<TimeTick>1294165963</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="154" MovieMarker="MARK38" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf57.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="156" MovieMarker="MARK39" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf58.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="158" MovieMarker="MARK40" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf59.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="160" MovieMarker="MARK41" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="161" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf60.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="150" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf55.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[[ Burns, Kevin  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:49]]></Time>
+<TimeTick>1294165969</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="165" MovieMarker="MARK42" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[[ Burns, Kevin  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf62.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="164" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf61.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:50]]></Time>
+<TimeTick>1294165970</TimeTick>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:50]]></Time>
+<TimeTick>1294165970</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="168" MovieMarker="MARK43" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf64.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj ><![CDATA[ViewUser]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Coordinator'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:50]]></Time>
+<TimeTick>1294165970</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="169" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ViewUser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:50]]></Time>
+<TimeTick>1294165970</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="172" MovieMarker="MARK44" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf65.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="167" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf63.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:51]]></Time>
+<TimeTick>1294165971</TimeTick>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Editor"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:51]]></Time>
+<TimeTick>1294165971</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="178" MovieMarker="MARK45" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf67.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:51]]></Time>
+<TimeTick>1294165971</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="181" MovieMarker="MARK46" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf68.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:55]]></Time>
+<TimeTick>1294165975</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="183" MovieMarker="MARK47" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf69.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:56]]></Time>
+<TimeTick>1294165976</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="185" MovieMarker="MARK48" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf70.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:56]]></Time>
+<TimeTick>1294165976</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="187" MovieMarker="MARK49" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:56]]></Time>
+<TimeTick>1294165976</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="188" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf71.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="177" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf66.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:56]]></Time>
+<TimeTick>1294165976</TimeTick>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[[ Ault, Grace  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:56]]></Time>
+<TimeTick>1294165976</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="192" MovieMarker="MARK50" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[[ Ault, Grace  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf73.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="191" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf72.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="195" MovieMarker="MARK51" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf75.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj ><![CDATA[ViewUser]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Editor'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="196" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ViewUser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="199" MovieMarker="MARK52" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf76.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="194" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf74.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Screener"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="205" MovieMarker="MARK53" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf78.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:57]]></Time>
+<TimeTick>1294165977</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="208" MovieMarker="MARK54" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf79.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:59]]></Time>
+<TimeTick>1294165979</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="210" MovieMarker="MARK55" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf80.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:59]]></Time>
+<TimeTick>1294165979</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="212" MovieMarker="MARK56" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf81.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:32:59]]></Time>
+<TimeTick>1294165979</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="214" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf82.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="204" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf77.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<Step rID="T103">
+<Obj plainTxt="False" ><![CDATA[[ Colbert, Maureen  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="218" MovieMarker="MARK57" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[[ Colbert, Maureen  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf84.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="217" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf83.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="221" MovieMarker="MARK58" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf86.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj ><![CDATA[ViewUser]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Screener'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="222" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ViewUser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:00]]></Time>
+<TimeTick>1294165980</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="225" MovieMarker="MARK59" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf87.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:01]]></Time>
+<TimeTick>1294165981</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="228" MovieMarker="MARK60" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf88.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="220" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf85.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="107" status="Passed" Source="ViewUser" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/4/2011 - 13:32:33" eTime="1/4/2011 - 13:33:01" passed="5" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="105" status="Passed" MovieMarker="MARK25" >
+<Disp><![CDATA[ViewUser Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T109">
+<AName><![CDATA[AssignRole]]></AName>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:01]]></Time>
+<TimeTick>1294165981</TimeTick>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:01]]></Time>
+<TimeTick>1294165981</TimeTick>
+<Step rID="T112">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:01]]></Time>
+<TimeTick>1294165981</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="234" MovieMarker="MARK62" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf90.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[User logged into caMOD application with Administrator account.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:01]]></Time>
+<TimeTick>1294165981</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="235" status="Passed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:02]]></Time>
+<TimeTick>1294165982</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="238" MovieMarker="MARK63" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf91.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:02]]></Time>
+<TimeTick>1294165982</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="241" MovieMarker="MARK64" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf92.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="233" status="Passed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf89.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:03]]></Time>
+<TimeTick>1294165983</TimeTick>
+<Step rID="T117">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["All"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:03]]></Time>
+<TimeTick>1294165983</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="248" MovieMarker="MARK65" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf94.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:03]]></Time>
+<TimeTick>1294165983</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="251" MovieMarker="MARK66" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf95.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T119">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:09]]></Time>
+<TimeTick>1294165989</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="253" MovieMarker="MARK67" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf96.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T120">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:09]]></Time>
+<TimeTick>1294165989</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="255" MovieMarker="MARK68" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf97.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T121">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:09]]></Time>
+<TimeTick>1294165989</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="257" MovieMarker="MARK69" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T122">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:09]]></Time>
+<TimeTick>1294165989</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="258" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf98.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T123">
+<Obj plainTxt="False" ><![CDATA[[ Abate-Shen, Cory  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:09]]></Time>
+<TimeTick>1294165989</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="261" MovieMarker="MARK70" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[[ Abate-Shen, Cory  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf99.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="247" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf93.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T124">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<Step rID="T125">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="264" MovieMarker="MARK71" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf101.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T126">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'All'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="265" status="Passed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T127">
+<Obj plainTxt="False" ><![CDATA[coordinator.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["ON"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="271" MovieMarker="MARK72" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[coordinator.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf102.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebCheckBox("coordinator")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T128">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="274" MovieMarker="MARK73" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf103.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T129">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Coordinator role assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:10]]></Time>
+<TimeTick>1294165990</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="275" status="Passed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T130">
+<Obj plainTxt="False" ><![CDATA[editor]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object "editor" (of class WebCheckBox). Verify that this object's properties match an object currently displayed in your application.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:32]]></Time>
+<TimeTick>1294166012</TimeTick>
+<Step rID="T131">
+<Obj plainTxt="False" ><![CDATA[editor]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Mercury Class = WebCheckBox<br>Html Tag = INPUT<br>|Visible = -1<br>Value = on<br>Type = checkbox<br>Name = editor<br>Html Id = <br>DHTML Class = formFieldSized<br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:32]]></Time>
+<TimeTick>1294166012</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="321" status="Warning" nType="Description" MovieMarker="MARK75" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[editor]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf105.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebCheckBox("editor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="14" nRep="320" status="Failed" nType="Run Error" MovieMarker="MARK74" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[editor]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf104.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebCheckBox("editor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="263" status="Failed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf100.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="232" status="Failed" Source="AssignRole" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T132">
+<Obj plainTxt="False" ><![CDATA[Run Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot identify the object &quot;editor&quot; (of class WebCheckBox). Verify that this object's properties match an object currently displayed in your application.<BR>Line (50): &quot;Browser(&quot;caMOD - Cancer Models&quot;).Page(&quot;caMOD - Cancer Models_3&quot;).WebCheckBox(&quot;editor&quot;).Set &quot;ON&quot;&quot;. ]]></Details>
+<Time><![CDATA[1/4/2011 - 13:33:32]]></Time>
+<TimeTick>1294166012</TimeTick>
+<NodeArgs eType="Replay" icon="15" nRep="322" status="Failed" MovieMarker="MARK76" Source="AssignRole" SourceLine="49" >
+<Disp><![CDATA[Run Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T133">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:26]]></Time>
+<TimeTick>1294166126</TimeTick>
+<Step rID="T134">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:26]]></Time>
+<TimeTick>1294166126</TimeTick>
+<Step rID="T135">
+<Obj plainTxt="False" ><![CDATA[editor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["ON"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:26]]></Time>
+<TimeTick>1294166126</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="327" MovieMarker="MARK77" Source="AssignRole" SourceLine="49" >
+<Disp><![CDATA[editor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf107.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebCheckBox("editor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T136">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:29]]></Time>
+<TimeTick>1294166129</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="330" MovieMarker="MARK78" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf108.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T137">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Editor role assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:29]]></Time>
+<TimeTick>1294166129</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="331" status="Passed" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T138">
+<Obj plainTxt="False" ><![CDATA[screener.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["ON"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:45]]></Time>
+<TimeTick>1294166145</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="352" MovieMarker="MARK79" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[screener.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf109.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebCheckBox("screener")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T139">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:45]]></Time>
+<TimeTick>1294166145</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="355" MovieMarker="MARK80" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf110.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T140">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Screener role assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="356" status="Passed" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="326" status="Passed" Source="AssignRole" SourceLine="49" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf106.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T141">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<Step rID="T142">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="360" MovieMarker="MARK81" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf112.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="359" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf111.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T143">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<Step rID="T144">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Coordinator"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="366" MovieMarker="MARK82" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf114.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T145">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:46]]></Time>
+<TimeTick>1294166146</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="369" MovieMarker="MARK83" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf115.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T146">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:52]]></Time>
+<TimeTick>1294166152</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="371" MovieMarker="MARK84" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf116.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T147">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:52]]></Time>
+<TimeTick>1294166152</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="373" MovieMarker="MARK85" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf117.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T148">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:52]]></Time>
+<TimeTick>1294166152</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="375" MovieMarker="MARK86" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T149">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:52]]></Time>
+<TimeTick>1294166152</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="376" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf118.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T150">
+<Obj plainTxt="False" ><![CDATA[[ Abate-Shen, Cory  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:52]]></Time>
+<TimeTick>1294166152</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="379" MovieMarker="MARK87" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[[ Abate-Shen, Cory  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf119.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="365" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf113.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T151">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<Step rID="T152">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="382" MovieMarker="MARK88" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf121.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T153">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Coordinator'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="383" status="Passed" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T154">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Coordinator role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="387" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T155">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Editor role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="388" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T156">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Screener role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="389" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="381" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf120.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T157">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<Step rID="T158">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:53]]></Time>
+<TimeTick>1294166153</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="393" MovieMarker="MARK89" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf123.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="392" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf122.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T159">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:54]]></Time>
+<TimeTick>1294166154</TimeTick>
+<Step rID="T160">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Editor"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:54]]></Time>
+<TimeTick>1294166154</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="399" MovieMarker="MARK90" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf125.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T161">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:54]]></Time>
+<TimeTick>1294166154</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="402" MovieMarker="MARK91" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf126.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T162">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:59]]></Time>
+<TimeTick>1294166159</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="404" MovieMarker="MARK92" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf127.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T163">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:59]]></Time>
+<TimeTick>1294166159</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="406" MovieMarker="MARK93" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf128.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T164">
+<Obj plainTxt="False" ><![CDATA["No."- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (19 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=WebTable<br>html tag=TABLE<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (19 objects found)&nbsp;</FONT></u><br>
+micclass=WebTable<br>html tag=TABLE<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+html id=row<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>border=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:59]]></Time>
+<TimeTick>1294166159</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="408" MovieMarker="MARK94" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA["No."- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T165">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:59]]></Time>
+<TimeTick>1294166159</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="409" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf129.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T166">
+<Obj plainTxt="False" ><![CDATA[[ Abate-Shen, Cory  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:35:59]]></Time>
+<TimeTick>1294166159</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="412" MovieMarker="MARK95" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[[ Abate-Shen, Cory  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf130.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="398" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf124.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T167">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<Step rID="T168">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="415" MovieMarker="MARK96" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf132.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T169">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Editor'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="416" status="Passed" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T170">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Coordinator role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="420" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T171">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Editor role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="421" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T172">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Screener role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="422" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="414" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf131.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T173">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<Step rID="T174">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:00]]></Time>
+<TimeTick>1294166160</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="426" MovieMarker="MARK97" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf134.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="425" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf133.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T175">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:01]]></Time>
+<TimeTick>1294166161</TimeTick>
+<Step rID="T176">
+<Obj plainTxt="False" ><![CDATA[currentRole.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["MMHCC Screener"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:01]]></Time>
+<TimeTick>1294166161</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="432" MovieMarker="MARK98" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[currentRole.Select]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf136.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebList("currentRole")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T177">
+<Obj plainTxt="False" ><![CDATA[Submit.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:01]]></Time>
+<TimeTick>1294166161</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="435" MovieMarker="MARK99" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Submit.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf137.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Submit")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T178">
+<Obj plainTxt="False" ><![CDATA[Your search returned.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:03]]></Time>
+<TimeTick>1294166163</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="437" MovieMarker="MARK100" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Your search returned.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf138.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("Your search returned")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T179">
+<Obj plainTxt="False" ><![CDATA[user.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:03]]></Time>
+<TimeTick>1294166163</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="439" MovieMarker="MARK101" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[user.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf139.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebElement("user")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T180">
+<Obj plainTxt="False" ><![CDATA["No.":Function Call]]></Obj>
+<Details plainTxt="False" ><![CDATA[CellText]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:03]]></Time>
+<TimeTick>1294166163</TimeTick>
+<NodeArgs eType="General" icon="11" nRep="441" >
+<Disp><![CDATA["No.":Function Call]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf140.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebTable("No.")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T181">
+<Obj plainTxt="False" ><![CDATA[[ Abate-Shen, Cory  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:03]]></Time>
+<TimeTick>1294166163</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="444" MovieMarker="MARK102" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[[ Abate-Shen, Cory  ].Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf141.xml]]></Path>
+<ASHilite><![CDATA[HIGHLIGHT PARAMS]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="431" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf135.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T182">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<Step rID="T183">
+<Obj plainTxt="False" ><![CDATA[Edit User Roles.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="447" MovieMarker="MARK103" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[Edit User Roles.Exist]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf143.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebTable("Edit User Roles")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T184">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Edit User Roles page opened for role 'MMHCC Screener'.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="448" status="Passed" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T185">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Coordinator role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="452" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T186">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Editor role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="453" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T187">
+<Obj ><![CDATA[AssignRole]]></Obj>
+<Details ><![CDATA[Screener role already assigned to user 'Abate-Shen, Cory '.]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="User" icon="8" nRep="454" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[AssignRole]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="446" status="Warning" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf142.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T188">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<Step rID="T189">
+<Obj plainTxt="False" ><![CDATA[ROLE MANAGEMENT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:04]]></Time>
+<TimeTick>1294166164</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="458" MovieMarker="MARK104" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[ROLE MANAGEMENT.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf145.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ROLE MANAGEMENT")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T190">
+<Obj plainTxt="False" ><![CDATA[ADMIN.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/4/2011 - 13:36:05]]></Time>
+<TimeTick>1294166165</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="461" MovieMarker="MARK105" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[ADMIN.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf146.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("ADMIN")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="457" Source="AssignRole" SourceLine="50" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf144.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="325" status="Warning" Source="AssignRole" SourceLine="49" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/4/2011 - 13:33:01" eTime="1/4/2011 - 13:36:05" passed="8" failed="2" warnings="10" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="230" status="Failed" MovieMarker="MARK61" >
+<Disp><![CDATA[AssignRole Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[Role Management Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="1/4/2011 - 13:31:56" eTime="1/4/2011 - 13:36:05" passed="18" failed="2" warnings="10" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test Role Management Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
