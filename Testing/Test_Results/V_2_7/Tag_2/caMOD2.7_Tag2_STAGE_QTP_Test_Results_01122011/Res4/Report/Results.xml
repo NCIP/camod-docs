@@ -1,0 +1,2207 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step?,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*,Summary,ActionMaintenanceSummary*,NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?)>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="Eastern Standard Time">
+<General productName="QuickTest Professional" productVer="10.00" os="Windows XP" host="CBIIT-QAPC0"><DocLocation><![CDATA[H:\KambampatiM\Automation\caMOD\External Links Test4]]></DocLocation></General>
+<Doc rID="T1"   productName= "QuickTest Professional"  >
+<DName><![CDATA[External Links Test4]]></DName>
+<Res><![CDATA[Res4]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table">
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[AlternateURL]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="10" MovieMarker="MARK1" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf2.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj ><![CDATA[caMOD Home]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="11" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do;jsessionid=0EEB300CED55F6E114AB86120F9DE203?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="14" MovieMarker="MARK2" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:30]]></Time>
+<TimeTick>1294869750</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="15" MovieMarker="MARK3" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf3.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="9" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf1.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:31]]></Time>
+<TimeTick>1294869751</TimeTick>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:31]]></Time>
+<TimeTick>1294869751</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="19" MovieMarker="MARK4" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf5.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="18" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf4.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:32]]></Time>
+<TimeTick>1294869752</TimeTick>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["A/HeJ"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:32]]></Time>
+<TimeTick>1294869752</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="23" MovieMarker="MARK5" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf7.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:34]]></Time>
+<TimeTick>1294869754</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="26" MovieMarker="MARK6" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf8.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="22" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf6.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:36]]></Time>
+<TimeTick>1294869756</TimeTick>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[A/HeJ.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:36]]></Time>
+<TimeTick>1294869756</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="30" MovieMarker="MARK7" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[A/HeJ.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf10.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").Link("A/HeJ")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="29" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf9.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:46]]></Time>
+<TimeTick>1294869766</TimeTick>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[IMAGES.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:02:46]]></Time>
+<TimeTick>1294869766</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="34" MovieMarker="MARK8" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[IMAGES.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf12.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 5").Link("IMAGES")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="33" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf11.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_5")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:06]]></Time>
+<TimeTick>1294869786</TimeTick>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[http://tumor.informatics.jax.o.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:06]]></Time>
+<TimeTick>1294869786</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="38" MovieMarker="MARK9" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[http://tumor.informatics.jax.o.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf14.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 6").Link("http://tumor.informatics.jax.o")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="37" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf13.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="8" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[Tumor Pathology Report/Images]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA["Tumor Pathology Report/Images"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Tumor Pathology Report/Images<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=Tumor Pathology Report/Images<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=http://tumor.informatics.jax.org/mtbwi/tumorFrequencyDetails.do?key=25328&page=pathology<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=Tumor Pathology Report/Images<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="40" MovieMarker="MARK10" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA["Tumor Pathology Report/Images"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Tumor Pathology Report/Images]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Tumor Pathology Report/Images.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="44" MovieMarker="MARK11" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Tumor Pathology Report/Images.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf16.xml]]></Path>
+<ASHilite><![CDATA[Browser("Tumor Pathology Report/Images").Page("Tumor Pathology Report/Images")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj ><![CDATA[Image]]></Obj>
+<Details ><![CDATA[Tumor Pathology Report/Images page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="45" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Image]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Tumor Pathology Report/Images.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="48" MovieMarker="MARK12" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Tumor Pathology Report/Images.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf17.xml]]></Path>
+<ASHilite><![CDATA[Browser("Tumor Pathology Report/Images").Page("Tumor Pathology Report/Images")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="43" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Tumor Pathology Report/Images]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf15.xml]]></Path>
+<ASHilite><![CDATA[Browser("Tumor Pathology Report/Images").Page("Tumor Pathology Report/Images")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[Tumor Pathology Report/Images.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:19]]></Time>
+<TimeTick>1294869799</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="49" MovieMarker="MARK13" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Tumor Pathology Report/Images.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="39" status="Passed" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[Tumor Pathology Report/Images]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="54" MovieMarker="MARK14" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act1\Row0\ssf19.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 6").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="53" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act1\Row0\ssf18.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="52" Source="AlternateURL" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/12/2011 - 17:02:29" eTime="1/12/2011 - 17:03:20" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" status="Passed" MovieMarker="MARK0" >
+<Disp><![CDATA[AlternateURL Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T31">
+<AName><![CDATA[MicroArrays]]></AName>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="60" MovieMarker="MARK16" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf21.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj ><![CDATA[caMOD Home]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="61" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="64" MovieMarker="MARK17" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:20]]></Time>
+<TimeTick>1294869800</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="65" MovieMarker="MARK18" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf22.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="59" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf20.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:22]]></Time>
+<TimeTick>1294869802</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:22]]></Time>
+<TimeTick>1294869802</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="69" MovieMarker="MARK19" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf24.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="68" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf23.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:23]]></Time>
+<TimeTick>1294869803</TimeTick>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Min mice"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:23]]></Time>
+<TimeTick>1294869803</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="73" MovieMarker="MARK20" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf26.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:24]]></Time>
+<TimeTick>1294869804</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="76" MovieMarker="MARK21" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf27.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="72" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf25.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:27]]></Time>
+<TimeTick>1294869807</TimeTick>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[Min mice.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:27]]></Time>
+<TimeTick>1294869807</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="80" MovieMarker="MARK22" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[Min mice.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf29.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 5").Link("Min mice")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="79" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf28.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_5")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:28]]></Time>
+<TimeTick>1294869808</TimeTick>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[MICROARRAYS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:28]]></Time>
+<TimeTick>1294869808</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="84" MovieMarker="MARK23" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[MICROARRAYS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf31.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 6").Link("MICROARRAYS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="83" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf30.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:30]]></Time>
+<TimeTick>1294869810</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[Identification of large-scale.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:30]]></Time>
+<TimeTick>1294869810</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="88" MovieMarker="MARK24" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[Identification of large-scale.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf33.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("Identification of large-scale")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="87" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf32.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="58" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[caArray - Experiment Details]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA["caArray - Experiment Details"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=caArray - Experiment Details<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=caArray - Experiment Details<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=https://array.nci.nih.gov/caarray/project/details.action?project.experiment.publicIdentifier=arono-00162<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=caArray - Experiment Details<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="90" MovieMarker="MARK25" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA["caArray - Experiment Details"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[caArray - Experiment Details]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[caArray - Experiment Details.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="94" MovieMarker="MARK26" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray - Experiment Details.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf35.xml]]></Path>
+<ASHilite><![CDATA[Browser("caArray - Experiment Details").Page("caArray - Experiment Details")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj ><![CDATA[caArray]]></Obj>
+<Details ><![CDATA[caArray page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="95" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[caArray - Experiment Details.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="98" MovieMarker="MARK27" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray - Experiment Details.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf36.xml]]></Path>
+<ASHilite><![CDATA[Browser("caArray - Experiment Details").Page("caArray - Experiment Details")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="93" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray - Experiment Details]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf34.xml]]></Path>
+<ASHilite><![CDATA[Browser("caArray - Experiment Details").Page("caArray - Experiment Details")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[caArray - Experiment Details.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:33]]></Time>
+<TimeTick>1294869813</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="99" MovieMarker="MARK28" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray - Experiment Details.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="89" status="Passed" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caArray - Experiment Details]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="104" MovieMarker="MARK29" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act2\Row0\ssf38.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="103" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act2\Row0\ssf37.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="102" Source="MicroArrays" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/12/2011 - 17:03:20" eTime="1/12/2011 - 17:03:34" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="56" status="Passed" MovieMarker="MARK15" >
+<Disp><![CDATA[MicroArrays Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T59">
+<AName><![CDATA[AdditionalInfo]]></AName>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="110" MovieMarker="MARK31" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf40.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj ><![CDATA[caMOD Home]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="111" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="114" MovieMarker="MARK32" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:34]]></Time>
+<TimeTick>1294869814</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="115" MovieMarker="MARK33" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf41.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="109" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf39.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:36]]></Time>
+<TimeTick>1294869816</TimeTick>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:36]]></Time>
+<TimeTick>1294869816</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="119" MovieMarker="MARK34" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf43.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="118" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf42.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:37]]></Time>
+<TimeTick>1294869817</TimeTick>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["SWXJ5/BmJ"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:37]]></Time>
+<TimeTick>1294869817</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="123" MovieMarker="MARK35" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf45.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:38]]></Time>
+<TimeTick>1294869818</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="126" MovieMarker="MARK36" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf46.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="122" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf44.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:41]]></Time>
+<TimeTick>1294869821</TimeTick>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[SWXJ5/BmJ.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:41]]></Time>
+<TimeTick>1294869821</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="130" MovieMarker="MARK37" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[SWXJ5/BmJ.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf48.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").Link("SWXJ5/BmJ")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="129" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf47.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:43]]></Time>
+<TimeTick>1294869823</TimeTick>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[http://tumor.informatics.jax.o.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:43]]></Time>
+<TimeTick>1294869823</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="134" MovieMarker="MARK38" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[http://tumor.informatics.jax.o.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf50.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 5").Link("http://tumor.informatics.jax.o")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="133" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf49.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_5")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="108" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[Mouse Tumor Biology System]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA["Mouse Tumor Biology System"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Mouse Tumor Biology System (MTB)<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=Mouse Tumor Biology System (MTB)<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=http://tumor.informatics.jax.org<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=Mouse Tumor Database Project<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="136" MovieMarker="MARK39" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA["Mouse Tumor Biology System"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[Mouse Tumor Biology System]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[Mouse Tumor Biology System.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="140" MovieMarker="MARK40" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Mouse Tumor Biology System.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf52.xml]]></Path>
+<ASHilite><![CDATA[Browser("Mouse Tumor Biology System").Page("Mouse Tumor Biology System")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj ><![CDATA[MTB]]></Obj>
+<Details ><![CDATA[MTB Database page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="141" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[MTB]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[Mouse Tumor Biology System.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="144" MovieMarker="MARK41" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Mouse Tumor Biology System.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf53.xml]]></Path>
+<ASHilite><![CDATA[Browser("Mouse Tumor Biology System").Page("Mouse Tumor Biology System")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="139" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Mouse Tumor Biology System]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf51.xml]]></Path>
+<ASHilite><![CDATA[Browser("Mouse Tumor Biology System").Page("Mouse Tumor Biology System")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[Mouse Tumor Biology System.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:45]]></Time>
+<TimeTick>1294869825</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="145" MovieMarker="MARK42" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Mouse Tumor Biology System.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="135" status="Passed" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[Mouse Tumor Biology System]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="150" MovieMarker="MARK43" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act3\Row0\ssf55.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 5").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="149" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act3\Row0\ssf54.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_5")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="148" Source="AdditionalInfo" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/12/2011 - 17:03:34" eTime="1/12/2011 - 17:03:46" passed="2" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="106" status="Passed" MovieMarker="MARK30" >
+<Disp><![CDATA[AdditionalInfo Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T85">
+<AName><![CDATA[CarcinogenicIntervention]]></AName>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="156" MovieMarker="MARK45" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf57.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj ><![CDATA[caMOD Home]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="157" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="160" MovieMarker="MARK46" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:46]]></Time>
+<TimeTick>1294869826</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="161" MovieMarker="MARK47" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf58.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="155" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf56.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:48]]></Time>
+<TimeTick>1294869828</TimeTick>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:48]]></Time>
+<TimeTick>1294869828</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="165" MovieMarker="MARK48" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf60.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="164" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf59.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:49]]></Time>
+<TimeTick>1294869829</TimeTick>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["p19(Arf) null"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:49]]></Time>
+<TimeTick>1294869829</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="169" MovieMarker="MARK49" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf62.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:50]]></Time>
+<TimeTick>1294869830</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="172" MovieMarker="MARK50" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf63.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="168" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf61.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:52]]></Time>
+<TimeTick>1294869832</TimeTick>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[p19(Arf) null.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:52]]></Time>
+<TimeTick>1294869832</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="176" MovieMarker="MARK51" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[p19(Arf) null.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf65.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").Link("p19(Arf) null")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="175" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf64.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:54]]></Time>
+<TimeTick>1294869834</TimeTick>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[CARCINOGENIC INTERVENTIONS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:54]]></Time>
+<TimeTick>1294869834</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="180" MovieMarker="MARK52" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[CARCINOGENIC INTERVENTIONS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf67.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 6").Link("CARCINOGENIC INTERVENTIONS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="179" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf66.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:56]]></Time>
+<TimeTick>1294869836</TimeTick>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[408823.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:03:56]]></Time>
+<TimeTick>1294869836</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="184" MovieMarker="MARK53" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[408823.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf69.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("408823")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="183" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf68.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="154" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA["Basic Chemical Data"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Basic Chemical Data<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=http://dtp.nci.nih.gov/dtpstandard/servlet/ChemData?queryHOLD=&searchtype=CAS&chemnameboolean=and&outputformat=html&Submit=Submit&searchlist=57-97-6<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="186" MovieMarker="MARK54" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA["Basic Chemical Data"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<Step rID="T106">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="190" MovieMarker="MARK55" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf71.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj ><![CDATA[NSC Number]]></Obj>
+<Details ><![CDATA[Basic Chemical Data page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="191" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[NSC Number]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="194" MovieMarker="MARK56" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf72.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="189" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf70.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:05]]></Time>
+<TimeTick>1294869845</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="195" MovieMarker="MARK57" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="185" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T110">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:07]]></Time>
+<TimeTick>1294869847</TimeTick>
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:07]]></Time>
+<TimeTick>1294869847</TimeTick>
+<Step rID="T112">
+<Obj plainTxt="False" ><![CDATA[57-97-6.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:07]]></Time>
+<TimeTick>1294869847</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="200" MovieMarker="MARK58" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[57-97-6.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf74.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("57-97-6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="199" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf73.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="198" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA["Basic Chemical Data"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Basic Chemical Data<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=http://dtp.nci.nih.gov/dtpstandard/servlet/ChemData?queryHOLD=&searchtype=CAS&chemnameboolean=and&outputformat=html&Submit=Submit&searchlist=57-97-6<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="202" MovieMarker="MARK59" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA["Basic Chemical Data"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="206" MovieMarker="MARK60" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf76.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T117">
+<Obj ><![CDATA[CAS Number]]></Obj>
+<Details ><![CDATA[Basic Chemical Data page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="207" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[CAS Number]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="210" MovieMarker="MARK61" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf77.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="205" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf75.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T119">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:10]]></Time>
+<TimeTick>1294869850</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="211" MovieMarker="MARK62" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="201" status="Passed" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T120">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<Step rID="T121">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<Step rID="T122">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="216" MovieMarker="MARK63" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act4\Row0\ssf79.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="215" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act4\Row0\ssf78.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="214" Source="CarcinogenicIntervention" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/12/2011 - 17:03:46" eTime="1/12/2011 - 17:04:11" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="152" status="Passed" MovieMarker="MARK44" >
+<Disp><![CDATA[CarcinogenicIntervention Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T123">
+<AName><![CDATA[Therapy]]></AName>
+<Step rID="T124">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<Step rID="T125">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<Step rID="T126">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="222" MovieMarker="MARK65" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf81.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T127">
+<Obj ><![CDATA[caMOD Home]]></Obj>
+<Details ><![CDATA[caMOD home page exists.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:11]]></Time>
+<TimeTick>1294869851</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="223" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD Home]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T128">
+<Obj plainTxt="False" ><![CDATA["SEARCH MODELS"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=SEARCH MODELS<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (16 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=SEARCH MODELS<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=footerMenuLink<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>name=SEARCH MODELS<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>href=http://cancermodels-qa.nci.nih.gov/camod/SimpleSearchPopulateAction.do?unprotected_method=populate<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>visible=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:12]]></Time>
+<TimeTick>1294869852</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="226" MovieMarker="MARK66" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA["SEARCH MODELS"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T129">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:12]]></Time>
+<TimeTick>1294869852</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="227" MovieMarker="MARK67" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf82.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="221" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf80.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T130">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:13]]></Time>
+<TimeTick>1294869853</TimeTick>
+<Step rID="T131">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:13]]></Time>
+<TimeTick>1294869853</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="231" MovieMarker="MARK68" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf84.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="230" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf83.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T132">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:14]]></Time>
+<TimeTick>1294869854</TimeTick>
+<Step rID="T133">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["PLZF-RARalpha "]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:14]]></Time>
+<TimeTick>1294869854</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="235" MovieMarker="MARK69" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf86.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T134">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:15]]></Time>
+<TimeTick>1294869855</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="238" MovieMarker="MARK70" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf87.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="234" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf85.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T135">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:16]]></Time>
+<TimeTick>1294869856</TimeTick>
+<Step rID="T136">
+<Obj plainTxt="False" ><![CDATA[PLZF-RARalpha x PLZF -/-.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:16]]></Time>
+<TimeTick>1294869856</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="242" MovieMarker="MARK71" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[PLZF-RARalpha x PLZF -/-.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf89.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").Link("PLZF-RARalpha x PLZF -/-")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="241" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf88.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T137">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_5]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:17]]></Time>
+<TimeTick>1294869857</TimeTick>
+<Step rID="T138">
+<Obj plainTxt="False" ><![CDATA[THERAPEUTIC APPROACHES.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:17]]></Time>
+<TimeTick>1294869857</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="246" MovieMarker="MARK72" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[THERAPEUTIC APPROACHES.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf91.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 5").Link("THERAPEUTIC APPROACHES")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="245" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_5]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf90.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_5")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T139">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_6]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:18]]></Time>
+<TimeTick>1294869858</TimeTick>
+<Step rID="T140">
+<Obj plainTxt="False" ><![CDATA[Chemical Structure.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:19]]></Time>
+<TimeTick>1294869859</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="250" MovieMarker="MARK73" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Chemical Structure.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf93.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 6").Link("Chemical Structure")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="249" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_6]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf92.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_6")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="220" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T141">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<Step rID="T142">
+<Obj plainTxt="False" ><![CDATA["Basic Chemical Data"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Basic Chemical Data<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=http://dtp.nci.nih.gov/dtpstandard/servlet/ChemData?queryHOLD=&searchtype=NSC&chemnameboolean=and&outputformat=html&searchlist=122758&Submit=Submit<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="252" MovieMarker="MARK74" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA["Basic Chemical Data"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T143">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<Step rID="T144">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="256" MovieMarker="MARK75" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf95.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T145">
+<Obj ><![CDATA[NSC Number]]></Obj>
+<Details ><![CDATA[Basic Chemical Data page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="257" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[NSC Number]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T146">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="260" MovieMarker="MARK76" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf96.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="255" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf94.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T147">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:21]]></Time>
+<TimeTick>1294869861</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="261" MovieMarker="MARK77" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="251" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T148">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:22]]></Time>
+<TimeTick>1294869862</TimeTick>
+<Step rID="T149">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_7]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:22]]></Time>
+<TimeTick>1294869862</TimeTick>
+<Step rID="T150">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:22]]></Time>
+<TimeTick>1294869862</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="266" MovieMarker="MARK78" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf98.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 7").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="265" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_7]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf97.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_7")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T151">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:23]]></Time>
+<TimeTick>1294869863</TimeTick>
+<Step rID="T152">
+<Obj plainTxt="False" ><![CDATA[SEARCH MODELS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:23]]></Time>
+<TimeTick>1294869863</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="270" MovieMarker="MARK79" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[SEARCH MODELS.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf100.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models").Link("SEARCH MODELS")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="269" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf99.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T153">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:24]]></Time>
+<TimeTick>1294869864</TimeTick>
+<Step rID="T154">
+<Obj plainTxt="False" ><![CDATA[Clear.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:24]]></Time>
+<TimeTick>1294869864</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="274" MovieMarker="MARK80" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Clear.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf102.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 2").WebButton("Clear")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="273" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_2]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf101.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_2")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T155">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_3]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:24]]></Time>
+<TimeTick>1294869864</TimeTick>
+<Step rID="T156">
+<Obj plainTxt="False" ><![CDATA[modelDescriptor.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["canine invasive transitional cell carcinoma (TCC) of the urinary bladder"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:24]]></Time>
+<TimeTick>1294869864</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="278" MovieMarker="MARK81" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[modelDescriptor.Set]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf104.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebEdit("modelDescriptor")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T157">
+<Obj plainTxt="False" ><![CDATA[Search.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:26]]></Time>
+<TimeTick>1294869866</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="281" MovieMarker="MARK82" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Search.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf105.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 3").WebButton("Search")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="277" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_3]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf103.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_3")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T158">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_4]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:27]]></Time>
+<TimeTick>1294869867</TimeTick>
+<Step rID="T159">
+<Obj plainTxt="False" ><![CDATA[canine invasive transitional.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:27]]></Time>
+<TimeTick>1294869867</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="285" MovieMarker="MARK83" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[canine invasive transitional.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf107.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 4").Link("canine invasive transitional")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="284" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_4]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf106.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_4")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T160">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_8]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:28]]></Time>
+<TimeTick>1294869868</TimeTick>
+<Step rID="T161">
+<Obj plainTxt="False" ><![CDATA[THERAPEUTIC APPROACHES.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:28]]></Time>
+<TimeTick>1294869868</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="289" MovieMarker="MARK84" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[THERAPEUTIC APPROACHES.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf109.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 8").Link("THERAPEUTIC APPROACHES")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="288" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_8]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf108.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_8")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T162">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_9]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:32]]></Time>
+<TimeTick>1294869872</TimeTick>
+<Step rID="T163">
+<Obj plainTxt="False" ><![CDATA[Chemical Structure.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:32]]></Time>
+<TimeTick>1294869872</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="293" MovieMarker="MARK85" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Chemical Structure.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf111.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 9").Link("Chemical Structure")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="292" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_9]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf110.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_9")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="264" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T164">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T165">
+<Obj plainTxt="False" ><![CDATA["Basic Chemical Data_2"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Basic Chemical Data<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=http://dtp.nci.nih.gov/dtpstandard/servlet/ChemData?queryHOLD=&searchtype=CAS&chemnameboolean=and&outputformat=html&searchlist=15663-27-1&Submit=Submit<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="295" MovieMarker="MARK86" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA["Basic Chemical Data_2"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="294" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T166">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T167">
+<Obj plainTxt="False" ><![CDATA["Basic Chemical Data"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (2 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (2 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Basic Chemical Data<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>title=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openurl=http://dtp.nci.nih.gov/dtpstandard/servlet/ChemData?queryHOLD=&searchtype=NSC&chemnameboolean=and&outputformat=html&searchlist=122758&Submit=Submit<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>opentitle=Basic Chemical Data<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasstatusbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hasmenubar=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>hastoolbar=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="298" MovieMarker="MARK87" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA["Basic Chemical Data"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T168">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T169">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="301" MovieMarker="MARK88" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Exist]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf113.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T170">
+<Obj ><![CDATA[NSC Number]]></Obj>
+<Details ><![CDATA[Basic Chemical Data page opened.]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="302" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[NSC Number]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="300" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf112.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="297" status="Passed" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T171">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data_2]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T172">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T173">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data.Sync]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="307" MovieMarker="MARK89" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data.Sync]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf115.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data_2").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="306" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf114.xml]]></Path>
+<ASHilite><![CDATA[Browser("Basic Chemical Data_2").Page("Basic Chemical Data")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T174">
+<Obj plainTxt="False" ><![CDATA[Basic Chemical Data_2.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="308" MovieMarker="MARK90" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data_2.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="305" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[Basic Chemical Data_2]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T175">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models]]></Obj>
+<Details plainTxt="False" ><![CDATA[Browser]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T176">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models_10]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:36]]></Time>
+<TimeTick>1294869876</TimeTick>
+<Step rID="T177">
+<Obj plainTxt="False" ><![CDATA[HOME.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:37]]></Time>
+<TimeTick>1294869877</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="313" MovieMarker="MARK91" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[HOME.Click]]></Disp>
+<BtmPane vType="Mercury.SSHWeb">
+<Path><![CDATA[ZIP::Act5\Row0\ssf117.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models 10").Link("HOME")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="312" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models_10]]></Disp>
+<BtmPane vType="HTMLSNSH">
+<Path><![CDATA[ZIP::Act5\Row0\ssf116.xml]]></Path>
+<ASHilite><![CDATA[Browser("caMOD - Cancer Models").Page("caMOD - Cancer Models_10")]]></ASHilite>
+</BtmPane>
+</NodeArgs>
+</Step>
+<Step rID="T178">
+<Obj plainTxt="False" ><![CDATA[caMOD - Cancer Models.Close All Tabs]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/12/2011 - 17:04:37]]></Time>
+<TimeTick>1294869877</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="314" MovieMarker="MARK92" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models.Close All Tabs]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="4" nRep="311" Source="Therapy" SourceLine="-1" >
+<Disp><![CDATA[caMOD - Cancer Models]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/12/2011 - 17:04:11" eTime="1/12/2011 - 17:04:37" passed="3" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="218" status="Passed" MovieMarker="MARK64" >
+<Disp><![CDATA[Therapy Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="1/12/2011 - 17:02:25" eTime="1/12/2011 - 17:04:38" passed="12" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Passed" >
+<Disp><![CDATA[Test External Links Test4 Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
