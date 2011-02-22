@@ -32,4 +32,7 @@ is located and select "Enable"
 
 13.  Deleate the existing war from the deploy folder before redeplpoying (reminder for Sima)
 
-14.  Copy StartupListener from working instance (not sure why this is an error)
+14.  Copy StartupListener from working instance  - make sure that Eclipse is using the same version of java 
+to compile and run.  I added the JAVA_HOME to the path (extra) and found two places that eclipse assigns java versions.  
+The default java version will be set to whatever version is down loaded from myEclipse installer.  If not you get:
+java.lang.UnsupportedClassVersionError: Bad version number in .class file for the StartupListener class.
